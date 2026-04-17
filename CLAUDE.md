@@ -183,22 +183,24 @@ The `.git/` directory tracks updates over time. Recent commits show WME version 
 
 ## Common Tasks
 
+> **Note:** All commands below use `Push-Location`/`Pop-Location` so they work from any directory inside the repo — no need to be at the repo root first. `Push-Location` saves your current directory and enters the target; `Pop-Location` returns you to where you were. `git -C <path>` runs git in the specified subdirectory without changing your working directory.
+
 ### Update the Production SDK docs (full refresh)
 
 ```powershell
-cd production/latest/scripts
+Push-Location production/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
-cd ..
-git add -A; git commit -m "Updated for WME version v2.XXX"
+Pop-Location
+git -C production/latest add -A; git -C production/latest commit -m "Updated for WME version v2.XXX"
 ```
 
 ### Update the Beta SDK docs (full refresh)
 
 ```powershell
-cd beta/latest/scripts
+Push-Location beta/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
-cd ..
-git add -A; git commit -m "Updated beta SDK docs"
+Pop-Location
+git -C beta/latest add -A; git -C beta/latest commit -m "Updated beta SDK docs"
 ```
 
 ### Promote Beta to Production (after testing)
@@ -212,68 +214,73 @@ Copy-Item -Path beta/latest/output/* -Destination production/latest/output -Recu
 Copy-Item -Path beta/latest/scripts/url-list*.txt -Destination production/latest/scripts -Force
 
 # Commit to production
-cd production/latest
-git add -A; git commit -m "Promoted from beta - WME version v2.XXX"
+git -C production/latest add -A; git -C production/latest commit -m "Promoted from beta - WME version v2.XXX"
 ```
 
 ### Check what URLs have changed
 
 **Production:**
 ```powershell
-cd production/latest/scripts
+Push-Location production/latest/scripts
 py build-url-list.py
 git diff url-list-paths.txt
+Pop-Location
 ```
 
 **Beta:**
 ```powershell
-cd beta/latest/scripts
+Push-Location beta/latest/scripts
 py build-url-list.py
 git diff url-list-paths.txt
+Pop-Location
 ```
 
 ### Re-download everything (force refresh)
 
 **Production:**
 ```powershell
-cd production/latest/scripts
+Push-Location production/latest/scripts
 py cleanup.py
 py download-pages.py --force
 py extract-to-md.py
 py create-grouped-md-files.py
 py update-skill.py
+Pop-Location
 ```
 
 **Beta:**
 ```powershell
-cd beta/latest/scripts
+Push-Location beta/latest/scripts
 py cleanup.py
 py download-pages.py --force
 py extract-to-md.py
 py create-grouped-md-files.py
 py update-skill.py
+Pop-Location
 ```
 
 ### Incremental update (fast, only new/changed pages)
 
 **Production:**
 ```powershell
-cd production/latest/scripts
+Push-Location production/latest/scripts
 py build-url-list.py  # find any new pages
 py download-pages.py  # only fetch new/missing files
 py extract-to-md.py   # regenerate .md from all HTML
 py create-grouped-md-files.py  # rebundle
 py update-skill.py  # sync skill
+Pop-Location
 ```
 
 **Beta:**
 ```powershell
-cd beta/latest/scripts
+Push-Location beta/latest/scripts
 py build-url-list.py  # find any new pages
 py download-pages.py  # only fetch new/missing files
 py extract-to-md.py   # regenerate .md from all HTML
 py create-grouped-md-files.py  # rebundle
 py update-skill.py  # sync skill
+Pop-Location
 ```
 
 ### Update only the skill (without re-fetching SDK docs)
@@ -282,18 +289,18 @@ If you've updated your skill in `~/.claude/skills/wme-sdk/SKILL.md` but the SDK 
 
 **Production:**
 ```powershell
-cd production/latest/scripts
+Push-Location production/latest/scripts
 py update-skill.py
-cd ..
-git add skills/SKILL.md; git commit -m "Updated WME SDK skill"
+Pop-Location
+git -C production/latest add skills/SKILL.md; git -C production/latest commit -m "Updated WME SDK skill"
 ```
 
 **Beta:**
 ```powershell
-cd beta/latest/scripts
+Push-Location beta/latest/scripts
 py update-skill.py
-cd ..
-git add skills/SKILL.md; git commit -m "Updated beta WME SDK skill"
+Pop-Location
+git -C beta/latest add skills/SKILL.md; git -C beta/latest commit -m "Updated beta WME SDK skill"
 ```
 
 ## Skill Integration & Documentation Fallback Chain
