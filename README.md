@@ -124,7 +124,7 @@ If you clone this repo:
 
 1. The skill will use local paths: `production/latest/output/docs/`
 2. No internet needed for documentation access
-3. Run the pipeline to keep docs fresh: `cd production/latest/scripts && python cleanup.py; python build-url-list.py; ...`
+3. Run the pipeline to keep docs fresh: `Push-Location production/latest/scripts; py cleanup.py; py build-url-list.py; ...; Pop-Location`
 
 ## 🛠️ Repository Structure
 
@@ -188,14 +188,16 @@ Run the automated pipeline to refresh documentation whenever the SDK updates:
 
 **Production (Stable)**
 ```powershell
-cd production/latest/scripts
+Push-Location production/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+Pop-Location
 ```
 
 **Beta (Pre-Release)**
 ```powershell
-cd beta/latest/scripts
+Push-Location beta/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+Pop-Location
 ```
 
 For detailed setup and options, see [CLAUDE.md](CLAUDE.md).
@@ -238,15 +240,17 @@ For detailed setup and options, see [CLAUDE.md](CLAUDE.md).
 3. Run the pipeline for your chosen version:
 
    **Production (Stable):**
-   ```bash
-   cd production/latest/scripts
+   ```powershell
+   Push-Location production/latest/scripts
    py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+   Pop-Location
    ```
 
    **Beta (Pre-Release):**
-   ```bash
-   cd beta/latest/scripts
+   ```powershell
+   Push-Location beta/latest/scripts
    py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+   Pop-Location
    ```
 
 See [CLAUDE.md](CLAUDE.md) for detailed setup, script options, and workflow details.
