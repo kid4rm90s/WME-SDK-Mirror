@@ -95,14 +95,16 @@ Scripts can be run from either **production/latest** or **beta/latest** independ
 
 **For Production (Stable Release):**
 ```powershell
-cd production/latest/scripts
+Push-Location production/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+Pop-Location
 ```
 
 **For Beta (Pre-Release Testing):**
 ```powershell
-cd beta/latest/scripts
+Push-Location beta/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+Pop-Location
 ```
 
 The beta scripts automatically use `https://beta.waze.com/editor/sdk/` and beta typings endpoint.
