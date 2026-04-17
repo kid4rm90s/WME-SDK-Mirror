@@ -3433,6 +3433,17 @@ declare class MapComments extends SdkModule {
 		 */
 		subject?: string;
 	}): MapComment;
+	/**
+	 * Deletes a map comment from the WME data model.
+	 * @throws DataModelNotFoundError if the specified map comment cannot be found in the data model.
+	 * @returns null.
+	 */
+	deleteComment(args: {
+		/**
+		 * An id of the map comment to delete.
+		 */
+		mapCommentId: string;
+	}): null;
 }
 declare class MapUpdateRequests extends SdkModule {
 	/**

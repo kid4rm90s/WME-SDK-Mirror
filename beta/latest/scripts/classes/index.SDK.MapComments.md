@@ -33,6 +33,12 @@ addComment (
   ) : MapComment
 ```
 the created map comment.
+### `deleteComment`
+
+```typescript
+deleteComment ( args: { mapCommentId: string } ) : null
+```
+null.
 ### `getAll`
 
 ```typescript

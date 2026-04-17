@@ -8,6 +8,10 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ## Next version
 
+### Add deleteComment method
+
+Added deleteComment method to MapComments SDK module.
+
 ### Unnecessary web-events
 
 Fixed sdk sending unnecessary web-events when panning the map.
