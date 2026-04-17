@@ -186,17 +186,19 @@ The `.git/` directory tracks updates over time. Recent commits show WME version 
 ### Update the Production SDK docs (full refresh)
 
 ```powershell
-cd production/latest
+cd production/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
-git add -A && git commit -m "Updated for WME version v2.XXX"
+cd ..
+git add -A; git commit -m "Updated for WME version v2.XXX"
 ```
 
 ### Update the Beta SDK docs (full refresh)
 
 ```powershell
-cd beta/latest
+cd beta/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
-git add -A && git commit -m "Updated beta SDK docs"
+cd ..
+git add -A; git commit -m "Updated beta SDK docs"
 ```
 
 ### Promote Beta to Production (after testing)
@@ -211,21 +213,21 @@ Copy-Item -Path beta/latest/scripts/url-list*.txt -Destination production/latest
 
 # Commit to production
 cd production/latest
-git add -A && git commit -m "Promoted from beta - WME version v2.XXX"
+git add -A; git commit -m "Promoted from beta - WME version v2.XXX"
 ```
 
 ### Check what URLs have changed
 
 **Production:**
 ```powershell
-cd production/latest
+cd production/latest/scripts
 py build-url-list.py
 git diff url-list-paths.txt
 ```
 
 **Beta:**
 ```powershell
-cd beta/latest
+cd beta/latest/scripts
 py build-url-list.py
 git diff url-list-paths.txt
 ```
@@ -234,7 +236,7 @@ git diff url-list-paths.txt
 
 **Production:**
 ```powershell
-cd production/latest
+cd production/latest/scripts
 py cleanup.py
 py download-pages.py --force
 py extract-to-md.py
@@ -244,7 +246,7 @@ py update-skill.py
 
 **Beta:**
 ```powershell
-cd beta/latest
+cd beta/latest/scripts
 py cleanup.py
 py download-pages.py --force
 py extract-to-md.py
@@ -256,7 +258,7 @@ py update-skill.py
 
 **Production:**
 ```powershell
-cd production/latest
+cd production/latest/scripts
 py build-url-list.py  # find any new pages
 py download-pages.py  # only fetch new/missing files
 py extract-to-md.py   # regenerate .md from all HTML
@@ -266,7 +268,7 @@ py update-skill.py  # sync skill
 
 **Beta:**
 ```powershell
-cd beta/latest
+cd beta/latest/scripts
 py build-url-list.py  # find any new pages
 py download-pages.py  # only fetch new/missing files
 py extract-to-md.py   # regenerate .md from all HTML
@@ -280,16 +282,18 @@ If you've updated your skill in `~/.claude/skills/wme-sdk/SKILL.md` but the SDK 
 
 **Production:**
 ```powershell
-cd production/latest
+cd production/latest/scripts
 py update-skill.py
-git add skills/SKILL.md && git commit -m "Updated WME SDK skill"
+cd ..
+git add skills/SKILL.md; git commit -m "Updated WME SDK skill"
 ```
 
 **Beta:**
 ```powershell
-cd beta/latest
+cd beta/latest/scripts
 py update-skill.py
-git add skills/SKILL.md && git commit -m "Updated beta WME SDK skill"
+cd ..
+git add skills/SKILL.md; git commit -m "Updated beta WME SDK skill"
 ```
 
 ## Skill Integration & Documentation Fallback Chain
