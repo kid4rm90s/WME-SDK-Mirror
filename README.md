@@ -187,28 +187,12 @@ Each environment is completely independent with its own scripts, source files, o
 Run the automated pipeline to refresh documentation whenever the SDK updates:
 
 **Production (Stable)**
-
-Using `uv` (recommended):
-```powershell
-cd production/latest/scripts
-uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
-```
-
-Or using `py`:
 ```powershell
 cd production/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
 ```
 
 **Beta (Pre-Release)**
-
-Using `uv` (recommended):
-```powershell
-cd beta/latest/scripts
-uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
-```
-
-Or using `py`:
 ```powershell
 cd beta/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
@@ -254,28 +238,12 @@ For detailed setup and options, see [CLAUDE.md](CLAUDE.md).
 3. Run the pipeline for your chosen version:
 
    **Production (Stable):**
-   
-   Using `uv` (recommended):
-   ```bash
-   cd production/latest/scripts
-   uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
-   ```
-   
-   Or using `py`:
    ```bash
    cd production/latest/scripts
    py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
    ```
 
    **Beta (Pre-Release):**
-   
-   Using `uv` (recommended):
-   ```bash
-   cd beta/latest/scripts
-   uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
-   ```
-   
-   Or using `py`:
    ```bash
    cd beta/latest/scripts
    py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py

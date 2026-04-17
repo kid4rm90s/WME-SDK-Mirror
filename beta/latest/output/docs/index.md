@@ -1,7 +1,7 @@
 ---
 sdk: WME
 version: v2.348-6-g5a99963499
-generated: 2026-04-16
+generated: 2026-04-17
 sections:
   classes: classes.md
   modules: modules.md
@@ -46,7 +46,7 @@ docs:
 > For searching SDK entities, refer to the Source Guide below, then navigate to the relevant section.
 
 > **SDK Version:** v2.348-6-g5a99963499
-> **Docs generated:** 2026-04-16
+> **Docs generated:** 2026-04-17
 
 > Each section below lists the source file and the entities it contains.
 

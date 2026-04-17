@@ -94,28 +94,12 @@ This installs the three dependencies needed by all scripts:
 Scripts can be run from either **production/latest** or **beta/latest** independently.
 
 **For Production (Stable Release):**
-
-Using `uv` (recommended):
-```powershell
-cd production/latest/scripts
-uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
-```
-
-Or using `py`:
 ```powershell
 cd production/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
 ```
 
 **For Beta (Pre-Release Testing):**
-
-Using `uv` (recommended):
-```powershell
-cd beta/latest/scripts
-uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
-```
-
-Or using `py`:
 ```powershell
 cd beta/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
@@ -201,32 +185,16 @@ The `.git/` directory tracks updates over time. Recent commits show WME version 
 
 ### Update the Production SDK docs (full refresh)
 
-Using `uv` (recommended):
 ```powershell
-cd production/latest/scripts
-uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
-git add -A && git commit -m "Updated for WME version v2.XXX"
-```
-
-Or using `py`:
-```powershell
-cd production/latest/scripts
+cd production/latest
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
 git add -A && git commit -m "Updated for WME version v2.XXX"
 ```
 
 ### Update the Beta SDK docs (full refresh)
 
-Using `uv` (recommended):
 ```powershell
-cd beta/latest/scripts
-uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
-git add -A && git commit -m "Updated beta SDK docs"
-```
-
-Or using `py`:
-```powershell
-cd beta/latest/scripts
+cd beta/latest
 py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
 git add -A && git commit -m "Updated beta SDK docs"
 ```
@@ -249,33 +217,15 @@ git add -A && git commit -m "Promoted from beta - WME version v2.XXX"
 ### Check what URLs have changed
 
 **Production:**
-
-Using `uv`:
 ```powershell
-cd production/latest/scripts
-uv run build-url-list.py
-git diff url-list-paths.txt
-```
-
-Or using `py`:
-```powershell
-cd production/latest/scripts
+cd production/latest
 py build-url-list.py
 git diff url-list-paths.txt
 ```
 
 **Beta:**
-
-Using `uv`:
 ```powershell
-cd beta/latest/scripts
-uv run build-url-list.py
-git diff url-list-paths.txt
-```
-
-Or using `py`:
-```powershell
-cd beta/latest/scripts
+cd beta/latest
 py build-url-list.py
 git diff url-list-paths.txt
 ```
@@ -283,50 +233,30 @@ git diff url-list-paths.txt
 ### Re-download everything (force refresh)
 
 **Production:**
-
-Using `uv`:
 ```powershell
-cd production/latest/scripts
-uv run cleanup.py; uv run download-pages.py --force; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
-```
-
-Or using `py`:
-```powershell
-cd production/latest/scripts
-py cleanup.py; py download-pages.py --force; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+cd production/latest
+py cleanup.py
+py download-pages.py --force
+py extract-to-md.py
+py create-grouped-md-files.py
+py update-skill.py
 ```
 
 **Beta:**
-
-Using `uv`:
 ```powershell
-cd beta/latest/scripts
-uv run cleanup.py; uv run download-pages.py --force; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
-```
-
-Or using `py`:
-```powershell
-cd beta/latest/scripts
-py cleanup.py; py download-pages.py --force; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+cd beta/latest
+py cleanup.py
+py download-pages.py --force
+py extract-to-md.py
+py create-grouped-md-files.py
+py update-skill.py
 ```
 
 ### Incremental update (fast, only new/changed pages)
 
 **Production:**
-
-Using `uv`:
 ```powershell
-cd production/latest/scripts
-uv run build-url-list.py  # find any new pages
-uv run download-pages.py  # only fetch new/missing files
-uv run extract-to-md.py   # regenerate .md from all HTML
-uv run create-grouped-md-files.py  # rebundle
-uv run update-skill.py  # sync skill
-```
-
-Or using `py`:
-```powershell
-cd production/latest/scripts
+cd production/latest
 py build-url-list.py  # find any new pages
 py download-pages.py  # only fetch new/missing files
 py extract-to-md.py   # regenerate .md from all HTML
@@ -335,20 +265,8 @@ py update-skill.py  # sync skill
 ```
 
 **Beta:**
-
-Using `uv`:
 ```powershell
-cd beta/latest/scripts
-uv run build-url-list.py  # find any new pages
-uv run download-pages.py  # only fetch new/missing files
-uv run extract-to-md.py   # regenerate .md from all HTML
-uv run create-grouped-md-files.py  # rebundle
-uv run update-skill.py  # sync skill
-```
-
-Or using `py`:
-```powershell
-cd beta/latest/scripts
+cd beta/latest
 py build-url-list.py  # find any new pages
 py download-pages.py  # only fetch new/missing files
 py extract-to-md.py   # regenerate .md from all HTML
@@ -361,33 +279,15 @@ py update-skill.py  # sync skill
 If you've updated your skill in `~/.claude/skills/wme-sdk/SKILL.md` but the SDK itself hasn't changed:
 
 **Production:**
-
-Using `uv`:
 ```powershell
-cd production/latest/scripts
-uv run update-skill.py
-git add skills/SKILL.md && git commit -m "Updated WME SDK skill"
-```
-
-Or using `py`:
-```powershell
-cd production/latest/scripts
+cd production/latest
 py update-skill.py
 git add skills/SKILL.md && git commit -m "Updated WME SDK skill"
 ```
 
 **Beta:**
-
-Using `uv`:
 ```powershell
-cd beta/latest/scripts
-uv run update-skill.py
-git add skills/SKILL.md && git commit -m "Updated beta WME SDK skill"
-```
-
-Or using `py`:
-```powershell
-cd beta/latest/scripts
+cd beta/latest
 py update-skill.py
 git add skills/SKILL.md && git commit -m "Updated beta WME SDK skill"
 ```
@@ -455,6 +355,6 @@ If these cause issues in your environment, remove or adjust them.
 ## See Also
 
 - [README.md](production/latest/scripts/README.md) — Detailed step-by-step guide for each script
-- [WME SDK Skill](https://github.com/KID4RM90S/WME-SDK-Mirror#skill-integration--documentation-fallback-chain) — Skill integration details
+- [WME SDK Skill](https://github.com/kid4rm90s/WME-SDK-Mirror#skill-integration--documentation-fallback-chain) — Skill integration details
 - TypeDoc documentation — Explains the HTML structure being parsed
-- Waze SDK live docs — https://www.waze.com/editor/sdk/
+- Waze SDK live docs — https://www.waze.com/editor/sdk/ or https://beta.waze.com/editor/sdk/

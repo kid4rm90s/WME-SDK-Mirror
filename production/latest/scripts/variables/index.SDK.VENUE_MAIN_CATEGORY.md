@@ -1,7 +1,7 @@
 ---
 title: SDK.VENUE_MAIN_CATEGORY variable
 source: variables/index.SDK.VENUE_MAIN_CATEGORY.html
-created: 2026-04-16
+created: 2026-04-17
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
