@@ -34,23 +34,23 @@ Docs are at `../../output/docs/` relative to `output/skills/SKILL.md`:
 
 | Document | URL |
 |----------|-----|
-| **Index & Overview** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/index.md |
-| **Classes** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/classes.md |
-| **Interfaces** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/interfaces.md |
-| **Types** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/types.md |
-| **Functions** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/functions.md |
-| **Variables** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/variables.md |
-| **Modules** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/modules.md |
-| **WME SDK Typings** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/wmeSDK_typedefs.d.md |
-| **GeoJSON Typings** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/geojson_typeddefs.d.md |
-| **Getting Started** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/how-to-get-started-with-the-wmeSDK.md |
-| **Migration Guide** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/migration-guide.md |
-| **Changelog** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/changelog.md |
-| **Turf.js Docs** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/Turf-Docs.md |
-| **GeoJSON RFC 7946** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/GeoJSON-Format-RFC-7946.md |
-| **Script Example 1** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-1.md |
-| **Script Example 2** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-2.md |
-| **Script Example 3** | https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-3.md |
+| **Index & Overview** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/index.md |
+| **Classes** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/classes.md |
+| **Interfaces** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/interfaces.md |
+| **Types** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/types.md |
+| **Functions** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/functions.md |
+| **Variables** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/variables.md |
+| **Modules** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/modules.md |
+| **WME SDK Typings** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/wmeSDK_typedefs.d.md |
+| **GeoJSON Typings** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/geojson_typeddefs.d.md |
+| **Getting Started** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/how-to-get-started-with-the-wmeSDK.md |
+| **Migration Guide** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/migration-guide.md |
+| **Changelog** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/changelog.md |
+| **Turf.js Docs** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/Turf-Docs.md |
+| **GeoJSON RFC 7946** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/GeoJSON-Format-RFC-7946.md |
+| **Script Example 1** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-1.md |
+| **Script Example 2** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-2.md |
+| **Script Example 3** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-3.md |
 
 > **Beta fallback:** Replace `production/latest` with `beta/latest` in any URL above.
 
@@ -422,13 +422,14 @@ SDK.InvalidStateError   // Operation not valid in current WME state
 
 - **WME SDK Docs (Stable):** https://www.waze.com/editor/sdk/
 - **WME SDK Docs (Beta):** https://beta.waze.com/editor/sdk/
-- **WME-SDK-Mirror (GitHub):** https://github.com/JS55CT/WME-SDK-Mirror
-- **Mirror Docs (Production):** https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/
-- **Mirror Docs (Beta):** https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/
+- **WME-SDK-Mirror (GitHub):** https://github.com/kid4rm90s/WME-SDK-Mirror
+- **Mirror Docs (Production):** https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/
+- **Mirror Docs (Beta):** https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/
 - **Waze Map Editor:** https://www.waze.com/editor/
 
 ---
 
 **SDK Version:** v2.343 (April 2026)
-**Repository:** WME-SDK-Mirror (JS55CT)
+**Repository:** WME-SDK-Mirror (kid4rm90s)
 **Last Updated:** April 2026
+

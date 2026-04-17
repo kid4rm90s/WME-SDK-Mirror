@@ -154,7 +154,7 @@ py create-grouped-md-files.py
 **Also injects a fallback chain** for documentation discovery:
 
 - **Primary:** Local docs at `../../docs/` (works if repo is cloned, offline-friendly)
-- **Fallback:** GitHub Pages at `https://js55ct.github.io/WME-SDK-Mirror/docs/` (works anywhere with internet)
+- **Fallback:** GitHub Pages at `https://kid4rm90s.github.io/WME-SDK-Mirror/docs/` (works anywhere with internet)
 
 This keeps your skill versioned alongside the SDK documentation it references. The skill will reference
 local docs first, but gracefully fall back to GitHub Pages if the repo isn't cloned.
@@ -181,7 +181,7 @@ py update-skill.py --skill-path C:\custom\path\to\SKILL.md  # custom skill locat
 When the skill runs:
 
 - **With repo cloned:** Uses local `../../docs/` paths (no internet needed)
-- **Without repo cloned:** References `https://js55ct.github.io/WME-SDK-Mirror/docs/` (works online)
+- **Without repo cloned:** References `https://kid4rm90s.github.io/WME-SDK-Mirror/docs/` (works online)
 
 This approach ensures the skill always has access to documentation, whether you're working with
 a local clone or using it standalone.

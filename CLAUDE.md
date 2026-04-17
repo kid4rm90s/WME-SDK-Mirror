@@ -307,7 +307,7 @@ The script:
 - Reads from `~/.claude/skills/wme-sdk/SKILL.md` (default)
 - Replaces hardcoded paths with a **fallback chain**:
   - **Primary:** `../../docs/` (local, from `skills/` → repo root, works if repo is cloned)
-  - **Fallback:** `https://js55ct.github.io/WME-SDK-Mirror/docs/` (GitHub Pages, works anywhere with internet)
+  - **Fallback:** `https://kid4rm90s.github.io/WME-SDK-Mirror/docs/` (GitHub Pages, works anywhere with internet)
 - Writes to `skills/SKILL.md`
 - Compares content before writing (skips if unchanged)
 - Reports status: `[OK]` if current, `[UPDATED]` if new version pulled, `[ERROR]` if source not found
@@ -355,6 +355,6 @@ If these cause issues in your environment, remove or adjust them.
 ## See Also
 
 - [README.md](production/latest/scripts/README.md) — Detailed step-by-step guide for each script
-- [WME SDK Skill](https://github.com/JS55CT/WME-SDK-Mirror#skill-integration--documentation-fallback-chain) — Skill integration details
+- [WME SDK Skill](https://github.com/KID4RM90S/WME-SDK-Mirror#skill-integration--documentation-fallback-chain) — Skill integration details
 - TypeDoc documentation — Explains the HTML structure being parsed
 - Waze SDK live docs — https://www.waze.com/editor/sdk/

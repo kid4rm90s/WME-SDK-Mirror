@@ -502,7 +502,7 @@
         },
       ],
       isPermitted() {
-        return ['mapomatic', 'turbomkt', 'tonestertm', 'ottonomy', 'jemay', 'ojlaw', 'js55ct'].includes(userNameLC);
+        return ['mapomatic', 'turbomkt', 'tonestertm', 'ottonomy', 'jemay', 'ojlaw', 'kid4rm90s'].includes(userNameLC);
       },
       information: { Source: 'Caltrans', Permission: 'Visible to ?', Description: '' },
       getWhereClause(context) {
@@ -1770,7 +1770,7 @@
         },
       ],
       isPermitted() {
-        /* return _r >= 3; */ return ['mapomatic', 'bobc455', 'js55ct'].includes(userNameLC);
+        /* return _r >= 3; */ return ['mapomatic', 'bobc455', 'kid4rm90s'].includes(userNameLC);
       },
       information: { Source: 'MDT', Permission: '?', Description: 'Federal and State highways set to a minimum of mH.' },
       getWhereClause(context) {
@@ -1822,7 +1822,7 @@
         },
       ],
       isPermitted() {
-        return ['mapomatic', 'turbomkt', 'tonestertm', 'geopgeop', 'ojlaw', 'js55ct'].includes(userNameLC);
+        return ['mapomatic', 'turbomkt', 'tonestertm', 'geopgeop', 'ojlaw', 'kid4rm90s'].includes(userNameLC);
       },
       information: { Source: 'NDOT', Permission: '?', Description: 'Raw unmodified FC data.' },
       getWhereClause(context) {

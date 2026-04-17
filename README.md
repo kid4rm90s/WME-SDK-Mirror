@@ -12,8 +12,8 @@ The fastest way to work with WME SDK:
 /wme-sdk How do I query all venues on the map?
 ```
 
-**Production Skill** → [View the complete skill](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/skills/SKILL.md)  
-**Beta Skill** → [View the beta skill](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/skills/SKILL.md)
+**Production Skill** → [View the complete skill](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/skills/SKILL.md)  
+**Beta Skill** → [View the beta skill](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/skills/SKILL.md)
 
 The skill includes:
 - Real-world WME scripting patterns
@@ -31,8 +31,8 @@ The skill includes:
 
 | Version | Status | Use When | Docs |
 |---------|--------|----------|------|
-| **Production** | Stable Release | You want tested, production-ready SDK | [View Docs](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/) |
-| **Beta** | Pre-Release | You need latest features before release | [View Docs](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/) |
+| **Production** | Stable Release | You want tested, production-ready SDK | [View Docs](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/) |
+| **Beta** | Pre-Release | You need latest features before release | [View Docs](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/) |
 
 If you prefer raw documentation files, access them here:
 
@@ -44,25 +44,25 @@ All documentation available as bundled Markdown files, optimized for LLM context
 
 | Resource | Link | Purpose |
 |----------|------|---------|
-| **Master Index** | [index.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/index.md) | Start here — table of contents and overview |
-| **Classes** | [classes.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/classes.md) | All SDK classes (DataModel, Map, Shortcuts, Sidebar, etc.) |
-| **Interfaces** | [interfaces.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/interfaces.md) | Data shapes and type definitions |
-| **Types** | [types.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/types.md) | Enums, unions, and custom types |
-| **Functions** | [functions.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/functions.md) | Top-level utility functions |
-| **Variables** | [variables.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/variables.md) | Module-level constants |
-| **Modules** | [modules.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/modules.md) | Namespace and module structure |
+| **Master Index** | [index.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/index.md) | Start here — table of contents and overview |
+| **Classes** | [classes.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/classes.md) | All SDK classes (DataModel, Map, Shortcuts, Sidebar, etc.) |
+| **Interfaces** | [interfaces.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/interfaces.md) | Data shapes and type definitions |
+| **Types** | [types.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/types.md) | Enums, unions, and custom types |
+| **Functions** | [functions.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/functions.md) | Top-level utility functions |
+| **Variables** | [variables.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/variables.md) | Module-level constants |
+| **Modules** | [modules.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/modules.md) | Namespace and module structure |
 
 **Beta (Pre-Release):**
 
 | Resource | Link | Purpose |
 |----------|------|---------|
-| **Master Index** | [index.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/index.md) | Start here — table of contents and overview |
-| **Classes** | [classes.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/classes.md) | All SDK classes (DataModel, Map, Shortcuts, Sidebar, etc.) |
-| **Interfaces** | [interfaces.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/interfaces.md) | Data shapes and type definitions |
-| **Types** | [types.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/types.md) | Enums, unions, and custom types |
-| **Functions** | [functions.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/functions.md) | Top-level utility functions |
-| **Variables** | [variables.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/variables.md) | Module-level constants |
-| **Modules** | [modules.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/modules.md) | Namespace and module structure |
+| **Master Index** | [index.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/index.md) | Start here — table of contents and overview |
+| **Classes** | [classes.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/classes.md) | All SDK classes (DataModel, Map, Shortcuts, Sidebar, etc.) |
+| **Interfaces** | [interfaces.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/interfaces.md) | Data shapes and type definitions |
+| **Types** | [types.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/types.md) | Enums, unions, and custom types |
+| **Functions** | [functions.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/functions.md) | Top-level utility functions |
+| **Variables** | [variables.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/variables.md) | Module-level constants |
+| **Modules** | [modules.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/modules.md) | Namespace and module structure |
 
 ### 🚀 Guides & Tutorials
 
@@ -72,21 +72,21 @@ Learn how to use the SDK with real-world examples:
 
 | Guide | Link | Topics |
 |-------|------|--------|
-| **Getting Started** | [how-to-get-started-with-the-wmeSDK.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/how-to-get-started-with-the-wmeSDK.md) | SDK initialization, authentication, first steps |
-| **Migration Guide** | [migration-guide.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/migration-guide.md) | Migrating from legacy W object to modern SDK |
-| **Script Examples** | [script-example-1.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-1.md) - [script-example-6.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-6.md) | Working Tampermonkey examples |
-| **Geometry Reference** | [geometry-file-converters.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/geometry-file-converters.md) | File format converters and geometry tools |
-| **Changelog** | [changelog.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/changelog.md) | SDK version history and breaking changes |
+| **Getting Started** | [how-to-get-started-with-the-wmeSDK.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/how-to-get-started-with-the-wmeSDK.md) | SDK initialization, authentication, first steps |
+| **Migration Guide** | [migration-guide.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/migration-guide.md) | Migrating from legacy W object to modern SDK |
+| **Script Examples** | [script-example-1.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-1.md) - [script-example-6.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-6.md) | Working Tampermonkey examples |
+| **Geometry Reference** | [geometry-file-converters.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/geometry-file-converters.md) | File format converters and geometry tools |
+| **Changelog** | [changelog.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/changelog.md) | SDK version history and breaking changes |
 
 **Beta (Pre-Release):**
 
 | Guide | Link | Topics |
 |-------|------|--------|
-| **Getting Started** | [how-to-get-started-with-the-wmeSDK.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/how-to-get-started-with-the-wmeSDK.md) | SDK initialization, authentication, first steps |
-| **Migration Guide** | [migration-guide.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/migration-guide.md) | Migrating from legacy W object to modern SDK |
-| **Script Examples** | [script-example-1.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-1.md) - [script-example-6.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-6.md) | Working Tampermonkey examples |
-| **Geometry Reference** | [geometry-file-converters.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/geometry-file-converters.md) | File format converters and geometry tools |
-| **Changelog** | [changelog.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/changelog.md) | SDK version history and breaking changes |
+| **Getting Started** | [how-to-get-started-with-the-wmeSDK.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/how-to-get-started-with-the-wmeSDK.md) | SDK initialization, authentication, first steps |
+| **Migration Guide** | [migration-guide.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/migration-guide.md) | Migrating from legacy W object to modern SDK |
+| **Script Examples** | [script-example-1.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-1.md) - [script-example-6.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-6.md) | Working Tampermonkey examples |
+| **Geometry Reference** | [geometry-file-converters.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/geometry-file-converters.md) | File format converters and geometry tools |
+| **Changelog** | [changelog.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/changelog.md) | SDK version history and breaking changes |
 
 ### 📋 Type Definitions & References
 
@@ -96,26 +96,26 @@ Complete TypeScript definitions and external documentation:
 
 | Resource | Link | Purpose |
 |----------|------|---------|
-| **WME SDK Types** | [wmeSDK_typedefs.d.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/wmeSDK_typedefs.d.md) | Full TypeScript definitions wrapped in markdown |
-| **GeoJSON Types** | [geojson_typeddefs.d.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/geojson_typeddefs.d.md) | GeoJSON type definitions |
-| **Turf.js Docs** | [Turf-Docs.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/Turf-Docs.md) | Geometry manipulation library (replaces OpenLayers) |
-| **GeoJSON RFC 7946** | [GeoJSON-Format-RFC-7946.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/GeoJSON-Format-RFC-7946.md) | Official GeoJSON specification |
+| **WME SDK Types** | [wmeSDK_typedefs.d.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/wmeSDK_typedefs.d.md) | Full TypeScript definitions wrapped in markdown |
+| **GeoJSON Types** | [geojson_typeddefs.d.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/geojson_typeddefs.d.md) | GeoJSON type definitions |
+| **Turf.js Docs** | [Turf-Docs.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/Turf-Docs.md) | Geometry manipulation library (replaces OpenLayers) |
+| **GeoJSON RFC 7946** | [GeoJSON-Format-RFC-7946.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/GeoJSON-Format-RFC-7946.md) | Official GeoJSON specification |
 
 **Beta (Pre-Release):**
 
 | Resource | Link | Purpose |
 |----------|------|---------|
-| **WME SDK Types** | [wmeSDK_typedefs.d.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/wmeSDK_typedefs.d.md) | Full TypeScript definitions wrapped in markdown |
-| **GeoJSON Types** | [geojson_typeddefs.d.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/geojson_typeddefs.d.md) | GeoJSON type definitions |
-| **Turf.js Docs** | [Turf-Docs.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/Turf-Docs.md) | Geometry manipulation library (replaces OpenLayers) |
-| **GeoJSON RFC 7946** | [GeoJSON-Format-RFC-7946.md](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/GeoJSON-Format-RFC-7946.md) | Official GeoJSON specification |
+| **WME SDK Types** | [wmeSDK_typedefs.d.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/wmeSDK_typedefs.d.md) | Full TypeScript definitions wrapped in markdown |
+| **GeoJSON Types** | [geojson_typeddefs.d.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/geojson_typeddefs.d.md) | GeoJSON type definitions |
+| **Turf.js Docs** | [Turf-Docs.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/Turf-Docs.md) | Geometry manipulation library (replaces OpenLayers) |
+| **GeoJSON RFC 7946** | [GeoJSON-Format-RFC-7946.md](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/GeoJSON-Format-RFC-7946.md) | Official GeoJSON specification |
 
 ## Alternative: Load Raw Documentation into Claude
 
 If you prefer to paste documentation directly into Claude instead of using the skill:
 
-1. **Master Index** — [index.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/index.md) (~50KB, complete overview)
-2. **Focused Reference** — [classes.md](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/classes.md) (~30KB, classes only)
+1. **Master Index** — [index.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/index.md) (~50KB, complete overview)
+2. **Focused Reference** — [classes.md](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/classes.md) (~30KB, classes only)
 3. **Individual Files** — Any specific doc linked above
 
 ### Local Usage
@@ -219,14 +219,14 @@ For detailed setup and options, see [CLAUDE.md](CLAUDE.md).
    ```
 
 2. Or, load docs into context:
-   - Copy any file from [GitHub Pages](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/)
+   - Copy any file from [GitHub Pages](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/)
    - Paste into Claude's context window
 
 ### For Developers
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/JS55CT/WME-SDK-Mirror.git
+   git clone https://github.com/kid4rm90s/WME-SDK-Mirror.git
    cd WME-SDK-Mirror
    ```
 
@@ -256,50 +256,50 @@ See [CLAUDE.md](CLAUDE.md) for detailed setup, script options, and workflow deta
 ### Getting Started
 
 **Production:**
-- [SDK Initialization](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/how-to-get-started-with-the-wmeSDK.md)
-- [Migration from Legacy Code](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/migration-guide.md)
-- [Working Examples](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-1.md)
+- [SDK Initialization](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/how-to-get-started-with-the-wmeSDK.md)
+- [Migration from Legacy Code](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/migration-guide.md)
+- [Working Examples](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-1.md)
 
 **Beta:**
-- [SDK Initialization](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/how-to-get-started-with-the-wmeSDK.md)
-- [Migration from Legacy Code](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/migration-guide.md)
-- [Working Examples](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-1.md)
+- [SDK Initialization](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/how-to-get-started-with-the-wmeSDK.md)
+- [Migration from Legacy Code](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/migration-guide.md)
+- [Working Examples](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-1.md)
 
 ### API Reference
 
 **Production:**
-- [Classes & Main APIs](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/classes.md) — Map, DataModel, Shortcuts, Sidebar, Events, etc.
-- [Data Types & Interfaces](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/interfaces.md) — GeoJSON, Feature, Node, Segment, etc.
-- [Type Definitions](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/types.md) — Enums, unions, custom types
-- [Functions](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/functions.md) — Utility functions
+- [Classes & Main APIs](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/classes.md) — Map, DataModel, Shortcuts, Sidebar, Events, etc.
+- [Data Types & Interfaces](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/interfaces.md) — GeoJSON, Feature, Node, Segment, etc.
+- [Type Definitions](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/types.md) — Enums, unions, custom types
+- [Functions](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/functions.md) — Utility functions
 
 **Beta:**
-- [Classes & Main APIs](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/classes.md) — Map, DataModel, Shortcuts, Sidebar, Events, etc.
-- [Data Types & Interfaces](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/interfaces.md) — GeoJSON, Feature, Node, Segment, etc.
-- [Type Definitions](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/types.md) — Enums, unions, custom types
-- [Functions](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/functions.md) — Utility functions
+- [Classes & Main APIs](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/classes.md) — Map, DataModel, Shortcuts, Sidebar, Events, etc.
+- [Data Types & Interfaces](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/interfaces.md) — GeoJSON, Feature, Node, Segment, etc.
+- [Type Definitions](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/types.md) — Enums, unions, custom types
+- [Functions](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/functions.md) — Utility functions
 
 ### Advanced Topics
 
 **Production:**
-- [Geometry & Turf.js](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/Turf-Docs.md) — Geometry operations (replaces OpenLayers)
-- [GeoJSON Format](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/GeoJSON-Format-RFC-7946.md) — Specification and examples
-- [Geometry File Converters](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/geometry-file-converters.md) — SHP, KML, GeoJSON tools
-- [Version Changelog](https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/changelog.md) — SDK version history
+- [Geometry & Turf.js](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/Turf-Docs.md) — Geometry operations (replaces OpenLayers)
+- [GeoJSON Format](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/GeoJSON-Format-RFC-7946.md) — Specification and examples
+- [Geometry File Converters](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/geometry-file-converters.md) — SHP, KML, GeoJSON tools
+- [Version Changelog](https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/changelog.md) — SDK version history
 
 **Beta:**
-- [Geometry & Turf.js](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/Turf-Docs.md) — Geometry operations (replaces OpenLayers)
-- [GeoJSON Format](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/GeoJSON-Format-RFC-7946.md) — Specification and examples
-- [Geometry File Converters](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/geometry-file-converters.md) — SHP, KML, GeoJSON tools
-- [Version Changelog](https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/changelog.md) — SDK version history
+- [Geometry & Turf.js](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/Turf-Docs.md) — Geometry operations (replaces OpenLayers)
+- [GeoJSON Format](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/GeoJSON-Format-RFC-7946.md) — Specification and examples
+- [Geometry File Converters](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/geometry-file-converters.md) — SHP, KML, GeoJSON tools
+- [Version Changelog](https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/changelog.md) — SDK version history
 
 ## 🔗 External Links
 
 - **Live SDK Docs** — https://www.waze.com/editor/sdk/ (production) | https://beta.waze.com/editor/sdk/ (beta)
-- **GitHub Repository** — https://github.com/JS55CT/WME-SDK-Mirror
-- **Production Docs** — https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/
-- **Beta Docs** — https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/
-- **Browse on GitHub** — https://github.com/JS55CT/WME-SDK-Mirror/tree/master/production/latest/output/docs
+- **GitHub Repository** — https://github.com/kid4rm90s/WME-SDK-Mirror
+- **Production Docs** — https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/
+- **Beta Docs** — https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/
+- **Browse on GitHub** — https://github.com/kid4rm90s/WME-SDK-Mirror/tree/master/production/latest/output/docs
 - **Waze Map Editor** — https://www.waze.com/editor
 
 ## 📝 License
@@ -310,5 +310,5 @@ This is a documentation mirror of the Waze Map Editor SDK. See the original SDK 
 
 **Last Updated:** See git history in `production/latest/.git/` and `beta/latest/.git/`  
 **SDK Versions:** Check [index.md] for current versions in each environment
-- Production: https://js55ct.github.io/WME-SDK-Mirror/production/latest/output/docs/index.md
-- Beta: https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/index.md
+- Production: https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/index.md
+- Beta: https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/index.md

@@ -31,7 +31,7 @@ DEFAULT_SKILL_SOURCE = os.path.expanduser("~/.claude/skills/wme-sdk/SKILL.md")
 # Path substitutions for fallback chain
 HARDCODED_PATH = "production/latest/docs/"
 RELATIVE_PATH = "../../output/docs/"  # From scripts/ to ../output/docs/
-GITHUB_PAGES_URL = "https://js55ct.github.io/WME-SDK-Mirror/beta/latest/output/docs/"
+GITHUB_PAGES_URL = "https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/"
 
 # User's local path (replace in repo version with template)
 USER_LOCAL_PATH = r"C:\Users\Jstrand\OneDrive - FactSet\Personal\waze stuff\WAZE SDK Mirror\production\latest\output\docs"
