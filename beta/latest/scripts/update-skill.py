@@ -34,7 +34,7 @@ RELATIVE_PATH = "../../output/docs/"  # From scripts/ to ../output/docs/
 GITHUB_PAGES_URL = "https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/"
 
 # User's local path (replace in repo version with template)
-USER_LOCAL_PATH = r"C:\Users\Jstrand\OneDrive - FactSet\Personal\waze stuff\WAZE SDK Mirror\production\latest\output\docs"
+USER_LOCAL_PATH = r"E:\My Drive\Waze_Map_editor\Tampermonkey\Github_local\WME-SDK-Mirror\production\latest\output\docs"
 TEMPLATE_LOCAL_PATH = "/path/to/your/WME-SDK-Mirror/production/latest/output/docs"
 
 
