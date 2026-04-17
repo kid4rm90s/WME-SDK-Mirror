@@ -191,7 +191,7 @@ Run the automated pipeline to refresh documentation whenever the SDK updates:
 Using `uv` (recommended):
 ```powershell
 cd production/latest/scripts
-uv run cleanup.py && uv run build-url-list.py && uv run download-pages.py && uv run extract-to-md.py && uv run create-grouped-md-files.py && uv run update-skill.py
+uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
 ```
 
 Or using `py`:
@@ -205,7 +205,7 @@ py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; 
 Using `uv` (recommended):
 ```powershell
 cd beta/latest/scripts
-uv run cleanup.py && uv run build-url-list.py && uv run download-pages.py && uv run extract-to-md.py && uv run create-grouped-md-files.py && uv run update-skill.py
+uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
 ```
 
 Or using `py`:
@@ -258,7 +258,7 @@ For detailed setup and options, see [CLAUDE.md](CLAUDE.md).
    Using `uv` (recommended):
    ```bash
    cd production/latest/scripts
-   uv run cleanup.py && uv run build-url-list.py && uv run download-pages.py && uv run extract-to-md.py && uv run create-grouped-md-files.py && uv run update-skill.py
+   uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
    ```
    
    Or using `py`:
@@ -272,7 +272,7 @@ For detailed setup and options, see [CLAUDE.md](CLAUDE.md).
    Using `uv` (recommended):
    ```bash
    cd beta/latest/scripts
-   uv run cleanup.py && uv run build-url-list.py && uv run download-pages.py && uv run extract-to-md.py && uv run create-grouped-md-files.py && uv run update-skill.py
+   uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
    ```
    
    Or using `py`:

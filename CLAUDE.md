@@ -98,7 +98,7 @@ Scripts can be run from either **production/latest** or **beta/latest** independ
 Using `uv` (recommended):
 ```powershell
 cd production/latest/scripts
-uv run cleanup.py && uv run build-url-list.py && uv run download-pages.py && uv run extract-to-md.py && uv run create-grouped-md-files.py && uv run update-skill.py
+uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
 ```
 
 Or using `py`:
@@ -112,7 +112,7 @@ py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; 
 Using `uv` (recommended):
 ```powershell
 cd beta/latest/scripts
-uv run cleanup.py && uv run build-url-list.py && uv run download-pages.py && uv run extract-to-md.py && uv run create-grouped-md-files.py && uv run update-skill.py
+uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
 ```
 
 Or using `py`:
@@ -204,7 +204,7 @@ The `.git/` directory tracks updates over time. Recent commits show WME version 
 Using `uv` (recommended):
 ```powershell
 cd production/latest/scripts
-uv run cleanup.py && uv run build-url-list.py && uv run download-pages.py && uv run extract-to-md.py && uv run create-grouped-md-files.py && uv run update-skill.py
+uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
 git add -A && git commit -m "Updated for WME version v2.XXX"
 ```
 
@@ -220,7 +220,7 @@ git add -A && git commit -m "Updated for WME version v2.XXX"
 Using `uv` (recommended):
 ```powershell
 cd beta/latest/scripts
-uv run cleanup.py && uv run build-url-list.py && uv run download-pages.py && uv run extract-to-md.py && uv run create-grouped-md-files.py && uv run update-skill.py
+uv run cleanup.py; uv run build-url-list.py; uv run download-pages.py; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
 git add -A && git commit -m "Updated beta SDK docs"
 ```
 
@@ -287,7 +287,7 @@ git diff url-list-paths.txt
 Using `uv`:
 ```powershell
 cd production/latest/scripts
-uv run cleanup.py && uv run download-pages.py --force && uv run extract-to-md.py && uv run create-grouped-md-files.py && uv run update-skill.py
+uv run cleanup.py; uv run download-pages.py --force; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
 ```
 
 Or using `py`:
@@ -301,7 +301,7 @@ py cleanup.py; py download-pages.py --force; py extract-to-md.py; py create-grou
 Using `uv`:
 ```powershell
 cd beta/latest/scripts
-uv run cleanup.py && uv run download-pages.py --force && uv run extract-to-md.py && uv run create-grouped-md-files.py && uv run update-skill.py
+uv run cleanup.py; uv run download-pages.py --force; uv run extract-to-md.py; uv run create-grouped-md-files.py; uv run update-skill.py
 ```
 
 Or using `py`:
