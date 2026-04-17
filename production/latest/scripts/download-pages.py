@@ -202,12 +202,16 @@ def main():
     counts = {"downloaded": 0, "skipped": 0, "dry-run": 0, "error": 0}
     errors = []
 
+    # Top-level pages always re-downloaded (they carry the WME version string)
+    TOP_LEVEL_PAGES = {"index.html", "modules.html"}
+
     # ── HTML pages ────────────────────────────────────────────────────────────
     for i, url in enumerate(urls, 1):
         local_path = url_to_local_path(url, BASE_DIR)
         rel = os.path.relpath(local_path, BASE_DIR)
+        force_this = args.force or (os.path.basename(local_path) in TOP_LEVEL_PAGES)
 
-        status = download(url, local_path, session, dry_run=args.dry_run, force=args.force)
+        status = download(url, local_path, session, dry_run=args.dry_run, force=force_this)
         counts[status] += 1
 
         if status == "downloaded":
