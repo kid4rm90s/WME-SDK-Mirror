@@ -27,6 +27,8 @@ docs:
     - script-example-4.md
     - script-example-5.md
     - script-example-6.md
+    - script-example-7.md
+    - script-example-8.md
 ---
 
 ## Table of Contents
@@ -77,6 +79,8 @@ This section describes each documentation source included for NotebookLM compreh
   - **script-example-4.md**: WME Utils - Bootstrap - Script Example
   - **script-example-5.md**: WME GeoFile - Script Example
   - **script-example-6.md**: WME US Government Boundaries - Script Example
+  - **script-example-7.md**: WME Quick HN Importer for NP - Script Example
+  - **script-example-8.md**: WME EZRoad Mod - Script Example
 ## Classes
 
 - [classes.md](classes.md) — *38 entries*
