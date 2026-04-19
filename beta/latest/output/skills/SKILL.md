@@ -34,30 +34,30 @@ Docs are at `../../output/docs/` relative to `output/skills/SKILL.md`:
 
 | Document | URL |
 |----------|-----|
-| **Index & Overview** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/index.md |
-| **Classes** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/classes.md |
-| **Interfaces** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/interfaces.md |
-| **Types** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/types.md |
-| **Functions** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/functions.md |
-| **Variables** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/variables.md |
-| **Modules** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/modules.md |
-| **WME SDK Typings** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/wmeSDK_typedefs.d.md |
-| **GeoJSON Typings** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/geojson_typeddefs.d.md |
-| **Getting Started** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/how-to-get-started-with-the-wmeSDK.md |
-| **Migration Guide** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/migration-guide.md |
-| **Changelog** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/changelog.md |
-| **Turf.js Docs** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/Turf-Docs.md |
-| **GeoJSON RFC 7946** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/GeoJSON-Format-RFC-7946.md |
-| **Script Example 1** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-1.md |
-| **Script Example 2** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-2.md |
-| **Script Example 3** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-3.md |
-| **Script Example 4** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-4.md |
-| **Script Example 5** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-5.md |
-| **Script Example 6** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-6.md |
-| **Script Example 7** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-7.md |
-| **Script Example 8** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-8.md |
+| **Index & Overview** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/index.md |
+| **Classes** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/classes.md |
+| **Interfaces** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/interfaces.md |
+| **Types** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/types.md |
+| **Functions** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/functions.md |
+| **Variables** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/variables.md |
+| **Modules** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/modules.md |
+| **WME SDK Typings** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/wmeSDK_typedefs.d.md |
+| **GeoJSON Typings** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/geojson_typeddefs.d.md |
+| **Getting Started** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/how-to-get-started-with-the-wmeSDK.md |
+| **Migration Guide** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/migration-guide.md |
+| **Changelog** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/changelog.md |
+| **Turf.js Docs** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/Turf-Docs.md |
+| **GeoJSON RFC 7946** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/GeoJSON-Format-RFC-7946.md |
+| **Script Example 1** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-1.md |
+| **Script Example 2** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-2.md |
+| **Script Example 3** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-3.md |
+| **Script Example 4** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-4.md |
+| **Script Example 5** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-5.md |
+| **Script Example 6** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-6.md |
+| **Script Example 7** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-7.md |
+| **Script Example 8** | https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/script-example-8.md |
 
-> **Beta fallback:** Replace `production/latest` with `beta/latest` in any URL above.
+> **Production fallback:** Replace `beta/latest` with `production/latest` in any URL above.
 
 ---
 
