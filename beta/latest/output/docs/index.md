@@ -1,7 +1,7 @@
 ---
 sdk: WME
-version: v2.348-7-g65f6c19c77
-generated: 2026-04-17
+version: v2.348-9-g1725deb995
+generated: 2026-04-22
 sections:
   classes: classes.md
   modules: modules.md
@@ -47,8 +47,8 @@ docs:
 > **Use this index to discover available documentation and their content.**
 > For searching SDK entities, refer to the Source Guide below, then navigate to the relevant section.
 
-> **SDK Version:** v2.348-7-g65f6c19c77
-> **Docs generated:** 2026-04-17
+> **SDK Version:** v2.348-9-g1725deb995
+> **Docs generated:** 2026-04-22
 
 > Each section below lists the source file and the entities it contains.
 
@@ -79,7 +79,7 @@ This section describes each documentation source included for NotebookLM compreh
   - **script-example-5.md**: WME GeoFile - Script Example
   - **script-example-6.md**: WME US Government Boundaries - Script Example
   - **script-example-7.md**: WME Quick HN Importer for NP - Script Example
-  - **script-example-8.md**: WME EZRoad Mod - Script Example
+  - **script-example-8.md**: WME EZRoad Mod — Script Example
 ## Classes
 
 - [classes.md](classes.md) — *38 entries*
@@ -343,4 +343,6 @@ This section describes each documentation source included for NotebookLM compreh
 - [WME Utils - Bootstrap - Script Example](script-example-4.md)
 - [WME GeoFile - Script Example](script-example-5.md)
 - [WME US Government Boundaries - Script Example](script-example-6.md)
+- [WME Quick HN Importer for NP - Script Example](script-example-7.md)
+- [WME EZRoad Mod — Script Example](script-example-8.md)
 

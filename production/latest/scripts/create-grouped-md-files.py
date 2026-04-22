@@ -68,7 +68,7 @@ def copy_guides_and_scripts():
     if not os.path.exists(GUIDES_FOLDER):
         print(f"No guides folder found at {GUIDES_FOLDER}")
         return []
-    guide_files = glob(os.path.join(GUIDES_FOLDER, "*.md"))
+    guide_files = sorted(glob(os.path.join(GUIDES_FOLDER, "*.md")))
     out_names = []
     for src_path in guide_files:
         base_name = os.path.basename(src_path)
@@ -79,7 +79,7 @@ def copy_guides_and_scripts():
         out_names.append(base_name)
     return out_names
 
-def source_guide_section(external_md_files=None):
+def source_guide_section(external_md_files=None, guides_md_files=None):
     lines = []
     lines.append("## Source Guide\n")
     lines.append("This section describes each documentation source included for NotebookLM comprehension and search.\n")
@@ -101,15 +101,35 @@ def source_guide_section(external_md_files=None):
                 lines.append(f"    - {fname}")
     lines.append("")
     lines.append("- **Getting Started & example scripts.**")
-    lines.append("  - **how-to-get-started-with-the-wmeSDK.md**: A user walk thru guide to setting up a new script and working with the wme SDK")
-    lines.append("  - **migration-guide.md**: Waze Map Editor JavaScript SDK: Migration & Prompt Guide")
-    lines.append("  - **geometry-file-converters.md**: javascript Utils to convert from KML, KMZ, WKT, GPX, GML, and shapefiles(SHP,SHX,DBF).ZIP to geoJSON")
-    lines.append("  - **script-example-1.md**: WME Cities Overlay - Script Example")
-    lines.append("  - **script-example-2.md**: WME GIS Layers - Script Example")
-    lines.append("  - **script-example-3.md**: WME FC Layer - Script Example")
-    lines.append("  - **script-example-4.md**: WME Utils - Bootstrap - Script Example")
-    lines.append("  - **script-example-5.md**: WME GeoFile - Script Example")
-    lines.append("  - **script-example-6.md**: WME US Government Boundaries - Script Example")
+    
+    # Define standard guides
+    standard_guides = {
+        "how-to-get-started-with-the-wmeSDK.md": "A user walk thru guide to setting up a new script and working with the wme SDK",
+        "migration-guide.md": "Waze Map Editor JavaScript SDK: Migration & Prompt Guide",
+        "geometry-file-converters.md": "javascript Utils to convert from KML, KMZ, WKT, GPX, GML, and shapefiles(SHP,SHX,DBF).ZIP to geoJSON",
+    }
+    
+    # Add standard guides first
+    for fname, desc in standard_guides.items():
+        lines.append(f"  - **{fname}**: {desc}")
+    
+    # Add any script-example files dynamically from guides_md_files
+    if guides_md_files:
+        script_examples = sorted([f for f in guides_md_files if f.startswith("script-example-")])
+        for fname in script_examples:
+            # Try to extract title from file content, fallback to filename
+            guide_path = os.path.join(NOTEBOOK_LM_FOLDER, fname)
+            pretty_title = fname.replace(".md", "").replace("-", " ").replace("script example", "Script Example")
+            try:
+                with open(guide_path, encoding="utf8") as fin:
+                    first_line = fin.readline().strip()
+                    m = re.match(r"^#+\s+(.*)", first_line)
+                    if m:
+                        pretty_title = m.group(1).strip()
+            except Exception:
+                pass
+            lines.append(f"  - **{fname}**: {pretty_title}")
+    
     return "\n".join(lines)
 
 def combine_group(group, outname):
@@ -241,7 +261,7 @@ def build_index(grouped_files, typedef_md_files, external_md_files, sdk_version,
         out.write("\n")
 
         # Source guide
-        out.write(source_guide_section(external_md_files))
+        out.write(source_guide_section(external_md_files, guides_md_files))
         out.write("\n")
 
         # Each main section

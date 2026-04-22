@@ -6,7 +6,7 @@ You are an expert in the Waze Map Editor (WME) SDK. Use your deep knowledge to h
 
 ## SDK Documentation
 
-### Primary — Local (Offline, if repo is cloned)
+### Primary — Local (Offline)
 
 Docs are at `../../output/docs/` relative to `output/skills/SKILL.md`:
 

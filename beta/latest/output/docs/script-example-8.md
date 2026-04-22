@@ -1,28 +1,20 @@
----
-title: WME EZRoad Mod - Script Example
-notes: >
-  Full-featured road-editing accelerator for WME. Demonstrates multi-property bulk
-  segment updates, per-road-type lock/speed presets, 3-tier name-copy logic,
-  pedestrian↔routable segment conversion, geometry overlay, map-layer overlays,
-  vehicle restriction DOM automation, legacy accelerator-based keyboard shortcuts,
-  MutationObserver edit-panel integration, and a jQuery settings panel with
-  export/import and named presets.
----
-
 # WME EZRoad Mod — Script Example
 
 **Version:** 2.6.8.7 | **Author:** kid4rm90s | **License:** GNU GPL v3
 **Script:** [WME EZRoad Mod on GreaseFork](https://greasyfork.org/scripts/528552-wme-ezroad-mod)
 **Based on:** WME EZRoad by Michaelrosstarr (https://greasyfork.org/en/scripts/518381-wme-ezsegments)
 
----
-
 ## Overview
 
 WME EZRoad Mod is a comprehensive road-editing accelerator that applies multiple
 segment properties in a single keypress or button click. It extends the original
 WME EZRoad script with a large number of features covering every common segment
-editing workflow.
+editing workflow. Full-featured road-editing accelerator for WME. Demonstrates multi-property bulk
+segment updates, per-road-type lock/speed presets, 3-tier name-copy logic,
+pedestrian↔routable segment conversion, geometry overlay, map-layer overlays,
+vehicle restriction DOM automation, legacy accelerator-based keyboard shortcuts,
+MutationObserver edit-panel integration, and a jQuery settings panel with
+export/import and named presets.
 
 ### Features
 

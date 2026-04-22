@@ -1,7 +1,7 @@
 ---
 title: SDK.CameraType type
 source: types/index.SDK.CameraType.html
-created: 2026-04-17
+created: 2026-04-22
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
