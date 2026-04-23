@@ -1,7 +1,7 @@
 ---
 sdk: WME
-version: v2.345-10-g5a9a9c1fe0
-generated: 2026-04-08
+version: v2.345-11-g256a375ce2
+generated: 2026-04-23
 sections:
   classes: classes.md
   modules: modules.md
@@ -12,7 +12,6 @@ sections:
   changelog: changelog.md
 docs:
   typedefs:
-    - geojson_typeddefs.d.md
     - wmeSDK_typedefs.d.md
   external:
     - GeoJSON-Format-RFC-7946.md
@@ -48,8 +47,8 @@ docs:
 > **Use this index to discover available documentation and their content.**
 > For searching SDK entities, refer to the Source Guide below, then navigate to the relevant section.
 
-> **SDK Version:** v2.345-10-g5a9a9c1fe0
-> **Docs generated:** 2026-04-08
+> **SDK Version:** v2.345-11-g256a375ce2
+> **Docs generated:** 2026-04-23
 
 > Each section below lists the source file and the entities it contains.
 
@@ -322,8 +321,7 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Type Definition Files
 
-*2 files*
-- [geojson_typeddefs.d.md](geojson_typeddefs.d.md)
+*1 files*
 - [wmeSDK_typedefs.d.md](wmeSDK_typedefs.d.md)
 
 > See Also: [External Documentation Files](#external-documentation-files)

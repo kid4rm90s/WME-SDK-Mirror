@@ -1,9 +1,10 @@
 import os
+import shutil
 from glob import glob
 import re
 
 BASE = os.path.dirname(os.path.abspath(__file__))
-# Output to ../output/docs/ (production/latest/output/docs/)
+# Output to ../output/docs/ (beta/latest/output/docs/)
 NOTEBOOK_LM_FOLDER = os.path.abspath(os.path.join(BASE, "../output/docs"))
 os.makedirs(NOTEBOOK_LM_FOLDER, exist_ok=True)
 
@@ -27,11 +28,11 @@ EXTERNAL_DOC_LINKS = {
 }
 
 def get_sdk_version_from_index_html():
-    """Extract the full WME version string from the downloaded source/index.html."""
-    html_path = os.path.abspath(os.path.join(BASE, "../source/index.html"))
+    """Extract the full WME version string from the downloaded scripts/index.html."""
+    html_path = os.path.join(BASE, "index.html")
     if not os.path.exists(html_path):
-        # Fallback: check scripts folder (some setups store it there)
-        html_path = os.path.join(BASE, "index.html")
+        # Fallback: check source folder (some setups store it there)
+        html_path = os.path.abspath(os.path.join(BASE, "../source/index.html"))
     if not os.path.exists(html_path):
         return None
     with open(html_path, encoding="utf8", errors="ignore") as fin:
@@ -63,6 +64,8 @@ def get_sdk_version_and_date(changelog_path):
     else:
         version_match = re.search(r"^##\s*(v[\w.\-]+)", text, re.MULTILINE)
         version = version_match.group(1) if version_match else "(unknown)"
+    print(f"[DEBUG] Changelog: {changelog_path}")
+    print(f"[DEBUG] Extracted version: {version}, date: {created}")
     return (version, created)
 
 def copy_guides_and_scripts():
@@ -321,16 +324,101 @@ def build_index(grouped_files, typedef_md_files, external_md_files, sdk_version,
             out.write("\n")
     print(f"Created index: {INDEX_FILE}")
 
+def sync_scripts_to_source():
+    """
+    Sync all downloaded files from scripts/ folder to source/ folder.
+    Only called after successful pipeline completion.
+    """
+    print("\n" + "=" * 70)
+    print("[SYNC] Syncing scripts/ to source/ folder...")
+    print("=" * 70)
+    
+    source_base = os.path.abspath(os.path.join(BASE, "../source"))
+    os.makedirs(source_base, exist_ok=True)
+    
+    folders_to_sync = [
+        'classes', 'documents', 'functions',
+        'interfaces', 'modules', 'types', 'variables'
+    ]
+    
+    files_to_sync = ['index.html', 'modules.html']
+    
+    try:
+        # Sync documentation folders
+        for folder in folders_to_sync:
+            src_folder = os.path.join(BASE, folder)
+            dst_folder = os.path.join(source_base, folder)
+            
+            if os.path.exists(src_folder):
+                # Remove destination if it exists
+                if os.path.exists(dst_folder):
+                    shutil.rmtree(dst_folder)
+                # Copy with contents
+                shutil.copytree(src_folder, dst_folder)
+                print(f"  [OK] Synced folder: {folder}/")
+        
+        # Sync top-level HTML files
+        for filename in files_to_sync:
+            src_file = os.path.join(BASE, filename)
+            dst_file = os.path.join(source_base, filename)
+            
+            if os.path.exists(src_file):
+                shutil.copy2(src_file, dst_file)
+                print(f"  [OK] Synced file: {filename}")
+        
+        # Sync TypeDefs folder
+        typedefs_src = os.path.join(BASE, "TypeDefs")
+        typedefs_dst = os.path.join(source_base, "TypeDefs")
+        if os.path.exists(typedefs_src):
+            if os.path.exists(typedefs_dst):
+                shutil.rmtree(typedefs_dst)
+            shutil.copytree(typedefs_src, typedefs_dst)
+            print(f"  [OK] Synced folder: TypeDefs/")
+        
+        # Sync externalDocs if it exists in scripts
+        external_src = os.path.join(BASE, "externalDocs")
+        external_dst = os.path.join(source_base, "externalDocs")
+        if os.path.exists(external_src):
+            if os.path.exists(external_dst):
+                shutil.rmtree(external_dst)
+            shutil.copytree(external_src, external_dst)
+            print(f"  [OK] Synced folder: externalDocs/")
+        
+        print("=" * 70)
+        print("[SYNC] Source folder sync completed successfully!")
+        print("=" * 70 + "\n")
+        return True
+        
+    except Exception as e:
+        print("=" * 70)
+        print(f"[SYNC ERROR] Failed to sync source folder: {e}")
+        print("=" * 70 + "\n")
+        raise
+
 def main():
-    grouped_files = {}
-    for group, outname in GROUPS.items():
-        grouped_files[group] = combine_group(group, outname)
-    make_changelog()
-    typedef_md_files = copy_all_typedefs()
-    external_md_files = copy_external_docs()
-    sdk_version, sdk_date = get_sdk_version_and_date(CHANGELOG_FILE)
-    guides_md_files = copy_guides_and_scripts() 
-    build_index(grouped_files, typedef_md_files, external_md_files, sdk_version, sdk_date, guides_md_files=guides_md_files)
+    try:
+        grouped_files = {}
+        for group, outname in GROUPS.items():
+            grouped_files[group] = combine_group(group, outname)
+        make_changelog()
+        typedef_md_files = copy_all_typedefs()
+        external_md_files = copy_external_docs()
+        sdk_version, sdk_date = get_sdk_version_and_date(CHANGELOG_FILE)
+        guides_md_files = copy_guides_and_scripts() 
+        build_index(grouped_files, typedef_md_files, external_md_files, sdk_version, sdk_date, guides_md_files=guides_md_files)
+        
+        # All pipeline steps completed successfully - now sync to source folder
+        sync_scripts_to_source()
+        
+        print("[SUCCESS] Pipeline completed successfully with source folder sync!")
+        
+    except Exception as e:
+        print("\n" + "=" * 70)
+        print(f"[PIPELINE ERROR] Pipeline failed with error:")
+        print(f"  {type(e).__name__}: {e}")
+        print("[SKIP] Source folder sync was skipped due to pipeline errors.")
+        print("=" * 70 + "\n")
+        raise
 
 if __name__ == "__main__":
     main()

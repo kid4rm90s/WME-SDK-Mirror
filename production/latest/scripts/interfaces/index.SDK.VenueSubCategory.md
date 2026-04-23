@@ -1,7 +1,7 @@
 ---
 title: SDK.VenueSubCategory interface
 source: interfaces/index.SDK.VenueSubCategory.html
-created: 2026-04-22
+created: 2026-04-23
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

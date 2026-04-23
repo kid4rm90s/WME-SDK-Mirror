@@ -1,0 +1,754 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>Waze Map Editor JavaScript SDK</title><meta name="description" content="Documentation for Waze Map Editor JavaScript SDK"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><script async src="assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">Waze Map Editor JavaScript SDK</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>Waze Map Editor JavaScript SDK</h1></div><div class="tsd-panel tsd-typography"><p>WME version v2.348-9-g1725deb995</p>
+<h2 id="description" class="tsd-anchor-link">Description<a href="#description" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>The Waze Map Editor (WME) JavaScript SDK provides a seamless way to execute
+community userscripts over the WME.</p>
+<p>Using the SDK allows scripts to query the WME data model, interact with the map,
+read application settings, apply changes to features, register to events and
+more.</p>
+<h3 id="features" class="tsd-anchor-link">Features<a href="#features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong><em>Powerful Functionality</em></strong>: Access capabilities of the WME directly from
+your JavaScript code.</li>
+<li><strong><em>Easy Integration</em></strong>: Get up and running quickly with our intuitive API.</li>
+<li><strong><em>Well-Documented</em></strong>: Comprehensive documentation and examples to help you
+every step of the way.</li>
+<li><strong><em>Community Support</em></strong>: Join our active community for help and discussions.</li>
+</ul>
+<h2 id="usage" class="tsd-anchor-link">Usage<a href="#usage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>This SDK provides a structured and convenient way for userscripts to interact
+with and extend the functionality of the Waze Map Editor (WME).
+It offers a collection of modules and methods that streamline common tasks and
+facilitate seamless integration of custom scripts within the WME environment.</p>
+<p>The following example shows how to initialize the SDK in your script:</p>
+<pre><code class="javascript"><span class="hl-0">// the sdk init function will be available after the SDK is initialized</span><br/><span class="hl-1">window</span><span class="hl-2">.</span><span class="hl-3">SDK_INITIALIZED</span><span class="hl-2">.</span><span class="hl-4">then</span><span class="hl-2">(</span><span class="hl-1">initScript</span><span class="hl-2">);</span><br/><br/><span class="hl-5">function</span><span class="hl-2"> </span><span class="hl-4">initScript</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-0">// initialize the sdk with your script id and script name</span><br/><span class="hl-2">  </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-3">wmeSDK</span><span class="hl-2"> = </span><span class="hl-4">getWmeSdk</span><span class="hl-2">(</span><br/><span class="hl-2">      {</span><span class="hl-1">scriptId:</span><span class="hl-2"> </span><span class="hl-6">&quot;your-userscript-id&quot;</span><span class="hl-2">, </span><span class="hl-1">scriptName:</span><span class="hl-2"> </span><span class="hl-6">&quot;Script Display Name&quot;</span><span class="hl-2">});</span><br/><br/><span class="hl-2">  </span><span class="hl-0">// Start using the SDK</span><br/><span class="hl-2">  </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-3">mapCenter</span><span class="hl-2"> = </span><span class="hl-1">wmeSDK</span><span class="hl-2">.</span><span class="hl-1">Map</span><span class="hl-2">.</span><span class="hl-4">getMapCenter</span><span class="hl-2">();</span><br/><span class="hl-2">  </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-3">topCountry</span><span class="hl-2"> = </span><span class="hl-1">wmeSDK</span><span class="hl-2">.</span><span class="hl-1">DataModel</span><span class="hl-2">.</span><span class="hl-1">Countries</span><span class="hl-2">.</span><span class="hl-4">getTopCountry</span><span class="hl-2">();</span><br/><br/><span class="hl-2">  </span><span class="hl-0">// query the WME data model</span><br/><span class="hl-2">  </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-3">mySegment</span><span class="hl-2"> = </span><span class="hl-1">wmeSDK</span><span class="hl-2">.</span><span class="hl-1">DataModel</span><span class="hl-2">.</span><span class="hl-1">Segments</span><span class="hl-2">.</span><span class="hl-4">getById</span><span class="hl-2">({</span><span class="hl-1">segmentId:</span><span class="hl-2"> </span><span class="hl-7">123</span><span class="hl-2">});</span><br/><span class="hl-2">  </span><span class="hl-8">if</span><span class="hl-2"> (</span><span class="hl-1">mySegment</span><span class="hl-2">.</span><span class="hl-1">isAtoB</span><span class="hl-2">) {</span><br/><span class="hl-2">    </span><span class="hl-0">// do something</span><br/><span class="hl-2">  }</span><br/><br/><span class="hl-2">  </span><span class="hl-0">// add new features</span><br/><span class="hl-2">  </span><span class="hl-1">wmeSDK</span><span class="hl-2">.</span><span class="hl-1">DataModel</span><span class="hl-2">.</span><span class="hl-1">Venues</span><span class="hl-2">.</span><span class="hl-4">addVenue</span><span class="hl-2">({</span><span class="hl-1">category</span><span class="hl-2">, </span><span class="hl-1">geometry</span><span class="hl-2">});</span><br/><br/><span class="hl-2">  </span><span class="hl-0">// save edits</span><br/><span class="hl-2">  </span><span class="hl-1">wmeSDK</span><span class="hl-2">.</span><span class="hl-1">Editing</span><span class="hl-2">.</span><span class="hl-4">save</span><span class="hl-2">().</span><span class="hl-4">then</span><span class="hl-2">(() </span><span class="hl-5">=&gt;</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-0">// edits saved</span><br/><span class="hl-2">  });</span><br/><br/><span class="hl-2">  </span><span class="hl-0">// register to events</span><br/><span class="hl-2">  </span><span class="hl-1">wmeSDK</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">once</span><span class="hl-2">({ </span><span class="hl-1">eventName:</span><span class="hl-2"> </span><span class="hl-6">&quot;wme-ready&quot;</span><span class="hl-2"> }).</span><span class="hl-4">then</span><span class="hl-2">(() </span><span class="hl-5">=&gt;</span><span class="hl-2"> { ... });</span><br/><span class="hl-2">  </span><span class="hl-1">wmeSDK</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">on</span><span class="hl-2">({</span><br/><span class="hl-2">    </span><span class="hl-1">eventName:</span><span class="hl-2"> </span><span class="hl-6">&quot;wme-map-move&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-4">eventHandler</span><span class="hl-1">:</span><span class="hl-2"> () </span><span class="hl-5">=&gt;</span><span class="hl-2"> { ... }</span><br/><span class="hl-2">  });</span><br/><span class="hl-2">  </span><span class="hl-1">wmeSDK</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">on</span><span class="hl-2">({</span><br/><span class="hl-2">    </span><span class="hl-1">eventName:</span><span class="hl-2"> </span><span class="hl-6">&quot;wme-map-data-loaded&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-4">eventHandler</span><span class="hl-1">:</span><span class="hl-2"> () </span><span class="hl-5">=&gt;</span><span class="hl-2"> { ... }</span><br/><span class="hl-2">  });</span><br/><span class="hl-2">  </span><span class="hl-1">wmeSDK</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">on</span><span class="hl-2">({</span><br/><span class="hl-2">    </span><span class="hl-1">eventName:</span><span class="hl-2"> </span><span class="hl-6">&quot;wme-selection-changed&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-4">eventHandler</span><span class="hl-1">:</span><span class="hl-2"> () </span><span class="hl-5">=&gt;</span><span class="hl-2"> { ... }</span><br/><span class="hl-2">  });</span><br/><span class="hl-2">}</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="typescript-type-definitions" class="tsd-anchor-link">Typescript type definitions<a href="#typescript-type-definitions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>Typescript type definitions for the SDK are available <a href="https://web-assets.waze.com/wme_sdk_docs/beta/latest/wme-sdk-typings.tgz">here</a>.</p>
+<p>You can install them with <code>npm</code>:</p>
+<pre><code class="sh"><span class="hl-4">npm</span><span class="hl-2"> </span><span class="hl-6">install</span><span class="hl-2"> </span><span class="hl-5">--save-dev</span><span class="hl-2"> </span><span class="hl-5">https://web-assets.waze.com/wme_sdk_docs/beta/latest/wme-sdk-typings.tgz</span>
+</code><button type="button">Copy</button></pre>
+
+<p>After that, you can import SDK types from the package:</p>
+<pre><code class="typescript"><span class="hl-8">import</span><span class="hl-2"> { </span><span class="hl-1">KeyboardShortcut</span><span class="hl-2">, </span><span class="hl-1">WmeSDK</span><span class="hl-2"> } </span><span class="hl-8">from</span><span class="hl-2"> </span><span class="hl-6">&quot;wme-sdk-typings&quot;</span><span class="hl-2">;</span><br/><br/><span class="hl-8">if</span><span class="hl-2"> (!</span><span class="hl-1">window</span><span class="hl-2">.</span><span class="hl-1">getWmeSdk</span><span class="hl-2">) {</span><br/><span class="hl-2">  </span><span class="hl-8">throw</span><span class="hl-2"> </span><span class="hl-5">new</span><span class="hl-2"> </span><span class="hl-4">Error</span><span class="hl-2">(</span><span class="hl-6">&quot;SDK not available&quot;</span><span class="hl-2">);</span><br/><span class="hl-2">}</span><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-3">sdk</span><span class="hl-2">: </span><span class="hl-9">WmeSDK</span><span class="hl-2"> = </span><span class="hl-1">window</span><span class="hl-2">.</span><span class="hl-4">getWmeSdk</span><span class="hl-2">({ </span><span class="hl-1">scriptId:</span><span class="hl-2"> </span><span class="hl-6">&quot;test&quot;</span><span class="hl-2">, </span><span class="hl-1">scriptName:</span><span class="hl-2"> </span><span class="hl-6">&quot;test&quot;</span><span class="hl-2"> });</span><br/><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-3">shortcut</span><span class="hl-2">: </span><span class="hl-9">KeyboardShortcut</span><span class="hl-2"> = {</span><br/><span class="hl-2">  </span><span class="hl-4">callback</span><span class="hl-1">:</span><span class="hl-2"> () </span><span class="hl-5">=&gt;</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">console</span><span class="hl-2">.</span><span class="hl-4">log</span><span class="hl-2">(</span><span class="hl-6">&quot;Hello world!&quot;</span><span class="hl-2">);</span><br/><span class="hl-2">  },</span><br/><span class="hl-2">  </span><span class="hl-1">description:</span><span class="hl-2"> </span><span class="hl-6">&quot;test shortcut&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-1">shortcutId:</span><span class="hl-2"> </span><span class="hl-6">&quot;test-shortcut&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-1">shortcutKeys:</span><span class="hl-2"> </span><span class="hl-6">&quot;A+l&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">};</span><br/><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Shortcuts</span><span class="hl-2">.</span><span class="hl-4">createShortcut</span><span class="hl-2">(</span><span class="hl-1">shortcut</span><span class="hl-2">);</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="sdk-structure" class="tsd-anchor-link">SDK Structure<a href="#sdk-structure" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>The SDK is split into the following modules according to functionality:</p>
+<ul>
+<li><strong>DataModel:</strong> Access and manipulate the WME's underlying data structures,
+including segments, nodes, venues, and more.</li>
+<li><strong>Editing:</strong> Perform various editing operations, such as saving, undoing, and
+selecting map features.</li>
+<li><strong>Errors:</strong> A set of custom Error classes which can be used to manage errors
+that may occur during script execution.</li>
+<li><strong>LayerSwitcher:</strong> Add or remove custom Map layers checkboxes.</li>
+<li><strong>Map:</strong> Interact with the map display, including centering/zooming,
+retrieving map-related information and adding map layers.</li>
+<li><strong>Settings:</strong> Manage user settings and preferences within the WME.</li>
+<li><strong>Shortcuts:</strong> Create and manage custom keyboard shortcuts for improved
+efficiency.</li>
+<li><strong>Sidebar:</strong> Register &amp; create a dedicated area in the WME sidebar for script
+UI elements.</li>
+<li><strong>State:</strong> Access and read the internal state of WME, along with the
+information about the current logged-in user.</li>
+</ul>
+<h3 id="events" class="tsd-anchor-link">Events<a href="#events" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>The SDK also adds a set of custom events triggered by the WME at various points
+during its lifecycle and user interactions.<br>
+These events enable scripts to react to specific actions and states within the
+WME application.</p>
+<p>There are multiple types of events: global events, data model events &amp; layer events.</p>
+<h4 id="global-events" class="tsd-anchor-link">Global events<a href="#global-events" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wme-initialized</code></td>
+<td>Dispatched when WME has initialized the <code>window.W</code> global object and its internals, and the UI has been rendered. Note that at this point, map data has not yet been fetched.</td>
+</tr>
+<tr>
+<td><code>wme-logged-in</code></td>
+<td>Dispatched after the <code>wme-initialized</code> event when WME fetches the user info of the currently logged-in user, or after the user logs in using the login form.</td>
+</tr>
+<tr>
+<td><code>wme-logged-out</code></td>
+<td>Dispatched when the user logs out of WME.</td>
+</tr>
+<tr>
+<td><code>wme-map-data-loaded</code></td>
+<td>Dispatched after the <code>wme-initialized</code> event whenever WME fetches map data from the server (e.g. when the user scrolls the map, changes the zoom level, or presses the refresh button). This is similar to the <code>mergeend</code> event triggered on <code>W.model</code>.</td>
+</tr>
+<tr>
+<td><code>wme-map-initial-data-loaded</code></td>
+<td>Dispatched only once after wme-initialized, once the WME has successfully fetched the initial map data from the server.</td>
+</tr>
+<tr>
+<td><code>wme-ready</code></td>
+<td>Dispatched <strong>only once</strong>, after the <code>wme-initialized</code>, <code>wme-logged-in</code>, and <code>wme-map-initial-data-loaded</code> events have been dispatched.</td>
+</tr>
+<tr>
+<td><code>wme-selection-changed</code></td>
+<td>Dispatched when some entity gets selected or unselected on the map.</td>
+</tr>
+<tr>
+<td><code>wme-feature-editor-opened</code></td>
+<td>Dispatched when the feature editor is opened in the side panel with a new feature or when the selected feature changes. <strong>Note:</strong> Essentially, this event means the feature editor is ready in the side panel. While at this point you'll usually see the feature editor on the screen, it's not a guarantee. There might be a slight delay before the feature editor is actually visible.</td>
+</tr>
+<tr>
+<td><code>wme-map-zoom-changed</code></td>
+<td>Dispatched when the map is zoomed in or out.</td>
+</tr>
+<tr>
+<td><code>wme-map-layer-added</code></td>
+<td>Dispatched when the new layer is added to the map.</td>
+</tr>
+<tr>
+<td><code>wme-map-layer-changed</code></td>
+<td>Dispatched when a layer on the map changes visibility or name.</td>
+</tr>
+<tr>
+<td><code>wme-map-layer-removed</code></td>
+<td>Dispatched when a layer is removed from the map.</td>
+</tr>
+<tr>
+<td><code>wme-map-mouse-down</code></td>
+<td>Dispatched when the mouse button is pressed while the pointer is inside the map.</td>
+</tr>
+<tr>
+<td><code>wme-map-mouse-move</code></td>
+<td>Dispatched when the mouse is moved over the map. Note that this event is continuously fired when moving the mouse.</td>
+</tr>
+<tr>
+<td><code>wme-map-mouse-up</code></td>
+<td>Dispatched when the mouse button is released while the pointer is inside the map.</td>
+</tr>
+<tr>
+<td><code>wme-map-mouse-out</code></td>
+<td>Dispatched whenever the mouse moves the cursor so that it is no longer contained within an element.</td>
+</tr>
+<tr>
+<td><code>wme-map-move</code></td>
+<td>Dispatched when the map is panned. Note that this event is continuously fired during pan</td>
+</tr>
+<tr>
+<td><code>wme-map-move-end</code></td>
+<td>Dispatched when a map move is complete.</td>
+</tr>
+<tr>
+<td><code>wme-user-settings-changed</code></td>
+<td>Dispatched when WME user settings have changed.</td>
+</tr>
+<tr>
+<td><code>wme-save-finished</code></td>
+<td>Dispatched when the save attempt has been done by the user. The event is dispatched for both successful and failed save. The event detail contains a <code>success</code> boolean parameter which is <code>true</code> for the successful save and <code>false</code> otherwise.</td>
+</tr>
+<tr>
+<td><code>wme-layer-checkbox-toggled</code></td>
+<td>Dispatched when the custom Map layers checkbox, registered by the script, was toggled. The event detail contains the <code>name</code> of the checkbox, and <code>checked</code> parameter which is <code>true</code> if the checkbox became checked and <code>false</code> otherwise.</td>
+</tr>
+<tr>
+<td><code>wme-editing-house-numbers</code></td>
+<td>[<strong>DEPRECATED</strong> - Use <code>wme-map-house-number-marker-added</code> instead] Dispatched when the user starts or stops editing house numbers.</td>
+</tr>
+<tr>
+<td><code>wme-map-house-number-marker-added</code></td>
+<td>Dispatched when the when the user clicks and adds a house number marker to the map.</td>
+</tr>
+<tr>
+<td><code>wme-house-number-added</code></td>
+<td>Dispatched when a house number is added.</td>
+</tr>
+<tr>
+<td><code>wme-house-number-deleted</code></td>
+<td>Dispatched when a house number is deleted.</td>
+</tr>
+<tr>
+<td><code>wme-house-number-moved</code></td>
+<td>Dispatched when a house number is moved.</td>
+</tr>
+<tr>
+<td><code>wme-house-number-updated</code></td>
+<td>Dispatched when a house number is updated.</td>
+</tr>
+<tr>
+<td><code>wme-after-edit</code></td>
+<td>Dispatched after user performs an create/edit/delete of an object, the event contains all affected object ids and types.</td>
+</tr>
+<tr>
+<td><code>wme-after-redo-clear</code></td>
+<td>Dispatched after user performs any new edit while being able to redo previous edits.</td>
+</tr>
+<tr>
+<td><code>wme-after-undo</code></td>
+<td>Dispatched after WME user performs an undo.</td>
+</tr>
+<tr>
+<td><code>wme-no-edits</code></td>
+<td>Dispatched after WME user performs the last undo or save indicating no edits left to be able to undo or save.</td>
+</tr>
+<tr>
+<td><code>wme-save-mode-changed</code></td>
+<td>Dispatched when the current state of the save button is changed. The event detail contains a <code>saveMode</code> parameter with current save mode.</td>
+</tr>
+<tr>
+<td><code>wme-update-request-panel-opened</code></td>
+<td>Dispatched when WME user clicks on the map update request or the map update request map marker.</td>
+</tr>
+<tr>
+<td><code>wme-street-view-panel-visibility-changed</code></td>
+<td>Dispatched when the street view panel changes its visibility.</td>
+</tr>
+<tr>
+<td><code>wme-street-view-button-activated</code></td>
+<td>Dispatched when WME user starts dragging the street view button</td>
+</tr>
+<tr>
+<td><code>wme-street-view-button-deactivated</code></td>
+<td>Dispatched after WME user stops dragging the street view button.</td>
+</tr>
+<tr>
+<td><code>wme-sidebar-tab-opened</code></td>
+<td>Dispatched after WME sidebar tab opens. The event detail contains a <code>tabName</code> parameter with current opened tab and <code>domId</code> parameter with the dom selector for the tab content panel.</td>
+</tr>
+</tbody>
+</table>
+<p>Registering to these events is done via the <code>sdk.Events</code> module:</p>
+<pre><code class="javascript"><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">once</span><span class="hl-2">({ </span><span class="hl-1">eventName:</span><span class="hl-2"> </span><span class="hl-6">&quot;wme-ready&quot;</span><span class="hl-2"> }).</span><span class="hl-4">then</span><span class="hl-2">(() </span><span class="hl-5">=&gt;</span><span class="hl-2"> {</span><br/><span class="hl-2">  </span><span class="hl-1">console</span><span class="hl-2">.</span><span class="hl-4">log</span><span class="hl-2">(</span><span class="hl-6">&quot;WME is initialized, user is logged in and map data loaded&quot;</span><span class="hl-2">);</span><br/><span class="hl-2">});</span><br/><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">on</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-1">eventName:</span><span class="hl-2"> </span><span class="hl-6">&quot;wme-map-data-loaded&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-4">eventHandler</span><span class="hl-1">:</span><span class="hl-2"> () </span><span class="hl-5">=&gt;</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">console</span><span class="hl-2">.</span><span class="hl-4">log</span><span class="hl-2">(</span><span class="hl-6">&quot;new data loaded&quot;</span><span class="hl-2">);</span><br/><span class="hl-2">  },</span><br/><span class="hl-2">});</span><br/><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">on</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-1">eventName:</span><span class="hl-2"> </span><span class="hl-6">&quot;wme-map-zoom-changed&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-4">eventHandler</span><span class="hl-1">:</span><span class="hl-2"> () </span><span class="hl-5">=&gt;</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Map</span><span class="hl-2">.</span><span class="hl-4">getZoomLevel</span><span class="hl-2">();</span><br/><span class="hl-2">  },</span><br/><span class="hl-2">});</span><br/><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">on</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-1">eventName:</span><span class="hl-2"> </span><span class="hl-6">&quot;wme-user-settings-changed&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-4">eventHandler</span><span class="hl-1">:</span><span class="hl-2"> () </span><span class="hl-5">=&gt;</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Settings</span><span class="hl-2">.</span><span class="hl-4">getUserSettings</span><span class="hl-2">().</span><span class="hl-1">isImperial</span><span class="hl-2">;</span><br/><span class="hl-2">  },</span><br/><span class="hl-2">});</span>
+</code><button type="button">Copy</button></pre>
+
+<h4 id="data-model-events" class="tsd-anchor-link">Data model events<a href="#data-model-events" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wme-data-model-objects-added</code></td>
+<td>Dispatched when objects have been added to a tracked model.</td>
+</tr>
+<tr>
+<td><code>wme-data-model-objects-changed</code></td>
+<td>Dispatched when the attributes of an object or objects in a tracked model have been changed.</td>
+</tr>
+<tr>
+<td><code>wme-data-model-objects-removed</code></td>
+<td>Dispatched when objects have been removed from a tracked model.</td>
+</tr>
+<tr>
+<td><code>wme-data-model-objects-saved</code></td>
+<td>Dispatched when objects in a tracked data model have been saved to the server.</td>
+</tr>
+<tr>
+<td><code>wme-data-model-object-changed-id</code></td>
+<td>Dispatched when an object ID in a tracked data model have been changed.</td>
+</tr>
+<tr>
+<td><code>wme-data-model-object-state-deleted</code></td>
+<td>Dispatched when objects have been marked as deleted but are not removed from the tracked data model.</td>
+</tr>
+</tbody>
+</table>
+<p>To listen to model events, they need to be activated first. The activation is done for each model individually via the <code>sdk.Events</code> module:</p>
+<pre><code class="javascript"><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">trackDataModelEvents</span><span class="hl-2">({ </span><span class="hl-1">dataModelName:</span><span class="hl-2"> </span><span class="hl-6">&quot;venues&quot;</span><span class="hl-2"> });</span>
+</code><button type="button">Copy</button></pre>
+
+<p>After the events are activated for the model they can be handled in the same way as the global events:</p>
+<pre><code class="javascript"><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">on</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-1">eventName:</span><span class="hl-2"> </span><span class="hl-6">&quot;wme-data-model-objects-added&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-4">eventHandler</span><span class="hl-1">:</span><span class="hl-2"> ({</span><span class="hl-1">dataModelName</span><span class="hl-2">, </span><span class="hl-1">objectIds</span><span class="hl-2">}) </span><span class="hl-5">=&gt;</span><span class="hl-2"> { ... },</span><br/><span class="hl-2">});</span>
+</code><button type="button">Copy</button></pre>
+
+<p>Each event will include a payload of the data model name which triggered the event and an array of the object ids affected.</p>
+<p>Once model events are not needed anymore they should be deactivated:</p>
+<pre><code class="javascript"><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">stopDataModelEventsTracking</span><span class="hl-2">({ </span><span class="hl-1">dataModelName:</span><span class="hl-2"> </span><span class="hl-6">&quot;venues&quot;</span><span class="hl-2"> });</span>
+</code><button type="button">Copy</button></pre>
+
+<h4 id="layer-events" class="tsd-anchor-link">Layer events<a href="#layer-events" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wme-layer-visibility-changed</code></td>
+<td>Dispatched when a tracked layer visibility has been changed.</td>
+</tr>
+<tr>
+<td><code>wme-layer-feature-clicked</code></td>
+<td>Dispatched when a feature in a tracked layer has been clicked.</td>
+</tr>
+<tr>
+<td><code>wme-layer-feature-mouse-enter</code></td>
+<td>Dispatched when the mouse enters a feature in a tracked layer.</td>
+</tr>
+<tr>
+<td><code>wme-layer-feature-mouse-leave</code></td>
+<td>Dispatched when the mouse leaves a feature in a tracked layer.</td>
+</tr>
+</tbody>
+</table>
+<p>To listen to a layer events they need to be activated first. The activation is done for each layer individually via the <code>sdk.Events</code> module:</p>
+<pre><code class="javascript"><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">trackLayerEvents</span><span class="hl-2">({ </span><span class="hl-1">layerName:</span><span class="hl-2"> </span><span class="hl-6">&quot;my_custom_layer&quot;</span><span class="hl-2"> });</span>
+</code><button type="button">Copy</button></pre>
+
+<p>After the events are activated for the layer they can be handled in the same way as the global events:</p>
+<pre><code class="javascript"><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">on</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-1">eventName:</span><span class="hl-2"> </span><span class="hl-6">&quot;wme-layer-visibility-changed&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-4">eventHandler</span><span class="hl-1">:</span><span class="hl-2"> () </span><span class="hl-5">=&gt;</span><span class="hl-2"> { ... },</span><br/><span class="hl-2">});</span>
+</code><button type="button">Copy</button></pre>
+
+<p>Once layer events are not needed anymore they should be deactivated:</p>
+<pre><code class="javascript"><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">stopLayerEventsTracking</span><span class="hl-2">({ </span><span class="hl-1">layerName:</span><span class="hl-2"> </span><span class="hl-6">&quot;my_custom_layer&quot;</span><span class="hl-2"> });</span>
+</code><button type="button">Copy</button></pre>
+
+<p>It is possible to track some  SDK.WME_LAYER_NAMES:var | WME layers :</p>
+<pre><code class="javascript"><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Events</span><span class="hl-2">.</span><span class="hl-4">trackLayerEvents</span><span class="hl-2">({ </span><span class="hl-1">layerName:</span><span class="hl-2"> </span><span class="hl-3">WME_LAYER_NAMES</span><span class="hl-2">.</span><span class="hl-3">VENUES</span><span class="hl-2"> });</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="working-with-complex-geometries" class="tsd-anchor-link">Working with complex geometries<a href="#working-with-complex-geometries" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>The SDK allows you to work with atomic geometries: <code>LineString</code>, <code>Polygon</code>, and <code>Point</code>. These are the basic building blocks for representing geographic features.</p>
+<p>For more complex geometries, such as MultiLineStrings (a collection of LineStrings), MultiPolygons (a collection of Polygons), or GeometryCollections (a collection of different geometry types), you'll need to process them before using them with the SDK. A good way to do this is with the <a href="https://turfjs.org/">Turf.js</a> library, which has a <a href="https://turfjs.org/docs/api/flatten"><code>flatten</code></a> helper that breaks complex geometries into atomic ones. After installing Turf.js, you can use it like this:</p>
+<pre><code class="javascript"><span class="hl-8">import</span><span class="hl-2"> { </span><span class="hl-1">flatten</span><span class="hl-2"> } </span><span class="hl-8">from</span><span class="hl-2"> </span><span class="hl-6">&quot;@turf/flatten&quot;</span><span class="hl-2">;</span><br/><br/><span class="hl-0">// Example feature with MultiPolygon geometry</span><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-3">multiPolygonFeature</span><span class="hl-2"> = {</span><br/><span class="hl-2">  </span><span class="hl-1">type:</span><span class="hl-2"> </span><span class="hl-6">&quot;Feature&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-1">properties:</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">foo:</span><span class="hl-2"> </span><span class="hl-6">&quot;bar&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">  },</span><br/><span class="hl-2">  </span><span class="hl-1">geometry:</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">type:</span><span class="hl-2"> </span><span class="hl-6">&quot;MultiPolygon&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-1">coordinates:</span><span class="hl-2"> [</span><br/><span class="hl-2">      [</span><br/><span class="hl-2">        [</span><br/><span class="hl-2">          [</span><span class="hl-7">0</span><span class="hl-2">, </span><span class="hl-7">0</span><span class="hl-2">],</span><br/><span class="hl-2">          [</span><span class="hl-7">1</span><span class="hl-2">, </span><span class="hl-7">0</span><span class="hl-2">],</span><br/><span class="hl-2">          [</span><span class="hl-7">1</span><span class="hl-2">, </span><span class="hl-7">1</span><span class="hl-2">],</span><br/><span class="hl-2">          [</span><span class="hl-7">0</span><span class="hl-2">, </span><span class="hl-7">1</span><span class="hl-2">],</span><br/><span class="hl-2">          [</span><span class="hl-7">0</span><span class="hl-2">, </span><span class="hl-7">0</span><span class="hl-2">],</span><br/><span class="hl-2">        ],</span><br/><span class="hl-2">      ],</span><br/><span class="hl-2">      [</span><br/><span class="hl-2">        [</span><br/><span class="hl-2">          [</span><span class="hl-7">2</span><span class="hl-2">, </span><span class="hl-7">2</span><span class="hl-2">],</span><br/><span class="hl-2">          [</span><span class="hl-7">3</span><span class="hl-2">, </span><span class="hl-7">2</span><span class="hl-2">],</span><br/><span class="hl-2">          [</span><span class="hl-7">3</span><span class="hl-2">, </span><span class="hl-7">3</span><span class="hl-2">],</span><br/><span class="hl-2">          [</span><span class="hl-7">2</span><span class="hl-2">, </span><span class="hl-7">3</span><span class="hl-2">],</span><br/><span class="hl-2">          [</span><span class="hl-7">2</span><span class="hl-2">, </span><span class="hl-7">2</span><span class="hl-2">],</span><br/><span class="hl-2">        ],</span><br/><span class="hl-2">      ],</span><br/><span class="hl-2">    ],</span><br/><span class="hl-2">  },</span><br/><span class="hl-2">};</span><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-3">flattened</span><span class="hl-2"> = </span><span class="hl-4">flatten</span><span class="hl-2">(</span><span class="hl-1">multiPolygonFeature</span><span class="hl-2">); </span><span class="hl-0">// you can also use flatten(multiPolygonFeature.geometry)</span><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-3">featuresToAdd</span><span class="hl-2"> = </span><span class="hl-1">flattened</span><span class="hl-2">.</span><span class="hl-1">features</span><span class="hl-2">.</span><span class="hl-4">map</span><span class="hl-2">((</span><span class="hl-1">feature</span><span class="hl-2">, </span><span class="hl-1">index</span><span class="hl-2">) </span><span class="hl-5">=&gt;</span><span class="hl-2"> ({</span><br/><span class="hl-2">  </span><span class="hl-1">geometry:</span><span class="hl-2"> </span><span class="hl-1">feature</span><span class="hl-2">.</span><span class="hl-1">geometry</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-1">id:</span><span class="hl-2"> </span><span class="hl-6">`complex-geometry-</span><span class="hl-5">${</span><span class="hl-1">index</span><span class="hl-5">}</span><span class="hl-6">`</span><span class="hl-2">, </span><span class="hl-0">// generate a unique ID</span><br/><span class="hl-2">  </span><span class="hl-1">properties:</span><span class="hl-2"> </span><span class="hl-1">feature</span><span class="hl-2">.</span><span class="hl-1">properties</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-1">type:</span><span class="hl-2"> </span><span class="hl-1">feature</span><span class="hl-2">.</span><span class="hl-1">type</span><span class="hl-2">,</span><br/><span class="hl-2">}));</span><br/><br/><span class="hl-1">sdk</span><span class="hl-2">.</span><span class="hl-1">Map</span><span class="hl-2">.</span><span class="hl-4">addFeaturesToLayer</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-1">features:</span><span class="hl-2"> </span><span class="hl-1">featuresToAdd</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-1">layerName:</span><span class="hl-2"> </span><span class="hl-6">&quot;your_layer_name&quot;</span><span class="hl-2">,</span><br/><span class="hl-2">});</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="migration-guide" class="tsd-anchor-link">Migration Guide<a href="#migration-guide" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>If you're migrating your script from using internal WME methods directly to the
+new WME SDK, the tables below list commonly used internal methods and their
+corresponding methods in the SDK.</p>
+<p><strong>Usages of global <code>W</code> variable</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pre-SDK usage</th>
+<th>SDK method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>W.accelerators</code></td>
+<td>Use methods in <code>Shortcuts</code> module</td>
+</tr>
+<tr>
+<td><code>W.app.getAppRegionCode</code></td>
+<td>Use <code>Settings.getRegionCode</code></td>
+</tr>
+<tr>
+<td><code>W.Config.venues.categories</code> \ <code>W.Config.venues.subcategories</code> \ <code>W.model.categoryBrands</code></td>
+<td><code>DataModel.Venues</code> contains methods for getting venue categories as well as category brands</td>
+</tr>
+<tr>
+<td><code>W.Config.user_profile.url</code></td>
+<td>Use <code>DataModel.Users.getUserProfileLink</code></td>
+</tr>
+<tr>
+<td><code>W.controller.reloadData</code></td>
+<td>Use <code>DataModel.refreshData</code></td>
+</tr>
+<tr>
+<td><code>W.controller.save</code></td>
+<td>Use <code>Editing.save</code></td>
+</tr>
+<tr>
+<td><code>W.loginManager.user</code></td>
+<td>Use <code>State.userInfo</code> to get the logged in user information</td>
+</tr>
+<tr>
+<td><code>W.loginManager.isLoggedIn</code></td>
+<td><code>State.userInfo</code> will be null if a user is not logged in</td>
+</tr>
+<tr>
+<td><code>W.map.*</code></td>
+<td>The <code>Map</code> module contains methods to interact and query with the map, such as center, zoom, adding/removing layers, drawing on the map and more. See the <code>Map</code> module documentation for more information</td>
+</tr>
+<tr>
+<td><code>W.map.events</code></td>
+<td>The events <code>wme-map-zoom-changed</code>, wme-map-move<code>&amp;</code>wme-map-move-end` are triggered by the SDK</td>
+</tr>
+<tr>
+<td><code>W.model.*.on</code> \ <code>W.model.*.off</code></td>
+<td>Use the <code>Events</code> module which allows tracking changes in a data model</td>
+</tr>
+<tr>
+<td><code>W.model.*.objects[*].model</code></td>
+<td>Use <code>DataModel</code></td>
+</tr>
+<tr>
+<td><code>W.model.*.getObjectArray</code> \ <code>W.model.*.objects</code> \ <code>W.model.*.getByAttributes</code></td>
+<td>Use <code>DataModel.*.getAll</code></td>
+</tr>
+<tr>
+<td><code>W.model.*.getObjectById</code> \ <code>W.model.*.get</code></td>
+<td>Use <code>DataModel.*.getById</code></td>
+</tr>
+<tr>
+<td><code>W.model.*.objects[*].geometry</code></td>
+<td>Most SDK interfaces come with a <code>geometry</code> property.</td>
+</tr>
+<tr>
+<td><code>W.model.*.getAsync</code></td>
+<td>Use <code>DataModel.MapUpdateRequests.getUpdateRequestDetails</code></td>
+</tr>
+<tr>
+<td><code>W.model.getTopCountry</code></td>
+<td>Use <code>DataModel.Countries.getTopCountry</code></td>
+</tr>
+<tr>
+<td><code>W.model.getTopState</code></td>
+<td>Use <code>DataModel.States.getTopState</code></td>
+</tr>
+<tr>
+<td><code>W.model.*.top</code></td>
+<td>Use <code>DataModel.Countries.getTopCountry</code> \ <code>DataModel.States.getTopState</code></td>
+</tr>
+<tr>
+<td><code>W.model.isImperial</code></td>
+<td>Use <code>Settings.getUserSettings().isImperal</code></td>
+</tr>
+<tr>
+<td><code>W.model.isLeftHand</code></td>
+<td>Use <code>isLeftHandTraffic</code> attribute on the <code>Country</code> SDK interface</td>
+</tr>
+<tr>
+<td><code>W.model.getTurnGraph</code></td>
+<td>Use methods in <code>DataModel.Turns</code></td>
+</tr>
+<tr>
+<td><code>W.prefs.get</code> \ <code>W.prefs.set</code> \ <code>W.prefs.attributes</code></td>
+<td>Use <code>Settings.getUserSettings</code> \ <code>Settings.setUserSettings</code></td>
+</tr>
+<tr>
+<td><code>W.prefs.on(&quot;change&quot;)</code></td>
+<td>Register to the event <code>wme-user-settings-changed</code> triggered by the SDK</td>
+</tr>
+<tr>
+<td><code>W.selectionManager.getSelectedFeatures</code> \ <code>W.selectionManager.getSelectedFeaturesIds</code> \ <code>W.selectionManager.setSelectedModels</code> \ <code>W.selectionManager.hasSelectedItems</code> \ <code>W.selectionManager.isSelected</code> \ <code>W.selectionManager.selectFeatures</code> \ <code>W.selectionManager.unselectFeatures</code></td>
+<td>The <code>Editing</code> module contains methods to get and set selected features. See the <code>Editing</code> module documentation for more information</td>
+</tr>
+<tr>
+<td><code>W.selectionManager.getReversedSegments</code></td>
+<td>Use <code>DataModel.Segments.getReversedSegments</code></td>
+</tr>
+<tr>
+<td><code>W.selectionManager.events</code></td>
+<td>The event <code>wme-selection-changed</code> is triggered by the SDK when selection has changed</td>
+</tr>
+<tr>
+<td><code>W.userscripts.state</code></td>
+<td>Use <code>State</code> included on the SDK instance</td>
+</tr>
+<tr>
+<td><code>W.userscripts.registerSidebarTab</code></td>
+<td>Use <code>Sidebar.registerScriptTab</code></td>
+</tr>
+<tr>
+<td><code>W.userscripts.waitForElementConnected</code></td>
+<td>Not required as the SDK method <code>Sidebar.registerScriptTab</code> returns a <code>Promise</code> which resolves when the <code>tabLabel</code> &amp; <code>tabPane</code> elements are available in the DOM</td>
+</tr>
+<tr>
+<td><code>W.app.on('change:loadingIssueTrackerMapData', callback);</code></td>
+<td>Use <code>wme-map-data-loaded</code> event to determine whether the map data is loaded.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usages of <code>W.map.*</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Pre-SDK usage</th>
+<th>SDK method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>W.map.getViewportElement</code></td>
+<td>Use <code>Map.getMapViewportElement</code></td>
+</tr>
+<tr>
+<td><code>W.map.addUniqueLayer</code></td>
+<td>Use <code>Map.addLayer</code></td>
+</tr>
+<tr>
+<td><code>W.map.addUniqueLayers</code></td>
+<td>Use <code>Map.addLayer</code></td>
+</tr>
+<tr>
+<td><code>W.map.getLonLatFromPixel</code></td>
+<td>Use <code>Map.getLonLatFromPixel</code></td>
+</tr>
+<tr>
+<td><code>W.map.getExtent</code></td>
+<td>Use <code>Map.getExtent</code></td>
+</tr>
+<tr>
+<td><code>W.map.getOLExtent</code></td>
+<td>Use <code>Map.getExtent</code></td>
+</tr>
+<tr>
+<td><code>W.map.zoom</code></td>
+<td>Use <code>Map.getZoomLevel</code></td>
+</tr>
+<tr>
+<td><code>W.map.olMap</code></td>
+<td>Use <code>Map.*</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usages of built-in model methods</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pre-SDK usage</th>
+<th>SDK method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UpdateRequestSession.addComment</code></td>
+<td>Use <code>DataModel.MapUpdateRequests.addComment</code></td>
+</tr>
+<tr>
+<td><code>Segment.isLockedByHigherRank</code></td>
+<td>Use <code>DataModel.Segments.hasPermissions</code></td>
+</tr>
+<tr>
+<td><code>Segment.getRoundabout</code></td>
+<td>Use <code>DataModel.Junctions.getById</code></td>
+</tr>
+<tr>
+<td><code>Segment.getVirtualNodes</code></td>
+<td>Use <code>DataModel.Segments.getVirtualNodes</code></td>
+</tr>
+<tr>
+<td><code>NodeModel.areConnectionsEditable</code></td>
+<td>Use <code>DataModel.Nodes.canEditTurns</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usages of <code>Waze/Action/*'</code></strong></p>
+<p>In general, the SDK will provide abstractions over actions and expose methods to
+update data models via their relevant modules.</p>
+<table>
+<thead>
+<tr>
+<th>Pre-SDK usage</th>
+<th>SDK method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AddAlternateStreet</code></td>
+<td>Use <code>DataModel.Segments.addAlternateStreet</code></td>
+</tr>
+<tr>
+<td><code>AddIntersection</code></td>
+<td>Use <code>DataModel.Segments.addIntersection</code></td>
+</tr>
+<tr>
+<td><code>AddLandmark</code></td>
+<td>Use <code>DataModel.Venues.addVenue</code></td>
+</tr>
+<tr>
+<td><code>AddOrGetCity</code></td>
+<td>Use <code>DataModel.Cities.getCity</code> \ <code>DataModel.Cities.addCity</code></td>
+</tr>
+<tr>
+<td><code>AddOrGetStreet</code></td>
+<td>Use <code>DataModel.Streets.getStreet</code> \ <code>DataModel.Streets.addStreet</code></td>
+</tr>
+<tr>
+<td><code>AddSegment</code></td>
+<td>Use <code>DataModel.Segments.addSegment</code></td>
+</tr>
+<tr>
+<td><code>CreateObject</code></td>
+<td>Use <code>DataModel.Cities.addCity</code> \ <code>DataModel.Segments.addSegment</code> \ <code>DataModel.Venues.addVenue</code> \ <code>DataModel.Segments.createRoundabout</code> \ <code>DataModel.MapComments.addComment</code> \ <code>DataModel.RoadClosures.addClosure</code> \ <code>DataModel.TurnClosures.addClosure</code> \ <code>DataModel.HouseNumbers.addHouseNumber</code></td>
+</tr>
+<tr>
+<td><code>CreateRoundabout</code></td>
+<td>Use <code>DataModel.Segments.createRoundabout</code></td>
+</tr>
+<tr>
+<td><code>DeleteObject</code></td>
+<td>Use <code>DataModel.Segments.deleteSegment</code> \ <code>DataModel.Venues.deleteVenue</code> \ <code>DataModel.HouseNumbers.deleteHouseNumber</code></td>
+</tr>
+<tr>
+<td><code>DeleteSegment</code></td>
+<td>Use <code>DataModel.Segments.deleteSegment</code></td>
+</tr>
+<tr>
+<td><code>MergeSegments</code></td>
+<td>Use <code>DataModel.Segments.mergeSegments</code></td>
+</tr>
+<tr>
+<td><code>ModifyAllConnections</code></td>
+<td>Use <code>DataModel.Nodes.allowNodeTurns</code></td>
+</tr>
+<tr>
+<td><code>MoveHouseNumber</code></td>
+<td>Use <code>DataModel.HouseNumbers.moveHouseNumber</code></td>
+</tr>
+<tr>
+<td><code>MoveNode</code></td>
+<td>Use <code>DataModel.Nodes.moveNode</code></td>
+</tr>
+<tr>
+<td><code>SplitSegments</code></td>
+<td>Use <code>DataModel.Segments.splitSegment</code></td>
+</tr>
+<tr>
+<td><code>UpdateFeatureAddress</code></td>
+<td>Use <code>DataModel.Segments.updateAddress</code> \ <code>DataModel.Venues.updateAddress</code></td>
+</tr>
+<tr>
+<td><code>UpdateFeatureGeometry</code></td>
+<td>Use <code>DataModel.Segments.updateSegment</code> \ <code>DataModel.Venues.updateVenue</code> \ <code>DataModel.MapComments.updateComment</code></td>
+</tr>
+<tr>
+<td><code>UpdateHouseNumber</code></td>
+<td>Use <code>DataModel.HouseNumbers.updateHouseNumber</code></td>
+</tr>
+<tr>
+<td><code>UpdatePlaceUpdate</code></td>
+<td>Use <code>DataModel.Venues.updateVenueUpdateRequest</code></td>
+</tr>
+<tr>
+<td><code>UpdateSegmentGeometry</code></td>
+<td>Use <code>DataModel.Segments.updateSegment</code></td>
+</tr>
+<tr>
+<td><code>AddHouseNumber</code></td>
+<td>Use <code>DataModel.HouseNumbers.addHouseNumber</code></td>
+</tr>
+<tr>
+<td><code>DeleteHouseNumber</code></td>
+<td>Use <code>DataModel.HouseNumbers.deleteHouseNumber</code></td>
+</tr>
+<tr>
+<td><code>MoveHouseNumberFractionPoint</code></td>
+<td>Use <code>DataModel.HouseNumbers.moveHouseNumberFractionPoint</code></td>
+</tr>
+<tr>
+<td><code>ReplaceHouseNumberSegment</code></td>
+<td>Use <code>DataModel.HouseNumbers.updateHouseNumber</code></td>
+</tr>
+<tr>
+<td><code>SetTurn</code></td>
+<td>Use <code>DataModel.Turns.updateTurn</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usages of <code>Waze/Model/Objects/*</code></strong></p>
+<p>The SDK separates interfaces from the methods used to modify them.</p>
+<table>
+<thead>
+<tr>
+<th>Pre-SDK usage</th>
+<th>SDK method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Venue</code></td>
+<td>Use SDK <code>Venue</code> interface</td>
+</tr>
+<tr>
+<td><code>OpeningHour</code></td>
+<td>Use SDK <code>OpeningHour</code> interface</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usages of <code>OpenLayers</code> or <code>OL</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Pre-SDK usage</th>
+<th>SDK method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OpenLayers.Control.DrawFeature</code></td>
+<td>Use <code>Map.draw*</code> methods</td>
+</tr>
+<tr>
+<td><code>OpenLayers.Geometry.LineString</code> \ <code>OpenLayers.Geometry.Point</code> \ <code>OpenLayers.Geometry.Polygon</code></td>
+<td>Use <code>Map.addFeatureToLayer</code> to add features or <code>Map.draw*</code> to draw</td>
+</tr>
+<tr>
+<td><code>OpenLayers.Layer.Vector</code> \ <code>OpenLayers.Feature.Vector</code></td>
+<td>Use <code>Map.addLayer</code> &amp; <code>Map.addFeatureToLayer</code></td>
+</tr>
+<tr>
+<td><code>OpenLayers.Style</code> \ <code>OpenLayers.StyleMap</code> \ <code>OpenLayers.Rule</code></td>
+<td>Use <code>Map.addLayer</code> with style object</td>
+</tr>
+<tr>
+<td><code>OpenLayers.LonLat</code></td>
+<td>SDK works with plain JS objects - <code>{ lon: number; lat: number; }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usages of <code>I18n</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Pre-SDK usage</th>
+<th>SDK method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>I18n.currentLocale()</code> \ <code>I18n.locale</code></td>
+<td><code>Settings.getLocale</code></td>
+</tr>
+</tbody>
+</table>
+<p>As this SDK is in active development, we will update this guide as more
+functionality is added.
+As always, your feedback is encouraged.
+Please report any issues encountered to help improve the SDK.</p>
+<h2 id="troubleshooting" class="tsd-anchor-link">Troubleshooting<a href="#troubleshooting" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="sdk-initialization" class="tsd-anchor-link">SDK initialization<a href="#sdk-initialization" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>Sometimes, when initializing the SDK, you can get the following error:</p>
+<pre><code><span class="hl-1">window</span><span class="hl-2">.</span><span class="hl-3">SDK_INITIALIZED</span><span class="hl-2">.</span><span class="hl-4">then</span><span class="hl-2">(</span><span class="hl-1">initScript</span><span class="hl-2">); </span><span class="hl-0">// &lt;- &quot;Uncaught (in promise) TypeError: Cannot read properties of undefined (reading &#39;then&#39;)&quot;</span>
+</code><button>Copy</button></pre>
+
+<p>There might be a couple of reasons why you are getting it.</p>
+<ol>
+<li>
+<p>Your code may be executed before the <code>DOMContentLoaded</code> event is dispatched.
+<br><br>
+To make sure that it's not the case, check your <a href="https://www.tampermonkey.net/documentation.php#meta:run_at"><code>@run-at</code></a> setting.
+It should be set to anything that guarantees the script execution after the <code>DOMContentLoaded</code> was dispatched.
+<br><br>
+If you are using a <code>@run-at</code> setting which injects your code before the <code>DOMContentLoaded</code> dispatch, or if your environment does not support <code>@run-at</code> or similar setting, you will need to wrap your initialization code as following:</p>
+<pre><code><span class="hl-1">document</span><span class="hl-2">.</span><span class="hl-4">addEventListener</span><span class="hl-2">(</span><span class="hl-6">&quot;DOMContentLoaded&quot;</span><span class="hl-2">, () </span><span class="hl-5">=&gt;</span><span class="hl-2"> {</span><br/><span class="hl-2">  </span><span class="hl-1">window</span><span class="hl-2">.</span><span class="hl-3">SDK_INITIALIZED</span><span class="hl-2">.</span><span class="hl-4">then</span><span class="hl-2">(</span><span class="hl-1">initScript</span><span class="hl-2">); </span><span class="hl-0">// &lt;- works fine!</span><br/><span class="hl-2">});</span>
+</code><button>Copy</button></pre>
+
+</li>
+<li>
+<p>You may be using a <code>@grant</code> header.
+<br><br>
+If you're using Tampermonkey or a similar tool, it allows you to include some useful functions with <a href="https://www.tampermonkey.net/documentation.php#meta:grant"><code>@grant</code></a>.
+However, if you add <code>@grant</code> with anything other than <code>none</code>, it will provide your script with a <code>window</code> object, which is different from the one which the host uses.
+So, in case you want to add a function with <code>@grant</code>, make sure you add <code>// @grant unsafeWindow</code> to your script and use <code>unsafeWindow</code> instead of <code>window</code>.</p>
+<pre><code><span class="hl-2">...</span><br/><span class="hl-0">// @grant none</span><br/><span class="hl-2">...</span><br/><span class="hl-1">window</span><span class="hl-2">.</span><span class="hl-3">SDK_INITIALIZED</span><span class="hl-2">.</span><span class="hl-4">then</span><span class="hl-2">(</span><span class="hl-1">initScript</span><span class="hl-2">); </span><span class="hl-0">// &lt;- works fine!</span>
+</code><button>Copy</button></pre>
+
+<br>
+<pre><code><span class="hl-2">...</span><br/><span class="hl-0">// @grant GM_setClipboard</span><br/><span class="hl-2">...</span><br/><span class="hl-1">window</span><span class="hl-2">.</span><span class="hl-3">SDK_INITIALIZED</span><span class="hl-2">.</span><span class="hl-4">then</span><span class="hl-2">(</span><span class="hl-1">initScript</span><span class="hl-2">); </span><span class="hl-0">// &lt;- fails with &quot;Uncaught (in promise) TypeError: Cannot read properties of undefined (reading &#39;then&#39;)&quot;</span>
+</code><button>Copy</button></pre>
+
+<br>
+<pre><code><span class="hl-2">...</span><br/><span class="hl-0">// @grant GM_setClipboard</span><br/><span class="hl-0">// @grant unsafeWindow</span><br/><span class="hl-2">...</span><br/><span class="hl-1">unsafeWindow</span><span class="hl-2">.</span><span class="hl-3">SDK_INITIALIZED</span><span class="hl-2">.</span><span class="hl-4">then</span><span class="hl-2">(</span><span class="hl-1">initScript</span><span class="hl-2">); </span><span class="hl-0">// &lt;- works fine!</span>
+</code><button>Copy</button></pre>
+
+</li>
+</ol>
+<h2 id="support" class="tsd-anchor-link">Support<a href="#support" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>Visit
+the <a href="https://www.waze.com/forum/viewforum.php?f=1782" target="_blank">
+Waze Scripters Hall</a></li>
+<li>Reach out to our support at <a href="mailto:waze-sdk-support@google.com">waze-sdk-support@google.com</a> to join the WME
+Scripters + Dev chat space</li>
+</ul>
+<h2 id="disclaimer" class="tsd-anchor-link">Disclaimer<a href="#disclaimer" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>This SDK is designed to facilitate integration with the WME for script writers.
+However, Waze does not guarantee the functionality, accuracy, or reliability of
+any scripts developed using this SDK.
+Users are solely responsible for the scripts they create and their performance.</p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#description"><span>Description</span></a><ul><li><a href="#features"><span>Features</span></a></li></ul><a href="#usage"><span>Usage</span></a><ul><li><a href="#typescript-type-definitions"><span>Typescript type definitions</span></a></li><li><a href="#sdk-structure"><span>SDK <wbr/>Structure</span></a></li><li><a href="#events"><span>Events</span></a></li><li><ul><li><a href="#global-events"><span>Global events</span></a></li><li><a href="#data-model-events"><span>Data model events</span></a></li><li><a href="#layer-events"><span>Layer events</span></a></li></ul></li><li><a href="#working-with-complex-geometries"><span>Working with complex geometries</span></a></li><li><a href="#migration-guide"><span>Migration <wbr/>Guide</span></a></li></ul><a href="#troubleshooting"><span>Troubleshooting</span></a><ul><li><a href="#sdk-initialization"><span>SDK initialization</span></a></li></ul><a href="#support"><span>Support</span></a><a href="#disclaimer"><span>Disclaimer</span></a></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">Waze Map Editor JavaScript SDK</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

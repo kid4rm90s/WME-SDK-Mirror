@@ -1,7 +1,7 @@
 ---
 title: SDK.SegmentPermission variable
 source: variables/index.SDK.SegmentPermission.html
-created: 2026-04-08
+created: 2026-04-23
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

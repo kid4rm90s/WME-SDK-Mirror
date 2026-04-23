@@ -1,7 +1,7 @@
 ---
 title: SDK.Segments class
 source: classes/index.SDK.Segments.html
-created: 2026-04-08
+created: 2026-04-23
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -33,6 +33,12 @@ the ids of the four newly created segments.
 addSegment ( args: { geometry: LineString ; roadType: RoadTypeId } ) : number
 ```
 segment id of the new segment
+### `connectsToBigJunction`
+
+```typescript
+connectsToBigJunction ( args: { segmentId: number } ) : boolean
+```
+true if the segment is completely within, goes inside or goes outside of a big junction.
 ### `createRoundabout`
 
 ```typescript
@@ -115,6 +121,14 @@ whether the current user has a permission for this segment or not.
 isContainedInBigJunction ( args: { segmentId: number } ) : boolean
 ```
 true if the segment is completely within a big junction
+### `isFromNodeInBigJunction`
+
+```typescript
+isFromNodeInBigJunction (
+  args: { bigJunctionId ?: number ; segmentId: number } ,
+  ) : boolean
+```
+true if the segment's "from" node is part of a big junction, indicating the segment leads away from it.
 ### `isRoadTypeDrivable`
 
 ```typescript
@@ -127,6 +141,14 @@ boolean indicating whether specified road type is drivable.
 isTollSegment ( args: { segmentId: number } ) : boolean
 ```
 true if the segment is a toll road or has a toll-free restriction
+### `isToNodeInBigJunction`
+
+```typescript
+isToNodeInBigJunction (
+  args: { bigJunctionId ?: number ; segmentId: number } ,
+  ) : boolean
+```
+true if the segment's "to" node is part of a big junction, indicating the segment leads into it.
 ### `mergeSegments`
 
 ```typescript
