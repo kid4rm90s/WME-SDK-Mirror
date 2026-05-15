@@ -1,7 +1,7 @@
 ---
 title: SDK.SuggestionResolution interface
 source: interfaces/index.SDK.SuggestionResolution.html
-created: 2026-04-23
+created: 2026-05-15
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
