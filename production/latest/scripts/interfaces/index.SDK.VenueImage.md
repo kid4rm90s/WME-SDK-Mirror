@@ -1,7 +1,7 @@
 ---
 title: SDK.VenueImage interface
 source: interfaces/index.SDK.VenueImage.html
-created: 2026-05-15
+created: 2026-05-30
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

@@ -1,7 +1,13 @@
 import os
+import stat
 import shutil
 from glob import glob
 import re
+
+def _remove_readonly(func, path, _):
+    """Error handler for shutil.rmtree to clear read-only flags on Windows."""
+    os.chmod(path, stat.S_IWRITE)
+    func(path)
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 # Output to ../output/docs/ (production/latest/output/docs/)
@@ -352,7 +358,7 @@ def sync_scripts_to_source():
             if os.path.exists(src_folder):
                 # Remove destination if it exists
                 if os.path.exists(dst_folder):
-                    shutil.rmtree(dst_folder)
+                    shutil.rmtree(dst_folder, onerror=_remove_readonly)
                 # Copy with contents
                 shutil.copytree(src_folder, dst_folder)
                 print(f"  [OK] Synced folder: {folder}/")
@@ -371,7 +377,7 @@ def sync_scripts_to_source():
         typedefs_dst = os.path.join(source_base, "TypeDefs")
         if os.path.exists(typedefs_src):
             if os.path.exists(typedefs_dst):
-                shutil.rmtree(typedefs_dst)
+                shutil.rmtree(typedefs_dst, onerror=_remove_readonly)
             shutil.copytree(typedefs_src, typedefs_dst)
             print(f"  [OK] Synced folder: TypeDefs/")
         
@@ -380,7 +386,7 @@ def sync_scripts_to_source():
         external_dst = os.path.join(source_base, "externalDocs")
         if os.path.exists(external_src):
             if os.path.exists(external_dst):
-                shutil.rmtree(external_dst)
+                shutil.rmtree(external_dst, onerror=_remove_readonly)
             shutil.copytree(external_src, external_dst)
             print(f"  [OK] Synced folder: externalDocs/")
         
