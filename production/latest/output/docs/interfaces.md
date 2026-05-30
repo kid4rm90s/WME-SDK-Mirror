@@ -2039,6 +2039,7 @@ interface SdkEvents {
   featureType: 
   | "bigJunction"
   | "city"
+  | "googlePlace"
   | "mapComment"
   | "node"
   | "permanentHazard"
@@ -2174,6 +2175,7 @@ SDK events and their payload (if any).
   featureType: 
   | "bigJunction"
   | "city"
+  | "googlePlace"
   | "mapComment"
   | "node"
   | "permanentHazard"

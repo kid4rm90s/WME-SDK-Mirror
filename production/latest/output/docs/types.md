@@ -163,7 +163,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 # Type Alias EditSuggestionSource
 
 ```typescript
-EditSuggestionSource: "CLIENT" | "GEO" | "OTHER" | "WME"
+EditSuggestionSource: "CLIENT" | "GEO" | "OTHER" | "WME" | "SYSTEM"
 ```
 
 ---

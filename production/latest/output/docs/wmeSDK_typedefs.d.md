@@ -7,72 +7,6 @@ import { BBox, BBox as BBox$1, Feature, FeatureCollection, GeoJSON as GeoJSON$1,
 
 type Values<T> = T[keyof T];
 type ArrayElement<T extends unknown[] | Readonly<unknown[]>> = T[number];
-type UserRank = 0 | 1 | 2 | 3 | 4 | 5 | 6;
-declare const CONTINUE = "CONTINUE";
-declare const EXIT_LEFT = "EXIT_LEFT";
-declare const EXIT_RIGHT = "EXIT_RIGHT";
-declare const KEEP_LEFT = "KEEP_LEFT";
-declare const KEEP_RIGHT = "KEEP_RIGHT";
-declare const NONE = "NONE";
-declare const ROUNDABOUT_ENTER = "ROUNDABOUT_ENTER";
-declare const TURN_LEFT = "TURN_LEFT";
-declare const TURN_RIGHT = "TURN_RIGHT";
-declare const UTURN = "UTURN";
-declare const ObjectType: {
-	readonly BIG_JUNCTION: "bigJunction";
-	readonly CITY: "city";
-	readonly COUNTRY: "country";
-	readonly EDIT_SUGGESTION: "editSuggestion";
-	readonly GOOGLE_PLACE: "googlePlace";
-	readonly HOUSE_NUMBER: "houseNumber";
-	readonly JUNCTION: "junction";
-	readonly JUNCTION_NC: "junctionConnection";
-	readonly MANAGED_AREA: "managedArea";
-	readonly MAP_COMMENT: "mapComment";
-	readonly MAP_PROBLEM: "mapProblem";
-	readonly MERGED_NODE: "mergedNode";
-	readonly MTE: "majorTrafficEvent";
-	readonly NODE: "node";
-	readonly NODE_CONNECTION: "nodeConnection";
-	readonly ONLINE_EDITOR: "onlineEditor";
-	readonly PATH_CONNECTION: "pathConnection";
-	readonly PERMANENT_HAZARD: "permanentHazard";
-	readonly PROBLEM_DETAILS: "problemDetail";
-	readonly RESTRICTED_DRIVING_AREA: "restrictedDrivingArea";
-	readonly RESTRICTED_EDITING_AREA: "restrictedEditingArea";
-	readonly RESTRICTION: "restriction";
-	readonly ROAD_CLOSURE: "roadClosure";
-	readonly SCHEDULE: "schedule";
-	readonly SEGMENT: "segment";
-	readonly SEGMENT_SUGGESTION: "segmentSuggestion";
-	readonly SIGN_TYPE: "signType";
-	readonly STATE: "state";
-	readonly STREET: "street";
-	readonly TURN_CLOSURE: "turnClosure";
-	readonly TURN_PROBLEM: "turnProblem";
-	readonly UPDATE_REQUEST: "mapUpdateRequest";
-	readonly UPDATE_REQUEST_SESSION: "updateRequestSession";
-	readonly USER: "user";
-	readonly USER_AREA: "userArea";
-	readonly VENUE: "venue";
-	readonly VENUE_UPDATE_REQUEST: "venueUpdateRequest";
-};
-type ObjectType = Values<typeof ObjectType>;
-declare const SELECTABLE_OBJECT_TYPES: readonly [
-	"mapComment",
-	"city",
-	"restrictedDrivingArea",
-	"permanentHazard",
-	"venue",
-	"node",
-	"segmentSuggestion",
-	"bigJunction",
-	"segment"
-];
-type SelectableObjectType = ArrayElement<typeof SELECTABLE_OBJECT_TYPES>;
-declare const REGION_CODE_USA = "usa";
-declare const REGION_CODE_ROW = "row";
-declare const REGION_CODE_IL = "il";
 declare type FeatureStyleContextKey = string;
 interface FeatureStyle {
 	backgroundGraphic?: string;
@@ -139,6 +73,73 @@ interface WazeFeature {
 	isUnchanged?: boolean;
 	oldId?: WazeFeatureId | null;
 }
+type UserRank = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+declare const CONTINUE = "CONTINUE";
+declare const EXIT_LEFT = "EXIT_LEFT";
+declare const EXIT_RIGHT = "EXIT_RIGHT";
+declare const KEEP_LEFT = "KEEP_LEFT";
+declare const KEEP_RIGHT = "KEEP_RIGHT";
+declare const NONE = "NONE";
+declare const ROUNDABOUT_ENTER = "ROUNDABOUT_ENTER";
+declare const TURN_LEFT = "TURN_LEFT";
+declare const TURN_RIGHT = "TURN_RIGHT";
+declare const UTURN = "UTURN";
+declare const ObjectType: {
+	readonly BIG_JUNCTION: "bigJunction";
+	readonly CITY: "city";
+	readonly COUNTRY: "country";
+	readonly EDIT_SUGGESTION: "editSuggestion";
+	readonly GOOGLE_PLACE: "googlePlace";
+	readonly HOUSE_NUMBER: "houseNumber";
+	readonly JUNCTION: "junction";
+	readonly JUNCTION_NC: "junctionConnection";
+	readonly MANAGED_AREA: "managedArea";
+	readonly MAP_COMMENT: "mapComment";
+	readonly MAP_PROBLEM: "mapProblem";
+	readonly MERGED_NODE: "mergedNode";
+	readonly MTE: "majorTrafficEvent";
+	readonly NODE: "node";
+	readonly NODE_CONNECTION: "nodeConnection";
+	readonly ONLINE_EDITOR: "onlineEditor";
+	readonly PATH_CONNECTION: "pathConnection";
+	readonly PERMANENT_HAZARD: "permanentHazard";
+	readonly PROBLEM_DETAILS: "problemDetail";
+	readonly RESTRICTED_DRIVING_AREA: "restrictedDrivingArea";
+	readonly RESTRICTED_EDITING_AREA: "restrictedEditingArea";
+	readonly RESTRICTION: "restriction";
+	readonly ROAD_CLOSURE: "roadClosure";
+	readonly SCHEDULE: "schedule";
+	readonly SEGMENT: "segment";
+	readonly SEGMENT_SUGGESTION: "segmentSuggestion";
+	readonly SIGN_TYPE: "signType";
+	readonly STATE: "state";
+	readonly STREET: "street";
+	readonly TURN_CLOSURE: "turnClosure";
+	readonly TURN_PROBLEM: "turnProblem";
+	readonly UPDATE_REQUEST: "mapUpdateRequest";
+	readonly UPDATE_REQUEST_SESSION: "updateRequestSession";
+	readonly USER: "user";
+	readonly USER_AREA: "userArea";
+	readonly VENUE: "venue";
+	readonly VENUE_UPDATE_REQUEST: "venueUpdateRequest";
+};
+type ObjectType = Values<typeof ObjectType>;
+declare const SELECTABLE_OBJECT_TYPES: readonly [
+	"mapComment",
+	"city",
+	"restrictedDrivingArea",
+	"permanentHazard",
+	"venue",
+	"node",
+	"segmentSuggestion",
+	"bigJunction",
+	"segment",
+	"googlePlace"
+];
+type SelectableObjectType = ArrayElement<typeof SELECTABLE_OBJECT_TYPES>;
+declare const REGION_CODE_USA = "usa";
+declare const REGION_CODE_ROW = "row";
+declare const REGION_CODE_IL = "il";
 type SegmentId = number;
 type EventHandler<P> = (payload: P) => Promise<void> | void;
 interface ModificationMetadata {
@@ -1764,7 +1765,7 @@ export interface RegisterSidebarTabResult {
 	tabLabel: HTMLElement;
 	tabPane: HTMLElement;
 }
-type EditSuggestionSource = "CLIENT" | "GEO" | "OTHER" | "WME";
+type EditSuggestionSource = "CLIENT" | "GEO" | "OTHER" | "WME" | "SYSTEM";
 declare const EditSuggestionStatus: {
 	/**
 	 * All suggestions are accepted.
@@ -3435,6 +3436,17 @@ declare class MapComments extends SdkModule {
 		 */
 		subject?: string;
 	}): MapComment;
+	/**
+	 * Deletes a map comment from the WME data model.
+	 * @throws DataModelNotFoundError if the specified map comment cannot be found in the data model.
+	 * @returns null.
+	 */
+	deleteComment(args: {
+		/**
+		 * An id of the map comment to delete.
+		 */
+		mapCommentId: string;
+	}): null;
 }
 declare class MapUpdateRequests extends SdkModule {
 	/**
@@ -5053,7 +5065,7 @@ declare class SdkEventBus extends SdkModule {
 	private trackedLayers;
 	private trackedDataModels;
 	/** @internal */
-	constructor(scriptId: string, scriptName: string, state: WmeState, map: Map$1);
+	constructor(scriptId: string, scriptName: string, state: WmeState);
 	private waitForWmeReady;
 	private registerMapMouseEvent;
 	/**
