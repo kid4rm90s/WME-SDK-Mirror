@@ -1,7 +1,7 @@
 ---
 title: SDK.Junctions class
 source: classes/index.SDK.Junctions.html
-created: 2026-06-10
+created: 2026-06-29
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

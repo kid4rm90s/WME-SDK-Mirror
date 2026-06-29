@@ -1,10 +1,40 @@
 ---
-title: # v2.353
+title: # v2.358
 source: documents/CHANGELOG.html
-created: 2026-05-30
+created: 2026-06-29
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
+
+## v2.358
+
+### Expose isFirstLogin in UserSession
+
+### GetTopCountry returning null
+
+Defer W.model.isInitialMapDataLoaded flag setting until getFeatures resolves, preventing a race condition where getOnlineEditors resolved first and triggered wme-ready before country data was merged.
+
+### Expose description in MapUpdateRequest model
+
+Add a getDescription() getter method to the core UpdateRequest class and map the description property in the SDK MapUpdateRequest interface.
+This allows modern WmeSDK consumers to programmatically access public descriptions of map update requests. JSDoc comments and unit tests are updated accordingly.
+
+### Expose resolvedBy in MapUpdateRequest model
+
+Add a getResolvedBy() getter method to the core BaseProblem class and map the resolvedBy property in the SDK MapUpdateRequest interface.
+This allows modern WmeSDK consumers to programmatically access the username of the user who resolved a map update request. JSDoc comments and unit tests are updated accordingly.
+
+## v2.356
+
+### Expose description in Venue model
+
+Add a getDescription() getter method to the core Venue class and map the description property in the SDK Venue interface.
+This allows modern WmeSDK consumers to programmatically access public venue descriptions. JSDoc comments and unit tests are updated accordingly.
+
+### Expose isDrivable in Segment model
+
+Expose the 'isDrivable' property on the SDK Segment interface to allow third-party userscripts to programmatically query whether a segment supports motor vehicle traffic.
+This maps directly to the internal 'segment.isDrivable()' method to determine drivability (excluding walking trails, pedestrian boardwalks, stairways, railroads, and runways). Clear JSDoc comments are also provided for the modern WmeSDK external API contract documentation.
 
 ## v2.353
 

@@ -25,7 +25,6 @@ GROUPS = {
 INDEX_FILE = os.path.join(NOTEBOOK_LM_FOLDER, "index.md")
 CHANGELOG_FILE = os.path.join(NOTEBOOK_LM_FOLDER, "changelog.md")
 GUIDES_FOLDER = os.path.join(BASE, "../source/guides")  # static content lives in source/
-GUIDES_FOLDER_SCRIPTS = os.path.join(BASE, "guides")  # fallback if in scripts/
 
 # Map external doc file names to web URLs if wanted
 EXTERNAL_DOC_LINKS = {
@@ -75,9 +74,9 @@ def get_sdk_version_and_date(changelog_path):
     return (version, created)
 
 def copy_guides_and_scripts():
-    folder = GUIDES_FOLDER if os.path.exists(GUIDES_FOLDER) else GUIDES_FOLDER_SCRIPTS
-    if not os.path.exists(folder):
-        print(f"No guides folder found at {GUIDES_FOLDER} or {GUIDES_FOLDER_SCRIPTS}")
+    folder = GUIDES_FOLDER if os.path.exists(GUIDES_FOLDER) else None
+    if not folder:
+        print(f"No guides folder found at {GUIDES_FOLDER}")
         return []
     guide_files = sorted(glob(os.path.join(folder, "*.md")))
     out_names = []

@@ -1,69 +1,818 @@
-# WME SDK Skill
+---
+name: wme-sdk
+description: Use this skill for ANY Waze Map Editor (WME) script work — migrating legacy W object, OpenLayers, or deprecated WazeWrap functions to the WME SDK, querying venues/nodes/junctions/segments, building map layers with advanced styling predicates and dynamic getters, managing keyboard shortcuts with conflict detection, handling data models and country context, or implementing features with Turf.js. Covers error handling, high-performance feature loading (dangerouslyAddFeaturesToLayerWithoutValidation), mutable style state optimization for 1000+ features, zoom-aware predicates, viewport queries (getMapExtent, getMapCenter), event listeners (map-move-end, layer-checkbox-toggled), sidebar tab customization, and IndexedDB persistence. Provides before/after migration examples, SDK method references, real-world patterns from production scripts, working Tampermonkey examples, and best practices. Trigger on WME scripts, SDK migration, venues/nodes/junctions APIs, map styling, layer management, performance optimization, shortcuts, country detection, viewport filtering, detecting deprecated WazeWrap calls, or "how do I" questions about WME script development.
+compatibility: Requires access to local WME SDK documentation and Tampermonkey userscript context
+---
 
-You are an expert in the Waze Map Editor (WME) SDK. Use your deep knowledge to help developers build WME Tampermonkey scripts and extensions. Always use modern WME SDK APIs — never legacy `W`, `Waze`, or `OL`/`OpenLayers` objects unless no SDK alternative exists. Provide clear, concise code examples and best practices for working with the WME SDK. When referencing documentation, link to the latest stable version on the official WME site or the GitHub Pages mirror if local docs are unavailable.
+# WME SDK Development & Migration
+
+You're working with Waze Map Editor (WME) scripts in a Tampermonkey context. This skill provides structured guidance for **migrating legacy code to the WME SDK** and **building new features using modern SDK patterns**.
+
+## ⚙️ Configuration: Local Documentation Path
+
+**If you have cloned the WME-SDK-Mirror repository**, set your local path below for faster offline access:
+
+```
+/path/to/your/WME-SDK-Mirror/beta/latest/output/docs
+/path/to/your/WME-SDK-Mirror/production/latest/output/docs
+```
+
+To customize for your local setup, replace the path above with your own clone location. Examples:
+
+**For Beta version**
+- Mac: `/Users/username/projects/WME-SDK-Mirror/beta/latest/output/docs`
+- Windows: `/path/to/your/WME-SDK-Mirror/beta/latest/output/docs`
+
+**For Production version**
+- Mac: `/Users/username/projects/WME-SDK-Mirror/production/latest/output/docs`
+- Windows: `/path/to/your/WME-SDK-Mirror/production/latest/output/docs`
+
+If not set, the skill will reference GitHub Pages (beta): `https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/` & GitHub Pages (production): `https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/`
 
 ---
 
-## SDK Documentation
+## Your Context
 
-### Primary — Local (Offline)
+- **Role**: Front-end developer building/maintaining WME userscripts
+- **SDK Documentation**: 
+  - Local (if configured above): Check your configured path
+  - GitHub Pages(beta): `https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/`
+  - GitHub Pages(production): `https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/`
+  - Repo: [WME-SDK-Mirror](https://github.com/kid4rm90s/WME-SDK-Mirror)
+- **Legacy Patterns to Replace**: `W` namespace (global Waze object), OpenLayers APIs
+- **Modern Stack**: WME SDK + Turf.js for geometry, proper initialization/auth
 
-Docs are at `../../output/docs/` relative to `output/skills/SKILL.md`:
+## Workflow: Identify Your Task
 
-| Document | Local Path |
-|----------|------------|
-| **Index & Overview** | `../../output/docs/index.md` |
-| **Classes** | `../../output/docs/classes.md` |
-| **Interfaces** | `../../output/docs/interfaces.md` |
-| **Types** | `../../output/docs/types.md` |
-| **Functions** | `../../output/docs/functions.md` |
-| **Variables** | `../../output/docs/variables.md` |
-| **Modules** | `../../output/docs/modules.md` |
-| **WME SDK Typings** | `../../output/docs/wmeSDK_typedefs.d.md` |
-| **GeoJSON Typings** | `../../output/docs/geojson_typeddefs.d.md` |
-| **Getting Started** | `../../output/docs/how-to-get-started-with-the-wmeSDK.md` |
-| **Migration Guide** | `../../output/docs/migration-guide.md` |
-| **Changelog** | `../../output/docs/changelog.md` |
-| **Turf.js Docs** | `../../output/docs/Turf-Docs.md` |
-| **GeoJSON RFC 7946** | `../../output/docs/GeoJSON-Format-RFC-7946.md` |
-| **Script Examples** | `../../output/docs/script-example-1.md` through `script-example-8.md` |
+### Task Type 1: Migration
+**User provides**: Existing code using `W` object, OpenLayers, or legacy patterns  
+**You produce**:
+1. **Migration Summary** — High-level overview of areas being changed
+2. **Before/After Examples** — Each legacy pattern with explanation and SDK replacement
+3. **SDK Initialization** — How to set up and authenticate the SDK for this script
+4. **Migration Checklist** — Key areas to test after migration
 
-> **Beta SDK:** The `beta/latest/output/skills/SKILL.md` mirrors this structure but references `beta/latest/output/docs/` locally.
+### Task Type 2: New Feature Design
+**User provides**: Feature requirement or desired functionality  
+**You produce**:
+1. **Feature Design** — How to implement using WME SDK + Turf.js
+2. **Code Example** — Correct initialization, classes, methods, and patterns
+3. **SDK Integration Steps** — Ready-state handling, event subscription, etc.
+4. **Best Practices** — Patterns to follow for Tampermonkey context
 
-### Fallback — GitHub Pages (Online, when local docs unavailable)
+## How to Work
 
-| Document | URL |
-|----------|-----|
-| **Index & Overview** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/index.md |
-| **Classes** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/classes.md |
-| **Interfaces** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/interfaces.md |
-| **Types** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/types.md |
-| **Functions** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/functions.md |
-| **Variables** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/variables.md |
-| **Modules** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/modules.md |
-| **WME SDK Typings** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/wmeSDK_typedefs.d.md |
-| **GeoJSON Typings** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/geojson_typeddefs.d.md |
-| **Getting Started** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/how-to-get-started-with-the-wmeSDK.md |
-| **Migration Guide** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/migration-guide.md |
-| **Changelog** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/changelog.md |
-| **Turf.js Docs** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/Turf-Docs.md |
-| **GeoJSON RFC 7946** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/GeoJSON-Format-RFC-7946.md |
-| **Script Example 1** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-1.md |
-| **Script Example 2** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-2.md |
-| **Script Example 3** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-3.md |
-| **Script Example 4** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-4.md |
-| **Script Example 5** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-5.md |
-| **Script Example 6** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-6.md |
-| **Script Example 7** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-7.md |
-| **Script Example 8** | https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/script-example-8.md |
+### Step 1: Consult the Documentation
 
-> **Beta fallback:** Replace `production/latest` with `beta/latest` in any URL above.
+Always start by reading the **index.md** file from the SDK docs folder, then load relevant sections based on the task:
+
+| File | When to load |
+|------|--------------|
+| `classes.md` | Working with SDK classes, properties, methods |
+| `interfaces.md` | Looking up interface shapes and data types |
+| `types.md` | Type definitions and enums |
+| `functions.md` | Available SDK functions and utilities |
+| `variables.md` | SDK variables and constants |
+| `modules.md` | SDK modules and their exports |
+| `how-to-get-started-with-the-wmeSDK.md` | SDK initialization patterns |
+| `migration-guide.md` | Legacy W-object → SDK migration patterns |
+| `script-example-1.md` through `script-example-6.md` | Real-world working examples |
+| `Turf-Docs.md` | Geometry operations (replacing OpenLayers) |
+| `wmeSDK_typedefs.d.md` | Full TypeScript definitions if needed |
+| `geojson_typeddefs.d.md` | GeoJSON TypeScript typings |
+| `changelog.md` | Changelog |
+
+### Step 2: Analyze the Code or Requirement
+
+**If migrating:**
+- Scan for `W.map`, `W.model`, `OpenLayers.Geometry`, `L.` patterns
+- Group changes by area (map model, geometry, events, etc.)
+- Note dependencies and side effects
+
+**If building new:**
+- Understand what data/events the feature needs
+- Check SDK classes/functions that provide that capability
+- Plan initialization and error handling
+
+### Step 3: Produce Guidance
+
+For **migrations**, show each pattern as:
+```
+## Pattern: [Name of legacy pattern]
+**Before (Legacy):**
+[Code using W or OpenLayers]
+
+**After (WME SDK + Turf.js):**
+[Modern equivalent]
+
+**Why:** [Explanation of the change and why it's better]
+**Reference:** [Specific SDK doc file/section]
+```
+
+For **new features**, structure as:
+```
+## Feature: [Feature name]
+**Design Overview:**
+[What the feature does and how it uses the SDK]
+
+**Code Example:**
+[Working Tampermonkey userscript example with proper initialization]
+
+**SDK Methods/Classes Used:**
+- `ClassName.method()` — [what it does]
+
+**Integration Steps:**
+1. Initialize the SDK
+2. Set up event listeners
+3. [Any other key steps]
+```
+
+### Step 4: Include Essential Context
+
+Always provide:
+
+- **SDK Initialization Code** — Show how to properly set up the SDK in a Tampermonkey script, including auth and ready-state handling
+- **Error Handling** — How to handle SDK not being available or initialization failures
+- **Testing Guidance** — What to verify after migration/implementation (e.g., "Check console for initialization messages", "Verify data is fetching correctly")
+- **Reference Links** — Point to specific documentation files so the user can dive deeper
+
+## Key Principles
+
+1. **Tampermonkey Context Matters** — Account for sandboxing, `unsafeWindow`, and userscript lifecycle
+2. **Turf.js Replaces OpenLayers** — Use Turf for geometry; link to `Turf-Docs.md` for examples
+3. **SDK is the Authority** — When in doubt about what's possible, check the docs; don't guess from memory
+4. **Real Examples Matter** — Reference `script-example-*.md` files to show users working patterns
+5. **Migration is Staged** — Don't try to rewrite everything at once; migrate by feature area and test incrementally
+
+## Common Migration Patterns
+
+As you work, you'll encounter recurring legacy patterns. Refer to `migration-guide.md` for the canonical transformations, but here are the categories:
+
+- **Map Model Access** — `W.map` / `W.model` → SDK model objects
+- **Geometry Operations** — OpenLayers Geometry → Turf.js
+- **Event Handling** — `W.map.on()` / `W.selectionManager.on()` → SDK event subscriptions
+- **Drawing/Rendering** — OpenLayers layers → SDK rendering APIs
+- **User/Session Data** — `W.currentUser` → SDK user context
+
+## Output Structure (Use This Template)
+
+```
+# [Feature/Migration Name] with WME SDK
+
+## Summary
+[1-2 sentence overview]
+
+## Migration/Feature Breakdown
+### [Area 1: Pattern/Feature Name]
+[Before/After or Design section]
+
+### [Area 2: Pattern/Feature Name]
+[Before/After or Design section]
+
+## SDK Initialization
+[Code block showing proper setup]
+
+## Testing Checklist
+- [ ] Item 1
+- [ ] Item 2
+
+## Reference Documentation
+- [File name](path) — [Brief note on what's in this file]
+```
 
 ---
 
-## SDK Version
+## Advanced Patterns (From Real-World Scripts)
 
-Current stable: **v2.343** (April 2026) | Live: https://www.waze.com/editor/sdk/ | Beta: https://beta.waze.com/editor/sdk/
+### Settings Persistence
+Scripts often store user preferences in localStorage:
+
+```javascript
+const SETTINGS_KEY = '_wme_myscript_settings';
+function loadSettings() {
+  const saved = localStorage.getItem(SETTINGS_KEY);
+  return saved ? JSON.parse(saved) : { layerColor: '#FF0000', enabled: true };
+}
+function saveSettings(settings) {
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+}
+```
+
+**When to use:** Storing user layer colors, zoom thresholds, enabled/disabled state.
+
+### Sidebar Tab Registration
+Register a custom UI panel in WME's sidebar:
+
+```javascript
+wmeSDK.Sidebar.registerScriptTab({
+  tabName: "My Script",
+  tabLabel: "My Script",
+  htmlString: `<div id="my-script-tab"><button>Do something</button></div>`,
+  onOpen: () => console.log("Tab opened"),
+  onClose: () => console.log("Tab closed"),
+}).then((tab) => {
+  // tab.tabPane and tab.tabLabel are now in the DOM
+  document.getElementById("my-script-tab").addEventListener("click", () => {
+    console.log("Button clicked");
+  });
+});
+```
+
+**When to use:** Creating settings UIs, showing script status, or interactive controls.
+
+### Advanced Layer Styling
+Use predicates and style context for dynamic styling:
+
+```javascript
+wmeSDK.Map.addLayer({
+  layerName: "smart_layer",
+  styleRules: [
+    {
+      predicate: (props, zoomLevel) => props.isHighlighted && zoomLevel > 12,
+      style: { strokeColor: "#FF0000", strokeWidth: 5 }
+    },
+    {
+      style: { strokeColor: "#0000FF", strokeWidth: 2 } // Default
+    }
+  ],
+  styleContext: {
+    getStrokeColor: ({ feature, zoomLevel }) => 
+      zoomLevel > 15 ? "#00FF00" : feature?.properties.color ?? "#000000",
+  }
+});
+```
+
+**When to use:** Highlighting features based on zoom level, user selection, or complex conditions.
+
+### External Data API Integration
+Scripts often fetch GIS data from ArcGIS, Census, or other APIs:
+
+```javascript
+// In userscript header, declare permissions:
+// @grant        GM_xmlhttpRequest
+// @connect      arcgis.com
+// @connect      census.gov
+
+// In code:
+GM_xmlhttpRequest({
+  method: 'GET',
+  url: 'https://services.arcgis.com/...',
+  onload: (response) => {
+    const data = JSON.parse(response.responseText);
+    // Convert ArcGIS geometry to GeoJSON
+    const features = data.features.map(f => ({
+      type: "Feature",
+      geometry: arcgisToGeoJSON(f.geometry),
+      properties: f.attributes
+    }));
+  }
+});
+```
+
+**When to use:** Displaying boundaries, external datasets, or real-time data overlays.
+
+### Performance Optimization
+For scripts handling hundreds of features, optimize:
+
+```javascript
+// 1. Debounce map movement (prevents API spam)
+let mapMoveTimer;
+wmeSDK.Events.on({
+  eventName: "wme-map-move-end",
+  eventHandler: () => {
+    clearTimeout(mapMoveTimer);
+    mapMoveTimer = setTimeout(fetchData, 250);
+  }
+});
+
+// 2. Cache expensive calculations
+const polygonCache = new Map();
+function getCachedArea(feature) {
+  if (!polygonCache.has(feature.id)) {
+    polygonCache.set(feature.id, turf.area(feature.geometry));
+  }
+  return polygonCache.get(feature.id);
+}
+
+// 3. Batch feature additions (single map operation, not per-feature)
+const features = [];
+// ... collect features ...
+features.forEach(f => wmeSDK.Map.addFeatureToLayer({ layerName, feature: f }));
+```
+
+**When to use:** Scripts with 50+ features, frequent updates, or complex geometry.
+
+### Complex Geometry Handling
+GeoJSON rings follow the right-hand rule (exterior CCW, holes CW):
+
+```javascript
+// Ring orientation (exterior boundary = counter-clockwise)
+const polygon = {
+  type: "Polygon",
+  coordinates: [
+    // Outer boundary (counter-clockwise)
+    [[-118.5, 34.5], [-118.5, 34.8], [-118.1, 34.8], [-118.1, 34.5], [-118.5, 34.5]],
+    // Hole (clockwise - represents "cut out" area)
+    [[-118.3, 34.6], [-118.2, 34.6], [-118.2, 34.7], [-118.3, 34.7], [-118.3, 34.6]]
+  ]
+};
+
+// Polygon clipping to screen boundary (useful for large boundaries)
+const screenPoly = turf.polygon([screenBounds.coordinates]);
+const clipped = turf.intersect(largePolygon, screenPoly);
+```
+
+**When to use:** Rendering multi-part boundaries (Michigan, Hawaii), handling holes, or clipping large geometries.
+
+### Venues Data API
+Query place/venue data with filtering and categorization:
+
+```javascript
+// Get all venues currently visible on map
+const allVenues = wmeSDK.DataModel.Venues.getAll();
+
+// Get venue by ID
+const venue = wmeSDK.DataModel.Venues.getById({ venueId: "12345" });
+console.log(venue.name, venue.geometry, venue.categories);
+
+// Get venue address (house number, street name, etc.)
+const address = wmeSDK.DataModel.Venues.getAddress({ venueId: venue.id });
+console.log(`${address?.houseNumber ?? ''} ${address?.street?.name ?? ''}`);
+
+// Get all venue category types
+const mainCats = wmeSDK.DataModel.Venues.getVenueMainCategories();
+const subCats = wmeSDK.DataModel.Venues.getVenueSubCategories();
+// Use for building category filters or displaying localized names
+const catName = subCats.find(s => s.subCategoryId === 'CAT_ID')?.localizedName;
+```
+
+**Use for:** Scripts that query place data, build place catalogs, filter by category, or work with venue geometry.
+
+**Reference:** `classes.md` → `DataModel.Venues` methods
+
+---
+
+### Nodes & Junctions API
+Access map junction and node geometry for angle calculations:
+
+```javascript
+// Get node by ID (nodes are map vertices)
+const node = wmeSDK.DataModel.Nodes.getById({ nodeId: 5678 });
+console.log(node.geometry); // GeoJSON Point
+
+// Get junction (roundabout or big junction)
+const junction = wmeSDK.DataModel.Junctions.getById({ junctionId: "junction_123" });
+console.log(junction.geometry, junction.segmentIds);
+
+// Common use: calculate angle between three points
+const fromNode = wmeSDK.DataModel.Nodes.getById({ nodeId: segment.fromNodeId });
+const toNode = wmeSDK.DataModel.Nodes.getById({ nodeId: segment.toNodeId });
+
+const angle = turf.bearing(
+  turf.point(fromNode.geometry.coordinates),
+  turf.point(toNode.geometry.coordinates)
+);
+```
+
+**Use for:** Junction angle calculations, roundabout analysis, routing logic verification.
+
+**Reference:** `classes.md` → `DataModel.Nodes`, `DataModel.Junctions` methods
+
+---
+
+### Shortcuts Full Lifecycle
+Create, manage, and delete custom keyboard shortcuts:
+
+```javascript
+// Register a new keyboard shortcut
+wmeSDK.Shortcuts.createShortcut({
+  shortcutId: 'myScript_actionX',           // Unique ID
+  description: 'My Script: Do Action X',    // User-visible name
+  shortcutKeys: 'shift+a',                  // Combo format: "A+R", "shift+a", null for none
+  callback: () => {
+    console.log('Shortcut activated!');
+    doSomething();
+  }
+});
+
+// Check if shortcut is already registered
+if (wmeSDK.Shortcuts.isShortcutRegistered({ shortcutId: 'myScript_actionX' })) {
+  console.log('Already registered');
+}
+
+// Get all shortcuts (including any the user has already registered)
+const allShortcuts = wmeSDK.Shortcuts.getAllShortcuts();
+const myShortcut = allShortcuts.find(s => s.shortcutId === 'myScript_actionX');
+console.log(myShortcut.shortcutKeys); // Current key combo
+
+// Delete a shortcut
+wmeSDK.Shortcuts.deleteShortcut({ shortcutId: 'myScript_actionX' });
+```
+
+**Important Gotcha:** The SDK returns shortcuts in **inconsistent formats**:
+- On initial load: combo format (`"A+R"`)
+- After user edits: raw format (`"4,82"`)
+- After reload: combo format again
+
+**Normalize before saving:**
+```javascript
+function normalizeShortcut(sdkKey) {
+  if (!sdkKey) return { raw: null, combo: null };
+  if (typeof sdkKey === 'string') {
+    if (sdkKey.includes('+')) return { combo: sdkKey, raw: null };  // combo format
+    if (sdkKey.includes(',')) return { raw: sdkKey, combo: null };  // raw format
+  }
+  return { raw: null, combo: null };
+}
+
+// Always save the normalized combo version
+wmeSDK.Shortcuts.createShortcut({
+  shortcutId: 'myScript_action',
+  description: 'My Action',
+  shortcutKeys: normalizeShortcut(storedKey).combo,
+  callback: myCallback
+});
+```
+
+**Use for:** Power-user features, quick toggles, customizable actions in your script.
+
+**Reference:** `classes.md` → `Shortcuts` class (createShortcut, deleteShortcut, getAllShortcuts, isShortcutRegistered)
+
+---
+
+### Clearing & Managing Layers
+Clear features from layers for re-rendering or cleanup:
+
+```javascript
+// Remove all features from a specific layer
+wmeSDK.Map.removeAllFeaturesFromLayer({ layerName: 'my_layer' });
+
+// Common pattern: re-render by clearing and adding new features
+function updateLayerData(newFeatures) {
+  wmeSDK.Map.removeAllFeaturesFromLayer({ layerName: 'my_layer' });
+  
+  newFeatures.forEach(feature => {
+    wmeSDK.Map.addFeatureToLayer({
+      layerName: 'my_layer',
+      feature: feature
+    });
+  });
+}
+
+// Or batch add multiple features
+newFeatures.forEach(f => {
+  wmeSDK.Map.addFeatureToLayer({ layerName: 'my_layer', feature: f });
+});
+```
+
+**Use for:** Refreshing data displays, cleaning up temporary overlays, avoiding duplicate features.
+
+**Reference:** `classes.md` → `Map.removeAllFeaturesFromLayer()`
+
+---
+
+### Error Handling with SDK Exception Types
+Handle SDK errors gracefully using typed exception checks:
+
+```javascript
+try {
+  wmeSDK.Map.removeLayer({ layerName: 'my_layer' });
+} catch (e) {
+  if (!(e instanceof wmeSDK.Errors.InvalidStateError)) {
+    throw e;  // Re-throw if it's a different error
+  }
+  // Layer doesn't exist — this is expected and safe to ignore
+}
+```
+
+**Why:** Layers may or may not exist when you try to remove them. This pattern safely handles the case without crashing or polluting logs.
+
+**Use for:** Scripts that toggle layers, reload/refresh layers, or clean up after edits.
+
+**Reference:** `classes.md` → `Errors` class
+
+---
+
+### High-Performance Feature Addition (Dangerous Path)
+For scripts loading 100s or 1000s of features, bypass SDK validation:
+
+```javascript
+const features = [...many features from GeoJSON...]; // e.g., 50,000+
+
+const startTime = performance.now();
+wmeSDK.Map.dangerouslyAddFeaturesToLayerWithoutValidation({
+  features,
+  layerName: 'gis_import_layer'
+});
+console.log(`Loaded ${features.length} features in ${(performance.now() - startTime).toFixed(0)}ms`);
+```
+
+**Why:** SDK validation is the bottleneck when adding thousands of features. The `dangerously*` variant skips validation checks, trading safety for speed. Features are assumed to be valid GeoJSON.
+
+**Use for:** GIS imports, large geometry imports (SHP, KML, GeoJSON), bulk feature operations.
+
+**Assumption:** Your features are already validated before passing them (or validation happens elsewhere).
+
+**Reference:** `functions.md` → `Map.dangerouslyAddFeaturesToLayerWithoutValidation()`
+
+---
+
+### Mutable Style State for Live Re-rendering
+Optimize styling updates by mutating a shared state object and calling `redrawLayer()`:
+
+```javascript
+// 1. Create mutable state object that styleContext getters close over
+const mutableStyle = {
+  color: '#FF0000',
+  lineopacity: 1,
+  fontsize: 14,
+  labelpos: 'cm',
+};
+
+// 2. Create styleContext with getter functions that read from mutableStyle
+const layerConfig = {
+  styleContext: {
+    getColor: () => mutableStyle.color,
+    getLineopacity: () => mutableStyle.lineopacity,
+    getFontsize: () => mutableStyle.fontsize,
+    getLabelPos: () => mutableStyle.labelpos,
+  },
+  styleRules: [
+    {
+      predicate: () => true,
+      style: {
+        stroke: true,
+        strokeColor: '${getColor}',
+        strokeOpacity: '${getLineopacity}',
+        pointRadius: '${getFontsize}',
+      }
+    }
+  ],
+};
+
+// 3. Add layer once
+wmeSDK.Map.addLayer({
+  layerName: 'styled_layer',
+  ...layerConfig,
+  zIndexing: true,
+});
+
+// 4. Later: Update styles instantly without re-adding features
+async function updateStyles(newColor, newOpacity) {
+  mutableStyle.color = newColor;
+  mutableStyle.lineopacity = newOpacity;
+  
+  // Tell SDK to re-invoke all styleContext getters for every feature
+  await wmeSDK.Map.redrawLayer({ layerName: 'styled_layer' });
+  // No features are removed/re-added; rendering is fast (~100-200ms for 1000+ features)
+}
+```
+
+**Why:** When you have 1000+ features with dynamic styles, re-adding features is slow. This pattern keeps features on the map and only updates style values, making live style changes feel instantaneous.
+
+**Performance Gain:** 10–100× faster than clearing and re-adding features.
+
+**Use for:** Interactive style editors, live color pickers, opacity sliders, zoom-dependent styling, filters that toggle on/off.
+
+**Reference:** `classes.md` → `Map.redrawLayer()`
+
+---
+
+### Dynamic styleContext Getters with Feature Properties
+Access feature properties and geometry in style calculations:
+
+```javascript
+const layerConfig = {
+  styleContext: {
+    // Simple getter — runs for every render
+    getLabel: (context) => context.feature?.properties?.label,
+    
+    // Zoom-aware getter — access zoomLevel from destructured argument
+    getOffset: ({ zoomLevel }) => -zoomLevel,  // Negative offset at high zoom
+    
+    // Complex calculation
+    getStrokeColor: ({ feature, zoomLevel }) => {
+      if (zoomLevel > 15) return feature?.properties?.detailedColor ?? '#FF0000';
+      if (zoomLevel > 12) return feature?.properties?.mediumColor ?? '#00FF00';
+      return '#0000FF';
+    }
+  },
+};
+
+wmeSDK.Map.addLayer({
+  layerName: 'smart_layer',
+  styleRules: [{ style: { /* base style */ } }],
+  ...layerConfig,
+});
+```
+
+**Use for:** Label templates, dynamic colors based on properties, zoom-aware styling without predicates.
+
+**Reference:** `classes.md` → `Map.addLayer()` styleContext parameter
+
+---
+
+### Feature-Level Predicates with Zoom Level
+Show/hide features or apply conditional styles based on zoom:
+
+```javascript
+styleRules: [
+  {
+    // Show only at high zoom
+    predicate: (featureProperties, zoomLevel) => {
+      return featureProperties.importance === 'high' && zoomLevel > 12;
+    },
+    style: { strokeColor: '#FF0000', strokeWidth: 3 }
+  },
+  {
+    // Show at medium zoom
+    predicate: (featureProperties, zoomLevel) => {
+      return zoomLevel >= 10 && zoomLevel <= 12;
+    },
+    style: { strokeColor: '#00FF00', strokeWidth: 2 }
+  },
+  {
+    // Default style (always shown)
+    predicate: () => true,
+    style: { strokeColor: '#0000FF', strokeWidth: 1 }
+  }
+]
+```
+
+**Use for:** Level-of-detail rendering, hiding low-importance features at low zoom, simplifying dense maps.
+
+**Reference:** `classes.md` → `Map.addLayer()` styleRules predicate parameter
+
+---
+
+### Detecting Shortcut Key Conflicts
+Check if a shortcut key combo is already in use before registering:
+
+```javascript
+function registerMyShortcut(shortcutId, description, callback) {
+  // Get the user's preferred keys (or null if not set)
+  let shortcutKeys = getUserSavedShortcutKeys(shortcutId); // e.g., "shift+a" or null
+
+  if (shortcutKeys) {
+    // Check if another script is already using these keys
+    if (wmeSDK.Shortcuts.areShortcutKeysInUse({ shortcutKeys })) {
+      console.warn(`Shortcut keys "${shortcutKeys}" already in use.`);
+      shortcutKeys = null; // Register without keys; user assigns later
+    }
+  }
+
+  try {
+    wmeSDK.Shortcuts.createShortcut({
+      shortcutId,
+      description,
+      shortcutKeys, // Can be null; user will assign in settings
+      callback,
+    });
+  } catch (e) {
+    console.error(`Failed to register shortcut: ${e.message}`);
+  }
+}
+```
+
+**Use for:** Multi-script environments, graceful fallback, preventing registration errors.
+
+**Reference:** `classes.md` → `Shortcuts.areShortcutKeysInUse()`, `Shortcuts.createShortcut()`
+
+---
+
+### Querying Map Viewport
+Get current map center and bounding box for filtering or analytics:
+
+```javascript
+// Get current map center (WGS84 coordinates)
+const center = wmeSDK.Map.getMapCenter();
+console.log(`Center: lat ${center.latitude}, lon ${center.longitude}`);
+
+// Get current visible extent (bounding box)
+const extent = wmeSDK.Map.getMapExtent();
+// extent = { north, south, east, west } in WGS84
+
+// Filter features to only those in current view
+const visibleLayers = allLayers.filter(layer => {
+  const layerBounds = turf.bbox(layer.geometry); // [minLon, minLat, maxLon, maxLat]
+  const viewBounds = turf.bboxPolygon([extent.west, extent.south, extent.east, extent.north]);
+  return turf.booleanIntersects(layer.geometry, viewBounds);
+});
+```
+
+**Use for:** Viewport-based filtering, "What's in view?" queries, level-of-detail decisions, map-aware data fetching.
+
+**Reference:** `functions.md` → `Map.getMapCenter()`, `Map.getMapExtent()` | `Turf-Docs.md` → `bbox()`, `booleanIntersects()`
+
+---
+
+### Detecting Current Country Context
+Query which country is at the center of the map:
+
+```javascript
+const wmeTopCountry = wmeSDK.DataModel.Countries.getTopCountry();
+if (wmeTopCountry) {
+  console.log(`Currently viewing: ${wmeTopCountry.name} (ID: ${wmeTopCountry.countryID})`);
+  
+  // Enable/disable features based on country
+  if (wmeTopCountry.countryID === 'US') {
+    loadUSSpecificLayers();
+  } else if (wmeTopCountry.countryID === 'GB') {
+    loadUKSpecificLayers();
+  }
+}
+```
+
+**Why:** Multi-region scripts need to adapt UI/data based on current map location. The country at screen center is the most reliable indicator.
+
+**Use for:** Regional feature toggles, country-specific data sources, localized label templates.
+
+**Returns:** Object with `{ countryID, name, ...}` or `null` if no country under center.
+
+**Reference:** `classes.md` → `DataModel.Countries.getTopCountry()`
+
+---
+
+### Direct DOM Manipulation After Sidebar Registration
+Access and customize tab DOM elements directly after registration:
+
+```javascript
+// Register sidebar tab — returns DOM element references
+const { tabLabel, tabPane } = await wmeSDK.Sidebar.registerScriptTab({
+  tabName: 'MyScript',
+  tabLabel: 'My',
+});
+
+// tabLabel and tabPane are live DOM nodes in the sidebar
+// Customize them directly without re-registration
+tabLabel.innerHTML = '<strong>My Script</strong> <span class="badge">5</span>';
+
+// Build tab content
+const contentHTML = `
+  <div id="my-settings">
+    <button id="save-btn">Save Settings</button>
+    <div id="status">Ready</div>
+  </div>
+`;
+tabPane.innerHTML = contentHTML;
+
+// Set up event listeners on your new elements
+document.getElementById('save-btn').addEventListener('click', () => {
+  document.getElementById('status').textContent = 'Saving...';
+  saveSettings().then(() => {
+    document.getElementById('status').textContent = 'Saved!';
+  });
+});
+```
+
+**Why:** After registration, the tab is live in the DOM. Direct manipulation is faster and more flexible than re-registering or using jQuery selectors across the page.
+
+**Use for:** Dynamic tab labels, badge updates, status indicators, interactive settings panels.
+
+**Reference:** `classes.md` → `Sidebar.registerScriptTab()`
+
+---
+
+### Reacting to Map Events
+Listen for map interactions and layer state changes:
+
+```javascript
+// React to map panning/zooming finishing
+wmeSDK.Events.on({
+  eventName: 'wme-map-move-end',
+  eventHandler: () => {
+    const extent = wmeSDK.Map.getMapExtent();
+    console.log(`Map moved. New bounds: ${extent.north}, ${extent.south}, ...`);
+    updateVisibleLayers(extent);
+  },
+});
+
+// React to user toggling layer visibility
+wmeSDK.Events.on({
+  eventName: 'wme-layer-checkbox-toggled',
+  eventHandler: (layerInfo) => {
+    console.log(`Layer "${layerInfo.layerName}" is now ${layerInfo.visible ? 'visible' : 'hidden'}`);
+  },
+});
+
+// React to user selection changes (if needed)
+wmeSDK.Events.on({
+  eventName: 'wme-selection-changed',
+  eventHandler: (selection) => {
+    console.log(`Selection updated: ${selection.segments.length} segments, ${selection.nodes.length} nodes`);
+  },
+});
+```
+
+**Use for:** Triggering data fetches on map move, syncing external UI with layer state, responsive feature updates.
+
+**Common Events:**
+- `wme-map-move-end` — Map finished panning/zooming
+- `wme-layer-checkbox-toggled` — User toggled layer visibility
+- `wme-selection-changed` — User selection updated
+- `wme-map-zoom-changed` — Zoom level changed (if SDK version supports)
+
+**Reference:** `classes.md` → `Events.on()`; check SDK changelog for complete event list
 
 ---
 
@@ -345,13 +1094,6 @@ wmeSDK.LayerSwitcher.addLayerCheckbox({
   defaultChecked: true
 });
 ```
-
-### `SDK.Settings` — User Preferences
-
-
-
----
-
 ## WazeToastr — Toast Notifications
 
 WazeToastr is a community library commonly used in WME scripts for user feedback.
@@ -379,8 +1121,6 @@ Parameters for `success / info / warning / error`:
 `(scriptName, message, sticky?, clickThrough?, durationMs?)`
 
 ---
-
-## Common Patterns
 
 ### Query and Filter Segments
 
@@ -571,16 +1311,6 @@ wmeSDK.Events.stopLayerEventsTracking({ layerName: 'myScript.overlay' });
 wmeSDK.Map.removeAllFeaturesFromLayer({ layerName: 'myScript.overlay' });
 ```
 
-### Register Sidebar Tab
-
-```javascript
-async function setupUI() {
-  const { tabLabel, tabPane } = await wmeSDK.Sidebar.registerScriptTab();
-  tabLabel.innerHTML = 'My Script';
-  tabPane.innerHTML = `<div style="padding:10px"><h3>My Script</h3></div>`;
-}
-```
-
 ### MutationObserver on Edit Panel
 
 Inject a button into WME's segment edit panel when it opens:
@@ -638,15 +1368,6 @@ if (userInfo.rank < 2) { // require L3+
   return;
 }
 ```
-
----
-
-## Error Types
-
-```javascript
-wmeSDK.DataModelNotFoundError  // getById returned nothing — check before using
-```
-
 ---
 
 ## Key Deprecated API → SDK Replacements
@@ -671,6 +1392,22 @@ wmeSDK.DataModelNotFoundError  // getById returned nothing — check before usin
 
 ---
 
+## When to Use This Skill
+
+✓ You have WME userscript code using `W` object or OpenLayers  
+✓ You're building a new WME feature and want SDK guidance  
+✓ You need help with SDK initialization or authentication  
+✓ You're adding settings UI, keyboard shortcuts, or advanced styling  
+✓ You're integrating external GIS data or APIs  
+✓ You need performance optimization for many features  
+✓ You're unsure how to do something in WME SDK (check docs via this skill)  
+
+✗ General JavaScript questions (use your standard tools)  
+✗ Waze Editor UI/UX feedback (not relevant to scripting)  
+✗ Non-Tampermonkey contexts
+
+---
+
 ## Rules to Always Follow
 
 1. **Prefer SDK APIs** over legacy `W`, `Waze`, `OL`, or `OpenLayers` objects. Use legacy
@@ -691,13 +1428,8 @@ wmeSDK.DataModelNotFoundError  // getById returned nothing — check before usin
 
 - **WME SDK Docs (Stable):** https://www.waze.com/editor/sdk/
 - **WME SDK Docs (Beta):** https://beta.waze.com/editor/sdk/
-- **WME-SDK-Mirror (GitHub):** https://github.com/JS55CT/WME-SDK-Mirror
 - **Mirror Docs (Production):** https://kid4rm90s.github.io/WME-SDK-Mirror/production/latest/output/docs/
 - **Mirror Docs (Beta):** https://kid4rm90s.github.io/WME-SDK-Mirror/beta/latest/output/docs/
+- **WME-SDK-Mirror (GitHub original):** https://github.com/JS55CT/WME-SDK-Mirror
+- **WME-SDK-Mirror (GitHub fork):** https://github.com/kid4rm90s/WME-SDK-Mirror
 - **Waze Map Editor:** https://www.waze.com/editor/
-
----
-
-**SDK Version:** v2.343 (April 2026)
-**Repository:** WME-SDK-Mirror (JS55CT)
-**Last Updated:** April 2026

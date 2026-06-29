@@ -1,10 +1,29 @@
 ---
-title: # v2.352
+title: # v2.353
 source: documents/CHANGELOG.html
-created: 2026-06-10
+created: 2026-06-29
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
+
+## v2.353
+
+### Remove Closure defaults from TurnClosure's addClosure
+
+The closure defaults led to incorrect payload when creating turn
+closure, preventing save and returning 406/401 incorrect data error on
+Features - POST response
+
+### Failing SDK e2e test
+
+ensures window.SDK_INITIALIZED exists before using it
+to prevent crashes
+the test env intermittently returns a 406 error for authentication
+tokens, triggering a background redirect to /signin. Because the SDK
+test code runs on every page load, it crashes when it tries to access
+window.SDK_INITIALIZED on the sign-in page where it doesn't exist
+It failed with the same 406 error, proving this happens in every test
+but usually finishes too fast to be noticed
 
 ## v2.352
 

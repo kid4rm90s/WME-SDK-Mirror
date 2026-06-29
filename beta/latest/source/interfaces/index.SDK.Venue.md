@@ -1,7 +1,7 @@
 ---
 title: SDK.Venue interface
 source: interfaces/index.SDK.Venue.html
-created: 2026-05-30
+created: 2026-06-29
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -14,6 +14,7 @@ interface Venue {
   approved: boolean ;
   brand: null | string ;
   categories: VenueCategoryId [] ;
+  description: string ;
   externalProviderIds: string [] ;
   geometry: Point | Polygon ;
   id: string ;
@@ -51,6 +52,11 @@ brand: null | string
 
 ```typescript
 categories: VenueCategoryId []
+```
+### `description`
+
+```typescript
+description: string
 ```
 ### `externalProviderIds`
 

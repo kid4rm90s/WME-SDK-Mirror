@@ -1,7 +1,7 @@
 ---
 title: SDK.Node interface
 source: interfaces/index.SDK.Node.html
-created: 2026-05-30
+created: 2026-06-29
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

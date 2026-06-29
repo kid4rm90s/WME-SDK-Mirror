@@ -2,15 +2,16 @@
 
 ## Overview
 
-There are **6 scripts**, run in this order every time you update the SDK mirror:
+There are **7 scripts**, run in this order every time you update the SDK mirror:
 
 ```text
-1. cleanup.py              <- wipe old .md output
+1. cleanup.py              <- wipe old .md output from scripts/ and ../source/
 2. build-url-list.py       <- discover all page URLs from the live SPA
 3. download-pages.py       <- download fresh HTML files
 4. extract-to-md.py        <- convert HTML -> individual .md files
 5. create-grouped-md-files.py  <- bundle .md files for LLM use
-6. update-skill.py         <- pull latest WME SDK skill from Claude Code
+6. copy-to-source.py       <- sync fresh .md files to ../source/ for version control
+7. update-skill.py         <- pull latest WME SDK skill from Claude Code
 ```
 
 > All scripts must be run from the **`production/latest/scripts/`** folder as your working directory.
@@ -30,10 +31,14 @@ py -m pip install requests beautifulsoup4 lxml
 
 ## Step 1 — `cleanup.py` (Reset old output)
 
-**What it does:** Deletes all `.md` files and `-clean.html` files from these subfolders:
-`classes`, `documents`, `functions`, `interfaces`, `modules`, `types`, `variables`, `docs`
+**What it does:** Deletes all `.md` files and `-clean.html` files from:
 
-**When to run it:** Every time before you re-process new HTML. Skipping this risks mixing stale `.md` files from a previous run with new ones.
+- Local `scripts/` subfolders: `classes`, `documents`, `functions`, `interfaces`, `modules`, `types`, `variables`
+- Version-controlled `../source/` subfolders (same list)
+
+This ensures you're working with only fresh files and don't accidentally mix stale output with new.
+
+**When to run it:** Every time before you re-process new HTML.
 
 ```powershell
 py cleanup.py
@@ -121,10 +126,23 @@ py extract-to-md.py
 
 ---
 
-## Step 5 — `create-grouped-md-files.py` (Bundle for LLM)
+## Step 5 — `copy-to-source.py` (Sync to Version Control)
 
-**What it does:** Takes all the individual `.md` files from Step 4 and assembles them
-into the `docs/` folder.
+**What it does:** Copies all freshly generated `.md` files from `scripts/` subfolders into the corresponding `../source/` subfolders for version control.
+
+**Why needed:** The pipeline regenerates files in `scripts/` (temporary working directory), but `source/` is the version-controlled archive. This script ensures git tracks the latest documentation with current `created:` dates.
+
+```powershell
+py copy-to-source.py
+```
+
+**Output:** All `.md` files from `scripts/{classes,documents,functions,interfaces,modules,types,variables}/` copied to `../source/` with preserved metadata (timestamps, content).
+
+---
+
+## Step 6 — `create-grouped-md-files.py` (Bundle for LLM)
+
+**What it does:** Takes all the individual `.md` files from Step 4 and assembles them into the `docs/` folder.
 
 | Output file       | Source                                                       |
 | ----------------- | ------------------------------------------------------------ |
@@ -146,7 +164,7 @@ py create-grouped-md-files.py
 
 ---
 
-## Step 6 — `update-skill.py` (Sync WME SDK Skill with Fallback Chain)
+## Step 7 — `update-skill.py` (Sync WME SDK Skill with Fallback Chain)
 
 **What it does:** Pulls the latest WME SDK skill from your Claude Code skills directory
 (`~/.claude/skills/wme-sdk/SKILL.md`) and saves a copy to the local `skills/` folder.
@@ -195,8 +213,10 @@ a local clone or using it standalone.
 
 ```powershell
 cd production/latest/scripts
-py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+py cleanup.py; py build-url-list.py; py download-pages.py --force; py extract-to-md.py; py copy-to-source.py; py create-grouped-md-files.py; py update-skill.py
 ```
+
+**Note:** The `--force` flag tells `download-pages.py` to re-download all files even if they already exist locally, ensuring a completely fresh snapshot.
 
 ---
 
