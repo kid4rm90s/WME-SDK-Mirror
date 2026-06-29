@@ -122,9 +122,9 @@ If you prefer to paste documentation directly into Claude instead of using the s
 
 If you clone this repo:
 
-1. The skill will use local paths: `production/latest/output/docs/`
+1. The skill will use local paths: `production/latest/output/docs/` and `beta/latest/output/docs/`
 2. No internet needed for documentation access
-3. Run the pipeline to keep docs fresh: `Push-Location production/latest/scripts; py cleanup.py; py build-url-list.py; ...; Pop-Location`
+3. Run the pipeline to keep docs fresh: `py cleanup.py; py build-url-list.py; py download-pages.py --force; py extract-to-md.py; ...; Pop-Location`
 
 ## 🛠️ Repository Structure
 
@@ -189,14 +189,14 @@ Run the automated pipeline to refresh documentation whenever the SDK updates:
 **Production (Stable)**
 ```powershell
 Push-Location production/latest/scripts
-py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+py cleanup.py; py build-url-list.py; py download-pages.py --force; py extract-to-md.py; py copy-to-source.py; py create-grouped-md-files.py; py update-skill.py
 Pop-Location
 ```
 
 **Beta (Pre-Release)**
 ```powershell
 Push-Location beta/latest/scripts
-py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+py cleanup.py; py build-url-list.py; py download-pages.py --force; py extract-to-md.py; py copy-to-source.py; py create-grouped-md-files.py; py update-skill.py
 Pop-Location
 ```
 
@@ -242,14 +242,14 @@ For detailed setup and options, see [CLAUDE.md](CLAUDE.md).
    **Production (Stable):**
    ```powershell
    Push-Location production/latest/scripts
-   py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+   py cleanup.py; py build-url-list.py; py download-pages.py --force; py extract-to-md.py; py copy-to-source.py; py create-grouped-md-files.py; py update-skill.py
    Pop-Location
    ```
 
    **Beta (Pre-Release):**
    ```powershell
    Push-Location beta/latest/scripts
-   py cleanup.py; py build-url-list.py; py download-pages.py; py extract-to-md.py; py create-grouped-md-files.py; py update-skill.py
+   py cleanup.py; py build-url-list.py; py download-pages.py --force; py extract-to-md.py; py copy-to-source.py; py create-grouped-md-files.py; py update-skill.py
    Pop-Location
    ```
 
