@@ -257,6 +257,7 @@ export interface ManagedAreaShort {
 export interface UserSession {
 	isAreaManager: boolean;
 	isCountryManager: boolean;
+	isFirstLogin: boolean;
 	managedAreas: ManagedAreaShort[];
 	rank: UserRank;
 	userName: string;
@@ -693,6 +694,10 @@ export interface Venue {
 	 */
 	categories: VenueCategoryId[];
 	/**
+	 * The description of the venue.
+	 */
+	description: string;
+	/**
 	 * The list of the venue's external provider ids.
 	 */
 	externalProviderIds: string[];
@@ -912,6 +917,11 @@ export interface Segment {
 	 * true if the segment's direction is one way, from node B to A
 	 */
 	isBtoA: boolean;
+	/**
+	 * true if the segment is drivable by vehicles.
+	 * A segment is considered non-drivable if its road type is a walking trail, pedestrian boardwalk, stairway, railroad, or runway/taxiway.
+	 */
+	isDrivable: boolean;
 	/**
 	 * true if the segment's speed limit in the forward direction was verified by an editor, false if it was added automatically.
 	 * @deprecated The attribute is deprecated and will be removed soon. The value is always true
@@ -1330,6 +1340,11 @@ export interface TurnClosure {
 	fromSegmentId: number;
 	id: string;
 	/**
+	 * A flag to indicate if the closure should be auto finished when traffic is detected in the road.
+	 * When true, the closure will remain active until the end date, even if traffic is detected on the road.
+	 */
+	isPermanent: boolean;
+	/**
 	 * The id of the major traffic event associated with the closure.
 	 */
 	majorTrafficEventId: string | null;
@@ -1541,6 +1556,10 @@ export interface UpdateRequestUserPreferences {
 }
 export interface MapUpdateRequest {
 	/**
+	 * The description of the map update request, or null if no description was provided.
+	 */
+	description: string | null;
+	/**
 	 * The GeoJSON Point representation of the map update request's location.
 	 */
 	geometry: Point;
@@ -1569,6 +1588,10 @@ export interface MapUpdateRequest {
 	 * The resolution state of the map update request. `null` if the state is not defined.
 	 */
 	resolutionState: MapProblemState | null;
+	/**
+	 * The username of the user who resolved the map update request, or null if the request is not resolved.
+	 */
+	resolvedBy: string | null;
 	/**
 	 * The timestamp of the map update request resolution date and time. `null` if the request is not resolved.
 	 */
@@ -2343,7 +2366,8 @@ declare class Segments extends SdkModule {
 		segmentId: number;
 	}): Node$1[];
 	/**
-	 * @returns boolean indicating whether specified road type is drivable.
+	 * @returns boolean indicating whether the specified road type is drivable by vehicles.
+	 * A road type is considered non-drivable if it is a walking trail, pedestrian boardwalk, stairway, railroad, or runway/taxiway.
 	 */
 	isRoadTypeDrivable(args: {
 		/**
@@ -3323,6 +3347,10 @@ declare class TurnClosures extends SdkModule {
 		 * The end date of the turn closure as a Unix timestamp (milliseconds).
 		 */
 		endDate: number;
+		/**
+		 * A flag to indicate if the closure should be auto finished when traffic is detected in the road. (optional, defaults to false)
+		 */
+		isPermanent?: boolean;
 		/**
 		 * The id of the major traffic event associated with the turn closure (optional).
 		 */

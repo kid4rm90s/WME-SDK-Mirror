@@ -1,7 +1,7 @@
 ---
 title: SDK.TurnClosures class
 source: classes/index.SDK.TurnClosures.html
-created: 2026-06-29
+created: 2026-07-08
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -13,6 +13,7 @@ addClosure (
   args: {
   description: string ;
   endDate: number ;
+  isPermanent ?: boolean ;
   majorTrafficEventId ?: string ;
   startDate: number ;
   turnId: string ;
@@ -28,6 +29,7 @@ addClosure (
   args: {
   description: string ;
   endDate: number ;
+  isPermanent ?: boolean ;
   majorTrafficEventId ?: string ;
   startDate: number ;
   turnId: string ;

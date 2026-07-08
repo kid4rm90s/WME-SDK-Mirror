@@ -1,7 +1,7 @@
 ---
 title: SDK.Segment interface
 source: interfaces/index.SDK.Segment.html
-created: 2026-06-29
+created: 2026-07-08
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -28,6 +28,7 @@ interface Segment {
   id: number ;
   isAtoB: boolean ;
   isBtoA: boolean ;
+  isDrivable: boolean ;
   isFwdSpeedLimitVerified: boolean ;
   isRevSpeedLimitVerified: boolean ;
   isTwoWay: boolean ;
@@ -136,6 +137,11 @@ isAtoB: boolean
 
 ```typescript
 isBtoA: boolean
+```
+### `isDrivable`
+
+```typescript
+isDrivable: boolean
 ```
 ### `isFwdSpeedLimitVerified`
 

@@ -1,7 +1,7 @@
 ---
 sdk: WME
-version: v2.354-14-g68747bcc29
-generated: 2026-06-29
+version: v2.358-8-g2c342cda7b
+generated: 2026-07-08
 sections:
   classes: classes.md
   modules: modules.md
@@ -47,8 +47,8 @@ docs:
 > **Use this index to discover available documentation and their content.**
 > For searching SDK entities, refer to the Source Guide below, then navigate to the relevant section.
 
-> **SDK Version:** v2.354-14-g68747bcc29
-> **Docs generated:** 2026-06-29
+> **SDK Version:** v2.358-8-g2c342cda7b
+> **Docs generated:** 2026-07-08
 
 > Each section below lists the source file and the entities it contains.
 

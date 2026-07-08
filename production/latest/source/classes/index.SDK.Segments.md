@@ -1,7 +1,7 @@
 ---
 title: SDK.Segments class
 source: classes/index.SDK.Segments.html
-created: 2026-06-29
+created: 2026-07-08
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -134,7 +134,8 @@ true if the segment's "from" node is part of a big junction, indicating the segm
 ```typescript
 isRoadTypeDrivable ( args: { roadType: RoadTypeId } ) : boolean
 ```
-boolean indicating whether specified road type is drivable.
+boolean indicating whether the specified road type is drivable by vehicles.
+A road type is considered non-drivable if it is a walking trail, pedestrian boardwalk, stairway, railroad, or runway/taxiway.
 ### `isTollSegment`
 
 ```typescript

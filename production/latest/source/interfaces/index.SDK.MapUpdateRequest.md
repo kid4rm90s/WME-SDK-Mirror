@@ -1,7 +1,7 @@
 ---
 title: SDK.MapUpdateRequest interface
 source: interfaces/index.SDK.MapUpdateRequest.html
-created: 2026-06-29
+created: 2026-07-08
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,6 +10,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface MapUpdateRequest {
+  description: null | string ;
   geometry: Point ;
   id: number ;
   isEditable: boolean ;
@@ -18,6 +19,7 @@ interface MapUpdateRequest {
   isStarred: boolean ;
   reportedOn: number ;
   resolutionState: null | string ;
+  resolvedBy: null | string ;
   resolvedOn: null | number ;
   severity: IssueSeverity ;
   source: UpdateRequestSource ;
@@ -26,6 +28,11 @@ interface MapUpdateRequest {
 }
 ```
 ## Properties
+### `description`
+
+```typescript
+description: null | string
+```
 ### `geometry`
 
 ```typescript
@@ -65,6 +72,11 @@ reportedOn: number
 
 ```typescript
 resolutionState: null | string
+```
+### `resolvedBy`
+
+```typescript
+resolvedBy: null | string
 ```
 ### `resolvedOn`
 
