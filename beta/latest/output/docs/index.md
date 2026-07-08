@@ -1,7 +1,7 @@
 ---
 sdk: WME
-version: v2.358-7-gfa18a1d872
-generated: 2026-06-29
+version: v2.360-3-g07c0bea6c2
+generated: 2026-07-08
 sections:
   classes: classes.md
   modules: modules.md
@@ -47,8 +47,8 @@ docs:
 > **Use this index to discover available documentation and their content.**
 > For searching SDK entities, refer to the Source Guide below, then navigate to the relevant section.
 
-> **SDK Version:** v2.358-7-gfa18a1d872
-> **Docs generated:** 2026-06-29
+> **SDK Version:** v2.360-3-g07c0bea6c2
+> **Docs generated:** 2026-07-08
 
 > Each section below lists the source file and the entities it contains.
 
@@ -134,7 +134,7 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Types
 
-- [types.md](types.md) — *67 entries*
+- [types.md](types.md) — *70 entries*
     - index.SDK.BBox
     - index.SDK.CameraType
     - index.SDK.ChargersAccessType
@@ -144,6 +144,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.DriveProfiles
     - index.SDK.EditSuggestionSource
     - index.SDK.EditSuggestionStatus
+    - index.SDK.ExcludeRawFields
     - index.SDK.Extract
     - index.SDK.GENERAL_SERVICE_TYPE
     - index.SDK.InstructionOpCode
@@ -177,6 +178,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.SdkFeatureStyleContext
     - index.SDK.SdkFeatureStylePredicate
     - index.SDK.SdkMouseEventName
+    - index.SDK.SegmentAddressData
     - index.SDK.SegmentDirection
     - index.SDK.SegmentLaneGuidanceDirection
     - index.SDK.SegmentPermission
@@ -195,6 +197,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.UpdateableMapProblemState
     - index.SDK.UserRank
     - index.SDK.VehicleType
+    - index.SDK.VenueAddressData
     - index.SDK.VenueCategoryId
     - index.SDK.VenueMainCategoryId
     - index.SDK.VenuePermission
@@ -207,7 +210,8 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Interfaces
 
-- [interfaces.md](interfaces.md) — *75 entries*
+- [interfaces.md](interfaces.md) — *76 entries*
+    - index.SDK.AddressRawComponents
     - index.SDK.AffectedObject
     - index.SDK.BaseAddress
     - index.SDK.BaseRestriction

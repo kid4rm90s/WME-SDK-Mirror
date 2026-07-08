@@ -1,7 +1,7 @@
 ---
 title: SDK.Segments class
 source: classes/index.SDK.Segments.html
-created: 2026-06-29
+created: 2026-07-08
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -166,11 +166,7 @@ two segments the original segment was split into.
 
 ```typescript
 updateAddress (
-  args: {
-  alternateStreetIds ?: number [] ;
-  primaryStreetId ?: number ;
-  segmentId: number ;
-} ,
+  args: { addressData ?: SegmentAddressData ; segmentId: number } ,
   ) : void
 ```
 
@@ -181,12 +177,14 @@ updateSegment (
   args: {
   direction ?: SegmentDirection ;
   elevationLevel ?: number ;
-  flagAttributes ?: Pick <
+  flagAttributes ?: Partial <
+  Pick <
   SegmentFlagAttributes ,
-  "tunnel"
-  | "unpaved"
-  | "headlights"
-  | "nearbyHOV" ,
+  "headlights"
+  | "nearbyHOV"
+  | "tunnel"
+  | "unpaved" ,
+  > ,
   > ;
   fromLanesInfo ?: null | SegmentLanesInfo ;
   fwdSpeedLimit ?: null | number ;
