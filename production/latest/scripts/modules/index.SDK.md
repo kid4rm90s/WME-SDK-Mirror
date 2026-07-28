@@ -1,7 +1,7 @@
 ---
 title: SDK module
 source: modules/index.SDK.html
-created: 2026-07-08
+created: 2026-07-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -47,6 +47,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [WmeSDK](../classes/index.SDK.WmeSDK.md)
 - [WmeState](../classes/index.SDK.WmeState.md)
 ## Interfaces
+- [AddressRawComponents](../interfaces/index.SDK.AddressRawComponents.md)
 - [AffectedObject](../interfaces/index.SDK.AffectedObject.md)
 - [BaseAddress](../interfaces/index.SDK.BaseAddress.md)
 - [BaseRestriction](../interfaces/index.SDK.BaseRestriction.md)
@@ -132,6 +133,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [DriveProfiles](../types/index.SDK.DriveProfiles.md)
 - [EditSuggestionSource](../types/index.SDK.EditSuggestionSource.md)
 - [EditSuggestionStatus](../types/index.SDK.EditSuggestionStatus.md)
+- [ExcludeRawFields](../types/index.SDK.ExcludeRawFields.md)
 - [Extract](../types/index.SDK.Extract.md)
 - [GENERAL_SERVICE_TYPE](../types/index.SDK.GENERAL_SERVICE_TYPE.md)
 - [InstructionOpCode](../types/index.SDK.InstructionOpCode.md)
@@ -165,6 +167,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [SdkFeatureStyleContext](../types/index.SDK.SdkFeatureStyleContext.md)
 - [SdkFeatureStylePredicate](../types/index.SDK.SdkFeatureStylePredicate.md)
 - [SdkMouseEventName](../types/index.SDK.SdkMouseEventName.md)
+- [SegmentAddressData](../types/index.SDK.SegmentAddressData.md)
 - [SegmentDirection](../types/index.SDK.SegmentDirection.md)
 - [SegmentLaneGuidanceDirection](../types/index.SDK.SegmentLaneGuidanceDirection.md)
 - [SegmentPermission](../types/index.SDK.SegmentPermission.md)
@@ -183,6 +186,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [UpdateRequestType](../types/index.SDK.UpdateRequestType.md)
 - [UserRank](../types/index.SDK.UserRank.md)
 - [VehicleType](../types/index.SDK.VehicleType.md)
+- [VenueAddressData](../types/index.SDK.VenueAddressData.md)
 - [VenueCategoryId](../types/index.SDK.VenueCategoryId.md)
 - [VenueMainCategoryId](../types/index.SDK.VenueMainCategoryId.md)
 - [VenuePermission](../types/index.SDK.VenuePermission.md)

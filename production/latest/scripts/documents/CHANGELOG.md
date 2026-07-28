@@ -1,10 +1,41 @@
 ---
-title: # v2.358
+title: # v2.360
 source: documents/CHANGELOG.html
-created: 2026-07-08
+created: 2026-07-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
+
+## v2.360
+
+### Remove isFirstLogin from UserSession
+
+reverting wger/1510663
+we're passing isFirstLogin to walkMe via _walkmeConfig
+instead of relying on SDK
+
+### Route segment flag updates through ActionManager
+
+Currently, Segments.updateSegment mutates flagAttributes directly on the segment model. This updates the client UI but bypasses the ActionManager, so WME fails to register a pending change and the update cannot be saved.
+Fix this by accumulating flagAttributes into newSegmentAttributes and applying them via the updateSegments use case, which correctly records the UpdateObject action on the ActionManager.
+Also fix the validator mapping name from flagAttribute to flagAttributes, and make the TS parameter type Partial.
+
+## v2.359
+
+### Extend updateAddress
+
+Changed the address update contract for Segments and Venues to use a cleaner, unified, and type-safe addressData object.
+What is new:
+
+- Grouped Parameters : All address properties (streetId, houseNumber, alternateStreetIds, and raw components) are now organized under a single addressData object, keeping the method signatures clean.
+
+- Raw Address Updates : Easily update addresses using raw components ( cityName , countryId , stateId , streetName ) instead of only IDs.
+
+- Intuitive Empty Values : Pass an empty string ( "" ) directly to cityName or streetName to clear them, removing the need for separate, redundant boolean flags.
+
+- Strict Validation : Avoid conflicting updates with new validation that prevents mixing street IDs with raw address fields.
+
+- Seamless Transition : Full backward compatibility is preserved for existing scripts using legacy top-level parameters, with deprecation warnings logged to the console to guide migration.
 
 ## v2.358
 

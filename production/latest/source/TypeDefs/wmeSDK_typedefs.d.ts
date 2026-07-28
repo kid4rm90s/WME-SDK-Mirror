@@ -257,7 +257,6 @@ export interface ManagedAreaShort {
 export interface UserSession {
 	isAreaManager: boolean;
 	isCountryManager: boolean;
-	isFirstLogin: boolean;
 	managedAreas: ManagedAreaShort[];
 	rank: UserRank;
 	userName: string;
@@ -994,6 +993,29 @@ export interface VenueAddress extends BaseAddress {
 export interface SegmentAddress extends BaseAddress {
 	altStreets: SegmentAddress[];
 }
+interface AddressRawComponents {
+	cityName?: string;
+	countryId?: number;
+	stateId?: number;
+	streetName?: string;
+}
+type ExcludeRawFields = {
+	[K in keyof AddressRawComponents]?: never;
+};
+export type SegmentAddressData = (AddressRawComponents & {
+	alternateStreetIds?: number[];
+	primaryStreetId?: never;
+}) | (ExcludeRawFields & {
+	alternateStreetIds?: number[];
+	primaryStreetId?: number;
+});
+export type VenueAddressData = (AddressRawComponents & {
+	houseNumber?: string;
+	streetId?: never;
+}) | (ExcludeRawFields & {
+	houseNumber?: string;
+	streetId?: number;
+});
 export interface User {
 	id: number;
 	userName: string;
@@ -2132,17 +2154,17 @@ declare class Segments extends SdkModule {
 	 * @throws DataModelNotFoundError in case the segment or streets not found in the WME data model
 	 */
 	updateAddress(args: {
+		addressData?: SegmentAddressData;
 		/**
-		 * New ids of the alternative streets for the segment.
+		 * @internal
+		 * @deprecated Use addressData.alternateStreetIds instead
 		 */
 		alternateStreetIds?: number[];
 		/**
-		 * An id of the new street for the segment.
+		 * @internal
+		 * @deprecated Use addressData.primaryStreetId instead
 		 */
 		primaryStreetId?: number;
-		/**
-		 * The id of the segment to update the address for.
-		 */
 		segmentId: number;
 	}): void;
 	/**
@@ -2247,7 +2269,7 @@ declare class Segments extends SdkModule {
 		 * New flag attributes for the segment.
 		 * Allows updating flags such as `unpaved`, `tunnel`, `nearbyHOV`, and `headlights`.
 		 */
-		flagAttributes?: Pick<SegmentFlagAttributes, "unpaved" | "tunnel" | "nearbyHOV" | "headlights">;
+		flagAttributes?: Partial<Pick<SegmentFlagAttributes, "unpaved" | "tunnel" | "nearbyHOV" | "headlights">>;
 		/**
 		 * New lanes info for the segment in the forward direction, or null if lanes info has to be deleted.
 		 * `laneWidth` should be provided in **m** or **ft** depending on the active units system.
@@ -2737,17 +2759,17 @@ declare class Venues extends SdkModule {
 	 * WME data model
 	 */
 	updateAddress(args: {
+		addressData?: VenueAddressData;
 		/**
-		 * A new house number for the venue.
+		 * @internal
+		 * @deprecated Use addressData.houseNumber instead
 		 */
 		houseNumber?: string;
 		/**
-		 * An id of the new street for the venue.
+		 * @internal
+		 * @deprecated Use addressData.streetId instead
 		 */
 		streetId?: number;
-		/**
-		 * The id of the venue to update the address for.
-		 */
 		venueId: string;
 	}): void;
 	/**
