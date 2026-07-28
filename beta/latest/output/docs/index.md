@@ -1,7 +1,7 @@
 ---
 sdk: WME
-version: v2.360-3-g07c0bea6c2
-generated: 2026-07-08
+version: v2.363-4-gc9bdb4df54
+generated: 2026-07-28
 sections:
   classes: classes.md
   modules: modules.md
@@ -47,8 +47,8 @@ docs:
 > **Use this index to discover available documentation and their content.**
 > For searching SDK entities, refer to the Source Guide below, then navigate to the relevant section.
 
-> **SDK Version:** v2.360-3-g07c0bea6c2
-> **Docs generated:** 2026-07-08
+> **SDK Version:** v2.363-4-gc9bdb4df54
+> **Docs generated:** 2026-07-28
 
 > Each section below lists the source file and the entities it contains.
 
@@ -82,7 +82,7 @@ This section describes each documentation source included for NotebookLM compreh
   - **script-example-8.md**: WME EZRoad Mod — Script Example
 ## Classes
 
-- [classes.md](classes.md) — *38 entries*
+- [classes.md](classes.md) — *39 entries*
     - index.SDK.BigJunctions
     - index.SDK.ChargingStation
     - index.SDK.Cities
@@ -111,6 +111,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.Settings
     - index.SDK.Shortcuts
     - index.SDK.Sidebar
+    - index.SDK.Signs
     - index.SDK.States
     - index.SDK.Streets
     - index.SDK.TurnClosures
@@ -134,7 +135,7 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Types
 
-- [types.md](types.md) — *70 entries*
+- [types.md](types.md) — *71 entries*
     - index.SDK.BBox
     - index.SDK.CameraType
     - index.SDK.ChargersAccessType
@@ -186,6 +187,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.SelectionWithLocalizedTypeName
     - index.SDK.ServiceType
     - index.SDK.SidebarTabName
+    - index.SDK.SignType
     - index.SDK.SnapTo
     - index.SDK.SpotsEstimate
     - index.SDK.SuggestibleActionType
@@ -210,7 +212,7 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Interfaces
 
-- [interfaces.md](interfaces.md) — *76 entries*
+- [interfaces.md](interfaces.md) — *80 entries*
     - index.SDK.AddressRawComponents
     - index.SDK.AffectedObject
     - index.SDK.BaseAddress
@@ -227,6 +229,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.EditSuggestion
     - index.SDK.EditSuggestionChange
     - index.SDK.ErrorOptions
+    - index.SDK.ExitSign
     - index.SDK.FeatureStyle
     - index.SDK.GeoJsonObject
     - index.SDK.HouseNumber
@@ -253,6 +256,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.RegisterSidebarTabResult
     - index.SDK.RestrictedDrivingArea
     - index.SDK.RoadClosure
+    - index.SDK.RoadShield
     - index.SDK.RoadType
     - index.SDK.SdkEvents
     - index.SDK.SdkFeature
@@ -263,6 +267,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.SegmentAddress
     - index.SDK.SegmentFlagAttributes
     - index.SDK.SegmentLanesInfo
+    - index.SDK.Sign
     - index.SDK.State
     - index.SDK.Street
     - index.SDK.Subscription
@@ -275,6 +280,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.TrackedLayer
     - index.SDK.Turn
     - index.SDK.TurnClosure
+    - index.SDK.TurnGuidance
     - index.SDK.TurnLanes
     - index.SDK.UpdateRequestDetails
     - index.SDK.UpdateRequestUserPreferences

@@ -1,10 +1,27 @@
 ---
-title: # v2.360
+title: # v2.363
 source: documents/CHANGELOG.html
-created: 2026-07-08
+created: 2026-07-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
+
+## v2.363
+
+### Add getById method to Signs module
+
+Implemented getById method on the Signs module to allow fetching a sign type
+by its ID.
+
+### Implement Signs module with getAll method
+
+Exposed all sign types available in WME via the new Signs module on the SDK.
+Implemented the getAll method, which supports optional filtering by SignType.
+
+### Add turnGuidance to Turns
+
+Expose turn guidance information on the SDK Turn interface to allow access to
+exit signs, towards, visual instructions, road shields, and custom Text-To-Speech (TTS).
 
 ## v2.360
 

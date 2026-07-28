@@ -208,6 +208,7 @@ export declare const DATA_MODEL_NAMES: {
 	readonly updateRequestSessions: "updateRequestSessions";
 	readonly venues: "venues";
 	readonly segmentHouseNumbers: "segmentHouseNumbers";
+	readonly signTypes: "signTypes";
 };
 /**
  * Data models which can be tracked for events via the SDK
@@ -1234,6 +1235,48 @@ export interface TurnLanes {
 	instructionStrategy: LaneInstructionStrategy;
 	toLaneIndex: number;
 }
+export interface RoadShield {
+	/**
+	 * The direction of the road shield (e.g., "N", "S", "E", "W").
+	 */
+	direction: string | null;
+	/**
+	 * The ID representing the type of the road shield.
+	 */
+	id: number | null;
+	/**
+	 * The sign text displayed on the road shield (e.g., "I-95", "US-1").
+	 */
+	signText: string | null;
+}
+export interface ExitSign {
+	/**
+	 * The text description displayed on the exit sign (e.g., "Exit 10A").
+	 */
+	description: string;
+	/**
+	 * The ID representing the type of the exit sign.
+	 */
+	id: number | null;
+}
+export interface TurnGuidance {
+	/**
+	 * List of exit signs associated with the turn.
+	 */
+	exitSigns: ExitSign[];
+	/**
+	 * Structured towards guidance (mixed text and road shields).
+	 */
+	towards: (RoadShield | string)[];
+	/**
+	 * Custom Text-To-Speech (TTS) instructions for the turn guidance.
+	 */
+	tts: string | null;
+	/**
+	 * Structured visual instructions (mixed text and road shields).
+	 */
+	visualInstruction: (RoadShield | string)[];
+}
 export interface Turn {
 	/**
 	 * Indicates whether the turn originates from the forward direction of the fromSegmentId segment.
@@ -1306,6 +1349,10 @@ export interface Turn {
 	 * The ID of the segment to which the turn leads
 	 */
 	toSegmentId: number;
+	/**
+	 * The guidance information associated with the turn.
+	 */
+	turnGuidance: TurnGuidance | null;
 }
 type ClosureStatus = "ACTIVE" | "FINISHED" | "FINISHED_EARLY_DUE_TO_DELETION" | "FINISHED_EARLY_DUE_TO_OVERLAPPING_CLOSURES" | "NOT_STARTED" | "SUSPENDED" | "UNVERIFIED" | "FAILED" | "UNKNOWN";
 export interface RoadClosure {
@@ -1746,6 +1793,30 @@ export interface RestrictedDrivingArea {
 	 * The name of the restriction type, associated with the restricted driving area.
 	 */
 	restrictionName: string;
+}
+export type SignType = "ROAD_SHIELD" | "EXIT_SIGN" | "OTHER";
+export interface Sign {
+	/**
+	 * The country ID where the sign type is active.
+	 */
+	countryId: number;
+	/**
+	 * The description of the sign (e.g. "Freeways", "Netherlands N weg").
+	 */
+	description: string;
+	id: number;
+	/**
+	 * The maximum characters length of the sign text.
+	 */
+	maxTextLength: number;
+	/**
+	 * The minimum characters length of the sign text.
+	 */
+	minTextLength: number;
+	/**
+	 * The type of the sign.
+	 */
+	type: SignType;
 }
 /**
  * Represents a house number associated with a segment.
@@ -3769,6 +3840,26 @@ declare class EditSuggestions extends SdkModule {
 		editSuggestionId: string;
 	}): EditSuggestionChange[];
 }
+declare class Signs extends SdkModule {
+	/**
+	 * @returns an array of all the signs in the WME data model
+	 */
+	getAll(args?: {
+		/**
+		 * Sign type filter ("ROAD_SHIELD", "EXIT_SIGN", "OTHER").
+		 */
+		type?: SignType;
+	}): Sign[];
+	/**
+	 * @returns sign with id, or null if not found in the WME data model
+	 */
+	getById(args: {
+		/**
+		 * The id of the sign to find.
+		 */
+		signId: number;
+	}): Sign | null;
+}
 declare class DataModel extends SdkModule {
 	readonly BigJunctions: BigJunctions;
 	readonly Junctions: Junctions;
@@ -3790,6 +3881,7 @@ declare class DataModel extends SdkModule {
 	readonly HouseNumbers: HouseNumbers;
 	readonly Turns: Turns;
 	readonly TurnClosures: TurnClosures;
+	readonly Signs: Signs;
 	readonly Users: Users;
 	readonly Venues: Venues;
 	/**

@@ -1,7 +1,7 @@
 ---
 title: SDK module
 source: modules/index.SDK.html
-created: 2026-07-08
+created: 2026-07-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -36,6 +36,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [Settings](../classes/index.SDK.Settings.md)
 - [Shortcuts](../classes/index.SDK.Shortcuts.md)
 - [Sidebar](../classes/index.SDK.Sidebar.md)
+- [Signs](../classes/index.SDK.Signs.md)
 - [States](../classes/index.SDK.States.md)
 - [Streets](../classes/index.SDK.Streets.md)
 - [TurnClosures](../classes/index.SDK.TurnClosures.md)
@@ -63,6 +64,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [EditSuggestion](../interfaces/index.SDK.EditSuggestion.md)
 - [EditSuggestionChange](../interfaces/index.SDK.EditSuggestionChange.md)
 - [ErrorOptions](../interfaces/index.SDK.ErrorOptions.md)
+- [ExitSign](../interfaces/index.SDK.ExitSign.md)
 - [FeatureStyle](../interfaces/index.SDK.FeatureStyle.md)
 - [GeoJsonObject](../interfaces/index.SDK.GeoJsonObject.md)
 - [HouseNumber](../interfaces/index.SDK.HouseNumber.md)
@@ -89,6 +91,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [RegisterSidebarTabResult](../interfaces/index.SDK.RegisterSidebarTabResult.md)
 - [RestrictedDrivingArea](../interfaces/index.SDK.RestrictedDrivingArea.md)
 - [RoadClosure](../interfaces/index.SDK.RoadClosure.md)
+- [RoadShield](../interfaces/index.SDK.RoadShield.md)
 - [RoadType](../interfaces/index.SDK.RoadType.md)
 - [SdkEvents](../interfaces/index.SDK.SdkEvents.md)
 - [SdkFeature](../interfaces/index.SDK.SdkFeature.md)
@@ -99,6 +102,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [SegmentAddress](../interfaces/index.SDK.SegmentAddress.md)
 - [SegmentFlagAttributes](../interfaces/index.SDK.SegmentFlagAttributes.md)
 - [SegmentLanesInfo](../interfaces/index.SDK.SegmentLanesInfo.md)
+- [Sign](../interfaces/index.SDK.Sign.md)
 - [State](../interfaces/index.SDK.State.md)
 - [Street](../interfaces/index.SDK.Street.md)
 - [Subscription](../interfaces/index.SDK.Subscription.md)
@@ -111,6 +115,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [TrackedLayer](../interfaces/index.SDK.TrackedLayer.md)
 - [Turn](../interfaces/index.SDK.Turn.md)
 - [TurnClosure](../interfaces/index.SDK.TurnClosure.md)
+- [TurnGuidance](../interfaces/index.SDK.TurnGuidance.md)
 - [TurnLanes](../interfaces/index.SDK.TurnLanes.md)
 - [UpdateRequestDetails](../interfaces/index.SDK.UpdateRequestDetails.md)
 - [UpdateRequestUserPreferences](../interfaces/index.SDK.UpdateRequestUserPreferences.md)
@@ -175,6 +180,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [SelectionWithLocalizedTypeName](../types/index.SDK.SelectionWithLocalizedTypeName.md)
 - [ServiceType](../types/index.SDK.ServiceType.md)
 - [SidebarTabName](../types/index.SDK.SidebarTabName.md)
+- [SignType](../types/index.SDK.SignType.md)
 - [SnapTo](../types/index.SDK.SnapTo.md)
 - [SpotsEstimate](../types/index.SDK.SpotsEstimate.md)
 - [SuggestibleActionType](../types/index.SDK.SuggestibleActionType.md)
