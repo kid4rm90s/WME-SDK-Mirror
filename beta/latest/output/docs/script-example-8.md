@@ -564,6 +564,10 @@ Split Mode (toggleSplitMode shortcut)
       const keyCode = parseInt(str.split(',')[1], 10);
       return keyCode < 0 ? null : str;
     }
+    // Handle bare numeric key code (legacy format stored just the key code number, e.g. "67" for 'C')
+      if (/^\d+$/.test(str)) {
+        return '0,' + str
+      }
     const upperStr = String(str).toUpperCase();
     if (/^[A-Z0-9]$/.test(upperStr)) return '0,' + upperStr.charCodeAt(0);
     if (_CHAR_TO_KEYCODE[upperStr] !== undefined) return '0,' + _CHAR_TO_KEYCODE[upperStr];
