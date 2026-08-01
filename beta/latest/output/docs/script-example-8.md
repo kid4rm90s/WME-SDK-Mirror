@@ -1,6 +1,6 @@
 # WME EZRoad Mod — Script Example
 
-**Version:** 2.7.2.2 | **Author:** kid4rm90s | **License:** GNU GPL v3
+**Version:** 2.7.3.2 | **Author:** kid4rm90s | **License:** GNU GPL v3
 **Script:** [WME EZRoad Mod on GreaseFork](https://greasyfork.org/scripts/528552-wme-ezroad-mod)
 **Based on:** WME EZRoad by Michaelrosstarr (https://greasyfork.org/en/scripts/518381-wme-ezsegments)
 
@@ -56,7 +56,9 @@ U-turn panel UI, and a jQuery settings panel with export/import and named preset
   geometry, with red highlight layer and dashboard warning icon
 - **30+ SDK-based keyboard shortcuts** — all shortcuts (feature toggles, road
   type selection, actions) registered via unified `wmeSDK.Shortcuts` system;
-  legacy `W.accelerators` fully removed
+  legacy `W.accelerators` fully removed. User key changes are auto-persisted
+  (5 s poll + `beforeunload`), with a workaround for the WME SDK
+  stale-`originalShortcut` duplicate bug so keys survive reloads
 - **Segment split mode** — interactive hover-preview splitting with Esc to cancel,
   or auto-split selected segments at midpoint
 - **Road width (lane count) buttons** — 0–8 lane chips in the edit panel with
@@ -131,57 +133,58 @@ Split Mode (toggleSplitMode shortcut)
 
 | Component | Location (approx. lines) | Purpose |
 |-----------|--------------------------|---------|
-| `roadTypes` / `defaultOptions` | 42–83 | Road type definitions, default settings, lock/speed arrays |
-| `locks` array | 85–93 | Lock level definitions (L1–L6, HRCS) |
-| Shortcut format converters | 110–177 | `_comboToRaw`, `_rawToCombo`, `_normalizeShortcut` — normalize SDK shortcut key formats |
-| `_LEGACY_ACTION_TO_SETTINGSKEY` | 179–200 | Maps legacy W.accelerators action IDs → SDK settingsKey for one-time migration |
-| `buildSDKShortcutDefs` | 204–441 | Builds 30+ data-driven shortcut definitions (road types + feature toggles + actions) |
-| `initScript` | 443–514 | SDK init, localized names, migration, bootstrap |
-| `getConnectedSegmentIDs` | 529–536 | Returns deduplicated connected segment IDs (both directions) |
-| `getFirstConnectedSegmentAddress` | 538–576 | BFS across connected graph to find nearest valid city |
-| `getDirectionFromSegment` / `copyFlagAttributes` | 578–616 | Direction helper, unpaved flag copy via `updateSegment` |
-| `applyMotorbikeOnlyRestriction` | 618–878 | 7-step async DOM automation to add motorbike-only restriction |
-| `saveOptions` / `getOptions` | 880–908 | `localStorage` persistence with deep merge of lock/speed arrays |
-| Custom preset functions | 910–984 | `saveCustomPreset`, `loadCustomPreset`, `deleteCustomPreset`, `getCustomPresets`, `isCurrentPresetModified` |
-| `handleToggle` | 987–1053 | Generic toggle handler for all checkbox options; enforces mutual exclusions |
-| `WME_EZRoads_Mod_bootstrap` | 1055–1068 | Polls until edit panel + top country are ready |
-| `WME_EZRoads_Mod_init` | 1070–1197 | Main init: SDK shortcuts, MutationObserver, chip listeners, layer init, settings |
-| `checkGeometryNodePlacement` | 1199–1275 | Turf.js distance checks for geometry nodes near endpoints |
-| `checkSegmentConnection` | 1277–1417 | Detects dangling nodes near other segment geometry (WME Validator 107/108 method) |
-| `findClosestSegmentDistance` | 1419–1477 | Spatial bounding box pre-filter + precise Turf distance for connection check |
-| `CONNECTION_HIGHLIGHT_LAYER` | 1479 | Layer name constant for segment connection issue highlighting |
-| `clearSegmentLengthDisplay` | 1494–1500 | Clears overlay labels from container |
-| `rebuildSegmentLengthDisplay` | 1502–1809 | Scans all segments, creates length/pin/connection overlay labels in DocumentFragment |
-| `updateSegmentLabelPositions` | 1811–1856 | Fast RAF-based pixel position update with perpendicular offset for connection icons |
-| `checkAndUpdate` | 1858–1895 | Polling function: triggers rebuild only when map bounds change |
-| `handleSegmentLengthToggle` | 1897–1922 | Enables/disables polling and overlay visibility |
-| `initSegmentLengthLayer` | 1924–2131 | Creates overlay `<div>`, registers SDK map-move/zoom/selection events, initializes connection highlight layer, U-turn panel, lane chip refresh |
-| `initializeSDKShortcuts` | 2133–2183 | Registers all 30+ shortcuts via `wmeSDK.Shortcuts.createShortcut` with conflict detection |
-| `checkSDKShortcutsChanged` | 2185–2219 | Polls `wmeSDK.Shortcuts.getAllShortcuts()` for user key changes, persists to options |
-| `fixVisibleGeometryIssues` | 2221–2325 | Async bulk geometry fix with confirm dialog |
-| `addGeometryFixButton` | 2327–2373 | Inserts rank-gated bug-icon button into WME nav bar |
-| `addConnectionCheckButton` | 2375–2416 | Inserts rank-gated warning-icon button with issue counter |
-| Split mode system | 2418–2664 | `toggleSplitMode`, `enterSplitMode`, `exitSplitMode`, `performSplit`, `rebuildSplitSegmentCache`, `drawSplitPreview` — interactive segment splitting |
-| `handleLaneCountUpdate` | 2666–2708 | Sets `fromLanesInfo`/`toLanesInfo.numberOfLanes` for selected segments |
-| `addLaneCountButtons` | 2710–2800 | Inserts 0–8 lane chips + Multiple chip into edit panel |
-| `updateLaneChipHighlight` | 2802–2860 | Highlights chip matching current selection lane count; shows "Multiple" for mixed |
-| `getEmptyCity` / `delayedUpdate` | 2862–2882 | Empty city object helper, timed update wrapper |
-| `getHighestSegLock` (HRCS) | 2884–2959 | Recursive DFS to find max lock of differently-typed connected segments |
-| `pushCityNameAlert` | 2961–2975 | Appends city info to alert message parts |
-| `isNonDrivableType` | 2978–2985 | Uses SDK `isRoadTypeDrivable()` (with hardcoded fallback) |
-| `enableAllTurnsForSegment` | 2988–3033 | Enables all allowed turns at both nodes (skips non-drivable types) |
-| `recreateSegmentIfNeeded` | 3035–3193 | Delete + recreate segment when switching pedestrian ↔ routable type |
-| `ensureWazeActionSetTurnLoaded` | 3195–3210 | Loads `WazeActionSetTurn` from W model for U-turn operations |
-| U-turn helpers | 3214–3253 | `countNodeUturns`, `countAllUturns` — U-turn counting |
-| `getSelectedNode` | 3255–3273 | Returns currently selected node via SDK selection API |
-| `createUTurnPanel` / `removeUTurnPanel` | 3275–3378 | Creates/removes U-turn counter and Allow/Disallow buttons in connections panel |
-| `updateUTurnPanel` | 3380–3402 | Refreshes U-turn counter and button visibility |
-| `switchNodeUturn` | 3404–3470 | Allows/disallows all U-turns at a selected node via `WazeActionSetTurn` |
-| `switchSegmentUturn` | 3472–3555 | Toggles U-turn at segment direction A or B via `WazeActionSetTurn` |
-| `handleUpdate` | 3557–4784 | Main update dispatcher with grouped SDK calls, motorbike restriction, address, name copy, U-turn, autosave |
-| `constructSettings` | 4786–5467 | jQuery settings panel: road-type radios, checkboxes, geometry threshold, connection radius, presets, export/import |
-| `scriptupdatemonitor` | 5469–5483 | Version check + update notification via WazeToastr |
-| U-turn CSS / `WazeActionSetTurn` bootstrap | 5485–5512 | Injected styles + legacy `require` for W model turn action |
+| `roadTypes` / `defaultOptions` | 45–86 | Road type definitions, default settings, lock/speed arrays |
+| `locks` array | 88–130 | Lock level definitions (L1–L6, HRCS), rank const, `roadTypeName`, `log()` |
+| Shortcut format converters | 132–184 | `_comboToRaw`, `_rawToCombo`, `_normalizeShortcut` — normalize SDK shortcut key formats |
+| `_LEGACY_ACTION_TO_SETTINGSKEY` | 186–212 | Maps legacy W.accelerators action IDs → SDK settingsKey for one-time migration |
+| `_conflictBlockedKeys` / `_conflictStaleKeys` | 214–220 | Session-level shortcut conflict + stale-key tracking for the persistence workaround |
+| `buildSDKShortcutDefs` | 222–459 | Builds 30+ data-driven shortcut definitions (road types + feature toggles + actions) |
+| `initScript` | 461–532 | SDK init, localized names, migration, bootstrap |
+| `getConnectedSegmentIDs` | 547–554 | Returns deduplicated connected segment IDs (both directions) |
+| `getFirstConnectedSegmentAddress` | 556–594 | BFS across connected graph to find nearest valid city |
+| `getDirectionFromSegment` / `copyFlagAttributes` | 596–634 | Direction helper, unpaved flag copy via `updateSegment` |
+| `applyMotorbikeOnlyRestriction` | 636–896 | 7-step async DOM automation to add motorbike-only restriction |
+| `saveOptions` / `getOptions` | 898–926 | `localStorage` persistence with deep merge of lock/speed arrays |
+| Custom preset functions | 928–1003 | `saveCustomPreset`, `loadCustomPreset`, `deleteCustomPreset`, `getCustomPresets`, `isCurrentPresetModified` |
+| `handleToggle` | 1005–1071 | Generic toggle handler for all checkbox options; enforces mutual exclusions |
+| `WME_EZRoads_Mod_bootstrap` | 1073–1086 | Polls until edit panel + top country are ready |
+| `WME_EZRoads_Mod_init` | 1088–1215 | Main init: SDK shortcuts, MutationObserver, chip listeners, layer init, settings |
+| `checkGeometryNodePlacement` | 1217–1293 | Turf.js distance checks for geometry nodes near endpoints |
+| `checkSegmentConnection` | 1295–1435 | Detects dangling nodes near other segment geometry (WME Validator 107/108 method) |
+| `findClosestSegmentDistance` | 1437–1495 | Spatial bounding box pre-filter + precise Turf distance for connection check |
+| `CONNECTION_HIGHLIGHT_LAYER` | 1497 | Layer name constant for segment connection issue highlighting |
+| `clearSegmentLengthDisplay` | 1512–1518 | Clears overlay labels from container |
+| `rebuildSegmentLengthDisplay` | 1520–1827 | Scans all segments, creates length/pin/connection overlay labels in DocumentFragment |
+| `updateSegmentLabelPositions` | 1829–1874 | Fast RAF-based pixel position update with perpendicular offset for connection icons |
+| `checkAndUpdate` | 1876–1913 | Polling function: triggers rebuild only when map bounds change |
+| `handleSegmentLengthToggle` | 1915–1940 | Enables/disables polling and overlay visibility |
+| `initSegmentLengthLayer` | 1942–2154 | Creates overlay `<div>`, registers SDK map-move/zoom/selection events, initializes connection highlight layer, U-turn panel, lane chip refresh |
+| `initializeSDKShortcuts` | 2156–2253 | Registers all 30+ shortcuts via `wmeSDK.Shortcuts.createShortcut`; preserves duplicate/conflicting saved keys (keyless + warn) instead of nulling them |
+| `checkSDKShortcutsChanged` | 2255–2377 | Polls `getAllShortcuts()` every 5 s + on `beforeunload`; persists user key changes; **works around a WME SDK bug** (stale `originalShortcut` on displaced shortcuts) by detecting duplicate combos, clearing the stale member, and suppressing it via `_conflictStaleKeys` |
+| `fixVisibleGeometryIssues` | 2379–2466 | Async bulk geometry fix with confirm dialog |
+| `addGeometryFixButton` | 2468–2514 | Inserts rank-gated bug-icon button into WME nav bar |
+| `addConnectionCheckButton` | 2516–2557 | Inserts rank-gated warning-icon button with issue counter |
+| Split mode system | 2559–2803 | `toggleSplitMode`, `enterSplitMode`, `exitSplitMode`, `performSplit`, `rebuildSplitSegmentCache`, `drawSplitPreview` — interactive segment splitting |
+| `handleLaneCountUpdate` | 2807–2849 | Sets `fromLanesInfo`/`toLanesInfo.numberOfLanes` for selected segments |
+| `addLaneCountButtons` | 2851–2941 | Inserts 0–8 lane chips + Multiple chip into edit panel |
+| `updateLaneChipHighlight` | 2943–3001 | Highlights chip matching current selection lane count; shows "Multiple" for mixed |
+| `getEmptyCity` / `delayedUpdate` | 3003–3023 | Empty city object helper, timed update wrapper |
+| `getHighestSegLock` (HRCS) | 3025–3100 | Recursive DFS to find max lock of differently-typed connected segments |
+| `pushCityNameAlert` | 3102–3117 | Appends city info to alert message parts |
+| `isNonDrivableType` | 3119–3127 | Uses SDK `isRoadTypeDrivable()` (with hardcoded fallback) |
+| `enableAllTurnsForSegment` | 3129–3174 | Enables all allowed turns at both nodes (skips non-drivable types) |
+| `recreateSegmentIfNeeded` | 3176–3334 | Delete + recreate segment when switching pedestrian ↔ routable type |
+| `ensureWazeActionSetTurnLoaded` | 3336–3353 | Loads `WazeActionSetTurn` from W model for U-turn operations |
+| U-turn helpers | 3355–3394 | `countNodeUturns`, `countAllUturns` — U-turn counting |
+| `getSelectedNode` | 3396–3414 | Returns currently selected node via SDK selection API |
+| `createUTurnPanel` / `removeUTurnPanel` | 3416–3519 | Creates/removes U-turn counter and Allow/Disallow buttons in connections panel |
+| `updateUTurnPanel` | 3521–3543 | Refreshes U-turn counter and button visibility |
+| `switchNodeUturn` | 3545–3611 | Allows/disallows all U-turns at a selected node via `WazeActionSetTurn` |
+| `switchSegmentUturn` | 3613–3696 | Toggles U-turn at segment direction A or B via `WazeActionSetTurn` |
+| `handleUpdate` | 3698–4925 | Main update dispatcher with grouped SDK calls, motorbike restriction, address, name copy, U-turn, autosave |
+| `constructSettings` | 4927–5608 | jQuery settings panel: road-type radios, checkboxes, geometry threshold, connection radius, presets, export/import |
+| `scriptupdatemonitor` | 5610–5624 | Version check + update notification via WazeToastr |
+| U-turn CSS / `WazeActionSetTurn` bootstrap | 5626–5931 | Injected styles + legacy `require` for W model turn action + changelog |
 
 ### SDK APIs Used
 
@@ -236,7 +239,7 @@ Split Mode (toggleSplitMode shortcut)
 | `wmeSDK.Shortcuts.createShortcut` | Register all 30+ shortcuts (road types + toggles + actions) |
 | `wmeSDK.Shortcuts.deleteShortcut` | Remove old shortcut before re-registration |
 | `wmeSDK.Shortcuts.isShortcutRegistered` | Prevent duplicate shortcut registration |
-| `wmeSDK.Shortcuts.getAllShortcuts` | Poll for user key changes (persistence polling) |
+| `wmeSDK.Shortcuts.getAllShortcuts` | Poll for user key changes; also returns stale duplicates after key moves (WME SDK bug) — `checkSDKShortcutsChanged` detects and clears them |
 | `wmeSDK.Sidebar.registerScriptTab` | Register the settings sidebar tab |
 
 ### External Dependencies
@@ -255,34 +258,34 @@ Split Mode (toggleSplitMode shortcut)
 | Lines | Section |
 |-------|---------|
 | 1–30 | UserScript header, metadata, update message, script constants |
-| 31–39 | `scriptName`, `scriptVersion`, `downloadUrl`, `forumURL`, `wmeSDK` declaration |
-| 42–83 | `roadTypes` array, `defaultOptions`, lock/speed defaults |
-| 85–107 | `locks` array, `UserRankRequiredForGeometryFix`, `roadTypeName`, `log()` helper |
-| 110–177 | Shortcut format converters (`_KEYCODE_TO_CHAR`, `_CHAR_TO_KEYCODE`, `_comboToRaw`, `_rawToCombo`, `_normalizeShortcut`) |
-| 179–200 | `_LEGACY_ACTION_TO_SETTINGSKEY` — maps old W.accelerators action IDs to SDK settings keys |
-| 202–441 | `_sdkShortcutDefs` + `buildSDKShortcutDefs()` — 30+ data-driven shortcut definitions |
-| 443–514 | `initScript()` — SDK init, localized road type names, legacy migration, bootstrap |
-| 516–616 | Data model helpers: `getCurrentCountry`, `getTopCity`, `getAllCities`, `getConnectedSegmentIDs`, `getFirstConnectedSegmentAddress`, `getDirectionFromSegment`, `copyFlagAttributes` |
-| 618–878 | `applyMotorbikeOnlyRestriction` — DOM automation with chained async steps |
-| 880–984 | `saveOptions`, `getOptions`, custom preset CRUD (save/load/delete), `isCurrentPresetModified` |
-| 987–1053 | `handleToggle` — generic toggle with mutual exclusion enforcement |
-| 1055–1197 | Bootstrap + Init: `WME_EZRoads_Mod_bootstrap`, `WME_EZRoads_Mod_init` |
-| 1199–1275 | `checkGeometryNodePlacement` — Turf.js distance checks for geometry nodes near endpoints |
-| 1277–1477 | `checkSegmentConnection`, `findClosestSegmentDistance` — connection validation (WME Validator 107/108 approach) |
-| 1479–1809 | Overlay display: `CONNECTION_HIGHLIGHT_LAYER`, `clearSegmentLengthDisplay`, `rebuildSegmentLengthDisplay` |
-| 1811–1922 | `updateSegmentLabelPositions`, `checkAndUpdate`, `handleSegmentLengthToggle` |
-| 1924–2131 | `initSegmentLengthLayer` — overlay container + SDK map/selection/undo events, U-turn panel, lane chip refresh |
-| 2133–2219 | `initializeSDKShortcuts`, `checkSDKShortcutsChanged` — unified SDK shortcut registration + persistence |
-| 2221–2373 | `fixVisibleGeometryIssues` + `addGeometryFixButton` — async bulk geometry fix + rank-gated nav-bar bug icon |
-| 2375–2416 | `addConnectionCheckButton` — rank-gated warning-icon button with issue counter |
-| 2418–2664 | Split mode system: `SPLIT_LAYER_NAME`, `rebuildSplitSegmentCache`, event handlers, `drawSplitPreview`, `enterSplitMode`, `exitSplitMode`, `performSplit`, `toggleSplitMode` |
-| 2666–2860 | Lane count buttons: `handleLaneCountUpdate`, `addLaneCountButtons`, `updateLaneChipHighlight` |
-| 2862–2985 | Helpers: `getEmptyCity`, `delayedUpdate`, `getHighestSegLock` (HRCS), `pushCityNameAlert`, `isNonDrivableType` |
-| 2988–3193 | Turn + conversion helpers: `enableAllTurnsForSegment`, `recreateSegmentIfNeeded` |
-| 3195–3555 | U-turn system: `ensureWazeActionSetTurnLoaded`, `countNodeUturns`, `countAllUturns`, `getSelectedNode`, `createUTurnPanel`, `removeUTurnPanel`, `updateUTurnPanel`, `switchNodeUturn`, `switchSegmentUturn` |
-| 3557–4784 | `handleUpdate` — main update dispatcher (copy attributes, motorbike, road type, lock, speed, address, unpaved, name copy, U-turn, autosave) |
-| 4786–5467 | `constructSettings` — jQuery settings panel (radios, checkboxes, geometry threshold, connection radius, presets, export/import) |
-| 5469–5512 | `scriptupdatemonitor`, U-turn CSS injection, `WazeActionSetTurn` bootstrap, changelog |
+| 31–44 | `scriptName`, `scriptVersion`, `downloadUrl`, `forumURL`, `wmeSDK` declaration |
+| 45–86 | `roadTypes` array, `defaultOptions`, lock/speed defaults |
+| 88–130 | `locks` array, `UserRankRequiredForGeometryFix`, `roadTypeName`, `log()` helper |
+| 132–184 | Shortcut format converters (`_KEYCODE_TO_CHAR`, `_CHAR_TO_KEYCODE`, `_comboToRaw`, `_rawToCombo`, `_normalizeShortcut`) |
+| 186–220 | `_LEGACY_ACTION_TO_SETTINGSKEY` + `_conflictBlockedKeys`/`_conflictStaleKeys` — legacy action map + session conflict/stale tracking |
+| 222–459 | `_sdkShortcutDefs` + `buildSDKShortcutDefs()` — 30+ data-driven shortcut definitions |
+| 461–532 | `initScript()` — SDK init, localized road type names, legacy migration, bootstrap |
+| 534–634 | Data model helpers: `getCurrentCountry`, `getTopCity`, `getAllCities`, `getConnectedSegmentIDs`, `getFirstConnectedSegmentAddress`, `getDirectionFromSegment`, `copyFlagAttributes` |
+| 636–896 | `applyMotorbikeOnlyRestriction` — DOM automation with chained async steps |
+| 898–1003 | `saveOptions`, `getOptions`, custom preset CRUD (save/load/delete), `isCurrentPresetModified` |
+| 1005–1071 | `handleToggle` — generic toggle with mutual exclusion enforcement |
+| 1073–1215 | Bootstrap + Init: `WME_EZRoads_Mod_bootstrap`, `WME_EZRoads_Mod_init` |
+| 1217–1293 | `checkGeometryNodePlacement` — Turf.js distance checks for geometry nodes near endpoints |
+| 1295–1495 | `checkSegmentConnection`, `findClosestSegmentDistance` — connection validation (WME Validator 107/108 approach) |
+| 1497–1827 | Overlay display: `CONNECTION_HIGHLIGHT_LAYER`, `clearSegmentLengthDisplay`, `rebuildSegmentLengthDisplay` |
+| 1829–1940 | `updateSegmentLabelPositions`, `checkAndUpdate`, `handleSegmentLengthToggle` |
+| 1942–2154 | `initSegmentLengthLayer` — overlay container + SDK map/selection/undo events, U-turn panel, lane chip refresh |
+| 2156–2377 | `initializeSDKShortcuts`, `checkSDKShortcutsChanged` — unified SDK shortcut registration + persistence, incl. WME SDK stale-`originalShortcut` workaround (`_conflictStaleKeys`) |
+| 2379–2514 | `fixVisibleGeometryIssues` + `addGeometryFixButton` — async bulk geometry fix + rank-gated nav-bar bug icon |
+| 2516–2557 | `addConnectionCheckButton` — rank-gated warning-icon button with issue counter |
+| 2559–2803 | Split mode system: `SPLIT_LAYER_NAME`, `rebuildSplitSegmentCache`, event handlers, `drawSplitPreview`, `enterSplitMode`, `exitSplitMode`, `performSplit`, `toggleSplitMode` |
+| 2807–3001 | Lane count buttons: `handleLaneCountUpdate`, `addLaneCountButtons`, `updateLaneChipHighlight` |
+| 3003–3127 | Helpers: `getEmptyCity`, `delayedUpdate`, `getHighestSegLock` (HRCS), `pushCityNameAlert`, `isNonDrivableType` |
+| 3129–3334 | Turn + conversion helpers: `enableAllTurnsForSegment`, `recreateSegmentIfNeeded` |
+| 3336–3696 | U-turn system: `ensureWazeActionSetTurnLoaded`, `countNodeUturns`, `countAllUturns`, `getSelectedNode`, `createUTurnPanel`, `removeUTurnPanel`, `updateUTurnPanel`, `switchNodeUturn`, `switchSegmentUturn` |
+| 3698–4925 | `handleUpdate` — main update dispatcher (copy attributes, motorbike, road type, lock, speed, address, unpaved, name copy, U-turn, autosave) |
+| 4927–5608 | `constructSettings` — jQuery settings panel (radios, checkboxes, geometry threshold, connection radius, presets, export/import) |
+| 5610–5931 | `scriptupdatemonitor`, U-turn CSS injection, `WazeActionSetTurn` bootstrap, changelog |
 
 ---
 
@@ -307,7 +310,20 @@ Split Mode (toggleSplitMode shortcut)
   `combo` format (`"A+R"`) on initial load but `raw` format (`"4,82"`) after the
   user edits a key in WME's settings UI. The script uses `_normalizeShortcut()`
   to normalize both forms, and `checkSDKShortcutsChanged()` polls every 5 seconds
-  to persist any user-made changes.
+  (plus `beforeunload`) to persist any user-made changes.
+
+- **WME SDK bug: `originalShortcut` is not cleared on key reassignment** — when a
+  shortcut key is reassigned in WME Settings → Keyboard Shortcuts, WME moves the
+  key to the new shortcut and clears the old holder's live key, but leaves its
+  `originalShortcut` intact. `getAllShortcuts()` then reports the same key for two
+  shortcuts (a stale duplicate), and the stale value can be written back to
+  `localStorage` and reappear after reload. The script works around this in
+  `checkSDKShortcutsChanged()`: it detects a combo reported by two or more of its
+  shortcuts, treats the single "changed" member as the real holder, clears the
+  other members, and records them in `_conflictStaleKeys` (a session-level map of
+  `settingsKey → stale combo`) so later polls ignore the stale value until the
+  user actually changes it to a different combo. The root cause is on the WME
+  side; this is a script-side workaround until Waze fixes it upstream.
 
 - **Pedestrian ↔ routable conversion deletes the segment** — switching between
   pedestrian types and any routable type triggers a full delete + recreate. This
@@ -433,7 +449,7 @@ Split Mode (toggleSplitMode shortcut)
 // ==UserScript==
 // @name         WME EZRoad Mod
 // @namespace    https://greasyfork.org/users/1087400
-// @version      2.7.2.2
+// @version      2.7.3.2
 // @description  Easily update roads
 // @author       https://greasyfork.org/en/users/1087400-kid4rm90s
 // @include 	   /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor.*$/
@@ -460,9 +476,11 @@ Split Mode (toggleSplitMode shortcut)
 
 (function main() {
   ('use strict');
-  const updateMessage = `<strong>Version 2.7.2.2 - 2026-07-24:</strong><br>
-    - starting with SDK v2.359, it is now moved towards grouping related parameters into single objects to streamline updates and reduce the number of individual actions recorded by the ActionManager <br>
-    - Migrated legacy keyboard shortcuts to sdk<br>
+  const updateMessage = `<strong>Version 2.7.3.2 - 2026-08-01:</strong><br>
+    - Workaround for a WME SDK bug: when a shortcut key is reassigned, WME moves it off the previous shortcut but leaves a stale entry (originalShortcut is not cleared), so getAllShortcuts() reports duplicate keys. The script now detects these stale duplicates, clears the displaced shortcut, and keeps the correct holder — shortcut keys now persist correctly across reloads<br>
+    - Note: the root cause is on the WME side (originalShortcut not cleared during conflict resolution); this is a script-side workaround until Waze fixes it upstream<br>
+    - Fixed keyboard shortcut conflict handling: reassigning a key now moves it off the previous shortcut instead of silently clearing it (no more lost shortcut settings after reload)<br>
+    - Conflicting saved shortcuts are preserved and a warning is shown instead of being nulled<br>
     - Minor bug fixes and stability improvements<br>`;
   const scriptName = GM_info.script.name;
   const scriptVersion = GM_info.script.version;
@@ -636,6 +654,17 @@ Split Mode (toggleSplitMode shortcut)
 
   // ===== SDK SHORTCUT DEFINITIONS (data-driven, no hardcoded keys) =====
   let _sdkShortcutDefs = null; // Built in initScript after roadTypeName is fully ready
+  // Session-level set of settingsKeys whose saved key was preserved but could not
+  // be assigned (legacy duplicate or external conflict). The poll skips these so
+  // it never clobbers the preserved value back to null. Removed when the user
+  // reassigns the shortcut in WME Settings → Keyboard Shortcuts.
+  const _conflictBlockedKeys = new Set();
+  // Session-level map: settingsKey → stale combo that getAllShortcuts() still
+  // reports after WME moved that key away (WME SDK bug — originalShortcut is not
+  // cleared on conflict resolution). The poll ignores these until the user
+  // actually changes them (a different combo), so the stale value is never
+  // written back to localStorage.
+  const _conflictStaleKeys = new Map();
 
   function buildSDKShortcutDefs() {
     const defs = [];
@@ -2566,6 +2595,11 @@ Split Mode (toggleSplitMode shortcut)
   // ===== End Segment Length Display Functionality =====
 
   // ===== Unified SDK Shortcut Registration =====
+  // Registers every shortcut from the saved {raw, combo} settings. Duplicate
+  // combos among our own saved data (only possible with pre-fix legacy storage)
+  // are preserved — never nulled: the earlier shortcut keeps the key, the later
+  // one is registered keyless and added to _conflictBlockedKeys with a warning.
+  // Keys already in use by WME or another script are handled the same way.
   function initializeSDKShortcuts() {
     if (!wmeSDK?.Shortcuts || !_sdkShortcutDefs) return;
 
@@ -2581,23 +2615,49 @@ Split Mode (toggleSplitMode shortcut)
     var opts = getOptions();
     if (!opts.sdkShortcuts) opts.sdkShortcuts = {};
 
+    // Normalize all saved values
     for (var j = 0; j < _sdkShortcutDefs.length; j++) {
-      var shortcutDef = _sdkShortcutDefs[j];
-      // Normalize stored value
-      var saved = opts.sdkShortcuts[shortcutDef.settingsKey];
-      opts.sdkShortcuts[shortcutDef.settingsKey] = _normalizeShortcut(saved);
+      var sd = _sdkShortcutDefs[j];
+      opts.sdkShortcuts[sd.settingsKey] = _normalizeShortcut(opts.sdkShortcuts[sd.settingsKey]);
+    }
 
+    // Detect duplicate combos among our own saved shortcuts. WME normally moves
+    // a key when it's reassigned (clearing the old holder), but a duplicate can
+    // still survive here (pre-fix legacy data, or an external key clash). We
+    // can't know which shortcut was assigned last, so keep the earlier one,
+    // PRESERVE the later one (never null it), register it keyless, and warn.
+    var taken = {}; // combo -> settingsKey
+    var conflictMsgs = [];
+    for (var m = 0; m < _sdkShortcutDefs.length; m++) {
+      var defM = _sdkShortcutDefs[m];
+      var comboM = opts.sdkShortcuts[defM.settingsKey]?.combo || null;
+      if (!comboM) continue;
+      if (taken[comboM] !== undefined) {
+        _conflictBlockedKeys.add(defM.settingsKey);
+        conflictMsgs.push(defM.description + ' (' + comboM + ')');
+      } else {
+        taken[comboM] = defM.settingsKey;
+      }
+    }
+
+    for (var k = 0; k < _sdkShortcutDefs.length; k++) {
+      var shortcutDef = _sdkShortcutDefs[k];
+      var keys = _conflictBlockedKeys.has(shortcutDef.settingsKey) ? null : opts.sdkShortcuts[shortcutDef.settingsKey].combo;
     try {
       wmeSDK.Shortcuts.createShortcut({
           shortcutId: shortcutDef.id,
           description: shortcutDef.description,
           callback: shortcutDef.callback,
-          shortcutKeys: opts.sdkShortcuts[shortcutDef.settingsKey].combo,
+          shortcutKeys: keys,
         });
       } catch (error) {
         if (String(error).indexOf('already in use') !== -1) {
-          // Key conflict — register without a key; user assigns in WME UI
-          opts.sdkShortcuts[shortcutDef.settingsKey] = { raw: null, combo: null };
+          // Key taken by WME or another script — preserve the saved value,
+          // register keyless, and block so the poll doesn't clobber it back.
+          if (!_conflictBlockedKeys.has(shortcutDef.settingsKey)) {
+            _conflictBlockedKeys.add(shortcutDef.settingsKey);
+            conflictMsgs.push(shortcutDef.description + ' (' + (opts.sdkShortcuts[shortcutDef.settingsKey].combo || 'key in use') + ')');
+          }
       try {
         wmeSDK.Shortcuts.createShortcut({
               shortcutId: shortcutDef.id,
@@ -2614,15 +2674,40 @@ Split Mode (toggleSplitMode shortcut)
       }
     }
     saveOptions(opts);
+    if (conflictMsgs.length > 0) {
+      try {
+        WazeToastr.Alerts.warning(scriptName, 'Shortcut conflict: ' + conflictMsgs.join(', ') + ' could not be assigned a key. Resolve it in WME Settings → Keyboard Shortcuts.', false, false, 8000);
+      } catch (e) {
+        console.warn(scriptName + ' WazeToastr.Alerts.warning failed:', e);
+      }
+      log('Shortcut conflicts preserved (key not assigned): ' + conflictMsgs.join(', '));
+    }
     log('SDK shortcuts initialized (' + _sdkShortcutDefs.length + ' total)');
   }
 
-  // ===== SDK Shortcut Persistence (auto-save on beforeunload + polling) =====
+  // ===== SDK Shortcut Persistence (sync SDK → localStorage on beforeunload + polling) =====
+  // WME itself moves a key when the user assigns one that's already in use (it
+  // clears the key from the previous shortcut), so the SDK state is the source
+  // of truth and we save what getAllShortcuts() reports — including the newly
+  // assigned key AND the cleared/null key. No re-registration is done here:
+  // delete+create would reorder the script's group in the Keyboard Shortcuts UI.
+  //
+  // WME SDK BUG WORKAROUND: when a key is moved, WME clears the old holder's
+  // live shortcut but getAllShortcuts() still reports its stale originalShortcut
+  // (originalShortcut is NOT cleared during conflict resolution). This makes two
+  // of our shortcuts report the same combo. We detect that duplicate and treat
+  // the member that did NOT change (saved value == SDK value) as the stale one:
+  // clear it and remember it in _conflictStaleKeys so the poll ignores the
+  // stale value on later runs instead of writing it back.
   function checkSDKShortcutsChanged() {
     if (!wmeSDK?.Shortcuts || !_sdkShortcutDefs) return;
-    var triggerSave = false;
     var shortcuts = wmeSDK.Shortcuts.getAllShortcuts();
+    var opts = getOptions();
+    if (!opts.sdkShortcuts) opts.sdkShortcuts = {};
 
+    // Pass 1: our shortcuts' SDK-reported state + combo index (for stale dupes)
+    var sdkState = {};  // settingsKey -> { combo, shortcutKeys }
+    var comboKeys = {}; // combo -> [settingsKey]
     for (var i = 0; i < shortcuts.length; i++) {
       var shortcut = shortcuts[i];
       var matchingDef = null;
@@ -2633,40 +2718,107 @@ Split Mode (toggleSplitMode shortcut)
         }
       }
       if (!matchingDef) continue;
-
       var normalized = _normalizeShortcut(shortcut.shortcutKeys);
-      var opts = getOptions();
-      if (!opts.sdkShortcuts) opts.sdkShortcuts = {};
-      if (opts.sdkShortcuts[matchingDef.settingsKey]?.combo !== normalized.combo) {
-        triggerSave = true;
+      var settingsKey = matchingDef.settingsKey;
+      sdkState[settingsKey] = { combo: normalized.combo, shortcutKeys: shortcut.shortcutKeys };
+      if (normalized.combo) {
+        (comboKeys[normalized.combo] = comboKeys[normalized.combo] || []).push(settingsKey);
+      }
+    }
+
+    // Pass 2: detect which of our shortcuts changed (updated or cleared)
+    var changedKeys = [];
+    for (var settingsKey in sdkState) {
+      var savedCombo = opts.sdkShortcuts[settingsKey]?.combo || null;
+      var sdkCombo = sdkState[settingsKey].combo || null;
+
+      // Stale keys (WME SDK bug): we cleared them, but the SDK still reports the
+      // old combo. Ignore until the user actually changes them (different combo).
+      if (_conflictStaleKeys.has(settingsKey)) {
+        if (sdkCombo === _conflictStaleKeys.get(settingsKey)) continue;
+        _conflictStaleKeys.delete(settingsKey); // user changed it — re-evaluate
+      }
+
+      // Blocked keys: skip unless the user reassigned them (SDK value non-null)
+      if (_conflictBlockedKeys.has(settingsKey)) {
+        if (sdkCombo === null) continue; // still blocked — preserve saved value
+        _conflictBlockedKeys.delete(settingsKey); // user reassigned — unblock
+      }
+
+      if (savedCombo !== sdkCombo) {
+        changedKeys.push(settingsKey);
+      }
+    }
+
+    // Pass 3: resolve stale duplicates (WME SDK bug). If exactly one member of a
+    // duplicated combo changed, it is the real holder; the other members are the
+    // stale displaced shortcuts — the UI already cleared them, so clear + suppress.
+    var changed = false;
+    for (var combo in comboKeys) {
+      var keys = comboKeys[combo];
+      if (keys.length < 2) continue;
+      var changedMembers = [];
+      for (var k = 0; k < keys.length; k++) {
+        if (changedKeys.indexOf(keys[k]) !== -1) changedMembers.push(keys[k]);
+      }
+      if (changedMembers.length !== 1) continue; // no clear stale signature — leave for init
+      var newHolder = changedMembers[0];
+      for (var k2 = 0; k2 < keys.length; k2++) {
+        var staleKey = keys[k2];
+        if (staleKey === newHolder) continue;
+        if (_conflictBlockedKeys.has(staleKey)) continue;
+        if (_conflictStaleKeys.has(staleKey)) continue; // already handled
+        opts.sdkShortcuts[staleKey] = { raw: null, combo: null };
+        _conflictStaleKeys.set(staleKey, combo);
+        changed = true;
+        log('SDK bug workaround: cleared stale key for ' + staleKey + ' (getAllShortcuts() still reports "' + combo + '")');
+      }
+    }
+
+    if (!changed && changedKeys.length === 0) return;
+
+    // Debug: dump exactly what getAllShortcuts() returned (the native UI state),
+    // including stale keys, so we can see what is (and isn't) saved.
+    var sdkDump = [];
+    for (var z = 0; z < shortcuts.length; z++) {
+      var sz = shortcuts[z];
+      var defZ = null;
+      for (var y = 0; y < _sdkShortcutDefs.length; y++) {
+        if (_sdkShortcutDefs[y].id === sz.shortcutId) {
+          defZ = _sdkShortcutDefs[y];
+          break;
+        }
+      }
+      if (!defZ) continue;
+      sdkDump.push(defZ.settingsKey + '="' + sz.shortcutKeys + '"');
+    }
+    log('getAllShortcuts() (native UI state): ' + sdkDump.join(', '));
+
+    // Pass 4: sync the genuinely-changed keys (stale keys are already cleared)
+    for (var a = 0; a < shortcuts.length; a++) {
+      var sc = shortcuts[a];
+      var defA = null;
+      for (var b = 0; b < _sdkShortcutDefs.length; b++) {
+        if (_sdkShortcutDefs[b].id === sc.shortcutId) {
+          defA = _sdkShortcutDefs[b];
         break;
       }
     }
+      if (!defA) continue;
+      if (changedKeys.indexOf(defA.settingsKey) === -1) continue;
+      if (_conflictStaleKeys.has(defA.settingsKey)) continue; // already cleared
+      opts.sdkShortcuts[defA.settingsKey] = _normalizeShortcut(sc.shortcutKeys);
+      log('SDK → localStorage: ' + defA.settingsKey + ' = "' + sc.shortcutKeys + '" → ' + JSON.stringify(opts.sdkShortcuts[defA.settingsKey]));
+    }
 
-    if (triggerSave) {
-      try {
+    // Pass 5: persist and notify
+    saveOptions(opts);
+    try {
         WazeToastr.Alerts.success(scriptName, 'Saving keyboard shortcuts for ' + scriptName, false, false, 3000);
       } catch (e) {
-        console.warn(scriptName + ' WazeToastr.Alerts.success failed:', e);
+      console.warn(scriptName + ' WazeToastr.Alerts failed:', e);
       }
-      for (var k = 0; k < shortcuts.length; k++) {
-        var s = shortcuts[k];
-        var matchDef = null;
-        for (var l = 0; l < _sdkShortcutDefs.length; l++) {
-          if (_sdkShortcutDefs[l].id === s.shortcutId) {
-            matchDef = _sdkShortcutDefs[l];
-            break;
-      }
-        }
-        if (matchDef && matchDef.settingsKey) {
-          var opts2 = getOptions();
-          if (!opts2.sdkShortcuts) opts2.sdkShortcuts = {};
-          opts2.sdkShortcuts[matchDef.settingsKey] = _normalizeShortcut(s.shortcutKeys);
-          saveOptions(opts2);
-        }
-      }
-      log('SDK shortcut changes saved.');
-    }
+    log('SDK shortcut changes saved.');
   }
 
   // ===== New Feature: One-click Geometry Fix =====
@@ -5973,6 +6125,13 @@ if (typeof require !== 'undefined') {
 
   /*
 Changelog
+<strong>Version 2.7.3.2 - 2026-08-01:</strong><br>
+    - Workaround for a WME SDK bug: when a shortcut key is reassigned in WME Settings → Keyboard Shortcuts, WME moves the key off the previous shortcut but fails to clear its originalShortcut, so getAllShortcuts() keeps reporting the old key for the displaced shortcut (stale duplicate). This made shortcuts appear duplicated or revert after reload. The script now detects these stale duplicates, clears the displaced shortcut, and keeps the correct holder — verified to persist correctly across reloads.<br>
+    - Note: the root cause is on the WME side (originalShortcut not cleared during conflict resolution); this is a script-side workaround until Waze fixes it upstream.<br>
+<strong>Version 2.7.3.0 - 2026-08-01:</strong><br>
+    - Fixed keyboard shortcut conflict handling: reassigning a key now moves it off the previous shortcut instead of silently clearing it (no more lost shortcut settings after reload)<br>
+    - Conflicting saved shortcuts are preserved and a warning is shown instead of being nulled<br>
+    - Minor bug fixes and stability improvements<br>`;
 <strong>Version 2.7.2.2 - 2026-07-24:</strong><br>
     - starting with SDK v2.359, it is now moved towards grouping related parameters into single objects to streamline updates and reduce the number of individual actions recorded by the ActionManager <br>
     - Migrated legacy keyboard shortcuts to sdk<br>
