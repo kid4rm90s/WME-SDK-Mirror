@@ -1,6 +1,6 @@
 # WME EZRoad Mod — Script Example
 
-**Version:** 2.7.3.2 | **Author:** kid4rm90s | **License:** GNU GPL v3
+**Version:** 2.7.3.3 | **Author:** kid4rm90s | **License:** GNU GPL v3
 **Script:** [WME EZRoad Mod on GreaseFork](https://greasyfork.org/scripts/528552-wme-ezroad-mod)
 **Based on:** WME EZRoad by Michaelrosstarr (https://greasyfork.org/en/scripts/518381-wme-ezsegments)
 
@@ -449,7 +449,7 @@ Split Mode (toggleSplitMode shortcut)
 // ==UserScript==
 // @name         WME EZRoad Mod
 // @namespace    https://greasyfork.org/users/1087400
-// @version      2.7.3.2
+// @version      2.7.3.3
 // @description  Easily update roads
 // @author       https://greasyfork.org/en/users/1087400-kid4rm90s
 // @include 	   /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor.*$/
@@ -582,8 +582,13 @@ Split Mode (toggleSplitMode shortcut)
       const keyCode = parseInt(str.split(',')[1], 10);
       return keyCode < 0 ? null : str;
     }
-    // Handle bare numeric key code (legacy format stored just the key code number, e.g. "67" for 'C')
-      if (/^\d+$/.test(str)) {
+    // Handle bare numeric key code (legacy format stored just the key code number,
+    // e.g. "67" for 'C'). Only 2+ digit bare numbers are keycodes — the SDK
+    // reports single-digit shortcut keys as the CHARACTER (e.g. "8" means the '8'
+    // key = keycode 56, NOT Backspace = keycode 8). Legacy migration pre-converts
+    // bare keycodes to "mod,key" before this is reached, so a single digit here is
+    // always a char.
+      if (/^\d{2,}$/.test(str)) {
         return '0,' + str
       }
     const upperStr = String(str).toUpperCase();
@@ -963,7 +968,16 @@ Split Mode (toggleSplitMode shortcut)
         // Skip if this settingsKey already has a non-null combo in new format
         if (opts.sdkShortcuts[settingsKey] && opts.sdkShortcuts[settingsKey].combo !== null) continue;
 
-        opts.sdkShortcuts[settingsKey] = _normalizeShortcut(shortcutString);
+        // Old W.accelerators format stores bare keycodes (e.g. "49" for the '1'
+        // key, "8" for Backspace) with no modifier prefix. Pre-convert them to
+        // "mod,key" raw format so single-digit legacy keycodes (Backspace "8",
+        // Tab "9") are NOT mistaken for the digit CHARACTERS "8"/"9".
+        var legacyShortcut = shortcutString;
+        if (legacyShortcut !== '-1' && legacyShortcut !== 'None' && legacyShortcut !== '' &&
+            /^\d+$/.test(legacyShortcut) && legacyShortcut.indexOf(',') === -1) {
+          legacyShortcut = '0,' + legacyShortcut;
+        }
+        opts.sdkShortcuts[settingsKey] = _normalizeShortcut(legacyShortcut);
         migrated = true;
         log(`Migrated legacy shortcut "${actionId}" (${shortcutString}) → ${settingsKey}: ${opts.sdkShortcuts[settingsKey].combo}`);
       }
@@ -6372,5 +6386,3 @@ When checked, it will add U-turns to the selected road segments' both sides<br> 
 		
 */
 })();
-
-`
