@@ -1,10 +1,24 @@
 ---
-title: # v2.363
+title: # v2.364
 source: documents/CHANGELOG.html
-created: 2026-07-28
+created: 2026-08-05
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
+
+## v2.364
+
+### Add getByUserName method to Users module
+
+Implemented getByUserName method on the Users module to allow reading user data by username.
+
+### Check authorization in setTurnLaneGuidance
+
+Add client authorization checks to setTurnLaneGuidance to verify that editing is allowed and the logged-in user has privileges to update lane guidance for both immediate and far turns.
+
+### Add getCurrentUser method to Users module
+
+Implemented getCurrentUser method on the Users module to allow reading the currently logged-in user from the store.
 
 ## v2.363
 

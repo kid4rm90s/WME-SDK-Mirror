@@ -1021,7 +1021,7 @@ export type VenueAddressData = (AddressRawComponents & {
 	streetId?: number;
 });
 export interface User {
-	id: number;
+	rank: UserRank$1;
 	userName: string;
 }
 export declare const ROAD_TYPE: {
@@ -3153,6 +3153,15 @@ declare class Nodes extends SdkModule {
 }
 declare class Users extends SdkModule {
 	/**
+	 * @returns user with userName, or null if not found
+	 */
+	getByUserName(options: {
+		/**
+		 * editor username to look for
+		 */
+		userName: string;
+	}): User | null;
+	/**
 	 * @returns a formatted link for a users editor profile page
 	 */
 	getUserProfileLink(options: {
@@ -3179,6 +3188,10 @@ declare class Users extends SdkModule {
 		 */
 		userName: string;
 	}): Promise<UserProfile>;
+	/**
+	 * @returns the currently logged in user or null if not logged in
+	 */
+	getCurrentUser(): User | null;
 }
 declare class Turns extends SdkModule {
 	/**

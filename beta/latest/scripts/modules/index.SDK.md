@@ -1,7 +1,7 @@
 ---
 title: SDK module
 source: modules/index.SDK.html
-created: 2026-07-28
+created: 2026-08-05
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -119,6 +119,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [TurnLanes](../interfaces/index.SDK.TurnLanes.md)
 - [UpdateRequestDetails](../interfaces/index.SDK.UpdateRequestDetails.md)
 - [UpdateRequestUserPreferences](../interfaces/index.SDK.UpdateRequestUserPreferences.md)
+- [User](../interfaces/index.SDK.User.md)
 - [UserProfile](../interfaces/index.SDK.UserProfile.md)
 - [UserSession](../interfaces/index.SDK.UserSession.md)
 - [UserSettings](../interfaces/index.SDK.UserSettings.md)
