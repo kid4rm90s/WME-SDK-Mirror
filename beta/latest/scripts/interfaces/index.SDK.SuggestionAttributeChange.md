@@ -1,7 +1,7 @@
 ---
 title: SDK.SuggestionAttributeChange interface
 source: interfaces/index.SDK.SuggestionAttributeChange.html
-created: 2026-08-05
+created: 2026-08-18
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

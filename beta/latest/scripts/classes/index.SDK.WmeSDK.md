@@ -1,7 +1,7 @@
 ---
 title: SDK.WmeSDK class
 source: classes/index.SDK.WmeSDK.html
-created: 2026-08-05
+created: 2026-08-18
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -38,6 +38,11 @@ Errors: {
 ```typescript
 Events: SdkEventBus = ...
 ```
+### **Readonly** `IssueTracker`
+
+```typescript
+IssueTracker: IssueTracker = ...
+```
 ### **Readonly** `LayerSwitcher`
 
 ```typescript
@@ -67,6 +72,11 @@ Sidebar: Sidebar = ...
 
 ```typescript
 State: WmeState = ...
+```
+### **Readonly** `StreetView`
+
+```typescript
+StreetView: StreetView = ...
 ```
 ## Methods
 ### `getScriptId`

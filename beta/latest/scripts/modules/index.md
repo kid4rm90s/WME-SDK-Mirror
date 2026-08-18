@@ -1,7 +1,7 @@
 ---
 title: index module
 source: modules/index.html
-created: 2026-08-05
+created: 2026-08-18
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

@@ -1,7 +1,7 @@
 ---
 title: SDK.DATA_MODEL_NAMES variable
 source: variables/index.SDK.DATA_MODEL_NAMES.html
-created: 2026-08-05
+created: 2026-08-18
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -21,6 +21,7 @@ DATA_MODEL_NAMES: {
   roadClosures: "roadClosures" ;
   segmentHouseNumbers: "segmentHouseNumbers" ;
   segments: "segments" ;
+  segmentSuggestions: "segmentSuggestions" ;
   signTypes: "signTypes" ;
   states: "states" ;
   streets: "streets" ;
@@ -42,6 +43,7 @@ DATA_MODEL_NAMES: {
 | roadClosures | "roadClosures" | Readonly |
 | segmentHouseNumbers | "segmentHouseNumbers" | Readonly |
 | segments | "segments" | Readonly |
+| segmentSuggestions | "segmentSuggestions" | Readonly |
 | signTypes | "signTypes" | Readonly |
 | states | "states" | Readonly |
 | streets | "streets" | Readonly |

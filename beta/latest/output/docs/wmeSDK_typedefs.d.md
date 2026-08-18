@@ -211,6 +211,7 @@ export declare const DATA_MODEL_NAMES: {
 	readonly updateRequestSessions: "updateRequestSessions";
 	readonly venues: "venues";
 	readonly segmentHouseNumbers: "segmentHouseNumbers";
+	readonly segmentSuggestions: "segmentSuggestions";
 	readonly signTypes: "signTypes";
 };
 /**
@@ -401,6 +402,75 @@ export declare const SidebarTabName: {
 	readonly USERSCRIPT_TAB: "userscript_tab";
 };
 export type SidebarTabName = Values<typeof SidebarTabName>;
+export declare const WmeLayerName: {
+	readonly CITIES: "cities";
+	readonly ROADS: "roads";
+	readonly PLACES: "places";
+	readonly PATHS: "paths";
+	readonly JUNCTION_BOXES: "junctionBoxes";
+	readonly CLOSURES: "closures";
+	readonly PERMANENT_HAZARDS: "permanentHazards";
+	readonly GPS_POINTS: "gpsPoints";
+	readonly HOUSE_NUMBERS: "houseNumbers";
+	readonly MAP_COMMENTS: "mapComments";
+	readonly MAP_PROBLEMS: "mapProblems";
+	readonly UPDATE_REQUESTS: "updateRequests";
+	readonly SATELLITE_IMAGERY: "satelliteImagery";
+	readonly EDIT_SUGGESTIONS: "editSuggestions";
+};
+export type WmeLayerName = Values<typeof WmeLayerName>;
+export declare const IssueTrackerType: {
+	readonly MAP_PROBLEM: "mapProblem";
+	readonly MAP_UPDATE_REQUEST: "mapUpdateRequest";
+	readonly EDIT_SUGGESTION: "editSuggestion";
+};
+export type IssueTrackerType = Values<typeof IssueTrackerType>;
+export interface IssueTrackerPanelOpenedEvent {
+	/**
+	 * The unique ID of the problem, update request, or edit suggestion.
+	 */
+	id: string;
+	/**
+	 * The type of panel opened.
+	 */
+	type: IssueTrackerType;
+}
+export interface IssueTrackerPanelClosedEvent {
+	/**
+	 * The type of panel that was closed.
+	 */
+	type: IssueTrackerType | "unknown";
+}
+export interface UpdateRequestsFilterState {
+	status: "OPEN" | "CLOSED";
+}
+export interface MapProblemsFilterState {
+	status: "OPEN" | "CLOSED";
+}
+export interface PlaceUpdateRequestsFilterState {
+	placeType: "PUBLIC" | "RESIDENTIAL";
+}
+export interface MapSuggestionsFilterState {
+	status: "OPEN" | "ADDED_TO_MAP" | "APPROVED_BY_GOOGLE" | "CLOSED_ALL" | "NOT_APPROVED_BY_GOOGLE" | "PENDING_GOOGLE_REPLY" | "REJECTED_ALL";
+}
+export interface IssueTrackerFilters {
+	/**
+	 * The filters applied to the map problems group in the Issue Tracker panel.
+	 */
+	mapProblems: MapProblemsFilterState | null;
+	/**
+	 * The filters applied to the map suggestions group in the Issue Tracker panel.
+	 */
+	mapSuggestions: MapSuggestionsFilterState | null;
+	/**
+	 * The filters applied to the place update requests group in the Issue Tracker panel.
+	 */
+	placeUpdateRequests: PlaceUpdateRequestsFilterState | null;
+	/**
+	 * The filters applied to the map update requests group in the Issue Tracker panel.
+	 */
+	updateRequests: UpdateRequestsFilterState | null;
+}
 export declare const WME_LAYER_NAMES: {
 	readonly NODES: "nodes";
 	readonly SEGMENTS: "segments";
@@ -421,8 +491,11 @@ type PLACE_UPDATE_ACTION = Values<typeof PLACE_UPDATE_ACTION>;
 export type PlaceUpdateType = `${PLACE_UPDATE_ACTION}_${PLACE_UPDATE_SUBJECT}` | "flag";
 export declare const RESTRICTION_TYPE: {
 	readonly BLOCKED: "BLOCKED";
+	readonly DANGEROUS_AREA: "DANGEROUS_AREA";
 	readonly DIFFICULT: "DIFFICULT";
+	readonly ENTER_ONLY: "ENTER_ONLY";
 	readonly FREE: "FREE";
+	readonly PENALTY: "PENALTY";
 	readonly TOLL: "TOLL";
 };
 export type RESTRICTION_TYPE = Values<typeof RESTRICTION_TYPE>;
@@ -847,6 +920,10 @@ export interface SegmentLanesInfo {
 	laneWidth: number | null;
 	numberOfLanes: number;
 }
+export interface LanesInfo {
+	laneWidth: number | null;
+	numberOfLanes: number;
+}
 export declare const SegmentDirection: {
 	readonly A_TO_B: "A_TO_B";
 	readonly B_TO_A: "B_TO_A";
@@ -1250,7 +1327,7 @@ export interface RoadShield {
 	/**
 	 * The sign text displayed on the road shield (e.g., "I-95", "US-1").
 	 */
-	signText: string | null;
+	signText?: string | null;
 }
 export interface ExitSign {
 	/**
@@ -1575,7 +1652,27 @@ export interface MapComment {
 type UpdateRequestSource = "MOBILE_CLIENT" | "MOBILE_WEB" | "WEB" | "REPORTING_AGENT";
 export type UpdateRequestType = "BLOCKED_ROAD" | "INCORRECT_ADDRESS" | "INCORRECT_GENERAL_ERROR" | "INCORRECT_JUNCTION" | "INCORRECT_MISSING_ROUNDABOUT" | "INCORRECT_ROUTE" | "INCORRECT_TURN" | "MISSING_BRIDGE_OVERPASS" | "MISSING_EXIT" | "MISSING_ROAD" | "TURN_NOT_ALLOWED" | "WRONG_DRIVING_DIRECTIONS";
 export type UnpavedRoadsSetting = "ALLOW" | "DISALLOW" | "AVOID_LONG_ONES";
-type VehicleType = "BUS" | "CAV" | "CLEAN_FUEL" | "EV" | "HAZARDOUS_MATERIALS" | "HOV_2" | "HOV_3" | "HYBRID" | "MOTORCYCLE" | "PRIVATE" | "PUBLIC_TRANSPORTATION" | "RV" | "TAXI" | "TOWING_VEHICLE" | "TRUCK";
+/**
+ * String enum of vehicle types.
+ */
+export declare const VehicleType: {
+	readonly BUS: "BUS";
+	readonly CAV: "CAV";
+	readonly CLEAN_FUEL: "CLEAN_FUEL";
+	readonly EV: "EV";
+	readonly HAZARDOUS_MATERIALS: "HAZARDOUS_MATERIALS";
+	readonly HOV_2: "HOV_2";
+	readonly HOV_3: "HOV_3";
+	readonly HYBRID: "HYBRID";
+	readonly MOTORCYCLE: "MOTORCYCLE";
+	readonly PRIVATE: "PRIVATE";
+	readonly PUBLIC_TRANSPORTATION: "PUBLIC_TRANSPORTATION";
+	readonly RV: "RV";
+	readonly TAXI: "TAXI";
+	readonly TOWING_VEHICLE: "TOWING_VEHICLE";
+	readonly TRUCK: "TRUCK";
+};
+export type VehicleType = Values<typeof VehicleType>;
 export interface UpdateRequestUserPreferences {
 	/**
 	 * The list of user's active HOV subscriptions.
@@ -1751,32 +1848,105 @@ export interface ManagedArea {
 	 */
 	userName: string;
 }
-type RestrictionSegmentDirection = "BOTH" | "FWD" | "REV";
 type CameraType = "BUS_LANE" | "CARPOOL_LANE" | "DISTANCE" | "DUMMY" | "HOV_LANE" | "MOBILE_PHONE" | "NOISE" | "RED_LIGHT" | "SEATBELT" | "SPEED" | "STOP";
-export interface Camera {
+export declare const PERMANENT_HAZARD_TYPE: {
+	readonly SPEED_BUMP: "SPEED_BUMP";
+	readonly TOPES: "TOPES";
+	readonly TOLL_BOOTH: "TOLL_BOOTH";
+	readonly DANGEROUS_CURVE: "DANGEROUS_CURVE";
+	readonly DANGEROUS_INTERSECTION: "DANGEROUS_INTERSECTION";
+	readonly DANGEROUS_MERGE: "DANGEROUS_MERGE";
+	readonly SCHOOL_ZONE: "SCHOOL_ZONE";
+	readonly CAMERA: "CAMERA";
+	readonly RAILROAD_CROSSING: "RAILROAD_CROSSING";
+	readonly TRAFFIC_LIGHT: "TRAFFIC_LIGHT";
+	readonly SIGN: "SIGN";
+	readonly LANE_ENDING: "LANE_ENDING";
+	readonly RAISED_CROSSWALK: "RAISED_CROSSWALK";
+	readonly HIGHWAY_CROSSWALK: "HIGHWAY_CROSSWALK";
+	readonly SHOULDER_ENDING: "SHOULDER_ENDING";
+	readonly NARROW_BRIDGE: "NARROW_BRIDGE";
+};
+export type PermanentHazardType = Values<typeof PERMANENT_HAZARD_TYPE>;
+type TrafficSignSubType = "STOP_SIGN";
+export type PermanentHazardSubType = CameraType | TrafficSignSubType;
+interface BasePermanentHazard {
 	/**
-	 * The direction of the camera.
+	 * The direction of the permanent hazard.
 	 */
 	direction: RestrictionSegmentDirection | null;
+	/**
+	 * The GeoJSON Point representation of the permanent hazard's location.
+	 */
+	geometry: Point | Polygon;
+	/**
+	 * The id of the permanent hazard.
+	 */
+	id: number;
+	/**
+	 * The rank of the permanent hazard.
+	 */
+	lockRank: number | null;
+	/**
+	 * The modification metadata of the permanent hazard.
+	 */
+	modificationData: ModificationMetadata;
+	/**
+	 * The id of the segment the permanent hazard is on.
+	 */
+	segmentId: number | null;
+	/**
+	 * The sub types of the permanent hazard.
+	 */
+	subTypes: PermanentHazardSubType[];
+}
+interface SchoolZone extends BasePermanentHazard {
+	/**
+	 * The excluded road types of the school zone.
+	 */
+	excludedRoadTypes: RoadTypeId[] | null;
+	/**
+	 * The name of the school zone.
+	 */
+	name: string | null;
+	/**
+	 * The id of the schedule of the school zone.
+	 */
+	scheduleId: string | null;
+	/**
+	 * The speed limit of the school zone.
+	 */
+	speedLimit: number | null;
+	/**
+	 * The type of the permanent hazard.
+	 */
+	type: typeof PERMANENT_HAZARD_TYPE.SCHOOL_ZONE;
+}
+export interface Camera extends BasePermanentHazard {
 	/**
 	 * The GeoJSON Point representation of the camera's location.
 	 */
 	geometry: Point;
-	id: number;
 	/**
-	 * The lock rank of the camera.
+	 * The type of the permanent hazard.
 	 */
-	lockRank: number | null;
-	modificationData: ModificationMetadata;
+	type: typeof PERMANENT_HAZARD_TYPE.CAMERA;
 	/**
-	 * The id of the segment that the camera is on.
-	 */
-	segmentId: number | null;
-	/**
-	 * The list of the types of the camera.
+	 * @deprecated Use subTypes instead for consistency across all hazards.
 	 */
 	types: CameraType[];
 }
+interface StandardPermanentHazard extends BasePermanentHazard {
+	/**
+	 * The rank of the standard permanent hazard.
+	 */
+	rank: number | null;
+	/**
+	 * The type of the standard permanent hazard.
+	 */
+	type: Exclude<PermanentHazardType, typeof PERMANENT_HAZARD_TYPE.CAMERA | typeof PERMANENT_HAZARD_TYPE.SCHOOL_ZONE>;
+}
+export type PermanentHazard = Camera | SchoolZone | StandardPermanentHazard;
 export interface RestrictedDrivingArea {
 	/**
 	 * The GeoJSON Point representation of the center of the restricted driving area.
@@ -1820,6 +1990,41 @@ export interface Sign {
 	 * The type of the sign.
 	 */
 	type: SignType;
+}
+export type CountryId = number;
+type SegmentId$1 = number;
+export declare const SegmentSuggestionSource: {
+	readonly GEO: "GEO";
+	readonly GEO_UGC: "GEO_UGC";
+	readonly WME_EDITOR: "WME";
+};
+export type SegmentSuggestionSource = Values<typeof SegmentSuggestionSource>;
+export type SegmentSuggestionStatus = "ACCEPTED" | "OPEN" | "REJECTED" | "REJECTION_ACCEPTED" | "REJECTION_REJECTED";
+export interface SegmentSuggestion {
+	/**
+	 * The GeoJSON LineString representation of the segment suggestion geometry.
+	 */
+	geometry: LineString;
+	/**
+	 * The unique ID of the segment suggestion.
+	 */
+	id: number;
+	/**
+	 * The associated Waze segment ID, or null if none.
+	 */
+	segmentId: SegmentId$1 | null;
+	/**
+	 * The source of the segment suggestion.
+	 */
+	source: SegmentSuggestionSource;
+	/**
+	 * The status of the segment suggestion.
+	 */
+	status: SegmentSuggestionStatus;
+	/**
+	 * The street name of the segment suggestion, or null if none.
+	 */
+	streetName: string | null;
 }
 /**
  * Represents a house number associated with a segment.
@@ -2045,20 +2250,196 @@ export interface EditSuggestionChange {
 	 */
 	suggestionId: string;
 }
+/**
+ * String enum of license plate rules.
+ */
+export declare const LicensePlate: {
+	readonly ENDS_WITH_0: "ENDS_WITH_0";
+	readonly ENDS_WITH_1: "ENDS_WITH_1";
+	readonly ENDS_WITH_2: "ENDS_WITH_2";
+	readonly ENDS_WITH_3: "ENDS_WITH_3";
+	readonly ENDS_WITH_4: "ENDS_WITH_4";
+	readonly ENDS_WITH_5: "ENDS_WITH_5";
+	readonly ENDS_WITH_6: "ENDS_WITH_6";
+	readonly ENDS_WITH_7: "ENDS_WITH_7";
+	readonly ENDS_WITH_8: "ENDS_WITH_8";
+	readonly ENDS_WITH_9: "ENDS_WITH_9";
+	readonly ENDS_WITH_EVEN: "ENDS_WITH_EVEN";
+	readonly ENDS_WITH_ODD: "ENDS_WITH_ODD";
+};
+export type LicensePlate = Values<typeof LicensePlate>;
+/**
+ * Represents a driving profile rule for specific vehicle exemptions or restrictions.
+ */
 export interface DriveProfile {
-	licensePlateNumber: string;
+	/**
+	 * Specific license plate number for the drive profile.
+	 */
+	licensePlateNumber: LicensePlate | null;
+	/**
+	 * Minimum number of passengers required.
+	 */
 	numPassengers: number;
+	/**
+	 * List of active subscription IDs required.
+	 */
 	subscriptions: string[];
+	/**
+	 * Applicable vehicle types.
+	 */
 	vehicleTypes: VehicleType[];
 }
+/**
+ * Mapping of restriction types to lists of drive profiles that override the default restriction behavior.
+ */
 export type DriveProfiles = {
-	[key in RESTRICTION_TYPE]: DriveProfile[];
+	[key in RESTRICTION_TYPE]?: DriveProfile[];
 };
+/**
+ * Base restriction contract shared by turn and segment restrictions.
+ */
 export interface BaseRestriction {
+	/**
+	 * Default restriction type.
+	 */
+	defaultType: RESTRICTION_TYPE | null;
+	/**
+	 * Free text description of the restriction.
+	 */
+	description: string | null;
+	/**
+	 * Drive profiles overriding the default restriction per restriction type.
+	 */
 	driveProfiles: DriveProfiles;
+	/**
+	 * Whether the restriction is editable by the current user.
+	 */
+	editable: boolean;
+	/**
+	 * Whether the restriction has expired based on its time frames.
+	 */
 	isExpired: boolean;
+	/**
+	 * Array of time frames indicating when the restriction applies.
+	 */
+	timeFrames: TimeFrame[];
 }
-export type SegmentRestriction = BaseRestriction;
+export declare const DaysOfMonth: {
+	readonly EVEN_DAYS: "EVEN_DAYS";
+	readonly ODD_DAYS: "ODD_DAYS";
+};
+export type DaysOfMonth = Values<typeof DaysOfMonth>;
+export declare const WeekDay: {
+	readonly MONDAY: "MONDAY";
+	readonly TUESDAY: "TUESDAY";
+	readonly WEDNESDAY: "WEDNESDAY";
+	readonly THURSDAY: "THURSDAY";
+	readonly FRIDAY: "FRIDAY";
+	readonly SATURDAY: "SATURDAY";
+	readonly SUNDAY: "SUNDAY";
+};
+export type WeekDay = Values<typeof WeekDay>;
+/**
+ * Represents a time frame indicating when a restriction is active.
+ */
+export interface TimeFrame {
+	/**
+	 * Days of the month filtering (e.g., even or odd days), pass null for all dates.
+	 */
+	daysOfMonth: DaysOfMonth | null;
+	/**
+	 * End date in "YYYY-MM-DD" format.
+	 */
+	endDate: string | null;
+	/**
+	 * Start time in 24-hour format ("HH:MM").
+	 */
+	fromTime: string | null;
+	/**
+	 * Whether the time frame repeats yearly.
+	 */
+	repeatYearly: boolean | null;
+	/**
+	 * Start date in "YYYY-MM-DD" format.
+	 */
+	startDate: string | null;
+	/**
+	 * Time zone identifier (e.g., "Asia/Jerusalem").
+	 */
+	timeZone: string | null;
+	/**
+	 * End time in 24-hour format ("HH:MM").
+	 */
+	toTime: string | null;
+	/**
+	 * Bitmask representing the days of the week when active.
+	 */
+	weekdays: WeekDay[] | null;
+}
+/**
+ * Supported traffic directions for segment restrictions.
+ */
+export declare const RestrictionSegmentDirection: {
+	/** The restriction applies to both directions of travel. */
+	readonly BOTH: "BOTH";
+	/** The restriction applies only to the forward direction of the segment (from Node A to Node B). */
+	readonly FWD: "FWD";
+	/** The restriction applies only to the reverse direction of the segment (from Node B to Node A). */
+	readonly REV: "REV";
+};
+export type RestrictionSegmentDirection = Values<typeof RestrictionSegmentDirection>;
+/**
+ * Supported lane dispositions indicating which part of the road/segment the restriction is applied to.
+ */
+export declare const RestrictionSegmentDisposition: {
+	/** The restriction applies specifically to the left lane(s). */
+	readonly LEFT_LANE: "LEFT_LANE";
+	/** The restriction applies specifically to the middle lane(s). */
+	readonly MIDDLE_LANE: "MIDDLE_LANE";
+	/** No specific lane disposition is applied. */
+	readonly NONE: "NONE";
+	/** The restriction applies specifically to the right lane(s). */
+	readonly RIGHT_LANE: "RIGHT_LANE";
+	/** The restriction applies to the whole segment (all lanes). */
+	readonly WHOLE_SEGMENT: "WHOLE_SEGMENT";
+};
+export type RestrictionSegmentDisposition = Values<typeof RestrictionSegmentDisposition>;
+/**
+ * Supported specialized lane types designation for lane-specific restrictions.
+ */
+export declare const RestrictionSegmentLaneType: {
+	/** Restricted lane for buses. */
+	readonly BUS: "BUS";
+	/** Express/toll lanes. */
+	readonly EXPRESS: "EXPRESS";
+	/** Fast lanes. */
+	readonly FAST: "FAST";
+	/** High-Occupancy Toll (HOT) lanes. */
+	readonly HOT: "HOT";
+	/** High-Occupancy Vehicle (HOV) / carpool lanes. */
+	readonly HOV: "HOV";
+};
+export type RestrictionSegmentLaneType = Values<typeof RestrictionSegmentLaneType>;
+/**
+ * Represents restrictions applied to a segment.
+ */
+export interface SegmentRestriction extends BaseRestriction {
+	/**
+	 * Traffic direction restricted on the segment.
+	 */
+	direction: RestrictionSegmentDirection | null;
+	/**
+	 * Lane disposition the restriction applies to.
+	 */
+	disposition: RestrictionSegmentDisposition | null;
+	/**
+	 * Specialized lane type (e.g., HOV, bus).
+	 */
+	laneType: RestrictionSegmentLaneType | null;
+}
+/**
+ * Represents a turn restriction applied to a specific turn.
+ */
 export type TurnRestriction = BaseRestriction;
 declare abstract class SdkModule {
 	protected readonly scriptId: string;
@@ -2831,6 +3212,7 @@ declare class Venues extends SdkModule {
 	 * Update venue address.
 	 * @throws DataModelNotFoundError in case the venue is not found in the
 	 * WME data model
+	 * @throws InvalidStateError in case not allowed to update address
 	 */
 	updateAddress(args: {
 		addressData?: VenueAddressData;
@@ -3301,6 +3683,10 @@ declare class Turns extends SdkModule {
 		 */
 		isAllowed?: boolean;
 		/**
+		 * Turn guidance of the turn.
+		 */
+		turnGuidance?: TurnGuidance | null;
+		/**
 		 * An id of the turn to update.
 		 */
 		turnId: string;
@@ -3666,6 +4052,19 @@ declare class ManagedAreas extends SdkModule {
 }
 declare class PermanentHazards extends SdkModule {
 	/**
+	 * @returns an array of all the permanent hazards in the WME data model
+	 */
+	getAll(): PermanentHazard[];
+	/**
+	 * @returns permanent hazard with id, or null if not found in the WME data model
+	 */
+	getById(args: {
+		/**
+		 * An id of the permanent hazard to find.
+		 */
+		hazardId: number;
+	}): PermanentHazard | null;
+	/**
 	 * @returns an array of all the cameras in the WME data model
 	 */
 	getAllCameras(): Camera[];
@@ -3699,6 +4098,7 @@ declare class HouseNumbers extends SdkModule {
 	 * Adds a new house number at the specified location.
 	 * This method creates a new house number and associates it with the closest road segment to the given point.
 	 * @throws DataModelNotFoundError If a segment ID is specified but the segment is not found in the WME data model.
+	 * @throws InvalidStateError If not allowed to add a house number
 	 */
 	addHouseNumber(args: {
 		/**
@@ -3794,7 +4194,7 @@ declare class HouseNumbers extends SdkModule {
 	 * Deletes a house number.
 	 * This method allows you to remove an existing house number.
 	 * @throws DataModelNotFoundError If a house number with the specified ID is not found in the WME data model.
-	 * @throws InvalidStateError If the action to delete the house number fails.
+	 * @throws InvalidStateError If not allowed to delete a house number or if the action to delete the house number fails.
 	 */
 	deleteHouseNumber(args: {
 		/**
@@ -3856,6 +4256,21 @@ declare class EditSuggestions extends SdkModule {
 		editSuggestionId: string;
 	}): EditSuggestionChange[];
 }
+declare class SegmentSuggestions extends SdkModule {
+	/**
+	 * @returns an array of all the segment suggestions in the WME data model
+	 */
+	getAll(): SegmentSuggestion[];
+	/**
+	 * @returns segment suggestion with id, or null if not found in the WME data model
+	 */
+	getById(args: {
+		/**
+		 * An id of the segment suggestion to find.
+		 */
+		segmentSuggestionId: number;
+	}): SegmentSuggestion | null;
+}
 declare class Signs extends SdkModule {
 	/**
 	 * @returns an array of all the signs in the WME data model
@@ -3897,6 +4312,7 @@ declare class DataModel extends SdkModule {
 	readonly HouseNumbers: HouseNumbers;
 	readonly Turns: Turns;
 	readonly TurnClosures: TurnClosures;
+	readonly SegmentSuggestions: SegmentSuggestions;
 	readonly Signs: Signs;
 	readonly Users: Users;
 	readonly Venues: Venues;
@@ -4583,6 +4999,7 @@ declare class Map$1 extends SdkModule {
 	getLiveMapLink(): string;
 	/**
 	 * @returns true if the street view pane is active
+	 * @deprecated Use sdk.StreetView.isActive instead.
 	 */
 	isStreetViewActive(): boolean;
 	/**
@@ -4870,7 +5287,30 @@ declare class LayerSwitcher extends SdkModule {
 		 */
 		isChecked: boolean;
 	}): void;
-	private setWMELayerCheckboxChecked;
+	/**
+	 * Set visibility for a default WME layer. This updates both the map display
+	 * and the Layer Switcher sidebar checkbox.
+	 */
+	setWMELayerVisibility(args: {
+		/**
+		 * Set to true to show the layer, or false to hide it.
+		 */
+		isVisible: boolean;
+		/**
+		 * The name of the WME layer.
+		 */
+		layerName: WmeLayerName;
+	}): void;
+	/**
+	 * Get visibility state of a default WME layer.
+	 * @returns true if the layer is visible, or false otherwise.
+	 */
+	getWMELayerVisibility(args: {
+		/**
+		 * The name of the WME layer.
+		 */
+		layerName: WmeLayerName;
+	}): boolean;
 }
 declare const SDK_EVENT_NAME: {
 	readonly AFTER_EDIT: "wme-after-edit";
@@ -4920,6 +5360,8 @@ declare const SDK_EVENT_NAME: {
 	readonly STREET_VIEW_BUTTON_DEACTIVATED: "wme-street-view-button-deactivated";
 	readonly STREET_VIEW_PANEL_VISIBILITY_CHANGED: "wme-street-view-panel-visibility-changed";
 	readonly UPDATE_REQUEST_PANEL_OPENED: "wme-update-request-panel-opened";
+	readonly ISSUE_TRACKER_PANEL_OPENED: "wme-issue-tracker-panel-opened";
+	readonly ISSUE_TRACKER_PANEL_CLOSED: "wme-issue-tracker-panel-closed";
 	readonly USER_SETTINGS_CHANGED: "wme-user-settings-changed";
 };
 interface AffectedObject {
@@ -5191,6 +5633,14 @@ interface SdkEvents {
 		updateRequestId: number;
 	};
 	/**
+	 * The event happens when an issue tracker panel (Problem, UR, or Suggestion) is opened.
+	 */
+	[SDK_EVENT_NAME.ISSUE_TRACKER_PANEL_OPENED]: IssueTrackerPanelOpenedEvent;
+	/**
+	 * The event happens when an issue tracker panel (Problem, UR, or Suggestion) is closed.
+	 */
+	[SDK_EVENT_NAME.ISSUE_TRACKER_PANEL_CLOSED]: IssueTrackerPanelClosedEvent;
+	/**
 	 * The event happens when street view panel visibility is changed.
 	 */
 	[SDK_EVENT_NAME.STREET_VIEW_PANEL_VISIBILITY_CHANGED]: {
@@ -5219,6 +5669,7 @@ declare class SdkEventBus extends SdkModule {
 	private eventBus;
 	private trackedLayers;
 	private trackedDataModels;
+	private lastOpenedIssueTrackerType;
 	/** @internal */
 	constructor(scriptId: string, scriptName: string, state: WmeState);
 	private waitForWmeReady;
@@ -5306,6 +5757,61 @@ declare class SdkEventBus extends SdkModule {
 		dataModelName: DataModelName;
 	}): void;
 }
+declare class StreetView extends SdkModule {
+	/**
+	 * @returns true if the street view pane is active
+	 */
+	isActive(): boolean;
+	/**
+	 * Opens Street View at the given coordinates.
+	 * If a panorama is found within the specified radius, Street View will open at that location.
+	 * @throws InvalidStateError if no Street View panorama is found at the given location.
+	 */
+	open(args: {
+		/**
+		 * Map coordinates in WGS84 format.
+		 */
+		lonLat: LonLat;
+		/**
+		 * Optional search radius in meters.
+		 */
+		radius?: number;
+	}): Promise<void>;
+	/**
+	 * Closes Street View if it is active.
+	 */
+	close(): void;
+}
+declare class IssueTracker extends SdkModule {
+	/**
+	 * Shows the issue panel for the specified issue ID and type.
+	 */
+	showPanel(args: {
+		/**
+		 * The ID of the issue tracker item.
+		 */
+		issueTrackerId: number;
+		/**
+		 * The type of the issue tracker panel to show.
+		 */
+		type: IssueTrackerType;
+	}): void;
+	/**
+	 * Closes any open issue tracker panel.
+	 */
+	closePanel(): void;
+	/**
+	 * Gets the active filters configured in the WME Issue Tracker panel.
+	 * A filter category (e.g., `mapProblems`) will be `null` if that category
+	 * is toggled off (disabled) in the WME user interface or if its filter value is neutral
+	 * (e.g. status "BOTH" or status "ALL").
+	 *
+	 * Note: Currently returns primary status/placeType filter attributes. Additional
+	 * filter properties may be extended in future releases as needed.
+	 * @returns Active filters configured in the WME Issue Tracker panel.
+	 */
+	getActiveFilters(): IssueTrackerFilters;
+}
 /**
  * WME SDK container.
  */
@@ -5316,11 +5822,13 @@ export declare class WmeSDK extends SdkModule {
 	readonly Editing: Editing;
 	readonly Errors: typeof Errors;
 	readonly LayerSwitcher: LayerSwitcher;
+	readonly IssueTracker: IssueTracker;
 	readonly Map: Map$1;
 	readonly Settings: Settings;
 	readonly Shortcuts: Shortcuts;
 	readonly Sidebar: Sidebar;
 	readonly State: WmeState;
+	readonly StreetView: StreetView;
 	readonly Events: SdkEventBus;
 	private logInitMessage;
 	/** @internal */
@@ -5354,6 +5862,7 @@ export declare class WmeSDK extends SdkModule {
 export {
 	Node$1 as Node,
 	ObjectType$1 as ObjectType,
+	SegmentId$1 as SegmentId,
 	Selection$1 as Selection,
 	UserRank$1 as UserRank,
 };

@@ -1,7 +1,7 @@
 ---
 sdk: WME
-version: v2.364-5-g882a12bbd5
-generated: 2026-08-05
+version: v2.366-9-gc50fc9d4cd
+generated: 2026-08-18
 sections:
   classes: classes.md
   modules: modules.md
@@ -47,8 +47,8 @@ docs:
 > **Use this index to discover available documentation and their content.**
 > For searching SDK entities, refer to the Source Guide below, then navigate to the relevant section.
 
-> **SDK Version:** v2.364-5-g882a12bbd5
-> **Docs generated:** 2026-08-05
+> **SDK Version:** v2.366-9-gc50fc9d4cd
+> **Docs generated:** 2026-08-18
 
 > Each section below lists the source file and the entities it contains.
 
@@ -82,7 +82,7 @@ This section describes each documentation source included for NotebookLM compreh
   - **script-example-8.md**: WME EZRoad Mod — Script Example
 ## Classes
 
-- [classes.md](classes.md) — *39 entries*
+- [classes.md](classes.md) — *42 entries*
     - index.SDK.BigJunctions
     - index.SDK.ChargingStation
     - index.SDK.Cities
@@ -93,6 +93,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.Editing
     - index.SDK.HouseNumbers
     - index.SDK.InvalidStateError
+    - index.SDK.IssueTracker
     - index.SDK.Junctions
     - index.SDK.LayerSwitcher
     - index.SDK.MajorTrafficEvents
@@ -107,12 +108,14 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.RestrictedDrivingAreas
     - index.SDK.RoadClosures
     - index.SDK.SdkEventBus
+    - index.SDK.SegmentSuggestions
     - index.SDK.Segments
     - index.SDK.Settings
     - index.SDK.Shortcuts
     - index.SDK.Sidebar
     - index.SDK.Signs
     - index.SDK.States
+    - index.SDK.StreetView
     - index.SDK.Streets
     - index.SDK.TurnClosures
     - index.SDK.Turns
@@ -135,13 +138,14 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Types
 
-- [types.md](types.md) — *71 entries*
+- [types.md](types.md) — *83 entries*
     - index.SDK.BBox
     - index.SDK.CameraType
     - index.SDK.ChargersAccessType
     - index.SDK.ChargingStationCostType
     - index.SDK.ClosureStatus
     - index.SDK.DataModelName
+    - index.SDK.DaysOfMonth
     - index.SDK.DriveProfiles
     - index.SDK.EditSuggestionSource
     - index.SDK.EditSuggestionStatus
@@ -150,8 +154,10 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.GENERAL_SERVICE_TYPE
     - index.SDK.InstructionOpCode
     - index.SDK.IssueSeverity
+    - index.SDK.IssueTrackerType
     - index.SDK.LaneGuidanceMode
     - index.SDK.LaneInstructionStrategy
+    - index.SDK.LicensePlate
     - index.SDK.LotType
     - index.SDK.MajorTrafficEventCategory
     - index.SDK.MapProblemType
@@ -165,6 +171,8 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.Partial
     - index.SDK.PaymentMethod
     - index.SDK.PaymentType
+    - index.SDK.PermanentHazard
+    - index.SDK.PermanentHazardSubType
     - index.SDK.Pick
     - index.SDK.PlaceUpdateType
     - index.SDK.Position
@@ -172,6 +180,8 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.Record
     - index.SDK.RegionCode
     - index.SDK.RestrictionSegmentDirection
+    - index.SDK.RestrictionSegmentDisposition
+    - index.SDK.RestrictionSegmentLaneType
     - index.SDK.RoadTypeId
     - index.SDK.SaveMode
     - index.SDK.SdkFeatureGeometry
@@ -183,6 +193,8 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.SegmentDirection
     - index.SDK.SegmentLaneGuidanceDirection
     - index.SDK.SegmentPermission
+    - index.SDK.SegmentSuggestionSource
+    - index.SDK.SegmentSuggestionStatus
     - index.SDK.Selection
     - index.SDK.SelectionWithLocalizedTypeName
     - index.SDK.ServiceType
@@ -193,6 +205,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.SuggestibleActionType
     - index.SDK.SuggestionResolutionRejectionReason
     - index.SDK.SuggestionResolutionStatus
+    - index.SDK.TrafficSignSubType
     - index.SDK.UnpavedRoadsSetting
     - index.SDK.UpdateRequestSource
     - index.SDK.UpdateRequestType
@@ -206,16 +219,19 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.VenueResidentialId
     - index.SDK.VenueSubCategoryId
     - index.SDK.WME_LAYER_NAMES
+    - index.SDK.WeekDay
+    - index.SDK.WmeLayerName
     - index.SDK.ZoomLevel
 
 > See Also: [Type Definition Files](#type-definition-files), [External Documentation Files](#external-documentation-files)
 
 ## Interfaces
 
-- [interfaces.md](interfaces.md) — *81 entries*
+- [interfaces.md](interfaces.md) — *94 entries*
     - index.SDK.AddressRawComponents
     - index.SDK.AffectedObject
     - index.SDK.BaseAddress
+    - index.SDK.BasePermanentHazard
     - index.SDK.BaseRestriction
     - index.SDK.BigJunction
     - index.SDK.CallSite
@@ -233,6 +249,9 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.FeatureStyle
     - index.SDK.GeoJsonObject
     - index.SDK.HouseNumber
+    - index.SDK.IssueTrackerFilters
+    - index.SDK.IssueTrackerPanelClosedEvent
+    - index.SDK.IssueTrackerPanelOpenedEvent
     - index.SDK.Junction
     - index.SDK.KeyboardShortcut
     - index.SDK.LineString
@@ -243,6 +262,8 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.ManagedAreaShort
     - index.SDK.MapComment
     - index.SDK.MapProblem
+    - index.SDK.MapProblemsFilterState
+    - index.SDK.MapSuggestionsFilterState
     - index.SDK.MapUpdateRequest
     - index.SDK.ModificationMetadata
     - index.SDK.MultiLineString
@@ -251,6 +272,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.Node
     - index.SDK.OpeningHour
     - index.SDK.Pixel
+    - index.SDK.PlaceUpdateRequestsFilterState
     - index.SDK.Point
     - index.SDK.Polygon
     - index.SDK.RegisterSidebarTabResult
@@ -258,6 +280,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.RoadClosure
     - index.SDK.RoadShield
     - index.SDK.RoadType
+    - index.SDK.SchoolZone
     - index.SDK.SdkEvents
     - index.SDK.SdkFeature
     - index.SDK.SdkFeatureStyleRule
@@ -267,7 +290,10 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.SegmentAddress
     - index.SDK.SegmentFlagAttributes
     - index.SDK.SegmentLanesInfo
+    - index.SDK.SegmentRestriction
+    - index.SDK.SegmentSuggestion
     - index.SDK.Sign
+    - index.SDK.StandardPermanentHazard
     - index.SDK.State
     - index.SDK.Street
     - index.SDK.Subscription
@@ -276,6 +302,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.SuggestionEntityEdit
     - index.SDK.SuggestionResolution
     - index.SDK.TileLayerOptions
+    - index.SDK.TimeFrame
     - index.SDK.TrackedDataModel
     - index.SDK.TrackedLayer
     - index.SDK.Turn
@@ -284,6 +311,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.TurnLanes
     - index.SDK.UpdateRequestDetails
     - index.SDK.UpdateRequestUserPreferences
+    - index.SDK.UpdateRequestsFilterState
     - index.SDK.User
     - index.SDK.UserProfile
     - index.SDK.UserSession
@@ -299,25 +327,35 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Variables
 
-- [variables.md](variables.md) — *18 entries*
+- [variables.md](variables.md) — *28 entries*
     - index.SDK.DATA_MODEL_NAMES
+    - index.SDK.DaysOfMonth
     - index.SDK.EditSuggestionStatus
     - index.SDK.GENERAL_SERVICE_TYPE
+    - index.SDK.IssueTrackerType
+    - index.SDK.LicensePlate
     - index.SDK.ObjectType
     - index.SDK.PARKING_LOT_SERVICE_TYPE
     - index.SDK.PLACE_UPDATE_ACTION
     - index.SDK.PLACE_UPDATE_SUBJECT
     - index.SDK.RESTRICTION_TYPE
     - index.SDK.ROAD_TYPE
+    - index.SDK.RestrictionSegmentDirection
+    - index.SDK.RestrictionSegmentDisposition
+    - index.SDK.RestrictionSegmentLaneType
     - index.SDK.SegmentDirection
     - index.SDK.SegmentPermission
+    - index.SDK.SegmentSuggestionSource
     - index.SDK.SidebarTabName
     - index.SDK.UpdateableMapProblemState
     - index.SDK.VENUE_MAIN_CATEGORY
     - index.SDK.VENUE_RESIDENTIAL
     - index.SDK.VENUE_SUBCATEGORIES
+    - index.SDK.VehicleType
     - index.SDK.VenuePermission
     - index.SDK.WME_LAYER_NAMES
+    - index.SDK.WeekDay
+    - index.SDK.WmeLayerName
 
 > See Also: [Type Definition Files](#type-definition-files), [External Documentation Files](#external-documentation-files)
 

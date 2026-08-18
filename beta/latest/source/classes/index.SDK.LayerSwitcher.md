@@ -1,7 +1,7 @@
 ---
 title: SDK.LayerSwitcher class
 source: classes/index.SDK.LayerSwitcher.html
-created: 2026-08-05
+created: 2026-08-18
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -19,6 +19,12 @@ Methods for interacting with LayerSwitcher.
 addLayerCheckbox ( __namedParameters: { isChecked ?: boolean ; name: string } ) : void
 ```
 
+### `getWMELayerVisibility`
+
+```typescript
+getWMELayerVisibility ( args: { layerName: WmeLayerName } ) : boolean
+```
+true if the layer is visible, or false otherwise.
 ### `isLayerCheckboxChecked`
 
 ```typescript
@@ -71,4 +77,12 @@ setPlacesLayerCheckboxChecked ( args: { isChecked: boolean } ) : void
 
 ```typescript
 setRoadsLayerCheckboxChecked ( args: { isChecked: boolean } ) : void
+```
+
+### `setWMELayerVisibility`
+
+```typescript
+setWMELayerVisibility (
+  args: { isVisible: boolean ; layerName: WmeLayerName } ,
+  ) : void
 ```

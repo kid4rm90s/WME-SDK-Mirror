@@ -1,7 +1,7 @@
 ---
 title: SDK.SdkEvents interface
 source: interfaces/index.SDK.SdkEvents.html
-created: 2026-08-05
+created: 2026-08-18
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -56,6 +56,8 @@ interface SdkEvents {
   "wme-house-number-moved": { houseNumberId: string } ;
   "wme-house-number-updated": { houseNumberId: string } ;
   "wme-initialized": undefined ;
+  "wme-issue-tracker-panel-closed": IssueTrackerPanelClosedEvent ;
+  "wme-issue-tracker-panel-opened": IssueTrackerPanelOpenedEvent ;
   "wme-layer-checkbox-toggled": { checked: boolean ; name: string } ;
   "wme-layer-feature-clicked": {
   featureId: string | number ;
@@ -212,6 +214,16 @@ SDK events and their payload (if any).
 
 ```typescript
 "wme-initialized": undefined
+```
+### `wme-issue-tracker-panel-closed`
+
+```typescript
+"wme-issue-tracker-panel-closed": IssueTrackerPanelClosedEvent
+```
+### `wme-issue-tracker-panel-opened`
+
+```typescript
+"wme-issue-tracker-panel-opened": IssueTrackerPanelOpenedEvent
 ```
 ### `wme-layer-checkbox-toggled`
 
