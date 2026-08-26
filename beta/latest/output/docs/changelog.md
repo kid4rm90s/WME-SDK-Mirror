@@ -1,10 +1,44 @@
 ---
-title: # v2.366
+title: # v2.367
 source: documents/CHANGELOG.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
+
+## v2.367
+
+### Add Chat.startChat method
+
+Introduce wmeSDK.Chat.startChat method to start a private chat with
+an editor by username.
+
+### Allow updating restrictions via updateTurn
+
+Added ability to update turn restrictions.
+
+### Support styling map comments layer
+
+Allow userscripts to style the map comments layer via the SDK using addStyleRuleToLayer. This helps close the API gaps for the global W object.
+
+### Allow updating restrictions via updateSegment
+
+Added ability to update segment restrictions.
+
+### Check segment permissions in addClosure
+
+addClosure only checked segment flags, allowing low-rank users to create
+closures.
+this change uses 'SegmentClosuresUseCase' to enforce both segment permissions and user rank.
+
+### Add reject method to SegmentSuggestions module
+
+Implemented reject method for SegmentSuggestions to support bulk segment suggestion rejection with specified reason.
+
+### Expose editable areas in UserSession
+
+Exposed user editable areas in UserSession returned by
+getUserInfo method.
 
 ## v2.366
 

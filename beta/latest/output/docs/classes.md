@@ -3,7 +3,7 @@
 ---
 title: SDK.BigJunctions class
 source: classes/index.SDK.BigJunctions.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -41,7 +41,7 @@ bigJunction with id, or null if not found in the WME data model
 ---
 title: SDK.ChargingStation class
 source: classes/index.SDK.ChargingStation.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -86,12 +86,37 @@ payment methods of the venue in case the venue is a charging station, null other
 
 ---
 
+# index.SDK.Chat
+
+---
+title: SDK.Chat class
+source: classes/index.SDK.Chat.html
+created: 2026-08-26
+tool: extract-to-md.py
+notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
+---
+
+# Class Chat
+
+```typescript
+startChat ( args: { userName: string } ) : void
+```
+Methods for dealing with Chat/Communication.
+## Methods
+### `startChat`
+
+```typescript
+startChat ( args: { userName: string } ) : void
+```
+
+---
+
 # index.SDK.Cities
 
 ---
 title: SDK.Cities class
 source: classes/index.SDK.Cities.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -147,7 +172,7 @@ top city or null
 ---
 title: SDK.Countries class
 source: classes/index.SDK.Countries.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -186,7 +211,7 @@ if none set
 ---
 title: SDK.DataModel class
 source: classes/index.SDK.DataModel.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -357,7 +382,7 @@ promise that resolves once the data refresh completed.
 ---
 title: SDK.DataModelNotFoundError class
 source: classes/index.SDK.DataModelNotFoundError.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -393,7 +418,7 @@ name: "DataModelNotFoundError"
 ---
 title: SDK.EditSuggestions class
 source: classes/index.SDK.EditSuggestions.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -433,7 +458,7 @@ an array of edit suggestion changes
 ---
 title: SDK.Editing class
 source: classes/index.SDK.Editing.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -556,7 +581,7 @@ undoAll () : void
 ---
 title: SDK.HouseNumbers class
 source: classes/index.SDK.HouseNumbers.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -629,7 +654,7 @@ updateHouseNumber (
 ---
 title: SDK.InvalidStateError class
 source: classes/index.SDK.InvalidStateError.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -656,7 +681,7 @@ name: "InvalidStateError"
 ---
 title: SDK.IssueTracker class
 source: classes/index.SDK.IssueTracker.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -693,7 +718,7 @@ showPanel ( args: { issueTrackerId: number ; type: IssueTrackerType } ) : void
 ---
 title: SDK.Junctions class
 source: classes/index.SDK.Junctions.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -725,7 +750,7 @@ junctions with id, or null if not found in the WME data model
 ---
 title: SDK.LayerSwitcher class
 source: classes/index.SDK.LayerSwitcher.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -818,7 +843,7 @@ setWMELayerVisibility (
 ---
 title: SDK.MajorTrafficEvents class
 source: classes/index.SDK.MajorTrafficEvents.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -850,7 +875,7 @@ major traffic event with id, or null if not found in the WME data model
 ---
 title: SDK.ManagedAreas class
 source: classes/index.SDK.ManagedAreas.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -882,7 +907,7 @@ managed area with id, or null if not found in the WME data model
 ---
 title: SDK.Map class
 source: classes/index.SDK.Map.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1294,7 +1319,7 @@ zoomToExtent ( args: { bbox: BBox } ) : void
 ---
 title: SDK.MapComments class
 source: classes/index.SDK.MapComments.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1366,7 +1391,7 @@ the updated map comment.
 ---
 title: SDK.MapProblems class
 source: classes/index.SDK.MapProblems.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1398,7 +1423,7 @@ map problem with id, or null if not found in the WME data model
 ---
 title: SDK.MapUpdateRequests class
 source: classes/index.SDK.MapUpdateRequests.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1459,7 +1484,7 @@ updateResolutionState (
 ---
 title: SDK.Nodes class
 source: classes/index.SDK.Nodes.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1520,7 +1545,7 @@ moveNode ( args: { geometry: Point ; id: number } ) : void
 ---
 title: SDK.ParkingLot class
 source: classes/index.SDK.ParkingLot.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1595,7 +1620,7 @@ setEstimatedNumberOfSpots (
 ---
 title: SDK.PermanentHazards class
 source: classes/index.SDK.PermanentHazards.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1639,7 +1664,7 @@ camera with id, or null if not found in the WME data model
 ---
 title: SDK.RestrictedDrivingAreas class
 source: classes/index.SDK.RestrictedDrivingAreas.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1671,7 +1696,7 @@ restricted driving area with id, or null if not found in the WME data model
 ---
 title: SDK.RoadClosures class
 source: classes/index.SDK.RoadClosures.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1731,7 +1756,7 @@ road closure with id, or null if not found in the WME data model
 ---
 title: SDK.SdkEventBus class
 source: classes/index.SDK.SdkEventBus.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1810,7 +1835,7 @@ trackLayerEvents ( args: { layerName: string } ) : void
 ---
 title: SDK.SegmentSuggestions class
 source: classes/index.SDK.SegmentSuggestions.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1834,6 +1859,16 @@ an array of all the segment suggestions in the WME data model
 getById ( args: { segmentSuggestionId: number } ) : null | SegmentSuggestion
 ```
 segment suggestion with id, or null if not found in the WME data model
+### `reject`
+
+```typescript
+reject (
+  args: {
+  reason: SegmentSuggestionRejectionReason ;
+  segmentSuggestionIds: number [] ;
+} ,
+  ) : void
+```
 
 ---
 
@@ -1842,7 +1877,7 @@ segment suggestion with id, or null if not found in the WME data model
 ---
 title: SDK.Segments class
 source: classes/index.SDK.Segments.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2032,6 +2067,7 @@ updateSegment (
   geometry ?: LineString ;
   hasToll ?: boolean ;
   lockRank ?: UserRank ;
+  restrictions ?: SegmentRestrictionData [] ;
   revSpeedLimit ?: null | number ;
   roadType ?: RoadTypeId ;
   routingRoadType ?: 1 | 2 | 3 | 6 | 7 ;
@@ -2054,7 +2090,7 @@ verifyTurns ( args: { isForward: boolean ; segmentId: number } ) : void
 ---
 title: SDK.Settings class
 source: classes/index.SDK.Settings.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2103,7 +2139,7 @@ setUserSettings ( options: Partial < UserSettings > ) : void
 ---
 title: SDK.Shortcuts class
 source: classes/index.SDK.Shortcuts.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2153,7 +2189,7 @@ true if a shortcut with specified id is already registered.
 ---
 title: SDK.Sidebar class
 source: classes/index.SDK.Sidebar.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2184,7 +2220,7 @@ removeScriptTab () : void
 ---
 title: SDK.Signs class
 source: classes/index.SDK.Signs.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2216,7 +2252,7 @@ sign with id, or null if not found in the WME data model
 ---
 title: SDK.States class
 source: classes/index.SDK.States.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2267,7 +2303,7 @@ true if there are any states apart from the default state in the WME data model.
 ---
 title: SDK.StreetView class
 source: classes/index.SDK.StreetView.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2304,7 +2340,7 @@ open ( args: { lonLat: LonLat ; radius ?: number } ) : Promise < void >
 ---
 title: SDK.Streets class
 source: classes/index.SDK.Streets.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2353,7 +2389,7 @@ updateStreet ( args: { direction ?: string ; streetId: number } ) : void
 ---
 title: SDK.TurnClosures class
 source: classes/index.SDK.TurnClosures.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2409,7 +2445,7 @@ turn closure with id, or null if not found in the WME data model
 ---
 title: SDK.Turns class
 source: classes/index.SDK.Turns.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2505,6 +2541,7 @@ setTurnLaneGuidance ( args: { laneIndexes: number [] ; turnId: string } ) : void
 updateTurn (
   args: {
   isAllowed ?: boolean ;
+  restrictions ?: TurnRestrictionData [] ;
   turnGuidance ?: null | TurnGuidance ;
   turnId: string ;
 } ,
@@ -2518,7 +2555,7 @@ updateTurn (
 ---
 title: SDK.Users class
 source: classes/index.SDK.Users.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2568,7 +2605,7 @@ a formatted link for a users editor profile page
 ---
 title: SDK.ValidationError class
 source: classes/index.SDK.ValidationError.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2595,7 +2632,7 @@ name: "ValidationError"
 ---
 title: SDK.Venues class
 source: classes/index.SDK.Venues.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2771,7 +2808,7 @@ updateVenueUpdateRequest (
 ---
 title: SDK.WMEError class
 source: classes/index.SDK.WMEError.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2799,7 +2836,7 @@ name: "WMEError"
 ---
 title: SDK.WmeSDK class
 source: classes/index.SDK.WmeSDK.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2807,10 +2844,15 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 # Class WmeSDK
 
 ```typescript
-DataModel: DataModel = ...
+Chat: Chat = ...
 ```
 WME SDK container.
 ## Properties
+### **Readonly** `Chat`
+
+```typescript
+Chat: Chat = ...
+```
 ### **Readonly** `DataModel`
 
 ```typescript
@@ -2921,7 +2963,7 @@ true if running in the WME beta environment
 ---
 title: SDK.WmeState class
 source: classes/index.SDK.WmeState.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

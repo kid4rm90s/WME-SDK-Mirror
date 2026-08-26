@@ -1,7 +1,7 @@
 ---
 sdk: WME
-version: v2.366-9-gc50fc9d4cd
-generated: 2026-08-18
+version: v2.367-1-gfd939a125b
+generated: 2026-08-26
 sections:
   classes: classes.md
   modules: modules.md
@@ -47,8 +47,8 @@ docs:
 > **Use this index to discover available documentation and their content.**
 > For searching SDK entities, refer to the Source Guide below, then navigate to the relevant section.
 
-> **SDK Version:** v2.366-9-gc50fc9d4cd
-> **Docs generated:** 2026-08-18
+> **SDK Version:** v2.367-1-gfd939a125b
+> **Docs generated:** 2026-08-26
 
 > Each section below lists the source file and the entities it contains.
 
@@ -82,9 +82,10 @@ This section describes each documentation source included for NotebookLM compreh
   - **script-example-8.md**: WME EZRoad Mod — Script Example
 ## Classes
 
-- [classes.md](classes.md) — *42 entries*
+- [classes.md](classes.md) — *43 entries*
     - index.SDK.BigJunctions
     - index.SDK.ChargingStation
+    - index.SDK.Chat
     - index.SDK.Cities
     - index.SDK.Countries
     - index.SDK.DataModel
@@ -138,17 +139,22 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Types
 
-- [types.md](types.md) — *83 entries*
+- [types.md](types.md) — *100 entries*
+    - index.SDK.AddableTurnVehicleRules
+    - index.SDK.AddableVehicleRules
+    - index.SDK.AddableVehicleType
     - index.SDK.BBox
     - index.SDK.CameraType
     - index.SDK.ChargersAccessType
     - index.SDK.ChargingStationCostType
     - index.SDK.ClosureStatus
     - index.SDK.DataModelName
+    - index.SDK.DayAlternation
     - index.SDK.DaysOfMonth
     - index.SDK.DriveProfiles
     - index.SDK.EditSuggestionSource
     - index.SDK.EditSuggestionStatus
+    - index.SDK.Exclude
     - index.SDK.ExcludeRawFields
     - index.SDK.Extract
     - index.SDK.GENERAL_SERVICE_TYPE
@@ -158,11 +164,13 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.LaneGuidanceMode
     - index.SDK.LaneInstructionStrategy
     - index.SDK.LicensePlate
+    - index.SDK.LicensePlateRule
     - index.SDK.LotType
     - index.SDK.MajorTrafficEventCategory
     - index.SDK.MapProblemType
     - index.SDK.OLMouseEventName
     - index.SDK.ObjectType
+    - index.SDK.Omit
     - index.SDK.PARKING_LOT_SERVICE_TYPE
     - index.SDK.PLACE_UPDATE_ACTION
     - index.SDK.PLACE_UPDATE_SUBJECT
@@ -181,6 +189,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.RegionCode
     - index.SDK.RestrictionSegmentDirection
     - index.SDK.RestrictionSegmentDisposition
+    - index.SDK.RestrictionSegmentLaneScope
     - index.SDK.RestrictionSegmentLaneType
     - index.SDK.RoadTypeId
     - index.SDK.SaveMode
@@ -193,6 +202,8 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.SegmentDirection
     - index.SDK.SegmentLaneGuidanceDirection
     - index.SDK.SegmentPermission
+    - index.SDK.SegmentRestrictionData
+    - index.SDK.SegmentSuggestionRejectionReason
     - index.SDK.SegmentSuggestionSource
     - index.SDK.SegmentSuggestionStatus
     - index.SDK.Selection
@@ -206,11 +217,18 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.SuggestionResolutionRejectionReason
     - index.SDK.SuggestionResolutionStatus
     - index.SDK.TrafficSignSubType
+    - index.SDK.TurnRestriction
+    - index.SDK.TurnRestrictionData
     - index.SDK.UnpavedRoadsSetting
     - index.SDK.UpdateRequestSource
     - index.SDK.UpdateRequestType
     - index.SDK.UpdateableMapProblemState
+    - index.SDK.UpdateableRestrictionSegmentLaneScope
+    - index.SDK.UpdateableRestrictionType
+    - index.SDK.UpdateableTurnRestrictionType
+    - index.SDK.UserEditableAreaType
     - index.SDK.UserRank
+    - index.SDK.VehicleRules
     - index.SDK.VehicleType
     - index.SDK.VenueAddressData
     - index.SDK.VenueCategoryId
@@ -227,12 +245,14 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Interfaces
 
-- [interfaces.md](interfaces.md) — *94 entries*
+- [interfaces.md](interfaces.md) — *98 entries*
+    - index.SDK.AddableVehicleRule
     - index.SDK.AddressRawComponents
     - index.SDK.AffectedObject
     - index.SDK.BaseAddress
     - index.SDK.BasePermanentHazard
     - index.SDK.BaseRestriction
+    - index.SDK.BaseVehicleRule
     - index.SDK.BigJunction
     - index.SDK.CallSite
     - index.SDK.Camera
@@ -313,9 +333,11 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.UpdateRequestUserPreferences
     - index.SDK.UpdateRequestsFilterState
     - index.SDK.User
+    - index.SDK.UserEditableArea
     - index.SDK.UserProfile
     - index.SDK.UserSession
     - index.SDK.UserSettings
+    - index.SDK.VehicleRule
     - index.SDK.Venue
     - index.SDK.VenueAddress
     - index.SDK.VenueCategory
@@ -327,13 +349,16 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Variables
 
-- [variables.md](variables.md) — *28 entries*
+- [variables.md](variables.md) — *37 entries*
+    - index.SDK.AddableVehicleType
     - index.SDK.DATA_MODEL_NAMES
+    - index.SDK.DayAlternation
     - index.SDK.DaysOfMonth
     - index.SDK.EditSuggestionStatus
     - index.SDK.GENERAL_SERVICE_TYPE
     - index.SDK.IssueTrackerType
     - index.SDK.LicensePlate
+    - index.SDK.LicensePlateRule
     - index.SDK.ObjectType
     - index.SDK.PARKING_LOT_SERVICE_TYPE
     - index.SDK.PLACE_UPDATE_ACTION
@@ -342,12 +367,18 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.ROAD_TYPE
     - index.SDK.RestrictionSegmentDirection
     - index.SDK.RestrictionSegmentDisposition
+    - index.SDK.RestrictionSegmentLaneScope
     - index.SDK.RestrictionSegmentLaneType
     - index.SDK.SegmentDirection
     - index.SDK.SegmentPermission
+    - index.SDK.SegmentSuggestionRejectionReason
     - index.SDK.SegmentSuggestionSource
     - index.SDK.SidebarTabName
     - index.SDK.UpdateableMapProblemState
+    - index.SDK.UpdateableRestrictionSegmentLaneScope
+    - index.SDK.UpdateableRestrictionType
+    - index.SDK.UpdateableTurnRestrictionType
+    - index.SDK.UserEditableAreaType
     - index.SDK.VENUE_MAIN_CATEGORY
     - index.SDK.VENUE_RESIDENTIAL
     - index.SDK.VENUE_SUBCATEGORIES

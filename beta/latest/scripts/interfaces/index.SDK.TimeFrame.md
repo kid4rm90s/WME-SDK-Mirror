@@ -1,7 +1,7 @@
 ---
 title: SDK.TimeFrame interface
 source: interfaces/index.SDK.TimeFrame.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,7 +10,8 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface TimeFrame {
-  daysOfMonth: null | DaysOfMonth ;
+  dayAlternation: null | DayAlternation ;
+  daysOfMonth: null | DayAlternation ;
   endDate: null | string ;
   fromTime: null | string ;
   repeatYearly: null | boolean ;
@@ -22,10 +23,15 @@ interface TimeFrame {
 ```
 Represents a time frame indicating when a restriction is active.
 ## Properties
+### `dayAlternation`
+
+```typescript
+dayAlternation: null | DayAlternation
+```
 ### `daysOfMonth`
 
 ```typescript
-daysOfMonth: null | DaysOfMonth
+daysOfMonth: null | DayAlternation
 ```
 ### `endDate`
 

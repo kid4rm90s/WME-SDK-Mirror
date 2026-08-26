@@ -1,7 +1,7 @@
 ---
 title: SDK.Nodes class
 source: classes/index.SDK.Nodes.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

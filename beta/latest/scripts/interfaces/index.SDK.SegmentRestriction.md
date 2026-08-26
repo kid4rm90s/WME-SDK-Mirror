@@ -1,7 +1,7 @@
 ---
 title: SDK.SegmentRestriction interface
 source: interfaces/index.SDK.SegmentRestriction.html
-created: 2026-08-18
+created: 2026-08-26
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -13,12 +13,14 @@ interface SegmentRestriction {
   defaultType: null | RESTRICTION_TYPE ;
   description: null | string ;
   direction: null | RestrictionSegmentDirection ;
-  disposition: null | RestrictionSegmentDisposition ;
-  driveProfiles: DriveProfiles ;
+  disposition: null | RestrictionSegmentLaneScope ;
+  driveProfiles: VehicleRules ;
   editable: boolean ;
   isExpired: boolean ;
+  laneScope: null | RestrictionSegmentLaneScope ;
   laneType: null | RestrictionSegmentLaneType ;
   timeFrames: TimeFrame [] ;
+  vehicleRules: VehicleRules ;
 }
 ```
 Represents restrictions applied to a segment.
@@ -31,7 +33,12 @@ direction: null | RestrictionSegmentDirection
 ### `disposition`
 
 ```typescript
-disposition: null | RestrictionSegmentDisposition
+disposition: null | RestrictionSegmentLaneScope
+```
+### `laneScope`
+
+```typescript
+laneScope: null | RestrictionSegmentLaneScope
 ```
 ### `laneType`
 
