@@ -1,7 +1,7 @@
 ---
 title: SDK.Turn interface
 source: interfaces/index.SDK.Turn.html
-created: 2026-07-28
+created: 2026-09-07
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -28,6 +28,7 @@ interface Turn {
   segmentPath: number [] ;
   toSegmentFwd: boolean ;
   toSegmentId: number ;
+  turnGuidance: null | TurnGuidance ;
 }
 ```
 ## Properties
@@ -120,4 +121,9 @@ toSegmentFwd: boolean
 
 ```typescript
 toSegmentId: number
+```
+### `turnGuidance`
+
+```typescript
+turnGuidance: null | TurnGuidance
 ```

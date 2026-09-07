@@ -195,7 +195,7 @@ The `.git/` directory tracks updates over time. Recent commits show WME version 
 Push-Location production/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py --force; py extract-to-md.py; py copy-to-source.py; py create-grouped-md-files.py; py update-skill.py
 Pop-Location
-git -C production/latest add -A; git -C production/latest commit -m "Updated for WME version v2.XXX"
+git -C production/latest add -A; git -C production/latest commit -m "Updated for WME version v2.XXX"; git push origin kid4rm90s
 ```
 
 ### Update the Beta SDK docs (full refresh)
@@ -204,7 +204,7 @@ git -C production/latest add -A; git -C production/latest commit -m "Updated for
 Push-Location beta/latest/scripts
 py cleanup.py; py build-url-list.py; py download-pages.py --force; py extract-to-md.py; py copy-to-source.py; py create-grouped-md-files.py; py update-skill.py
 Pop-Location
-git -C beta/latest add -A; git -C beta/latest commit -m "Updated beta SDK docs Version V2.xxx"
+git -C beta/latest add -A; git -C beta/latest commit -m "Updated beta SDK docs Version V2.xxx"; git push origin kid4rm90s
 ```
 
 ### Promote Beta to Production (after testing)
@@ -218,7 +218,7 @@ Copy-Item -Path beta/latest/output/* -Destination production/latest/output -Recu
 Copy-Item -Path beta/latest/scripts/url-list*.txt -Destination production/latest/scripts -Force
 
 # Commit to production
-git -C production/latest add -A; git -C production/latest commit -m "Promoted from beta - WME version v2.XXX"
+git -C production/latest add -A; git -C production/latest commit -m "Promoted from beta - WME version v2.XXX"; git push origin kid4rm90s
 ```
 
 ### Check what URLs have changed

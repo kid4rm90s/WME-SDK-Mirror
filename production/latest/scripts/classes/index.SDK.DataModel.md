@@ -1,7 +1,7 @@
 ---
 title: SDK.DataModel class
 source: classes/index.SDK.DataModel.html
-created: 2026-07-28
+created: 2026-09-07
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -92,6 +92,16 @@ RoadClosures: RoadClosures = ...
 
 ```typescript
 Segments: Segments = ...
+```
+### **Readonly** `SegmentSuggestions`
+
+```typescript
+SegmentSuggestions: SegmentSuggestions = ...
+```
+### **Readonly** `Signs`
+
+```typescript
+Signs: Signs = ...
 ```
 ### **Readonly** `States`
 

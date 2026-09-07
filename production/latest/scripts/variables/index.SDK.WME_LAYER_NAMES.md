@@ -1,7 +1,7 @@
 ---
 title: SDK.WME_LAYER_NAMES variable
 source: variables/index.SDK.WME_LAYER_NAMES.html
-created: 2026-07-28
+created: 2026-09-07
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -9,11 +9,17 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 # Variable WME_LAYER_NAMESConst
 
 ```typescript
-WME_LAYER_NAMES: { NODES: "nodes" ; SEGMENTS: "segments" ; VENUES: "venues" } = ...
+WME_LAYER_NAMES: {
+  MAP_COMMENTS: "mapComments" ;
+  NODES: "nodes" ;
+  SEGMENTS: "segments" ;
+  VENUES: "venues" ;
+} = ...
 ```
 #### Members
 | Name | Type/Value | Tags |
 |------|------------|------|
+| MAP_COMMENTS | "mapComments" | Readonly |
 | NODES | "nodes" | Readonly |
 | SEGMENTS | "segments" | Readonly |
 | VENUES | "venues" | Readonly |

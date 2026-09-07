@@ -1,7 +1,7 @@
 ---
 title: SDK.WmeSDK class
 source: classes/index.SDK.WmeSDK.html
-created: 2026-07-28
+created: 2026-09-07
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -9,10 +9,15 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 # Class WmeSDK
 
 ```typescript
-DataModel: DataModel = ...
+Chat: Chat = ...
 ```
 WME SDK container.
 ## Properties
+### **Readonly** `Chat`
+
+```typescript
+Chat: Chat = ...
+```
 ### **Readonly** `DataModel`
 
 ```typescript
@@ -37,6 +42,11 @@ Errors: {
 
 ```typescript
 Events: SdkEventBus = ...
+```
+### **Readonly** `IssueTracker`
+
+```typescript
+IssueTracker: IssueTracker = ...
 ```
 ### **Readonly** `LayerSwitcher`
 
@@ -67,6 +77,11 @@ Sidebar: Sidebar = ...
 
 ```typescript
 State: WmeState = ...
+```
+### **Readonly** `StreetView`
+
+```typescript
+StreetView: StreetView = ...
 ```
 ## Methods
 ### `getScriptId`

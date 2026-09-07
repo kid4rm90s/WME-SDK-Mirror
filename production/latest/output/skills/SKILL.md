@@ -1433,3 +1433,4 @@ if (userInfo.rank < 2) { // require L3+
 - **WME-SDK-Mirror (GitHub original):** https://github.com/JS55CT/WME-SDK-Mirror
 - **WME-SDK-Mirror (GitHub fork):** https://github.com/kid4rm90s/WME-SDK-Mirror
 - **Waze Map Editor:** https://www.waze.com/editor/
+- **WME icons Collection:** https://73vw.github.io/The-unofficial-Waze-map-editor-icons-studio/

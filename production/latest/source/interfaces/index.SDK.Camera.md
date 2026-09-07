@@ -1,7 +1,7 @@
 ---
 title: SDK.Camera interface
 source: interfaces/index.SDK.Camera.html
-created: 2026-07-28
+created: 2026-09-07
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -16,39 +16,21 @@ interface Camera {
   lockRank: null | number ;
   modificationData: ModificationMetadata ;
   segmentId: null | number ;
+  subTypes: PermanentHazardSubType [] ;
+  type: "CAMERA" ;
   types: CameraType [] ;
 }
 ```
 ## Properties
-### `direction`
-
-```typescript
-direction: null | RestrictionSegmentDirection
-```
 ### `geometry`
 
 ```typescript
 geometry: Point
 ```
-### `id`
+### `type`
 
 ```typescript
-id: number
-```
-### `lockRank`
-
-```typescript
-lockRank: null | number
-```
-### `modificationData`
-
-```typescript
-modificationData: ModificationMetadata
-```
-### `segmentId`
-
-```typescript
-segmentId: null | number
+type: "CAMERA"
 ```
 ### `types`
 

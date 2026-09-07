@@ -1,7 +1,7 @@
 ---
 title: SDK.Segment interface
 source: interfaces/index.SDK.Segment.html
-created: 2026-07-28
+created: 2026-09-07
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -38,7 +38,7 @@ interface Segment {
   modificationData: ModificationMetadata ;
   primaryStreetId: null | number ;
   rank: UserRank ;
-  restrictions: BaseRestriction [] ;
+  restrictions: SegmentRestriction [] ;
   revSpeedLimit: null | number ;
   roadType: RoadTypeId ;
   routingRoadType: null | 1 | 2 | 3 | 6 | 7 ;
@@ -191,7 +191,7 @@ rank: UserRank
 ### `restrictions`
 
 ```typescript
-restrictions: BaseRestriction []
+restrictions: SegmentRestriction []
 ```
 ### `revSpeedLimit`
 

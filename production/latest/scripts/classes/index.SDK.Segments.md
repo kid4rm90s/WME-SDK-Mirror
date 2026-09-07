@@ -1,7 +1,7 @@
 ---
 title: SDK.Segments class
 source: classes/index.SDK.Segments.html
-created: 2026-07-28
+created: 2026-09-07
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -191,6 +191,7 @@ updateSegment (
   geometry ?: LineString ;
   hasToll ?: boolean ;
   lockRank ?: UserRank ;
+  restrictions ?: SegmentRestrictionData [] ;
   revSpeedLimit ?: null | number ;
   roadType ?: RoadTypeId ;
   routingRoadType ?: 1 | 2 | 3 | 6 | 7 ;

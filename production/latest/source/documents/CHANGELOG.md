@@ -1,10 +1,153 @@
 ---
-title: # v2.360
+title: # v2.367
 source: documents/CHANGELOG.html
-created: 2026-07-28
+created: 2026-09-07
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
+
+## v2.367
+
+### Add Chat.startChat method
+
+Introduce wmeSDK.Chat.startChat method to start a private chat with
+an editor by username.
+
+### Allow updating restrictions via updateTurn
+
+Added ability to update turn restrictions.
+
+### Support styling map comments layer
+
+Allow userscripts to style the map comments layer via the SDK using addStyleRuleToLayer. This helps close the API gaps for the global W object.
+
+### Allow updating restrictions via updateSegment
+
+Added ability to update segment restrictions.
+
+### Check segment permissions in addClosure
+
+addClosure only checked segment flags, allowing low-rank users to create
+closures.
+this change uses 'SegmentClosuresUseCase' to enforce both segment permissions and user rank.
+
+### Add reject method to SegmentSuggestions module
+
+Implemented reject method for SegmentSuggestions to support bulk segment suggestion rejection with specified reason.
+
+### Expose editable areas in UserSession
+
+Exposed user editable areas in UserSession returned by
+getUserInfo method.
+
+## v2.366
+
+### Enforce edit auth guards on mutation methods
+
+add 'isEditingAllowed' checks to addStreet, updateAddress,
+addHouseNumber, and deleteHouseNumber to prevent FE read-only
+bypass in non-editable states.
+
+## v2.365
+
+### Add turnGuidance support to updateTurn
+
+Extend the updateTurn SDK method to allow updating and clearing turn guidance.
+
+### Add getFilters method to IssueTracker module
+
+- Add getFilters method to retrieve active issue tracker filters
+
+- Add IssueTrackerFilters type
+
+### Fix shortcut UI bug
+
+- fix issue with displaying control button in shortcut UI
+
+- add unit test to cover shortcut with control button
+
+### Add method getById to SegmentSuggestions module
+
+Implemented getById method to read segment suggestion from store by id.
+
+### Implement SegmentSuggestions module with getAll method
+
+Exposed SegmentSuggestion and SegmentSuggestionResolution types available in WME via the new SegmentSuggestions module on the SDK.
+Implemented the getAll method, which allow to read segment suggestions data from store.
+
+### Add unified Issue Tracker panel open and close events
+
+Introduce wme-issue-tracker-panel-opened and wme-issue-tracker-panel-closed events to the Events SDK module.
+These events translate WME's internal events for map problems, map update requests, and edit suggestions into a clean, consistent SDK payload, allowing userscripts to react when issue tracker panels are opened or closed.
+
+### Add generic layer visibility to LayerSwitcher
+
+Add getWMELayerVisibility and setWMELayerVisibility methods to the LayerSwitcher SDK module.
+These methods use a stable set of public layer names (WmeLayerName) defined in the SDK interfaces to control layer visibility, protecting userscripts from internal WME layer key changes.
+
+### Introduce IssueTracker module with showPanel and closePanel
+
+Add the IssueTracker module to the SDK, enabling userscripts to programmatically manage issue tracker panels in the editor.
+
+- Add showPanel to open a specific issue panel by its ID and type (editSuggestion, mapProblem, mapUpdateRequest).
+
+- Add closePanel to close the active issue tracker panel.
+
+### Expand SegmentRestriction
+
+Expanded SegmentRestriction with time frames, default type, description,
+editable, direction, disposition, lane type.
+
+### Expand restrictions
+
+Expanded Segment/TurnRestriction attributes with time frames, restriction type, description, editable.
+
+### Add getById method to PermanentHazard module
+
+Implemented getById method on the PermanentHazard module to allow reading permanent hazard data from store by id.
+
+### Add getAll method to PermanentHazard module
+
+Implemented getAll method on the PermanentHazard module to allow reading all permanent hazard data from store.
+
+### Add StreetView module for street view control
+
+Introduce a new StreetView SDK module to allow userscripts to control Google Street View split-screen panel.
+
+- Add isActive, open, and close methods to check, open, or close the street view panel.
+
+- Deprecate the legacy Map.isStreetViewActive method.
+
+## v2.364
+
+### Add getByUserName method to Users module
+
+Implemented getByUserName method on the Users module to allow reading user data by username.
+
+### Check authorization in setTurnLaneGuidance
+
+Add client authorization checks to setTurnLaneGuidance to verify that editing is allowed and the logged-in user has privileges to update lane guidance for both immediate and far turns.
+
+### Add getCurrentUser method to Users module
+
+Implemented getCurrentUser method on the Users module to allow reading the currently logged-in user from the store.
+
+## v2.363
+
+### Add getById method to Signs module
+
+Implemented getById method on the Signs module to allow fetching a sign type
+by its ID.
+
+### Implement Signs module with getAll method
+
+Exposed all sign types available in WME via the new Signs module on the SDK.
+Implemented the getAll method, which supports optional filtering by SignType.
+
+### Add turnGuidance to Turns
+
+Expose turn guidance information on the SDK Turn interface to allow access to
+exit signs, towards, visual instructions, road shields, and custom Text-To-Speech (TTS).
 
 ## v2.360
 

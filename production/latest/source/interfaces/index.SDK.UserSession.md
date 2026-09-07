@@ -1,7 +1,7 @@
 ---
 title: SDK.UserSession interface
 source: interfaces/index.SDK.UserSession.html
-created: 2026-07-28
+created: 2026-09-07
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,6 +10,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface UserSession {
+  editableAreas: UserEditableArea [] ;
   isAreaManager: boolean ;
   isCountryManager: boolean ;
   managedAreas: ManagedAreaShort [] ;
@@ -18,6 +19,11 @@ interface UserSession {
 }
 ```
 ## Properties
+### `editableAreas`
+
+```typescript
+editableAreas: UserEditableArea []
+```
 ### `isAreaManager`
 
 ```typescript

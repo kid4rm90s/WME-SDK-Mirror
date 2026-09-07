@@ -1,7 +1,7 @@
 ---
 title: SDK.ParkingLot class
 source: classes/index.SDK.ParkingLot.html
-created: 2026-07-28
+created: 2026-09-07
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

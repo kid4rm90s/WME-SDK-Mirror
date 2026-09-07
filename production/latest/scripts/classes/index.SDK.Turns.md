@@ -1,7 +1,7 @@
 ---
 title: SDK.Turns class
 source: classes/index.SDK.Turns.html
-created: 2026-07-28
+created: 2026-09-07
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -94,5 +94,12 @@ setTurnLaneGuidance ( args: { laneIndexes: number [] ; turnId: string } ) : void
 ### `updateTurn`
 
 ```typescript
-updateTurn ( args: { isAllowed ?: boolean ; turnId: string } ) : void
+updateTurn (
+  args: {
+  isAllowed ?: boolean ;
+  restrictions ?: TurnRestrictionData [] ;
+  turnGuidance ?: null | TurnGuidance ;
+  turnId: string ;
+} ,
+  ) : void
 ```
