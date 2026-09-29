@@ -1471,8 +1471,54 @@ export interface Turn {
 	 */
 	turnGuidance: TurnGuidance | null;
 }
-type ClosureStatus = "ACTIVE" | "FINISHED" | "FINISHED_EARLY_DUE_TO_DELETION" | "FINISHED_EARLY_DUE_TO_OVERLAPPING_CLOSURES" | "NOT_STARTED" | "SUSPENDED" | "UNVERIFIED" | "FAILED" | "UNKNOWN";
+export declare const ClosureStatus: {
+	readonly ACTIVE: "ACTIVE";
+	readonly FAILED: "FAILED";
+	readonly FINISHED: "FINISHED";
+	readonly FINISHED_EARLY_DUE_TO_DELETION: "FINISHED_EARLY_DUE_TO_DELETION";
+	readonly FINISHED_EARLY_DUE_TO_OVERLAPPING_CLOSURES: "FINISHED_EARLY_DUE_TO_OVERLAPPING_CLOSURES";
+	readonly NOT_STARTED: "NOT_STARTED";
+	readonly SUSPENDED: "SUSPENDED";
+	readonly UNKNOWN: "UNKNOWN";
+	readonly UNVERIFIED: "UNVERIFIED";
+};
+export type ClosureStatus = Values<typeof ClosureStatus>;
+export declare const RoadClosureAttributionChannel: {
+	readonly FEED: "FEED";
+	readonly WME_COMMUNITY_EDITOR: "WME_COMMUNITY_EDITOR";
+	readonly WME_OPS_EDITOR: "WME_OPS_EDITOR";
+	readonly WME_PARTNER_EDITOR: "WME_PARTNER_EDITOR";
+	readonly WME_ROAD_CLOSURE_PROBLEM_IMPORT: "WME_ROAD_CLOSURE_PROBLEM_IMPORT";
+};
+export type RoadClosureAttributionChannel = Values<typeof RoadClosureAttributionChannel>;
+export declare const RoadClosureContributorType: {
+	readonly EDITOR: "EDITOR";
+	readonly PARTNER: "PARTNER";
+};
+export type RoadClosureContributorType = Values<typeof RoadClosureContributorType>;
+export interface RoadClosureAttribution {
+	/**
+	 * The channel / workflow through which the closure was created.
+	 */
+	channel: RoadClosureAttributionChannel;
+	/**
+	 * The timestamp (in milliseconds) when the contribution was made.
+	 */
+	contributionTime: number | null;
+	/**
+	 * The entity role representing the edit.
+	 */
+	contributorType: RoadClosureContributorType;
+	/**
+	 * The partner display name / credit string.
+	 */
+	credit: string | null;
+}
 export interface RoadClosure {
+	/**
+	 * An array of attributions for the road closure.
+	 */
+	attributions: RoadClosureAttribution[];
 	/**
 	 * The description of the closure.
 	 */
@@ -4023,6 +4069,7 @@ declare class RoadClosures extends SdkModule {
 	}): RoadClosure | null;
 	/**
 	 * Adds a new road closure to the WME data model.
+	 * Attributions for the closure are automatically populated based on the logged-in user.
 	 * @throws DataModelNotFoundError if the specified segment cannot be found in the data model.
 	 * @throws DataModelNotFoundError if the trafficEventId is provided and cannot be found in the data model.
 	 * @returns the created road closure.
@@ -4066,6 +4113,18 @@ declare class RoadClosures extends SdkModule {
 		 */
 		trafficEventId: string | null;
 	}): RoadClosure;
+	/**
+	 * Deletes a road closure from the WME data model.
+	 * @throws DataModelNotFoundError if the specified road closure cannot be found in the data model.
+	 * @throws DataModelNotFoundError if the segment associated with the closure cannot be found in the data model.
+	 * @throws WMEError if the action to delete the road closure fails.
+	 */
+	deleteClosure(args: {
+		/**
+		 * An id of the road closure to delete.
+		 */
+		roadClosureId: string;
+	}): void;
 }
 declare class TurnClosures extends SdkModule {
 	/**
@@ -4169,15 +4228,19 @@ declare class MapComments extends SdkModule {
 		/**
 		 * The body of the comment.
 		 */
-		body: string;
+		body?: string;
 		/**
 		 * The expiration date of the comment in the timezone of the comment location.
 		 */
-		endDate: number;
+		endDate?: number | null;
 		/**
 		 * The GeoJSON representation of the comment's location.
 		 */
 		geometry: Point | Polygon;
+		/**
+		 * The lock rank of the comment.
+		 */
+		lockRank?: UserRank$1;
 		/**
 		 * The subject of the comment.
 		 */
@@ -4186,6 +4249,7 @@ declare class MapComments extends SdkModule {
 	/**
 	 * Updates a map comment in the WME data model.
 	 * @throws ValidationError if endDate is invalid.
+	 * @throws InvalidStateError if provided lockRank is higher than the current user rank.
 	 * @throws DataModelNotFoundError if the specified map comment cannot be found in the data model.
 	 * @returns the updated map comment.
 	 */
@@ -4202,6 +4266,10 @@ declare class MapComments extends SdkModule {
 		 * The GeoJSON representation of the comment's location.
 		 */
 		geometry?: Point | Polygon;
+		/**
+		 * The lock rank of the comment.
+		 */
+		lockRank?: UserRank$1;
 		/**
 		 * An id of the map comment to edit.
 		 */
@@ -4245,6 +4313,13 @@ declare class MapUpdateRequests extends SdkModule {
 	getUpdateRequestDetails(args: {
 		mapUpdateRequestId: number;
 	}): Promise<UpdateRequestDetails | null>;
+	/**
+	 * @returns array of map update request details. If details are not present in the WME data model, they will be fetched.
+	 * @throws WMEError if fetching details fails.
+	 */
+	getUpdateRequestDetails(args: {
+		mapUpdateRequestId: number[];
+	}): Promise<UpdateRequestDetails[]>;
 	/**
 	 * Adds a comment to the map update request.
 	 * @returns A promise that resolves to a created conversation element representing the comment.
@@ -4737,7 +4812,7 @@ declare class Editing extends SdkModule {
 }
 declare class Settings extends SdkModule {
 	/**
-	 * @returns and object with the current locale code and locale name
+	 * @returns an object with the current locale code and locale name
 	 */
 	getLocale(): {
 		localeCode: string;
@@ -6142,6 +6217,15 @@ export declare class WmeSDK extends SdkModule {
 	 */
 	getWMEVersion(): string;
 }
+type AnyFunction = (...args: any[]) => any;
+type PromisifiedFunction<T extends AnyFunction> = ReturnType<T> extends Promise<unknown> ? T : (...args: Parameters<T>) => Promise<Awaited<ReturnType<T>>>;
+type PromisifiedModule<T> = {
+	[K in keyof T]: T[K] extends SdkEventBus ? T[K] : T[K] extends AnyFunction ? PromisifiedFunction<T[K]> : T[K] extends SdkModule ? PromisifiedModule<T[K]> : T[K];
+};
+/**
+ * The asynchronous WME SDK interface type, with all methods (except event registration) returning Promises.
+ */
+export type AsyncWmeSDK = PromisifiedModule<WmeSDK>;
 
 export {
 	Node$1 as Node,

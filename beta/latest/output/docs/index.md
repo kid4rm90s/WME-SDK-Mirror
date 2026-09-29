@@ -1,6 +1,6 @@
 ---
 sdk: WME
-version: v2.367-2-gea5190600d
+version: v2.373-2-g92852af686
 generated: 2026-09-07
 sections:
   classes: classes.md
@@ -47,7 +47,7 @@ docs:
 > **Use this index to discover available documentation and their content.**
 > For searching SDK entities, refer to the Source Guide below, then navigate to the relevant section.
 
-> **SDK Version:** v2.367-2-gea5190600d
+> **SDK Version:** v2.373-2-g92852af686
 > **Docs generated:** 2026-09-07
 
 > Each section below lists the source file and the entities it contains.
@@ -82,318 +82,37 @@ This section describes each documentation source included for NotebookLM compreh
   - **script-example-8.md**: WME EZRoad Mod — Script Example
 ## Classes
 
-- [classes.md](classes.md) — *43 entries*
-    - index.SDK.BigJunctions
-    - index.SDK.ChargingStation
-    - index.SDK.Chat
-    - index.SDK.Cities
-    - index.SDK.Countries
-    - index.SDK.DataModel
-    - index.SDK.DataModelNotFoundError
-    - index.SDK.EditSuggestions
-    - index.SDK.Editing
-    - index.SDK.HouseNumbers
-    - index.SDK.InvalidStateError
-    - index.SDK.IssueTracker
-    - index.SDK.Junctions
-    - index.SDK.LayerSwitcher
-    - index.SDK.MajorTrafficEvents
-    - index.SDK.ManagedAreas
-    - index.SDK.Map
-    - index.SDK.MapComments
-    - index.SDK.MapProblems
-    - index.SDK.MapUpdateRequests
-    - index.SDK.Nodes
-    - index.SDK.ParkingLot
-    - index.SDK.PermanentHazards
-    - index.SDK.RestrictedDrivingAreas
-    - index.SDK.RoadClosures
-    - index.SDK.SdkEventBus
-    - index.SDK.SegmentSuggestions
-    - index.SDK.Segments
-    - index.SDK.Settings
-    - index.SDK.Shortcuts
-    - index.SDK.Sidebar
-    - index.SDK.Signs
-    - index.SDK.States
-    - index.SDK.StreetView
-    - index.SDK.Streets
-    - index.SDK.TurnClosures
-    - index.SDK.Turns
-    - index.SDK.Users
-    - index.SDK.ValidationError
-    - index.SDK.Venues
-    - index.SDK.WMEError
-    - index.SDK.WmeSDK
-    - index.SDK.WmeState
+- [classes.md](classes.md) — *0 entries*
 
 > See Also: [Type Definition Files](#type-definition-files), [External Documentation Files](#external-documentation-files)
 
 ## Modules
 
-- [modules.md](modules.md) — *2 entries*
-    - index.SDK
-    - index
+- [modules.md](modules.md) — *0 entries*
 
 > See Also: [Type Definition Files](#type-definition-files), [External Documentation Files](#external-documentation-files)
 
 ## Types
 
-- [types.md](types.md) — *100 entries*
-    - index.SDK.AddableTurnVehicleRules
-    - index.SDK.AddableVehicleRules
-    - index.SDK.AddableVehicleType
-    - index.SDK.BBox
-    - index.SDK.CameraType
-    - index.SDK.ChargersAccessType
-    - index.SDK.ChargingStationCostType
-    - index.SDK.ClosureStatus
-    - index.SDK.DataModelName
-    - index.SDK.DayAlternation
-    - index.SDK.DaysOfMonth
-    - index.SDK.DriveProfiles
-    - index.SDK.EditSuggestionSource
-    - index.SDK.EditSuggestionStatus
-    - index.SDK.Exclude
-    - index.SDK.ExcludeRawFields
-    - index.SDK.Extract
-    - index.SDK.GENERAL_SERVICE_TYPE
-    - index.SDK.InstructionOpCode
-    - index.SDK.IssueSeverity
-    - index.SDK.IssueTrackerType
-    - index.SDK.LaneGuidanceMode
-    - index.SDK.LaneInstructionStrategy
-    - index.SDK.LicensePlate
-    - index.SDK.LicensePlateRule
-    - index.SDK.LotType
-    - index.SDK.MajorTrafficEventCategory
-    - index.SDK.MapProblemType
-    - index.SDK.OLMouseEventName
-    - index.SDK.ObjectType
-    - index.SDK.Omit
-    - index.SDK.PARKING_LOT_SERVICE_TYPE
-    - index.SDK.PLACE_UPDATE_ACTION
-    - index.SDK.PLACE_UPDATE_SUBJECT
-    - index.SDK.ParkingLotCostType
-    - index.SDK.ParkingType
-    - index.SDK.Partial
-    - index.SDK.PaymentMethod
-    - index.SDK.PaymentType
-    - index.SDK.PermanentHazard
-    - index.SDK.PermanentHazardSubType
-    - index.SDK.Pick
-    - index.SDK.PlaceUpdateType
-    - index.SDK.Position
-    - index.SDK.RESTRICTION_TYPE
-    - index.SDK.Record
-    - index.SDK.RegionCode
-    - index.SDK.RestrictionSegmentDirection
-    - index.SDK.RestrictionSegmentDisposition
-    - index.SDK.RestrictionSegmentLaneScope
-    - index.SDK.RestrictionSegmentLaneType
-    - index.SDK.RoadTypeId
-    - index.SDK.SaveMode
-    - index.SDK.SdkFeatureGeometry
-    - index.SDK.SdkFeatureProperties
-    - index.SDK.SdkFeatureStyleContext
-    - index.SDK.SdkFeatureStylePredicate
-    - index.SDK.SdkMouseEventName
-    - index.SDK.SegmentAddressData
-    - index.SDK.SegmentDirection
-    - index.SDK.SegmentLaneGuidanceDirection
-    - index.SDK.SegmentPermission
-    - index.SDK.SegmentRestrictionData
-    - index.SDK.SegmentSuggestionRejectionReason
-    - index.SDK.SegmentSuggestionSource
-    - index.SDK.SegmentSuggestionStatus
-    - index.SDK.Selection
-    - index.SDK.SelectionWithLocalizedTypeName
-    - index.SDK.ServiceType
-    - index.SDK.SidebarTabName
-    - index.SDK.SignType
-    - index.SDK.SnapTo
-    - index.SDK.SpotsEstimate
-    - index.SDK.SuggestibleActionType
-    - index.SDK.SuggestionResolutionRejectionReason
-    - index.SDK.SuggestionResolutionStatus
-    - index.SDK.TrafficSignSubType
-    - index.SDK.TurnRestriction
-    - index.SDK.TurnRestrictionData
-    - index.SDK.UnpavedRoadsSetting
-    - index.SDK.UpdateRequestSource
-    - index.SDK.UpdateRequestType
-    - index.SDK.UpdateableMapProblemState
-    - index.SDK.UpdateableRestrictionSegmentLaneScope
-    - index.SDK.UpdateableRestrictionType
-    - index.SDK.UpdateableTurnRestrictionType
-    - index.SDK.UserEditableAreaType
-    - index.SDK.UserRank
-    - index.SDK.VehicleRules
-    - index.SDK.VehicleType
-    - index.SDK.VenueAddressData
-    - index.SDK.VenueCategoryId
-    - index.SDK.VenueMainCategoryId
-    - index.SDK.VenuePermission
-    - index.SDK.VenueResidentialId
-    - index.SDK.VenueSubCategoryId
-    - index.SDK.WME_LAYER_NAMES
-    - index.SDK.WeekDay
-    - index.SDK.WmeLayerName
-    - index.SDK.ZoomLevel
+- [types.md](types.md) — *0 entries*
 
 > See Also: [Type Definition Files](#type-definition-files), [External Documentation Files](#external-documentation-files)
 
 ## Interfaces
 
-- [interfaces.md](interfaces.md) — *98 entries*
-    - index.SDK.AddableVehicleRule
-    - index.SDK.AddressRawComponents
-    - index.SDK.AffectedObject
-    - index.SDK.BaseAddress
-    - index.SDK.BasePermanentHazard
-    - index.SDK.BaseRestriction
-    - index.SDK.BaseVehicleRule
-    - index.SDK.BigJunction
-    - index.SDK.CallSite
-    - index.SDK.Camera
-    - index.SDK.ChangedField
-    - index.SDK.ChangedIDsInfo
-    - index.SDK.City
-    - index.SDK.ConversationElement
-    - index.SDK.Country
-    - index.SDK.DriveProfile
-    - index.SDK.EditSuggestion
-    - index.SDK.EditSuggestionChange
-    - index.SDK.ErrorOptions
-    - index.SDK.ExitSign
-    - index.SDK.FeatureStyle
-    - index.SDK.GeoJsonObject
-    - index.SDK.HouseNumber
-    - index.SDK.IssueTrackerFilters
-    - index.SDK.IssueTrackerPanelClosedEvent
-    - index.SDK.IssueTrackerPanelOpenedEvent
-    - index.SDK.Junction
-    - index.SDK.KeyboardShortcut
-    - index.SDK.LineString
-    - index.SDK.LocalizedString
-    - index.SDK.LonLat
-    - index.SDK.MajorTrafficEvent
-    - index.SDK.ManagedArea
-    - index.SDK.ManagedAreaShort
-    - index.SDK.MapComment
-    - index.SDK.MapProblem
-    - index.SDK.MapProblemsFilterState
-    - index.SDK.MapSuggestionsFilterState
-    - index.SDK.MapUpdateRequest
-    - index.SDK.ModificationMetadata
-    - index.SDK.MultiLineString
-    - index.SDK.MultiPolygon
-    - index.SDK.NavigationPoint
-    - index.SDK.Node
-    - index.SDK.OpeningHour
-    - index.SDK.Pixel
-    - index.SDK.PlaceUpdateRequestsFilterState
-    - index.SDK.Point
-    - index.SDK.Polygon
-    - index.SDK.RegisterSidebarTabResult
-    - index.SDK.RestrictedDrivingArea
-    - index.SDK.RoadClosure
-    - index.SDK.RoadShield
-    - index.SDK.RoadType
-    - index.SDK.SchoolZone
-    - index.SDK.SdkEvents
-    - index.SDK.SdkFeature
-    - index.SDK.SdkFeatureStyleRule
-    - index.SDK.SdkMouseEvent
-    - index.SDK.SdkWazeFeature
-    - index.SDK.Segment
-    - index.SDK.SegmentAddress
-    - index.SDK.SegmentFlagAttributes
-    - index.SDK.SegmentLanesInfo
-    - index.SDK.SegmentRestriction
-    - index.SDK.SegmentSuggestion
-    - index.SDK.Sign
-    - index.SDK.StandardPermanentHazard
-    - index.SDK.State
-    - index.SDK.Street
-    - index.SDK.Subscription
-    - index.SDK.Suggestion
-    - index.SDK.SuggestionAttributeChange
-    - index.SDK.SuggestionEntityEdit
-    - index.SDK.SuggestionResolution
-    - index.SDK.TileLayerOptions
-    - index.SDK.TimeFrame
-    - index.SDK.TrackedDataModel
-    - index.SDK.TrackedLayer
-    - index.SDK.Turn
-    - index.SDK.TurnClosure
-    - index.SDK.TurnGuidance
-    - index.SDK.TurnLanes
-    - index.SDK.UpdateRequestDetails
-    - index.SDK.UpdateRequestUserPreferences
-    - index.SDK.UpdateRequestsFilterState
-    - index.SDK.User
-    - index.SDK.UserEditableArea
-    - index.SDK.UserProfile
-    - index.SDK.UserSession
-    - index.SDK.UserSettings
-    - index.SDK.VehicleRule
-    - index.SDK.Venue
-    - index.SDK.VenueAddress
-    - index.SDK.VenueCategory
-    - index.SDK.VenueImage
-    - index.SDK.VenueSubCategory
-    - index.SDK.VenueUpdateRequest
+- [interfaces.md](interfaces.md) — *0 entries*
 
 > See Also: [Type Definition Files](#type-definition-files), [External Documentation Files](#external-documentation-files)
 
 ## Variables
 
-- [variables.md](variables.md) — *37 entries*
-    - index.SDK.AddableVehicleType
-    - index.SDK.DATA_MODEL_NAMES
-    - index.SDK.DayAlternation
-    - index.SDK.DaysOfMonth
-    - index.SDK.EditSuggestionStatus
-    - index.SDK.GENERAL_SERVICE_TYPE
-    - index.SDK.IssueTrackerType
-    - index.SDK.LicensePlate
-    - index.SDK.LicensePlateRule
-    - index.SDK.ObjectType
-    - index.SDK.PARKING_LOT_SERVICE_TYPE
-    - index.SDK.PLACE_UPDATE_ACTION
-    - index.SDK.PLACE_UPDATE_SUBJECT
-    - index.SDK.RESTRICTION_TYPE
-    - index.SDK.ROAD_TYPE
-    - index.SDK.RestrictionSegmentDirection
-    - index.SDK.RestrictionSegmentDisposition
-    - index.SDK.RestrictionSegmentLaneScope
-    - index.SDK.RestrictionSegmentLaneType
-    - index.SDK.SegmentDirection
-    - index.SDK.SegmentPermission
-    - index.SDK.SegmentSuggestionRejectionReason
-    - index.SDK.SegmentSuggestionSource
-    - index.SDK.SidebarTabName
-    - index.SDK.UpdateableMapProblemState
-    - index.SDK.UpdateableRestrictionSegmentLaneScope
-    - index.SDK.UpdateableRestrictionType
-    - index.SDK.UpdateableTurnRestrictionType
-    - index.SDK.UserEditableAreaType
-    - index.SDK.VENUE_MAIN_CATEGORY
-    - index.SDK.VENUE_RESIDENTIAL
-    - index.SDK.VENUE_SUBCATEGORIES
-    - index.SDK.VehicleType
-    - index.SDK.VenuePermission
-    - index.SDK.WME_LAYER_NAMES
-    - index.SDK.WeekDay
-    - index.SDK.WmeLayerName
+- [variables.md](variables.md) — *0 entries*
 
 > See Also: [Type Definition Files](#type-definition-files), [External Documentation Files](#external-documentation-files)
 
 ## Functions
 
-- [functions.md](functions.md) — *1 entries*
-    - index.getWmeSdk
+- [functions.md](functions.md) — *0 entries*
 
 > See Also: [Type Definition Files](#type-definition-files), [External Documentation Files](#external-documentation-files)
 
