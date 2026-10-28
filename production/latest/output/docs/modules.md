@@ -3,7 +3,7 @@
 ---
 title: SDK module
 source: modules/index.SDK.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -71,7 +71,6 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [Country](../interfaces/index.SDK.Country.md)
 - [EditSuggestion](../interfaces/index.SDK.EditSuggestion.md)
 - [EditSuggestionChange](../interfaces/index.SDK.EditSuggestionChange.md)
-- [ErrorOptions](../interfaces/index.SDK.ErrorOptions.md)
 - [ExitSign](../interfaces/index.SDK.ExitSign.md)
 - [FeatureStyle](../interfaces/index.SDK.FeatureStyle.md)
 - [GeoJsonObject](../interfaces/index.SDK.GeoJsonObject.md)
@@ -105,6 +104,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [RegisterSidebarTabResult](../interfaces/index.SDK.RegisterSidebarTabResult.md)
 - [RestrictedDrivingArea](../interfaces/index.SDK.RestrictedDrivingArea.md)
 - [RoadClosure](../interfaces/index.SDK.RoadClosure.md)
+- [RoadClosureAttribution](../interfaces/index.SDK.RoadClosureAttribution.md)
 - [RoadShield](../interfaces/index.SDK.RoadShield.md)
 - [RoadType](../interfaces/index.SDK.RoadType.md)
 - [SchoolZone](../interfaces/index.SDK.SchoolZone.md)
@@ -155,6 +155,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [AddableTurnVehicleRules](../types/index.SDK.AddableTurnVehicleRules.md)
 - [AddableVehicleRules](../types/index.SDK.AddableVehicleRules.md)
 - [AddableVehicleType](../types/index.SDK.AddableVehicleType.md)
+- [AnyFunction](../types/index.SDK.AnyFunction.md)
 - [BBox](../types/index.SDK.BBox.md)
 - [CameraType](../types/index.SDK.CameraType.md)
 - [ChargersAccessType](../types/index.SDK.ChargersAccessType.md)
@@ -164,9 +165,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [DayAlternation](../types/index.SDK.DayAlternation.md)
 - [EditSuggestionSource](../types/index.SDK.EditSuggestionSource.md)
 - [EditSuggestionStatus](../types/index.SDK.EditSuggestionStatus.md)
-- [Exclude](../types/index.SDK.Exclude.md)
 - [ExcludeRawFields](../types/index.SDK.ExcludeRawFields.md)
-- [Extract](../types/index.SDK.Extract.md)
 - [GENERAL_SERVICE_TYPE](../types/index.SDK.GENERAL_SERVICE_TYPE.md)
 - [InstructionOpCode](../types/index.SDK.InstructionOpCode.md)
 - [IssueSeverity](../types/index.SDK.IssueSeverity.md)
@@ -179,26 +178,26 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [MapProblemType](../types/index.SDK.MapProblemType.md)
 - [ObjectType](../types/index.SDK.ObjectType.md)
 - [OLMouseEventName](../types/index.SDK.OLMouseEventName.md)
-- [Omit](../types/index.SDK.Omit.md)
 - [PARKING_LOT_SERVICE_TYPE](../types/index.SDK.PARKING_LOT_SERVICE_TYPE.md)
 - [ParkingLotCostType](../types/index.SDK.ParkingLotCostType.md)
 - [ParkingType](../types/index.SDK.ParkingType.md)
-- [Partial](../types/index.SDK.Partial.md)
 - [PaymentMethod](../types/index.SDK.PaymentMethod.md)
 - [PaymentType](../types/index.SDK.PaymentType.md)
 - [PermanentHazard](../types/index.SDK.PermanentHazard.md)
 - [PermanentHazardSubType](../types/index.SDK.PermanentHazardSubType.md)
-- [Pick](../types/index.SDK.Pick.md)
 - [PLACE_UPDATE_ACTION](../types/index.SDK.PLACE_UPDATE_ACTION.md)
 - [PLACE_UPDATE_SUBJECT](../types/index.SDK.PLACE_UPDATE_SUBJECT.md)
 - [PlaceUpdateType](../types/index.SDK.PlaceUpdateType.md)
 - [Position](../types/index.SDK.Position.md)
-- [Record](../types/index.SDK.Record.md)
+- [PromisifiedFunction](../types/index.SDK.PromisifiedFunction.md)
+- [PromisifiedModule](../types/index.SDK.PromisifiedModule.md)
 - [RegionCode](../types/index.SDK.RegionCode.md)
 - [RESTRICTION_TYPE](../types/index.SDK.RESTRICTION_TYPE.md)
 - [RestrictionSegmentDirection](../types/index.SDK.RestrictionSegmentDirection.md)
 - [RestrictionSegmentLaneScope](../types/index.SDK.RestrictionSegmentLaneScope.md)
 - [RestrictionSegmentLaneType](../types/index.SDK.RestrictionSegmentLaneType.md)
+- [RoadClosureAttributionChannel](../types/index.SDK.RoadClosureAttributionChannel.md)
+- [RoadClosureContributorType](../types/index.SDK.RoadClosureContributorType.md)
 - [RoadTypeId](../types/index.SDK.RoadTypeId.md)
 - [SaveMode](../types/index.SDK.SaveMode.md)
 - [SdkFeatureGeometry](../types/index.SDK.SdkFeatureGeometry.md)
@@ -250,6 +249,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [ZoomLevel](../types/index.SDK.ZoomLevel.md)
 ## Variables
 - [AddableVehicleType](../variables/index.SDK.AddableVehicleType.md)
+- [ClosureStatus](../variables/index.SDK.ClosureStatus.md)
 - [DATA_MODEL_NAMES](../variables/index.SDK.DATA_MODEL_NAMES.md)
 - [DayAlternation](../variables/index.SDK.DayAlternation.md)
 - [EditSuggestionStatus](../variables/index.SDK.EditSuggestionStatus.md)
@@ -265,6 +265,8 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [RestrictionSegmentLaneScope](../variables/index.SDK.RestrictionSegmentLaneScope.md)
 - [RestrictionSegmentLaneType](../variables/index.SDK.RestrictionSegmentLaneType.md)
 - [ROAD_TYPE](../variables/index.SDK.ROAD_TYPE.md)
+- [RoadClosureAttributionChannel](../variables/index.SDK.RoadClosureAttributionChannel.md)
+- [RoadClosureContributorType](../variables/index.SDK.RoadClosureContributorType.md)
 - [SegmentDirection](../variables/index.SDK.SegmentDirection.md)
 - [SegmentPermission](../variables/index.SDK.SegmentPermission.md)
 - [SegmentSuggestionRejectionReason](../variables/index.SDK.SegmentSuggestionRejectionReason.md)
@@ -291,7 +293,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
 title: index module
 source: modules/index.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -299,6 +301,8 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 # Module index
 ## Modules
 - [SDK](index.SDK.md)
+## Type Aliases
+- [AsyncWmeSDK](../types/index.AsyncWmeSDK.md)
 ## Functions
 - [getWmeSdk](../functions/index.getWmeSdk.md)
 

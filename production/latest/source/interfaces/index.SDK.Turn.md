@@ -1,7 +1,7 @@
 ---
 title: SDK.Turn interface
 source: interfaces/index.SDK.Turn.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -18,17 +18,17 @@ interface Turn {
   hasTurnGuidance: boolean ;
   hasVisualInstruction: boolean ;
   id: string ;
-  instructionOpCode: null | InstructionOpCode ;
+  instructionOpCode: InstructionOpCode | null ;
   isAllowed: boolean ;
   isJunctionBoxTurn: boolean ;
   isPathTurn: boolean ;
   isUTurn: boolean ;
-  lanes: null | TurnLanes ;
+  lanes: TurnLanes | null ;
   restrictions: BaseRestriction [] ;
   segmentPath: number [] ;
   toSegmentFwd: boolean ;
   toSegmentId: number ;
-  turnGuidance: null | TurnGuidance ;
+  turnGuidance: TurnGuidance | null ;
 }
 ```
 ## Properties
@@ -75,7 +75,7 @@ id: string
 ### `instructionOpCode`
 
 ```typescript
-instructionOpCode: null | InstructionOpCode
+instructionOpCode: InstructionOpCode | null
 ```
 ### `isAllowed`
 
@@ -100,7 +100,7 @@ isUTurn: boolean
 ### `lanes`
 
 ```typescript
-lanes: null | TurnLanes
+lanes: TurnLanes | null
 ```
 ### `restrictions`
 
@@ -125,5 +125,5 @@ toSegmentId: number
 ### `turnGuidance`
 
 ```typescript
-turnGuidance: null | TurnGuidance
+turnGuidance: TurnGuidance | null
 ```

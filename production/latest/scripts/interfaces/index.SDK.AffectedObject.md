@@ -1,7 +1,7 @@
 ---
 title: SDK.AffectedObject interface
 source: interfaces/index.SDK.AffectedObject.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,7 +10,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface AffectedObject {
-  objectId: null | string | number ;
+  objectId: string | number | null ;
   objectType: ObjectType ;
 }
 ```
@@ -18,7 +18,7 @@ interface AffectedObject {
 ### `objectId`
 
 ```typescript
-objectId: null | string | number
+objectId: string | number | null
 ```
 ### `objectType`
 

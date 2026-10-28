@@ -1,7 +1,7 @@
 ---
 title: SDK.VenueUpdateRequest interface
 source: interfaces/index.SDK.VenueUpdateRequest.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -11,9 +11,9 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ```typescript
 interface VenueUpdateRequest {
   changedFields ?: ChangedField [] ;
-  createdBy: null | string ;
+  createdBy: string | null ;
   dateAdded: number ;
-  id: null | string | number ;
+  id: string | number | null ;
   subject: PLACE_UPDATE_SUBJECT ;
   updateType: PlaceUpdateType ;
 }
@@ -27,7 +27,7 @@ changedFields ?: ChangedField []
 ### `createdBy`
 
 ```typescript
-createdBy: null | string
+createdBy: string | null
 ```
 ### `dateAdded`
 
@@ -37,7 +37,7 @@ dateAdded: number
 ### `id`
 
 ```typescript
-id: null | string | number
+id: string | number | null
 ```
 ### `subject`
 

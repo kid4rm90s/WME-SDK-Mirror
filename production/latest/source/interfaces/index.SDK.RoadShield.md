@@ -1,7 +1,7 @@
 ---
 title: SDK.RoadShield interface
 source: interfaces/index.SDK.RoadShield.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,24 +10,24 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface RoadShield {
-  direction: null | string ;
-  id: null | number ;
-  signText ?: null | string ;
+  direction: string | null ;
+  id: number | null ;
+  signText ?: string | null ;
 }
 ```
 ## Properties
 ### `direction`
 
 ```typescript
-direction: null | string
+direction: string | null
 ```
 ### `id`
 
 ```typescript
-id: null | number
+id: number | null
 ```
 ### **Optional** `signText`
 
 ```typescript
-signText ?: null | string
+signText ?: string | null
 ```

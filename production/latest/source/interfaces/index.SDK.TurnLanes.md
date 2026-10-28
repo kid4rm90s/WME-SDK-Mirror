@@ -1,7 +1,7 @@
 ---
 title: SDK.TurnLanes interface
 source: interfaces/index.SDK.TurnLanes.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,8 +10,8 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface TurnLanes {
-  angleOverride: null | number ;
-  arrowAngle: null | number ;
+  angleOverride: number | null ;
+  arrowAngle: number | null ;
   fromLaneIndex: number ;
   guidanceMode: LaneGuidanceMode ;
   instructionStrategy: LaneInstructionStrategy ;
@@ -22,12 +22,12 @@ interface TurnLanes {
 ### `angleOverride`
 
 ```typescript
-angleOverride: null | number
+angleOverride: number | null
 ```
 ### `arrowAngle`
 
 ```typescript
-arrowAngle: null | number
+arrowAngle: number | null
 ```
 ### `fromLaneIndex`
 

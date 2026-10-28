@@ -1,7 +1,7 @@
 ---
 title: SDK.MapComment interface
 source: interfaces/index.SDK.MapComment.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -12,7 +12,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 interface MapComment {
   body: string ;
   conversation: ConversationElement [] ;
-  endDate: null | string ;
+  endDate: string | null ;
   geometry: Point | Polygon ;
   id: string ;
   isFollowing: boolean ;
@@ -36,7 +36,7 @@ conversation: ConversationElement []
 ### `endDate`
 
 ```typescript
-endDate: null | string
+endDate: string | null
 ```
 ### `geometry`
 

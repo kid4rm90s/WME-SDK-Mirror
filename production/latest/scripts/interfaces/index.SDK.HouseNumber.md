@@ -1,7 +1,7 @@
 ---
 title: SDK.HouseNumber interface
 source: interfaces/index.SDK.HouseNumber.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,13 +10,13 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface HouseNumber {
-  fractionPoint: null | Point ;
+  fractionPoint: Point | null ;
   geometry: Point ;
   id: string ;
   isForced: boolean ;
   number: string ;
   segmentId: number ;
-  updatedBy: null | string ;
+  updatedBy: string | null ;
 }
 ```
 Represents a house number associated with a segment.
@@ -25,7 +25,7 @@ It provides information about the house number itself, its location, and its rel
 ### `fractionPoint`
 
 ```typescript
-fractionPoint: null | Point
+fractionPoint: Point | null
 ```
 ### `geometry`
 
@@ -55,5 +55,5 @@ segmentId: number
 ### `updatedBy`
 
 ```typescript
-updatedBy: null | string
+updatedBy: string | null
 ```

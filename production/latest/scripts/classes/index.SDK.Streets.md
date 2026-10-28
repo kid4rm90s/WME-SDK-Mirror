@@ -1,7 +1,7 @@
 ---
 title: SDK.Streets class
 source: classes/index.SDK.Streets.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -28,13 +28,13 @@ an array of all the streets in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { streetId: number } ) : null | Street
+getById ( args: { streetId: number } ) : Street | null
 ```
 street with id, or null if not found in the WME data model
 ### `getStreet`
 
 ```typescript
-getStreet ( args: { cityId ?: number ; streetName: string } ) : null | Street
+getStreet ( args: { cityId ?: number ; streetName: string } ) : Street | null
 ```
 a street object or null if not found
 ### `updateStreet`

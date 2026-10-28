@@ -1,7 +1,7 @@
 ---
 title: SDK.Settings class
 source: classes/index.SDK.Settings.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -18,11 +18,11 @@ Methods for managing user settings.
 ```typescript
 getLocale () : { localeCode: string ; localeName: string }
 ```
-and object with the current locale code and locale name
+an object with the current locale code and locale name
 ### `getRegionCode`
 
 ```typescript
-getRegionCode () : null | RegionCode
+getRegionCode () : RegionCode | null
 ```
 the current region code, or null if not available
 ### `getUserSettings`

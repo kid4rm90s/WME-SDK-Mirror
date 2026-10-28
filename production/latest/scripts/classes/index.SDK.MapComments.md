@@ -1,7 +1,7 @@
 ---
 title: SDK.MapComments class
 source: classes/index.SDK.MapComments.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -11,9 +11,10 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ```typescript
 addComment (
   args: {
-  body: string ;
-  endDate: number ;
+  body ?: string ;
+  endDate ?: number | null ;
   geometry: Point | Polygon ;
+  lockRank ?: UserRank ;
   subject: string ;
 } ,
   ) : MapComment
@@ -25,9 +26,10 @@ Methods for dealing with MapComments.
 ```typescript
 addComment (
   args: {
-  body: string ;
-  endDate: number ;
+  body ?: string ;
+  endDate ?: number | null ;
   geometry: Point | Polygon ;
+  lockRank ?: UserRank ;
   subject: string ;
 } ,
   ) : MapComment
@@ -48,7 +50,7 @@ an array of all the map comments in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { mapCommentId: string } ) : null | MapComment
+getById ( args: { mapCommentId: string } ) : MapComment | null
 ```
 map comment with id, or null if not found in the WME data model
 ### `updateComment`
@@ -57,8 +59,9 @@ map comment with id, or null if not found in the WME data model
 updateComment (
   args: {
   body ?: string ;
-  endDate ?: null | number ;
+  endDate ?: number | null ;
   geometry ?: Point | Polygon ;
+  lockRank ?: UserRank ;
   mapCommentId: string ;
   subject ?: string ;
 } ,

@@ -3,7 +3,7 @@
 ---
 title: SDK.BigJunctions class
 source: classes/index.SDK.BigJunctions.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -30,7 +30,7 @@ all possible turns for the bigJunction
 ### `getById`
 
 ```typescript
-getById ( args: { bigJunctionId: number } ) : null | BigJunction
+getById ( args: { bigJunctionId: number } ) : BigJunction | null
 ```
 bigJunction with id, or null if not found in the WME data model
 
@@ -41,7 +41,7 @@ bigJunction with id, or null if not found in the WME data model
 ---
 title: SDK.ChargingStation class
 source: classes/index.SDK.ChargingStation.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -62,25 +62,25 @@ a list of charging station brands
 ### `getChargersAccessType`
 
 ```typescript
-getChargersAccessType ( args: { venueId: string } ) : null | ChargersAccessType
+getChargersAccessType ( args: { venueId: string } ) : ChargersAccessType | null
 ```
 chargers access type of the venue in case the venue is a charging station, null otherwise.
 ### `getCostType`
 
 ```typescript
-getCostType ( args: { venueId: string } ) : null | ChargingStationCostType
+getCostType ( args: { venueId: string } ) : ChargingStationCostType | null
 ```
 cost type of the venue in case the venue is a charging station, null otherwise.
 ### `getNetwork`
 
 ```typescript
-getNetwork ( args: { venueId: string } ) : null | string
+getNetwork ( args: { venueId: string } ) : string | null
 ```
 network of the venue in case the venue is a charging station, null otherwise.
 ### `getPaymentMethods`
 
 ```typescript
-getPaymentMethods ( args: { venueId: string } ) : null | PaymentMethod []
+getPaymentMethods ( args: { venueId: string } ) : PaymentMethod [] | null
 ```
 payment methods of the venue in case the venue is a charging station, null otherwise.
 
@@ -91,7 +91,7 @@ payment methods of the venue in case the venue is a charging station, null other
 ---
 title: SDK.Chat class
 source: classes/index.SDK.Chat.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -116,7 +116,7 @@ startChat ( args: { userName: string } ) : void
 ---
 title: SDK.Cities class
 source: classes/index.SDK.Cities.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -147,7 +147,7 @@ an array of all the cities in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { cityId: number } ) : null | City
+getById ( args: { cityId: number } ) : City | null
 ```
 city with id, or null if not found in the WME data model
 ### `getCity`
@@ -155,13 +155,13 @@ city with id, or null if not found in the WME data model
 ```typescript
 getCity (
   options: { cityName: string ; countryId ?: number ; stateId ?: number } ,
-  ) : null | City
+  ) : City | null
 ```
 a city object or null if not found
 ### `getTopCity`
 
 ```typescript
-getTopCity () : null | City
+getTopCity () : City | null
 ```
 top city or null
 
@@ -172,7 +172,7 @@ top city or null
 ---
 title: SDK.Countries class
 source: classes/index.SDK.Countries.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -193,13 +193,13 @@ an array of all the countries in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { countryId: number } ) : null | Country
+getById ( args: { countryId: number } ) : Country | null
 ```
 country with id, or null if not found in the WME data model
 ### `getTopCountry`
 
 ```typescript
-getTopCountry () : null | Country
+getTopCountry () : Country | null
 ```
 the Country set to be the top country in the WME data model, or null
 if none set
@@ -211,7 +211,7 @@ if none set
 ---
 title: SDK.DataModel class
 source: classes/index.SDK.DataModel.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -382,7 +382,7 @@ promise that resolves once the data refresh completed.
 ---
 title: SDK.DataModelNotFoundError class
 source: classes/index.SDK.DataModelNotFoundError.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -390,7 +390,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 # Class DataModelNotFoundError
 
 ```typescript
-cause ?: unknown
+modelId: string | number
 ```
 This error indicates that the entity that was referenced in the SDK method call not found.
 ## Properties
@@ -418,7 +418,7 @@ name: "DataModelNotFoundError"
 ---
 title: SDK.EditSuggestions class
 source: classes/index.SDK.EditSuggestions.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -439,7 +439,7 @@ an array of all the edit suggestions in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { editSuggestionId: string } ) : null | EditSuggestion
+getById ( args: { editSuggestionId: string } ) : EditSuggestion | null
 ```
 edit suggestion with id, or null if not found in the WME data model
 ### `getEditSuggestionChanges`
@@ -458,7 +458,7 @@ an array of edit suggestion changes
 ---
 title: SDK.Editing class
 source: classes/index.SDK.Editing.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -491,7 +491,7 @@ the number of changes that can be redone.
 ### `getSelection`
 
 ```typescript
-getSelection () : null | SelectionWithLocalizedTypeName
+getSelection () : SelectionWithLocalizedTypeName | null
 ```
 ids of currently selected objects or null if nothing selected. The selection
 only includes objects of a single type.
@@ -581,7 +581,7 @@ undoAll () : void
 ---
 title: SDK.HouseNumbers class
 source: classes/index.SDK.HouseNumbers.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -654,7 +654,7 @@ updateHouseNumber (
 ---
 title: SDK.InvalidStateError class
 source: classes/index.SDK.InvalidStateError.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -681,7 +681,7 @@ name: "InvalidStateError"
 ---
 title: SDK.IssueTracker class
 source: classes/index.SDK.IssueTracker.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -718,7 +718,7 @@ showPanel ( args: { issueTrackerId: number ; type: IssueTrackerType } ) : void
 ---
 title: SDK.Junctions class
 source: classes/index.SDK.Junctions.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -739,7 +739,7 @@ an array of all the junctions in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { junctionId: number } ) : null | Junction
+getById ( args: { junctionId: number } ) : Junction | null
 ```
 junctions with id, or null if not found in the WME data model
 
@@ -750,7 +750,7 @@ junctions with id, or null if not found in the WME data model
 ---
 title: SDK.LayerSwitcher class
 source: classes/index.SDK.LayerSwitcher.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -843,7 +843,7 @@ setWMELayerVisibility (
 ---
 title: SDK.MajorTrafficEvents class
 source: classes/index.SDK.MajorTrafficEvents.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -864,7 +864,7 @@ an array of all the major traffic event in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { majorTrafficEventId: string } ) : null | MajorTrafficEvent
+getById ( args: { majorTrafficEventId: string } ) : MajorTrafficEvent | null
 ```
 major traffic event with id, or null if not found in the WME data model
 
@@ -875,7 +875,7 @@ major traffic event with id, or null if not found in the WME data model
 ---
 title: SDK.ManagedAreas class
 source: classes/index.SDK.ManagedAreas.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -896,7 +896,7 @@ an array of all the managed areas in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { managedAreaId: string } ) : null | ManagedArea
+getById ( args: { managedAreaId: string } ) : ManagedArea | null
 ```
 managed area with id, or null if not found in the WME data model
 
@@ -907,7 +907,7 @@ managed area with id, or null if not found in the WME data model
 ---
 title: SDK.Map class
 source: classes/index.SDK.Map.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1054,7 +1054,7 @@ addTileLayer ( args: { layerName: string ; layerOptions: TileLayerOptions } ) : 
 ### `centerMapOnGeometry`
 
 ```typescript
-centerMapOnGeometry ( args: { geometry: Point | Polygon | LineString } ) : void
+centerMapOnGeometry ( args: { geometry: Point | LineString | Polygon } ) : void
 ```
 
 ### `dangerouslyAddFeaturesToLayerWithoutValidation`
@@ -1107,7 +1107,7 @@ a new point geometry that was drawn on the map.
 ### `drawPolygon`
 
 ```typescript
-drawPolygon () : Promise < null | Polygon >
+drawPolygon () : Promise < Polygon | null >
 ```
 a new polygon geometry or null if an invalid polygon was drawn.
 ### `enablePolygonResize`
@@ -1133,7 +1133,7 @@ enableSelectionToggling () : void
 ```typescript
 getFeatureDomElement (
   args: { featureId: string | number ; layerName: string } ,
-  ) : null | HTMLElement | SVGElement
+  ) : HTMLElement | SVGElement | null
 ```
 a DOM element of a feature on the map within the given layer.
 The return value is HTMLElement in case it's a marker, and SVGElement otherwise. null if a feature with provided featureId does not exist within the layer.
@@ -1319,7 +1319,7 @@ zoomToExtent ( args: { bbox: BBox } ) : void
 ---
 title: SDK.MapComments class
 source: classes/index.SDK.MapComments.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1329,9 +1329,10 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ```typescript
 addComment (
   args: {
-  body: string ;
-  endDate: number ;
+  body ?: string ;
+  endDate ?: number | null ;
   geometry: Point | Polygon ;
+  lockRank ?: UserRank ;
   subject: string ;
 } ,
   ) : MapComment
@@ -1343,9 +1344,10 @@ Methods for dealing with MapComments.
 ```typescript
 addComment (
   args: {
-  body: string ;
-  endDate: number ;
+  body ?: string ;
+  endDate ?: number | null ;
   geometry: Point | Polygon ;
+  lockRank ?: UserRank ;
   subject: string ;
 } ,
   ) : MapComment
@@ -1366,7 +1368,7 @@ an array of all the map comments in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { mapCommentId: string } ) : null | MapComment
+getById ( args: { mapCommentId: string } ) : MapComment | null
 ```
 map comment with id, or null if not found in the WME data model
 ### `updateComment`
@@ -1375,8 +1377,9 @@ map comment with id, or null if not found in the WME data model
 updateComment (
   args: {
   body ?: string ;
-  endDate ?: null | number ;
+  endDate ?: number | null ;
   geometry ?: Point | Polygon ;
+  lockRank ?: UserRank ;
   mapCommentId: string ;
   subject ?: string ;
 } ,
@@ -1391,7 +1394,7 @@ the updated map comment.
 ---
 title: SDK.MapProblems class
 source: classes/index.SDK.MapProblems.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1412,7 +1415,7 @@ an array of all the map problems in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { mapProblemId: string } ) : null | MapProblem
+getById ( args: { mapProblemId: string } ) : MapProblem | null
 ```
 map problem with id, or null if not found in the WME data model
 
@@ -1423,7 +1426,7 @@ map problem with id, or null if not found in the WME data model
 ---
 title: SDK.MapUpdateRequests class
 source: classes/index.SDK.MapUpdateRequests.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1454,7 +1457,7 @@ an array of all the map update requests in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { mapUpdateRequestId: number } ) : null | MapUpdateRequest
+getById ( args: { mapUpdateRequestId: number } ) : MapUpdateRequest | null
 ```
 map update request with id, or null if not found in the WME data model
 ### `getUpdateRequestDetails`
@@ -1462,7 +1465,7 @@ map update request with id, or null if not found in the WME data model
 ```typescript
 getUpdateRequestDetails (
   args: { mapUpdateRequestId: number } ,
-  ) : Promise < null | UpdateRequestDetails >
+  ) : Promise < UpdateRequestDetails | null >
 ```
 map update request details. If details are not present in the WME data model, they will be fetched.
 Returns null if not found in the WME data model.
@@ -1484,7 +1487,7 @@ updateResolutionState (
 ---
 title: SDK.Nodes class
 source: classes/index.SDK.Nodes.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1523,7 +1526,7 @@ an array of all the nodes in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { nodeId: number } ) : null | Node
+getById ( args: { nodeId: number } ) : Node | null
 ```
 node with id, or null if not found in the WME data model
 ### `isVirtual`
@@ -1545,7 +1548,7 @@ moveNode ( args: { geometry: Point ; id: number } ) : void
 ---
 title: SDK.ParkingLot class
 source: classes/index.SDK.ParkingLot.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1553,14 +1556,14 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 # Class ParkingLot
 
 ```typescript
-canExitWhileClosed ( args: { venueId: string } ) : null | boolean
+canExitWhileClosed ( args: { venueId: string } ) : boolean | null
 ```
 Methods for dealing with Parking Lots.
 ## Methods
 ### `canExitWhileClosed`
 
 ```typescript
-canExitWhileClosed ( args: { venueId: string } ) : null | boolean
+canExitWhileClosed ( args: { venueId: string } ) : boolean | null
 ```
 whether the current venue can be exited while closed in case the venue is a parking lot, null otherwise.
 ### `getBrands`
@@ -1572,19 +1575,19 @@ a list of parking lot brands
 ### `getCostType`
 
 ```typescript
-getCostType ( args: { venueId: string } ) : null | ParkingLotCostType
+getCostType ( args: { venueId: string } ) : ParkingLotCostType | null
 ```
 cost type of the venue in case the venue is a parking lot, null otherwise.
 ### `getEstimatedNumberOfSpots`
 
 ```typescript
-getEstimatedNumberOfSpots ( args: { venueId: string } ) : null | SpotsEstimate
+getEstimatedNumberOfSpots ( args: { venueId: string } ) : SpotsEstimate | null
 ```
 SpotsEstimate | null - the estimated number of spots the venue in case the venue is a parking lot, null otherwise.
 ### `getLotTypes`
 
 ```typescript
-getLotTypes ( args: { venueId: string } ) : null | LotType []
+getLotTypes ( args: { venueId: string } ) : LotType [] | null
 ```
 parking lot types of the venue in case the venue is a parking lot, null otherwise.
 ### `getParkingLotType`
@@ -1596,13 +1599,13 @@ parking type of the venue in case the venue is a parking lot, null otherwise.
 ### `getPaymentMethods`
 
 ```typescript
-getPaymentMethods ( args: { venueId: string } ) : null | PaymentType []
+getPaymentMethods ( args: { venueId: string } ) : PaymentType [] | null
 ```
 payment types of the venue in case the venue is a parking lot, null otherwise.
 ### `isLotTypeDependentOnDayTime`
 
 ```typescript
-isLotTypeDependentOnDayTime ( args: { venueId: string } ) : null | boolean
+isLotTypeDependentOnDayTime ( args: { venueId: string } ) : boolean | null
 ```
 whether lot type of the current venue varies depending on time/day in case the venue is a parking lot, null otherwise.
 ### `setEstimatedNumberOfSpots`
@@ -1620,7 +1623,7 @@ setEstimatedNumberOfSpots (
 ---
 title: SDK.PermanentHazards class
 source: classes/index.SDK.PermanentHazards.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1647,13 +1650,13 @@ an array of all the cameras in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { hazardId: number } ) : null | PermanentHazard
+getById ( args: { hazardId: number } ) : PermanentHazard | null
 ```
 permanent hazard with id, or null if not found in the WME data model
 ### `getCameraById`
 
 ```typescript
-getCameraById ( args: { cameraId: number } ) : null | Camera
+getCameraById ( args: { cameraId: number } ) : Camera | null
 ```
 camera with id, or null if not found in the WME data model
 
@@ -1664,7 +1667,7 @@ camera with id, or null if not found in the WME data model
 ---
 title: SDK.RestrictedDrivingAreas class
 source: classes/index.SDK.RestrictedDrivingAreas.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1685,7 +1688,7 @@ an array of all the restricted driving areas in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { restrictedDrivingAreaId: number } ) : null | RestrictedDrivingArea
+getById ( args: { restrictedDrivingAreaId: number } ) : RestrictedDrivingArea | null
 ```
 restricted driving area with id, or null if not found in the WME data model
 
@@ -1696,7 +1699,7 @@ restricted driving area with id, or null if not found in the WME data model
 ---
 title: SDK.RoadClosures class
 source: classes/index.SDK.RoadClosures.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1713,11 +1716,11 @@ addClosure (
   isPermanent: boolean ;
   segmentId: number ;
   startDate: number ;
-  trafficEventId: null | string ;
+  trafficEventId: string | null ;
 } ,
   ) : RoadClosure
 ```
-Methods for dealing with RoadClosures.
+Methods for dealing with RoadClosures. Add/Delete methods don't automatically save changes like the UI closures.
 ## Methods
 ### `addClosure`
 
@@ -1731,11 +1734,17 @@ addClosure (
   isPermanent: boolean ;
   segmentId: number ;
   startDate: number ;
-  trafficEventId: null | string ;
+  trafficEventId: string | null ;
 } ,
   ) : RoadClosure
 ```
 the created road closure.
+### `deleteClosure`
+
+```typescript
+deleteClosure ( args: { roadClosureId: string } ) : void
+```
+
 ### `getAll`
 
 ```typescript
@@ -1745,7 +1754,7 @@ an array of all the road closures in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { roadClosureId: string } ) : null | RoadClosure
+getById ( args: { roadClosureId: string } ) : RoadClosure | null
 ```
 road closure with id, or null if not found in the WME data model
 
@@ -1756,7 +1765,7 @@ road closure with id, or null if not found in the WME data model
 ---
 title: SDK.SdkEventBus class
 source: classes/index.SDK.SdkEventBus.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1835,7 +1844,7 @@ trackLayerEvents ( args: { layerName: string } ) : void
 ---
 title: SDK.SegmentSuggestions class
 source: classes/index.SDK.SegmentSuggestions.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1856,7 +1865,7 @@ an array of all the segment suggestions in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { segmentSuggestionId: number } ) : null | SegmentSuggestion
+getById ( args: { segmentSuggestionId: number } ) : SegmentSuggestion | null
 ```
 segment suggestion with id, or null if not found in the WME data model
 ### `reject`
@@ -1877,7 +1886,7 @@ reject (
 ---
 title: SDK.Segments class
 source: classes/index.SDK.Segments.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1948,7 +1957,7 @@ an array of all the segments in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { segmentId: number } ) : null | Segment
+getById ( args: { segmentId: number } ) : Segment | null
 ```
 segment with id, or null if not found in the WME data model
 ### `getConnectedSegments`
@@ -2056,23 +2065,23 @@ updateSegment (
   flagAttributes ?: Partial <
   Pick <
   SegmentFlagAttributes ,
-  "headlights"
-  | "nearbyHOV"
+  "unpaved"
   | "tunnel"
-  | "unpaved" ,
+  | "nearbyHOV"
+  | "headlights" ,
   > ,
   > ;
-  fromLanesInfo ?: null | SegmentLanesInfo ;
-  fwdSpeedLimit ?: null | number ;
+  fromLanesInfo ?: SegmentLanesInfo | null ;
+  fwdSpeedLimit ?: number | null ;
   geometry ?: LineString ;
   hasToll ?: boolean ;
   lockRank ?: UserRank ;
   restrictions ?: SegmentRestrictionData [] ;
-  revSpeedLimit ?: null | number ;
+  revSpeedLimit ?: number | null ;
   roadType ?: RoadTypeId ;
-  routingRoadType ?: 1 | 2 | 3 | 6 | 7 ;
+  routingRoadType ?: 6 | 7 | 1 | 2 | 3 ;
   segmentId: number ;
-  toLanesInfo ?: null | SegmentLanesInfo ;
+  toLanesInfo ?: SegmentLanesInfo | null ;
 } ,
   ) : void
 ```
@@ -2090,7 +2099,7 @@ verifyTurns ( args: { isForward: boolean ; segmentId: number } ) : void
 ---
 title: SDK.Settings class
 source: classes/index.SDK.Settings.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2107,11 +2116,11 @@ Methods for managing user settings.
 ```typescript
 getLocale () : { localeCode: string ; localeName: string }
 ```
-and object with the current locale code and locale name
+an object with the current locale code and locale name
 ### `getRegionCode`
 
 ```typescript
-getRegionCode () : null | RegionCode
+getRegionCode () : RegionCode | null
 ```
 the current region code, or null if not available
 ### `getUserSettings`
@@ -2139,7 +2148,7 @@ setUserSettings ( options: Partial < UserSettings > ) : void
 ---
 title: SDK.Shortcuts class
 source: classes/index.SDK.Shortcuts.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2189,7 +2198,7 @@ true if a shortcut with specified id is already registered.
 ---
 title: SDK.Sidebar class
 source: classes/index.SDK.Sidebar.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2220,7 +2229,7 @@ removeScriptTab () : void
 ---
 title: SDK.Signs class
 source: classes/index.SDK.Signs.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2241,7 +2250,7 @@ an array of all the signs in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { signId: number } ) : null | Sign
+getById ( args: { signId: number } ) : Sign | null
 ```
 sign with id, or null if not found in the WME data model
 
@@ -2252,7 +2261,7 @@ sign with id, or null if not found in the WME data model
 ---
 title: SDK.States class
 source: classes/index.SDK.States.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2279,13 +2288,13 @@ an array of all the states apart from default in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { stateId: number } ) : null | State
+getById ( args: { stateId: number } ) : State | null
 ```
 state with id, or null if not found in the WME data model
 ### `getTopState`
 
 ```typescript
-getTopState () : null | State
+getTopState () : State | null
 ```
 the State set to be the top state in the WME data model, or null
 if none set
@@ -2303,7 +2312,7 @@ true if there are any states apart from the default state in the WME data model.
 ---
 title: SDK.StreetView class
 source: classes/index.SDK.StreetView.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2340,7 +2349,7 @@ open ( args: { lonLat: LonLat ; radius ?: number } ) : Promise < void >
 ---
 title: SDK.Streets class
 source: classes/index.SDK.Streets.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2367,13 +2376,13 @@ an array of all the streets in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { streetId: number } ) : null | Street
+getById ( args: { streetId: number } ) : Street | null
 ```
 street with id, or null if not found in the WME data model
 ### `getStreet`
 
 ```typescript
-getStreet ( args: { cityId ?: number ; streetName: string } ) : null | Street
+getStreet ( args: { cityId ?: number ; streetName: string } ) : Street | null
 ```
 a street object or null if not found
 ### `updateStreet`
@@ -2389,7 +2398,7 @@ updateStreet ( args: { direction ?: string ; streetId: number } ) : void
 ---
 title: SDK.TurnClosures class
 source: classes/index.SDK.TurnClosures.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2434,7 +2443,7 @@ an array of all the turn closures in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { turnClosureId: string } ) : null | TurnClosure
+getById ( args: { turnClosureId: string } ) : TurnClosure | null
 ```
 turn closure with id, or null if not found in the WME data model
 
@@ -2445,7 +2454,7 @@ turn closure with id, or null if not found in the WME data model
 ---
 title: SDK.Turns class
 source: classes/index.SDK.Turns.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2480,7 +2489,7 @@ an array of all the turns in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { turnId: string } ) : null | Turn
+getById ( args: { turnId: string } ) : Turn | null
 ```
 turn with id, or null if not found in the WME data model
 ### `getTurnsFromSegment`
@@ -2542,7 +2551,7 @@ updateTurn (
   args: {
   isAllowed ?: boolean ;
   restrictions ?: TurnRestrictionData [] ;
-  turnGuidance ?: null | TurnGuidance ;
+  turnGuidance ?: TurnGuidance | null ;
   turnId: string ;
 } ,
   ) : void
@@ -2555,7 +2564,7 @@ updateTurn (
 ---
 title: SDK.Users class
 source: classes/index.SDK.Users.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2563,20 +2572,20 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 # Class Users
 
 ```typescript
-getByUserName ( options: { userName: string } ) : null | User
+getByUserName ( options: { userName: string } ) : User | null
 ```
 Methods for dealing with Users.
 ## Methods
 ### `getByUserName`
 
 ```typescript
-getByUserName ( options: { userName: string } ) : null | User
+getByUserName ( options: { userName: string } ) : User | null
 ```
 user with userName, or null if not found
 ### `getCurrentUser`
 
 ```typescript
-getCurrentUser () : null | User
+getCurrentUser () : User | null
 ```
 the currently logged in user or null if not logged in
 ### `getLocalizedUserProfileLink`
@@ -2605,7 +2614,7 @@ a formatted link for a users editor profile page
 ---
 title: SDK.ValidationError class
 source: classes/index.SDK.ValidationError.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2632,7 +2641,7 @@ name: "ValidationError"
 ---
 title: SDK.Venues class
 source: classes/index.SDK.Venues.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2694,7 +2703,7 @@ all possible venue categories and their localised names.
 ### `getById`
 
 ```typescript
-getById ( args: { venueId: string } ) : null | Venue
+getById ( args: { venueId: string } ) : Venue | null
 ```
 venue with id, or null if not found in the WME data model
 ### `getChargingStationBrands`
@@ -2808,7 +2817,7 @@ updateVenueUpdateRequest (
 ---
 title: SDK.WMEError class
 source: classes/index.SDK.WMEError.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2836,7 +2845,7 @@ name: "WMEError"
 ---
 title: SDK.WmeSDK class
 source: classes/index.SDK.WmeSDK.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2963,7 +2972,7 @@ true if running in the WME beta environment
 ---
 title: SDK.WmeState class
 source: classes/index.SDK.WmeState.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -2984,7 +2993,7 @@ the list of the countries in the WME data model that are managed by the current 
 ### `getUserInfo`
 
 ```typescript
-getUserInfo () : null | UserSession
+getUserInfo () : UserSession | null
 ```
 information about currently logged in user or null if user isn't logged in yet.
 ### `isInitialized`

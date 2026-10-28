@@ -1,7 +1,7 @@
 ---
 title: SDK.Countries class
 source: classes/index.SDK.Countries.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -22,13 +22,13 @@ an array of all the countries in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { countryId: number } ) : null | Country
+getById ( args: { countryId: number } ) : Country | null
 ```
 country with id, or null if not found in the WME data model
 ### `getTopCountry`
 
 ```typescript
-getTopCountry () : null | Country
+getTopCountry () : Country | null
 ```
 the Country set to be the top country in the WME data model, or null
 if none set

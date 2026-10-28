@@ -1,7 +1,7 @@
 ---
 title: SDK.ModificationMetadata interface
 source: interfaces/index.SDK.ModificationMetadata.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,30 +10,30 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface ModificationMetadata {
-  createdBy: null | string ;
-  createdOn: null | number ;
-  updatedBy: null | string ;
-  updatedOn: null | number ;
+  createdBy: string | null ;
+  createdOn: number | null ;
+  updatedBy: string | null ;
+  updatedOn: number | null ;
 }
 ```
 ## Properties
 ### `createdBy`
 
 ```typescript
-createdBy: null | string
+createdBy: string | null
 ```
 ### `createdOn`
 
 ```typescript
-createdOn: null | number
+createdOn: number | null
 ```
 ### `updatedBy`
 
 ```typescript
-updatedBy: null | string
+updatedBy: string | null
 ```
 ### `updatedOn`
 
 ```typescript
-updatedOn: null | number
+updatedOn: number | null
 ```

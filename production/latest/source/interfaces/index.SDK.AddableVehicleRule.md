@@ -1,7 +1,7 @@
 ---
 title: SDK.AddableVehicleRule interface
 source: interfaces/index.SDK.AddableVehicleRule.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,7 +10,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface AddableVehicleRule {
-  licensePlateRule: null | LicensePlateRule ;
+  licensePlateRule: LicensePlateRule | null ;
   minPassengers: 0 | 2 | 3 | 4 ;
   subscriptions: string [] ;
   vehicleTypes: AddableVehicleType [] ;

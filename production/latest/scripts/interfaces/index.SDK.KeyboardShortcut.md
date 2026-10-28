@@ -1,7 +1,7 @@
 ---
 title: SDK.KeyboardShortcut interface
 source: interfaces/index.SDK.KeyboardShortcut.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -13,7 +13,7 @@ interface KeyboardShortcut {
   callback: () = > void ;
   description: string ;
   shortcutId: string ;
-  shortcutKeys: null | string ;
+  shortcutKeys: string | null ;
 }
 ```
 A keyboard shortcut for userscript action.
@@ -36,5 +36,5 @@ shortcutId: string
 ### `shortcutKeys`
 
 ```typescript
-shortcutKeys: null | string
+shortcutKeys: string | null
 ```

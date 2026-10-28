@@ -1,7 +1,7 @@
 ---
 title: SDK.BasePermanentHazard interface
 source: interfaces/index.SDK.BasePermanentHazard.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,12 +10,12 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface BasePermanentHazard {
-  direction: null | RestrictionSegmentDirection ;
+  direction: RestrictionSegmentDirection | null ;
   geometry: Point | Polygon ;
   id: number ;
-  lockRank: null | number ;
+  lockRank: number | null ;
   modificationData: ModificationMetadata ;
-  segmentId: null | number ;
+  segmentId: number | null ;
   subTypes: PermanentHazardSubType [] ;
 }
 ```
@@ -23,7 +23,7 @@ interface BasePermanentHazard {
 ### `direction`
 
 ```typescript
-direction: null | RestrictionSegmentDirection
+direction: RestrictionSegmentDirection | null
 ```
 ### `geometry`
 
@@ -38,7 +38,7 @@ id: number
 ### `lockRank`
 
 ```typescript
-lockRank: null | number
+lockRank: number | null
 ```
 ### `modificationData`
 
@@ -48,7 +48,7 @@ modificationData: ModificationMetadata
 ### `segmentId`
 
 ```typescript
-segmentId: null | number
+segmentId: number | null
 ```
 ### `subTypes`
 

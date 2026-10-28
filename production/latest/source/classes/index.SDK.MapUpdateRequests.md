@@ -1,7 +1,7 @@
 ---
 title: SDK.MapUpdateRequests class
 source: classes/index.SDK.MapUpdateRequests.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -32,7 +32,7 @@ an array of all the map update requests in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { mapUpdateRequestId: number } ) : null | MapUpdateRequest
+getById ( args: { mapUpdateRequestId: number } ) : MapUpdateRequest | null
 ```
 map update request with id, or null if not found in the WME data model
 ### `getUpdateRequestDetails`
@@ -40,7 +40,7 @@ map update request with id, or null if not found in the WME data model
 ```typescript
 getUpdateRequestDetails (
   args: { mapUpdateRequestId: number } ,
-  ) : Promise < null | UpdateRequestDetails >
+  ) : Promise < UpdateRequestDetails | null >
 ```
 map update request details. If details are not present in the WME data model, they will be fetched.
 Returns null if not found in the WME data model.

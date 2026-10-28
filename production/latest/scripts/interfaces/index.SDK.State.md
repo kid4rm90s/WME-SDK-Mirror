@@ -1,7 +1,7 @@
 ---
 title: SDK.State interface
 source: interfaces/index.SDK.State.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,7 +10,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface State {
-  geometry: null | Polygon | MultiPolygon ;
+  geometry: Polygon | MultiPolygon | null ;
   id: number ;
   modificationData: ModificationMetadata ;
   name: string ;
@@ -20,7 +20,7 @@ interface State {
 ### `geometry`
 
 ```typescript
-geometry: null | Polygon | MultiPolygon
+geometry: Polygon | MultiPolygon | null
 ```
 ### `id`
 

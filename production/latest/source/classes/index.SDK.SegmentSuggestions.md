@@ -1,7 +1,7 @@
 ---
 title: SDK.SegmentSuggestions class
 source: classes/index.SDK.SegmentSuggestions.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -22,7 +22,7 @@ an array of all the segment suggestions in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { segmentSuggestionId: number } ) : null | SegmentSuggestion
+getById ( args: { segmentSuggestionId: number } ) : SegmentSuggestion | null
 ```
 segment suggestion with id, or null if not found in the WME data model
 ### `reject`

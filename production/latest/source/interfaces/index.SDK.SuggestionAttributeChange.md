@@ -1,7 +1,7 @@
 ---
 title: SDK.SuggestionAttributeChange interface
 source: interfaces/index.SDK.SuggestionAttributeChange.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -15,7 +15,7 @@ interface SuggestionAttributeChange < T = unknown > {
   newValue: T ;
   objectType: ObjectType ;
   oldValue: T ;
-  timestamp: null | number ;
+  timestamp: number | null ;
 }
 ```
 Represents a single attribute change in an edit suggestion change.
@@ -48,5 +48,5 @@ oldValue: T
 ### `timestamp`
 
 ```typescript
-timestamp: null | number
+timestamp: number | null
 ```

@@ -1,7 +1,7 @@
 ---
 title: SDK.MapProblem interface
 source: interfaces/index.SDK.MapProblem.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -17,7 +17,7 @@ interface MapProblem {
   isRead: boolean ;
   isStarred: boolean ;
   problemType: MapProblemType ;
-  resolvedOn: null | number ;
+  resolvedOn: number | null ;
   severity: IssueSeverity ;
 }
 ```
@@ -60,7 +60,7 @@ problemType: MapProblemType
 ### `resolvedOn`
 
 ```typescript
-resolvedOn: null | number
+resolvedOn: number | null
 ```
 ### `severity`
 

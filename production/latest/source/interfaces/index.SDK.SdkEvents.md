@@ -1,7 +1,7 @@
 ---
 title: SDK.SdkEvents interface
 source: interfaces/index.SDK.SdkEvents.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -40,6 +40,7 @@ interface SdkEvents {
   "wme-editing-house-numbers": { isEditingHouseNumbers: false } ;
   "wme-feature-editor-opened": {
   featureType: 
+  | "segment"
   | "bigJunction"
   | "city"
   | "googlePlace"
@@ -47,7 +48,6 @@ interface SdkEvents {
   | "node"
   | "permanentHazard"
   | "restrictedDrivingArea"
-  | "segment"
   | "segmentSuggestion"
   | "venue" ;
 } ;
@@ -178,6 +178,7 @@ SDK events and their payload (if any).
 ```typescript
 "wme-feature-editor-opened": {
   featureType: 
+  | "segment"
   | "bigJunction"
   | "city"
   | "googlePlace"
@@ -185,7 +186,6 @@ SDK events and their payload (if any).
   | "node"
   | "permanentHazard"
   | "restrictedDrivingArea"
-  | "segment"
   | "segmentSuggestion"
   | "venue" ;
 }

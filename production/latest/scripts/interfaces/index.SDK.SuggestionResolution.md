@@ -1,7 +1,7 @@
 ---
 title: SDK.SuggestionResolution interface
 source: interfaces/index.SDK.SuggestionResolution.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,9 +10,9 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface SuggestionResolution {
-  createdBy: null | string ;
+  createdBy: string | null ;
   createdOn: number ;
-  rejectionReason: null | SuggestionResolutionRejectionReason ;
+  rejectionReason: SuggestionResolutionRejectionReason | null ;
   resolution: SuggestionResolutionStatus ;
 }
 ```
@@ -21,7 +21,7 @@ Represents the resolution details for a suggestion.
 ### `createdBy`
 
 ```typescript
-createdBy: null | string
+createdBy: string | null
 ```
 ### `createdOn`
 
@@ -31,7 +31,7 @@ createdOn: number
 ### `rejectionReason`
 
 ```typescript
-rejectionReason: null | SuggestionResolutionRejectionReason
+rejectionReason: SuggestionResolutionRejectionReason | null
 ```
 ### `resolution`
 

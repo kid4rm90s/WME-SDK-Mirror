@@ -1,7 +1,7 @@
 ---
 title: SDK.Map class
 source: classes/index.SDK.Map.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -148,7 +148,7 @@ addTileLayer ( args: { layerName: string ; layerOptions: TileLayerOptions } ) : 
 ### `centerMapOnGeometry`
 
 ```typescript
-centerMapOnGeometry ( args: { geometry: Point | Polygon | LineString } ) : void
+centerMapOnGeometry ( args: { geometry: Point | LineString | Polygon } ) : void
 ```
 
 ### `dangerouslyAddFeaturesToLayerWithoutValidation`
@@ -201,7 +201,7 @@ a new point geometry that was drawn on the map.
 ### `drawPolygon`
 
 ```typescript
-drawPolygon () : Promise < null | Polygon >
+drawPolygon () : Promise < Polygon | null >
 ```
 a new polygon geometry or null if an invalid polygon was drawn.
 ### `enablePolygonResize`
@@ -227,7 +227,7 @@ enableSelectionToggling () : void
 ```typescript
 getFeatureDomElement (
   args: { featureId: string | number ; layerName: string } ,
-  ) : null | HTMLElement | SVGElement
+  ) : HTMLElement | SVGElement | null
 ```
 a DOM element of a feature on the map within the given layer.
 The return value is HTMLElement in case it's a marker, and SVGElement otherwise. null if a feature with provided featureId does not exist within the layer.

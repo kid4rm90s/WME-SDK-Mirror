@@ -1,7 +1,7 @@
 ---
 title: SDK.CallSite interface
 source: interfaces/index.SDK.CallSite.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,21 +10,21 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface CallSite {
-  getColumnNumber () : null | number ;
-  getEnclosingColumnNumber () : null | number ;
-  getEnclosingLineNumber () : null | number ;
-  getEvalOrigin () : undefined | string ;
-  getFileName () : null | string ;
-  getFunction () : undefined | Function ;
-  getFunctionName () : null | string ;
-  getLineNumber () : null | number ;
-  getMethodName () : null | string ;
+  getColumnNumber () : number | null ;
+  getEnclosingColumnNumber () : number | null ;
+  getEnclosingLineNumber () : number | null ;
+  getEvalOrigin () : string | undefined ;
+  getFileName () : string | null ;
+  getFunction () : Function | undefined ;
+  getFunctionName () : string | null ;
+  getLineNumber () : number | null ;
+  getMethodName () : string | null ;
   getPosition () : number ;
-  getPromiseIndex () : null | number ;
+  getPromiseIndex () : number | null ;
   getScriptHash () : string ;
-  getScriptNameOrSourceURL () : null | string ;
+  getScriptNameOrSourceURL () : string | null ;
   getThis () : unknown ;
-  getTypeName () : null | string ;
+  getTypeName () : string | null ;
   isAsync () : boolean ;
   isConstructor () : boolean ;
   isEval () : boolean ;

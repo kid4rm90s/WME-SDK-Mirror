@@ -1,7 +1,7 @@
 ---
 title: SDK.PermanentHazards class
 source: classes/index.SDK.PermanentHazards.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -28,12 +28,12 @@ an array of all the cameras in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { hazardId: number } ) : null | PermanentHazard
+getById ( args: { hazardId: number } ) : PermanentHazard | null
 ```
 permanent hazard with id, or null if not found in the WME data model
 ### `getCameraById`
 
 ```typescript
-getCameraById ( args: { cameraId: number } ) : null | Camera
+getCameraById ( args: { cameraId: number } ) : Camera | null
 ```
 camera with id, or null if not found in the WME data model

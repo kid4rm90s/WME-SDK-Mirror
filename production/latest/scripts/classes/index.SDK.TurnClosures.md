@@ -1,7 +1,7 @@
 ---
 title: SDK.TurnClosures class
 source: classes/index.SDK.TurnClosures.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -46,6 +46,6 @@ an array of all the turn closures in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { turnClosureId: string } ) : null | TurnClosure
+getById ( args: { turnClosureId: string } ) : TurnClosure | null
 ```
 turn closure with id, or null if not found in the WME data model

@@ -3,7 +3,7 @@
 ---
 title: SDK.AddableVehicleType variable
 source: variables/index.SDK.AddableVehicleType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -30,12 +30,52 @@ AddableVehicleType: {
 
 ---
 
+# index.SDK.ClosureStatus
+
+---
+title: SDK.ClosureStatus variable
+source: variables/index.SDK.ClosureStatus.html
+created: 2026-10-28
+tool: extract-to-md.py
+notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
+---
+
+# Variable ClosureStatusConst
+
+```typescript
+ClosureStatus: {
+  ACTIVE: "ACTIVE" ;
+  FAILED: "FAILED" ;
+  FINISHED: "FINISHED" ;
+  FINISHED_EARLY_DUE_TO_DELETION: "FINISHED_EARLY_DUE_TO_DELETION" ;
+  FINISHED_EARLY_DUE_TO_OVERLAPPING_CLOSURES: "FINISHED_EARLY_DUE_TO_OVERLAPPING_CLOSURES" ;
+  NOT_STARTED: "NOT_STARTED" ;
+  SUSPENDED: "SUSPENDED" ;
+  UNKNOWN: "UNKNOWN" ;
+  UNVERIFIED: "UNVERIFIED" ;
+} = ...
+```
+#### Members
+| Name | Type/Value | Tags |
+|------|------------|------|
+| ACTIVE | "ACTIVE" | Readonly |
+| FAILED | "FAILED" | Readonly |
+| FINISHED | "FINISHED" | Readonly |
+| FINISHED_EARLY_DUE_TO_DELETION | "FINISHED_EARLY_DUE_TO_DELETION" | Readonly |
+| FINISHED_EARLY_DUE_TO_OVERLAPPING_CLOSURES | "FINISHED_EARLY_DUE_TO_OVERLAPPING_CLOSURES" | Readonly |
+| NOT_STARTED | "NOT_STARTED" | Readonly |
+| SUSPENDED | "SUSPENDED" | Readonly |
+| UNKNOWN | "UNKNOWN" | Readonly |
+| UNVERIFIED | "UNVERIFIED" | Readonly |
+
+---
+
 # index.SDK.DATA_MODEL_NAMES
 
 ---
 title: SDK.DATA_MODEL_NAMES variable
 source: variables/index.SDK.DATA_MODEL_NAMES.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -91,7 +131,7 @@ DATA_MODEL_NAMES: {
 ---
 title: SDK.DayAlternation variable
 source: variables/index.SDK.DayAlternation.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -114,7 +154,7 @@ DayAlternation: { EVEN_DAYS: "EVEN_DAYS" ; ODD_DAYS: "ODD_DAYS" } = ...
 ---
 title: SDK.EditSuggestionStatus variable
 source: variables/index.SDK.EditSuggestionStatus.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -150,7 +190,7 @@ EditSuggestionStatus: {
 ---
 title: SDK.GENERAL_SERVICE_TYPE variable
 source: variables/index.SDK.GENERAL_SERVICE_TYPE.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -198,7 +238,7 @@ GENERAL_SERVICE_TYPE: {
 ---
 title: SDK.IssueTrackerType variable
 source: variables/index.SDK.IssueTrackerType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -226,7 +266,7 @@ IssueTrackerType: {
 ---
 title: SDK.LicensePlateRule variable
 source: variables/index.SDK.LicensePlateRule.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -272,7 +312,7 @@ LicensePlateRule: {
 ---
 title: SDK.ObjectType variable
 source: variables/index.SDK.ObjectType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -368,7 +408,7 @@ ObjectType: {
 ---
 title: SDK.PARKING_LOT_SERVICE_TYPE variable
 source: variables/index.SDK.PARKING_LOT_SERVICE_TYPE.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -414,7 +454,7 @@ PARKING_LOT_SERVICE_TYPE: {
 ---
 title: SDK.PLACE_UPDATE_ACTION variable
 source: variables/index.SDK.PLACE_UPDATE_ACTION.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -438,7 +478,7 @@ PLACE_UPDATE_ACTION: { ADD: "ADD" ; DELETE: "DELETE" ; UPDATE: "UPDATE" } = ...
 ---
 title: SDK.PLACE_UPDATE_SUBJECT variable
 source: variables/index.SDK.PLACE_UPDATE_SUBJECT.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -461,7 +501,7 @@ PLACE_UPDATE_SUBJECT: { IMAGE: "IMAGE" ; VENUE: "VENUE" } = ...
 ---
 title: SDK.RESTRICTION_TYPE variable
 source: variables/index.SDK.RESTRICTION_TYPE.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -497,7 +537,7 @@ RESTRICTION_TYPE: {
 ---
 title: SDK.ROAD_TYPE variable
 source: variables/index.SDK.ROAD_TYPE.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -553,7 +593,7 @@ ROAD_TYPE: {
 ---
 title: SDK.RestrictionSegmentDirection variable
 source: variables/index.SDK.RestrictionSegmentDirection.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -577,7 +617,7 @@ RestrictionSegmentDirection: { BOTH: "BOTH" ; FWD: "FWD" ; REV: "REV" } = ...
 ---
 title: SDK.RestrictionSegmentLaneScope variable
 source: variables/index.SDK.RestrictionSegmentLaneScope.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -609,7 +649,7 @@ RestrictionSegmentLaneScope: {
 ---
 title: SDK.RestrictionSegmentLaneType variable
 source: variables/index.SDK.RestrictionSegmentLaneType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -636,12 +676,67 @@ RestrictionSegmentLaneType: {
 
 ---
 
+# index.SDK.RoadClosureAttributionChannel
+
+---
+title: SDK.RoadClosureAttributionChannel variable
+source: variables/index.SDK.RoadClosureAttributionChannel.html
+created: 2026-10-28
+tool: extract-to-md.py
+notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
+---
+
+# Variable RoadClosureAttributionChannelConst
+
+```typescript
+RoadClosureAttributionChannel: {
+  FEED: "FEED" ;
+  WME_COMMUNITY_EDITOR: "WME_COMMUNITY_EDITOR" ;
+  WME_OPS_EDITOR: "WME_OPS_EDITOR" ;
+  WME_PARTNER_EDITOR: "WME_PARTNER_EDITOR" ;
+  WME_ROAD_CLOSURE_PROBLEM_IMPORT: "WME_ROAD_CLOSURE_PROBLEM_IMPORT" ;
+} = ...
+```
+#### Members
+| Name | Type/Value | Tags |
+|------|------------|------|
+| FEED | "FEED" | Readonly |
+| WME_COMMUNITY_EDITOR | "WME_COMMUNITY_EDITOR" | Readonly |
+| WME_OPS_EDITOR | "WME_OPS_EDITOR" | Readonly |
+| WME_PARTNER_EDITOR | "WME_PARTNER_EDITOR" | Readonly |
+| WME_ROAD_CLOSURE_PROBLEM_IMPORT | "WME_ROAD_CLOSURE_PROBLEM_IMPORT" | Readonly |
+
+---
+
+# index.SDK.RoadClosureContributorType
+
+---
+title: SDK.RoadClosureContributorType variable
+source: variables/index.SDK.RoadClosureContributorType.html
+created: 2026-10-28
+tool: extract-to-md.py
+notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
+---
+
+# Variable RoadClosureContributorTypeConst
+
+```typescript
+RoadClosureContributorType: { EDITOR: "EDITOR" ; PARTNER: "PARTNER" } = ...
+```
+#### Members
+| Name | Type/Value | Tags |
+|------|------------|------|
+| EDITOR | "EDITOR" | Readonly |
+| PARTNER | "PARTNER" | Readonly |
+
+---
+
 # index.SDK.SegmentDirection
 
 ---
 title: SDK.SegmentDirection variable
 source: variables/index.SDK.SegmentDirection.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -665,7 +760,7 @@ SegmentDirection: { A_TO_B: "A_TO_B" ; B_TO_A: "B_TO_A" ; TWO_WAY: "TWO_WAY" } =
 ---
 title: SDK.SegmentPermission variable
 source: variables/index.SDK.SegmentPermission.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -719,7 +814,7 @@ SegmentPermission: {
 ---
 title: SDK.SegmentSuggestionRejectionReason variable
 source: variables/index.SDK.SegmentSuggestionRejectionReason.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -765,7 +860,7 @@ SegmentSuggestionRejectionReason: {
 ---
 title: SDK.SegmentSuggestionSource variable
 source: variables/index.SDK.SegmentSuggestionSource.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -789,7 +884,7 @@ SegmentSuggestionSource: { GEO: "GEO" ; GEO_UGC: "GEO_UGC" ; WME_EDITOR: "WME" }
 ---
 title: SDK.SidebarTabName variable
 source: variables/index.SDK.SidebarTabName.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -827,7 +922,7 @@ SidebarTabName: {
 ---
 title: SDK.UpdateableMapProblemState variable
 source: variables/index.SDK.UpdateableMapProblemState.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -855,7 +950,7 @@ UpdateableMapProblemState: {
 ---
 title: SDK.UpdateableRestrictionSegmentLaneScope variable
 source: variables/index.SDK.UpdateableRestrictionSegmentLaneScope.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -885,7 +980,7 @@ UpdateableRestrictionSegmentLaneScope: {
 ---
 title: SDK.UpdateableRestrictionType variable
 source: variables/index.SDK.UpdateableRestrictionType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -909,7 +1004,7 @@ UpdateableRestrictionType: { BLOCKED: "BLOCKED" ; FREE: "FREE" ; TOLL: "TOLL" } 
 ---
 title: SDK.UpdateableTurnRestrictionType variable
 source: variables/index.SDK.UpdateableTurnRestrictionType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -932,7 +1027,7 @@ UpdateableTurnRestrictionType: { BLOCKED: "BLOCKED" ; FREE: "FREE" } = ...
 ---
 title: SDK.UserEditableAreaType variable
 source: variables/index.SDK.UserEditableAreaType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -955,7 +1050,7 @@ UserEditableAreaType: { DRIVE: "drive" ; MANAGED: "managed" } = ...
 ---
 title: SDK.VENUE_MAIN_CATEGORY variable
 source: variables/index.SDK.VENUE_MAIN_CATEGORY.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1001,7 +1096,7 @@ VENUE_MAIN_CATEGORY: {
 ---
 title: SDK.VENUE_RESIDENTIAL variable
 source: variables/index.SDK.VENUE_RESIDENTIAL.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1019,7 +1114,7 @@ VENUE_RESIDENTIAL: "RESIDENTIAL"
 ---
 title: SDK.VENUE_SUBCATEGORIES variable
 source: variables/index.SDK.VENUE_SUBCATEGORIES.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1190,7 +1285,7 @@ VENUE_SUBCATEGORIES: {
 ---
 title: SDK.VehicleType variable
 source: variables/index.SDK.VehicleType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1242,7 +1337,7 @@ VehicleType: {
 ---
 title: SDK.VenuePermission variable
 source: variables/index.SDK.VenuePermission.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1274,7 +1369,7 @@ VenuePermission: {
 ---
 title: SDK.WME_LAYER_NAMES variable
 source: variables/index.SDK.WME_LAYER_NAMES.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1304,7 +1399,7 @@ WME_LAYER_NAMES: {
 ---
 title: SDK.WeekDay variable
 source: variables/index.SDK.WeekDay.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1340,7 +1435,7 @@ WeekDay: {
 ---
 title: SDK.WmeLayerName variable
 source: variables/index.SDK.WmeLayerName.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

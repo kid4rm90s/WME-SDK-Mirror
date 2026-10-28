@@ -1,7 +1,7 @@
 ---
 title: SDK.Camera interface
 source: interfaces/index.SDK.Camera.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,12 +10,12 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface Camera {
-  direction: null | RestrictionSegmentDirection ;
+  direction: RestrictionSegmentDirection | null ;
   geometry: Point ;
   id: number ;
-  lockRank: null | number ;
+  lockRank: number | null ;
   modificationData: ModificationMetadata ;
-  segmentId: null | number ;
+  segmentId: number | null ;
   subTypes: PermanentHazardSubType [] ;
   type: "CAMERA" ;
   types: CameraType [] ;

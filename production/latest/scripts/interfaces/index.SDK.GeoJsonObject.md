@@ -1,7 +1,7 @@
 ---
 title: SDK.GeoJsonObject interface
 source: interfaces/index.SDK.GeoJsonObject.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -13,14 +13,14 @@ interface GeoJsonObject {
   bbox ?: BBox ;
   type: 
   | "Point"
-  | "Polygon"
   | "LineString"
-  | "MultiPoint"
+  | "Polygon"
+  | "Feature"
   | "MultiLineString"
   | "MultiPolygon"
+  | "MultiPoint"
   | "GeometryCollection"
-  | "FeatureCollection"
-  | "Feature" ;
+  | "FeatureCollection" ;
 }
 ```
 The base GeoJSON object.https://tools.ietf.org/html/rfc7946#section-3The GeoJSON specification also allows foreign members

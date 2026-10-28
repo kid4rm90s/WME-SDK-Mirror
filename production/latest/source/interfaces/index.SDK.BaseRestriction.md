@@ -1,7 +1,7 @@
 ---
 title: SDK.BaseRestriction interface
 source: interfaces/index.SDK.BaseRestriction.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,8 +10,8 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface BaseRestriction {
-  defaultType: null | RESTRICTION_TYPE ;
-  description: null | string ;
+  defaultType: RESTRICTION_TYPE | null ;
+  description: string | null ;
   driveProfiles: VehicleRules ;
   editable: boolean ;
   isExpired: boolean ;
@@ -24,12 +24,12 @@ Base restriction contract shared by turn and segment restrictions.
 ### `defaultType`
 
 ```typescript
-defaultType: null | RESTRICTION_TYPE
+defaultType: RESTRICTION_TYPE | null
 ```
 ### `description`
 
 ```typescript
-description: null | string
+description: string | null
 ```
 ### `driveProfiles`
 

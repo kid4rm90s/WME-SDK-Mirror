@@ -1,7 +1,7 @@
 ---
 title: SDK.Segments class
 source: classes/index.SDK.Segments.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -72,7 +72,7 @@ an array of all the segments in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { segmentId: number } ) : null | Segment
+getById ( args: { segmentId: number } ) : Segment | null
 ```
 segment with id, or null if not found in the WME data model
 ### `getConnectedSegments`
@@ -180,23 +180,23 @@ updateSegment (
   flagAttributes ?: Partial <
   Pick <
   SegmentFlagAttributes ,
-  "headlights"
-  | "nearbyHOV"
+  "unpaved"
   | "tunnel"
-  | "unpaved" ,
+  | "nearbyHOV"
+  | "headlights" ,
   > ,
   > ;
-  fromLanesInfo ?: null | SegmentLanesInfo ;
-  fwdSpeedLimit ?: null | number ;
+  fromLanesInfo ?: SegmentLanesInfo | null ;
+  fwdSpeedLimit ?: number | null ;
   geometry ?: LineString ;
   hasToll ?: boolean ;
   lockRank ?: UserRank ;
   restrictions ?: SegmentRestrictionData [] ;
-  revSpeedLimit ?: null | number ;
+  revSpeedLimit ?: number | null ;
   roadType ?: RoadTypeId ;
-  routingRoadType ?: 1 | 2 | 3 | 6 | 7 ;
+  routingRoadType ?: 6 | 7 | 1 | 2 | 3 ;
   segmentId: number ;
-  toLanesInfo ?: null | SegmentLanesInfo ;
+  toLanesInfo ?: SegmentLanesInfo | null ;
 } ,
   ) : void
 ```

@@ -1,7 +1,7 @@
 ---
 sdk: WME
-version: v2.367-2-g5ef3c024df
-generated: 2026-09-07
+version: v2.374-5-g0024d1fa65
+generated: 2026-10-28
 sections:
   classes: classes.md
   modules: modules.md
@@ -47,8 +47,8 @@ docs:
 > **Use this index to discover available documentation and their content.**
 > For searching SDK entities, refer to the Source Guide below, then navigate to the relevant section.
 
-> **SDK Version:** v2.367-2-g5ef3c024df
-> **Docs generated:** 2026-09-07
+> **SDK Version:** v2.374-5-g0024d1fa65
+> **Docs generated:** 2026-10-28
 
 > Each section below lists the source file and the entities it contains.
 
@@ -139,10 +139,12 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Types
 
-- [types.md](types.md) — *97 entries*
+- [types.md](types.md) — *103 entries*
+    - index.AsyncWmeSDK
     - index.SDK.AddableTurnVehicleRules
     - index.SDK.AddableVehicleRules
     - index.SDK.AddableVehicleType
+    - index.SDK.AnyFunction
     - index.SDK.BBox
     - index.SDK.CameraType
     - index.SDK.ChargersAccessType
@@ -182,12 +184,16 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.Pick
     - index.SDK.PlaceUpdateType
     - index.SDK.Position
+    - index.SDK.PromisifiedFunction
+    - index.SDK.PromisifiedModule
     - index.SDK.RESTRICTION_TYPE
     - index.SDK.Record
     - index.SDK.RegionCode
     - index.SDK.RestrictionSegmentDirection
     - index.SDK.RestrictionSegmentLaneScope
     - index.SDK.RestrictionSegmentLaneType
+    - index.SDK.RoadClosureAttributionChannel
+    - index.SDK.RoadClosureContributorType
     - index.SDK.RoadTypeId
     - index.SDK.SaveMode
     - index.SDK.SdkFeatureGeometry
@@ -242,7 +248,7 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Interfaces
 
-- [interfaces.md](interfaces.md) — *98 entries*
+- [interfaces.md](interfaces.md) — *99 entries*
     - index.SDK.AddableVehicleRule
     - index.SDK.AddressRawComponents
     - index.SDK.AffectedObject
@@ -295,6 +301,7 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.RegisterSidebarTabResult
     - index.SDK.RestrictedDrivingArea
     - index.SDK.RoadClosure
+    - index.SDK.RoadClosureAttribution
     - index.SDK.RoadShield
     - index.SDK.RoadType
     - index.SDK.SchoolZone
@@ -346,8 +353,9 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Variables
 
-- [variables.md](variables.md) — *34 entries*
+- [variables.md](variables.md) — *37 entries*
     - index.SDK.AddableVehicleType
+    - index.SDK.ClosureStatus
     - index.SDK.DATA_MODEL_NAMES
     - index.SDK.DayAlternation
     - index.SDK.EditSuggestionStatus
@@ -363,6 +371,8 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.RestrictionSegmentDirection
     - index.SDK.RestrictionSegmentLaneScope
     - index.SDK.RestrictionSegmentLaneType
+    - index.SDK.RoadClosureAttributionChannel
+    - index.SDK.RoadClosureContributorType
     - index.SDK.SegmentDirection
     - index.SDK.SegmentPermission
     - index.SDK.SegmentSuggestionRejectionReason

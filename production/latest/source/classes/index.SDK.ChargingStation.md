@@ -1,7 +1,7 @@
 ---
 title: SDK.ChargingStation class
 source: classes/index.SDK.ChargingStation.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -22,24 +22,24 @@ a list of charging station brands
 ### `getChargersAccessType`
 
 ```typescript
-getChargersAccessType ( args: { venueId: string } ) : null | ChargersAccessType
+getChargersAccessType ( args: { venueId: string } ) : ChargersAccessType | null
 ```
 chargers access type of the venue in case the venue is a charging station, null otherwise.
 ### `getCostType`
 
 ```typescript
-getCostType ( args: { venueId: string } ) : null | ChargingStationCostType
+getCostType ( args: { venueId: string } ) : ChargingStationCostType | null
 ```
 cost type of the venue in case the venue is a charging station, null otherwise.
 ### `getNetwork`
 
 ```typescript
-getNetwork ( args: { venueId: string } ) : null | string
+getNetwork ( args: { venueId: string } ) : string | null
 ```
 network of the venue in case the venue is a charging station, null otherwise.
 ### `getPaymentMethods`
 
 ```typescript
-getPaymentMethods ( args: { venueId: string } ) : null | PaymentMethod []
+getPaymentMethods ( args: { venueId: string } ) : PaymentMethod [] | null
 ```
 payment methods of the venue in case the venue is a charging station, null otherwise.

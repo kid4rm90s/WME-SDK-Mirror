@@ -1,7 +1,7 @@
 ---
 title: SDK.Users class
 source: classes/index.SDK.Users.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -9,20 +9,20 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 # Class Users
 
 ```typescript
-getByUserName ( options: { userName: string } ) : null | User
+getByUserName ( options: { userName: string } ) : User | null
 ```
 Methods for dealing with Users.
 ## Methods
 ### `getByUserName`
 
 ```typescript
-getByUserName ( options: { userName: string } ) : null | User
+getByUserName ( options: { userName: string } ) : User | null
 ```
 user with userName, or null if not found
 ### `getCurrentUser`
 
 ```typescript
-getCurrentUser () : null | User
+getCurrentUser () : User | null
 ```
 the currently logged in user or null if not logged in
 ### `getLocalizedUserProfileLink`

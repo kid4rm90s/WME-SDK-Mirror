@@ -1,7 +1,7 @@
 ---
 title: SDK.Venues class
 source: classes/index.SDK.Venues.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -63,7 +63,7 @@ all possible venue categories and their localised names.
 ### `getById`
 
 ```typescript
-getById ( args: { venueId: string } ) : null | Venue
+getById ( args: { venueId: string } ) : Venue | null
 ```
 venue with id, or null if not found in the WME data model
 ### `getChargingStationBrands`

@@ -1,7 +1,7 @@
 ---
 title: SDK.Cities class
 source: classes/index.SDK.Cities.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -32,7 +32,7 @@ an array of all the cities in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { cityId: number } ) : null | City
+getById ( args: { cityId: number } ) : City | null
 ```
 city with id, or null if not found in the WME data model
 ### `getCity`
@@ -40,12 +40,12 @@ city with id, or null if not found in the WME data model
 ```typescript
 getCity (
   options: { cityName: string ; countryId ?: number ; stateId ?: number } ,
-  ) : null | City
+  ) : City | null
 ```
 a city object or null if not found
 ### `getTopCity`
 
 ```typescript
-getTopCity () : null | City
+getTopCity () : City | null
 ```
 top city or null

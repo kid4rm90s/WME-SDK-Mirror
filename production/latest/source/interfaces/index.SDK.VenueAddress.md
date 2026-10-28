@@ -1,7 +1,7 @@
 ---
 title: SDK.VenueAddress interface
 source: interfaces/index.SDK.VenueAddress.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,17 +10,17 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface VenueAddress {
-  city: null | City ;
-  country: null | Country ;
-  houseNumber: null | string ;
+  city: City | null ;
+  country: Country | null ;
+  houseNumber: string | null ;
   isEmpty: boolean ;
-  state: null | State ;
-  street: null | Street ;
+  state: State | null ;
+  street: Street | null ;
 }
 ```
 ## Properties
 ### `houseNumber`
 
 ```typescript
-houseNumber: null | string
+houseNumber: string | null
 ```

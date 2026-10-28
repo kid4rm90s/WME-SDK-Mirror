@@ -1,7 +1,7 @@
 ---
 title: SDK.RestrictedDrivingAreas class
 source: classes/index.SDK.RestrictedDrivingAreas.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -22,6 +22,6 @@ an array of all the restricted driving areas in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { restrictedDrivingAreaId: number } ) : null | RestrictedDrivingArea
+getById ( args: { restrictedDrivingAreaId: number } ) : RestrictedDrivingArea | null
 ```
 restricted driving area with id, or null if not found in the WME data model

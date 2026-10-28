@@ -1,7 +1,7 @@
 ---
 title: SDK.SegmentSuggestion interface
 source: interfaces/index.SDK.SegmentSuggestion.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -12,10 +12,10 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 interface SegmentSuggestion {
   geometry: LineString ;
   id: number ;
-  segmentId: null | number ;
+  segmentId: number | null ;
   source: SegmentSuggestionSource ;
   status: SegmentSuggestionStatus ;
-  streetName: null | string ;
+  streetName: string | null ;
 }
 ```
 ## Properties
@@ -32,7 +32,7 @@ id: number
 ### `segmentId`
 
 ```typescript
-segmentId: null | number
+segmentId: number | null
 ```
 ### `source`
 
@@ -47,5 +47,5 @@ status: SegmentSuggestionStatus
 ### `streetName`
 
 ```typescript
-streetName: null | string
+streetName: string | null
 ```

@@ -1,7 +1,7 @@
 ---
 title: SDK.UpdateRequestUserPreferences interface
 source: interfaces/index.SDK.UpdateRequestUserPreferences.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -11,17 +11,17 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ```typescript
 interface UpdateRequestUserPreferences {
   activeHovSubscriptions: string [] ;
-  avoidDangerousTurns: null | boolean ;
-  avoidFerries: null | boolean ;
-  avoidPrimaryRoads: null | boolean ;
-  avoidTollRoads: null | boolean ;
-  hasEv: null | boolean ;
-  isEmailVerified: null | boolean ;
-  language: null | string ;
-  licensePlateSuffix: null | string ;
-  os: null | string ;
-  unpavedRoads: null | UnpavedRoadsSetting ;
-  vehicleType: null | VehicleType ;
+  avoidDangerousTurns: boolean | null ;
+  avoidFerries: boolean | null ;
+  avoidPrimaryRoads: boolean | null ;
+  avoidTollRoads: boolean | null ;
+  hasEv: boolean | null ;
+  isEmailVerified: boolean | null ;
+  language: string | null ;
+  licensePlateSuffix: string | null ;
+  os: string | null ;
+  unpavedRoads: UnpavedRoadsSetting | null ;
+  vehicleType: VehicleType | null ;
 }
 ```
 ## Properties
@@ -33,55 +33,55 @@ activeHovSubscriptions: string []
 ### `avoidDangerousTurns`
 
 ```typescript
-avoidDangerousTurns: null | boolean
+avoidDangerousTurns: boolean | null
 ```
 ### `avoidFerries`
 
 ```typescript
-avoidFerries: null | boolean
+avoidFerries: boolean | null
 ```
 ### `avoidPrimaryRoads`
 
 ```typescript
-avoidPrimaryRoads: null | boolean
+avoidPrimaryRoads: boolean | null
 ```
 ### `avoidTollRoads`
 
 ```typescript
-avoidTollRoads: null | boolean
+avoidTollRoads: boolean | null
 ```
 ### `hasEv`
 
 ```typescript
-hasEv: null | boolean
+hasEv: boolean | null
 ```
 ### `isEmailVerified`
 
 ```typescript
-isEmailVerified: null | boolean
+isEmailVerified: boolean | null
 ```
 ### `language`
 
 ```typescript
-language: null | string
+language: string | null
 ```
 ### `licensePlateSuffix`
 
 ```typescript
-licensePlateSuffix: null | string
+licensePlateSuffix: string | null
 ```
 ### `os`
 
 ```typescript
-os: null | string
+os: string | null
 ```
 ### `unpavedRoads`
 
 ```typescript
-unpavedRoads: null | UnpavedRoadsSetting
+unpavedRoads: UnpavedRoadsSetting | null
 ```
 ### `vehicleType`
 
 ```typescript
-vehicleType: null | VehicleType
+vehicleType: VehicleType | null
 ```

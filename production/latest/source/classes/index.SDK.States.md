@@ -1,7 +1,7 @@
 ---
 title: SDK.States class
 source: classes/index.SDK.States.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -28,13 +28,13 @@ an array of all the states apart from default in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { stateId: number } ) : null | State
+getById ( args: { stateId: number } ) : State | null
 ```
 state with id, or null if not found in the WME data model
 ### `getTopState`
 
 ```typescript
-getTopState () : null | State
+getTopState () : State | null
 ```
 the State set to be the top state in the WME data model, or null
 if none set

@@ -1,7 +1,7 @@
 ---
 title: SDK.Segment interface
 source: interfaces/index.SDK.Segment.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -14,12 +14,12 @@ interface Segment {
   alternateStreetIds: number [] ;
   areFwdTurnsVerified: boolean ;
   areRevTurnsVerified: boolean ;
-  elevationLevel: null | number ;
+  elevationLevel: number | null ;
   flagAttributes: SegmentFlagAttributes ;
-  fromLanesInfo: null | SegmentLanesInfo ;
-  fromNodeId: null | number ;
+  fromLanesInfo: SegmentLanesInfo | null ;
+  fromNodeId: number | null ;
   fromNodeLanesCount: number ;
-  fwdSpeedLimit: null | number ;
+  fwdSpeedLimit: number | null ;
   geometry: LineString ;
   hasClosures: boolean ;
   hasHouseNumbers: boolean ;
@@ -32,18 +32,18 @@ interface Segment {
   isFwdSpeedLimitVerified: boolean ;
   isRevSpeedLimitVerified: boolean ;
   isTwoWay: boolean ;
-  junctionId: null | number ;
+  junctionId: number | null ;
   length: number ;
   lockRank: UserRank ;
   modificationData: ModificationMetadata ;
-  primaryStreetId: null | number ;
+  primaryStreetId: number | null ;
   rank: UserRank ;
   restrictions: SegmentRestriction [] ;
-  revSpeedLimit: null | number ;
+  revSpeedLimit: number | null ;
   roadType: RoadTypeId ;
-  routingRoadType: null | 1 | 2 | 3 | 6 | 7 ;
-  toLanesInfo: null | SegmentLanesInfo ;
-  toNodeId: null | number ;
+  routingRoadType: 6 | 7 | 1 | 2 | 3 | null ;
+  toLanesInfo: SegmentLanesInfo | null ;
+  toNodeId: number | null ;
   toNodeLanesCount: number ;
 }
 ```
@@ -71,7 +71,7 @@ areRevTurnsVerified: boolean
 ### `elevationLevel`
 
 ```typescript
-elevationLevel: null | number
+elevationLevel: number | null
 ```
 ### `flagAttributes`
 
@@ -81,12 +81,12 @@ flagAttributes: SegmentFlagAttributes
 ### `fromLanesInfo`
 
 ```typescript
-fromLanesInfo: null | SegmentLanesInfo
+fromLanesInfo: SegmentLanesInfo | null
 ```
 ### `fromNodeId`
 
 ```typescript
-fromNodeId: null | number
+fromNodeId: number | null
 ```
 ### `fromNodeLanesCount`
 
@@ -96,7 +96,7 @@ fromNodeLanesCount: number
 ### `fwdSpeedLimit`
 
 ```typescript
-fwdSpeedLimit: null | number
+fwdSpeedLimit: number | null
 ```
 ### `geometry`
 
@@ -161,7 +161,7 @@ isTwoWay: boolean
 ### `junctionId`
 
 ```typescript
-junctionId: null | number
+junctionId: number | null
 ```
 ### `length`
 
@@ -181,7 +181,7 @@ modificationData: ModificationMetadata
 ### `primaryStreetId`
 
 ```typescript
-primaryStreetId: null | number
+primaryStreetId: number | null
 ```
 ### `rank`
 
@@ -196,7 +196,7 @@ restrictions: SegmentRestriction []
 ### `revSpeedLimit`
 
 ```typescript
-revSpeedLimit: null | number
+revSpeedLimit: number | null
 ```
 ### `roadType`
 
@@ -206,17 +206,17 @@ roadType: RoadTypeId
 ### `routingRoadType`
 
 ```typescript
-routingRoadType: null | 1 | 2 | 3 | 6 | 7
+routingRoadType: 6 | 7 | 1 | 2 | 3 | null
 ```
 ### `toLanesInfo`
 
 ```typescript
-toLanesInfo: null | SegmentLanesInfo
+toLanesInfo: SegmentLanesInfo | null
 ```
 ### `toNodeId`
 
 ```typescript
-toNodeId: null | number
+toNodeId: number | null
 ```
 ### `toNodeLanesCount`
 

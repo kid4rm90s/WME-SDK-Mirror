@@ -1,7 +1,7 @@
 ---
 title: SDK.Editing class
 source: classes/index.SDK.Editing.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -34,7 +34,7 @@ the number of changes that can be redone.
 ### `getSelection`
 
 ```typescript
-getSelection () : null | SelectionWithLocalizedTypeName
+getSelection () : SelectionWithLocalizedTypeName | null
 ```
 ids of currently selected objects or null if nothing selected. The selection
 only includes objects of a single type.

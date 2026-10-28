@@ -1,7 +1,7 @@
 ---
 title: SDK.SchoolZone interface
 source: interfaces/index.SDK.SchoolZone.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,16 +10,16 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface SchoolZone {
-  direction: null | RestrictionSegmentDirection ;
-  excludedRoadTypes: null | RoadTypeId [] ;
+  direction: RestrictionSegmentDirection | null ;
+  excludedRoadTypes: RoadTypeId [] | null ;
   geometry: Point | Polygon ;
   id: number ;
-  lockRank: null | number ;
+  lockRank: number | null ;
   modificationData: ModificationMetadata ;
-  name: null | string ;
-  scheduleId: null | string ;
-  segmentId: null | number ;
-  speedLimit: null | number ;
+  name: string | null ;
+  scheduleId: string | null ;
+  segmentId: number | null ;
+  speedLimit: number | null ;
   subTypes: PermanentHazardSubType [] ;
   type: "SCHOOL_ZONE" ;
 }
@@ -28,22 +28,22 @@ interface SchoolZone {
 ### `excludedRoadTypes`
 
 ```typescript
-excludedRoadTypes: null | RoadTypeId []
+excludedRoadTypes: RoadTypeId [] | null
 ```
 ### `name`
 
 ```typescript
-name: null | string
+name: string | null
 ```
 ### `scheduleId`
 
 ```typescript
-scheduleId: null | string
+scheduleId: string | null
 ```
 ### `speedLimit`
 
 ```typescript
-speedLimit: null | number
+speedLimit: number | null
 ```
 ### `type`
 

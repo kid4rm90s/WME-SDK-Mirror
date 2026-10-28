@@ -1,7 +1,7 @@
 ---
 title: SDK.VehicleRule interface
 source: interfaces/index.SDK.VehicleRule.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,8 +10,8 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface VehicleRule {
-  licensePlateNumber: null | LicensePlateRule ;
-  licensePlateRule: null | LicensePlateRule ;
+  licensePlateNumber: LicensePlateRule | null ;
+  licensePlateRule: LicensePlateRule | null ;
   minPassengers: number ;
   numPassengers: number ;
   subscriptions: string [] ;
@@ -23,7 +23,7 @@ Represents a vehicle rule for specific vehicle exemptions or restrictions.
 ### `licensePlateNumber`
 
 ```typescript
-licensePlateNumber: null | LicensePlateRule
+licensePlateNumber: LicensePlateRule | null
 ```
 ### `minPassengers`
 

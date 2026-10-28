@@ -1,7 +1,7 @@
 ---
 title: SDK.Turns class
 source: classes/index.SDK.Turns.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -36,7 +36,7 @@ an array of all the turns in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { turnId: string } ) : null | Turn
+getById ( args: { turnId: string } ) : Turn | null
 ```
 turn with id, or null if not found in the WME data model
 ### `getTurnsFromSegment`
@@ -98,7 +98,7 @@ updateTurn (
   args: {
   isAllowed ?: boolean ;
   restrictions ?: TurnRestrictionData [] ;
-  turnGuidance ?: null | TurnGuidance ;
+  turnGuidance ?: TurnGuidance | null ;
   turnId: string ;
 } ,
   ) : void

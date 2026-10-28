@@ -1,7 +1,7 @@
 ---
 title: SDK.TimeFrame interface
 source: interfaces/index.SDK.TimeFrame.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,15 +10,15 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface TimeFrame {
-  dayAlternation: null | DayAlternation ;
-  daysOfMonth: null | DayAlternation ;
-  endDate: null | string ;
-  fromTime: null | string ;
-  repeatYearly: null | boolean ;
-  startDate: null | string ;
-  timeZone: null | string ;
-  toTime: null | string ;
-  weekdays: null | WeekDay [] ;
+  dayAlternation: DayAlternation | null ;
+  daysOfMonth: DayAlternation | null ;
+  endDate: string | null ;
+  fromTime: string | null ;
+  repeatYearly: boolean | null ;
+  startDate: string | null ;
+  timeZone: string | null ;
+  toTime: string | null ;
+  weekdays: WeekDay [] | null ;
 }
 ```
 Represents a time frame indicating when a restriction is active.
@@ -26,45 +26,45 @@ Represents a time frame indicating when a restriction is active.
 ### `dayAlternation`
 
 ```typescript
-dayAlternation: null | DayAlternation
+dayAlternation: DayAlternation | null
 ```
 ### `daysOfMonth`
 
 ```typescript
-daysOfMonth: null | DayAlternation
+daysOfMonth: DayAlternation | null
 ```
 ### `endDate`
 
 ```typescript
-endDate: null | string
+endDate: string | null
 ```
 ### `fromTime`
 
 ```typescript
-fromTime: null | string
+fromTime: string | null
 ```
 ### `repeatYearly`
 
 ```typescript
-repeatYearly: null | boolean
+repeatYearly: boolean | null
 ```
 ### `startDate`
 
 ```typescript
-startDate: null | string
+startDate: string | null
 ```
 ### `timeZone`
 
 ```typescript
-timeZone: null | string
+timeZone: string | null
 ```
 ### `toTime`
 
 ```typescript
-toTime: null | string
+toTime: string | null
 ```
 ### `weekdays`
 
 ```typescript
-weekdays: null | WeekDay []
+weekdays: WeekDay [] | null
 ```

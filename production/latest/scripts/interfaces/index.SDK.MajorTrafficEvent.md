@@ -1,7 +1,7 @@
 ---
 title: SDK.MajorTrafficEvent interface
 source: interfaces/index.SDK.MajorTrafficEvent.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,33 +10,33 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface MajorTrafficEvent {
-  category: null | MajorTrafficEventCategory ;
-  cityId: null | number ;
-  endDate: null | string ;
+  category: MajorTrafficEventCategory | null ;
+  cityId: number | null ;
+  endDate: string | null ;
   id: string ;
   isPublished: boolean ;
   isReady: boolean ;
-  lockRank: null | UserRank ;
+  lockRank: UserRank | null ;
   modificationData: ModificationMetadata ;
   names: LocalizedString [] ;
-  startDate: null | string ;
+  startDate: string | null ;
 }
 ```
 ## Properties
 ### `category`
 
 ```typescript
-category: null | MajorTrafficEventCategory
+category: MajorTrafficEventCategory | null
 ```
 ### `cityId`
 
 ```typescript
-cityId: null | number
+cityId: number | null
 ```
 ### `endDate`
 
 ```typescript
-endDate: null | string
+endDate: string | null
 ```
 ### `id`
 
@@ -56,7 +56,7 @@ isReady: boolean
 ### `lockRank`
 
 ```typescript
-lockRank: null | UserRank
+lockRank: UserRank | null
 ```
 ### `modificationData`
 
@@ -71,5 +71,5 @@ names: LocalizedString []
 ### `startDate`
 
 ```typescript
-startDate: null | string
+startDate: string | null
 ```

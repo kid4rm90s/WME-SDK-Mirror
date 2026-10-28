@@ -1,7 +1,7 @@
 ---
 title: SDK.SegmentRestriction interface
 source: interfaces/index.SDK.SegmentRestriction.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,15 +10,15 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface SegmentRestriction {
-  defaultType: null | RESTRICTION_TYPE ;
-  description: null | string ;
-  direction: null | RestrictionSegmentDirection ;
-  disposition: null | RestrictionSegmentLaneScope ;
+  defaultType: RESTRICTION_TYPE | null ;
+  description: string | null ;
+  direction: RestrictionSegmentDirection | null ;
+  disposition: RestrictionSegmentLaneScope | null ;
   driveProfiles: VehicleRules ;
   editable: boolean ;
   isExpired: boolean ;
-  laneScope: null | RestrictionSegmentLaneScope ;
-  laneType: null | RestrictionSegmentLaneType ;
+  laneScope: RestrictionSegmentLaneScope | null ;
+  laneType: RestrictionSegmentLaneType | null ;
   timeFrames: TimeFrame [] ;
   vehicleRules: VehicleRules ;
 }
@@ -28,20 +28,20 @@ Represents restrictions applied to a segment.
 ### `direction`
 
 ```typescript
-direction: null | RestrictionSegmentDirection
+direction: RestrictionSegmentDirection | null
 ```
 ### `disposition`
 
 ```typescript
-disposition: null | RestrictionSegmentLaneScope
+disposition: RestrictionSegmentLaneScope | null
 ```
 ### `laneScope`
 
 ```typescript
-laneScope: null | RestrictionSegmentLaneScope
+laneScope: RestrictionSegmentLaneScope | null
 ```
 ### `laneType`
 
 ```typescript
-laneType: null | RestrictionSegmentLaneType
+laneType: RestrictionSegmentLaneType | null
 ```

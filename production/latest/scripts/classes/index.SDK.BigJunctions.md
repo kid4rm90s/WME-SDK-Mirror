@@ -1,7 +1,7 @@
 ---
 title: SDK.BigJunctions class
 source: classes/index.SDK.BigJunctions.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -28,6 +28,6 @@ all possible turns for the bigJunction
 ### `getById`
 
 ```typescript
-getById ( args: { bigJunctionId: number } ) : null | BigJunction
+getById ( args: { bigJunctionId: number } ) : BigJunction | null
 ```
 bigJunction with id, or null if not found in the WME data model

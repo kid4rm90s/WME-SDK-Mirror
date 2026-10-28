@@ -1,7 +1,7 @@
 ---
 title: SDK.ExitSign interface
 source: interfaces/index.SDK.ExitSign.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -11,7 +11,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ```typescript
 interface ExitSign {
   description: string ;
-  id: null | number ;
+  id: number | null ;
 }
 ```
 ## Properties
@@ -23,5 +23,5 @@ description: string
 ### `id`
 
 ```typescript
-id: null | number
+id: number | null
 ```

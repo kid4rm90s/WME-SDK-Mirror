@@ -1,9 +1,27 @@
+# index.AsyncWmeSDK
+
+---
+title: AsyncWmeSDK type
+source: types/index.AsyncWmeSDK.html
+created: 2026-10-28
+tool: extract-to-md.py
+notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
+---
+
+# Type Alias AsyncWmeSDK
+
+```typescript
+AsyncWmeSDK: PromisifiedModule < WmeSDK >
+```
+
+---
+
 # index.SDK.AddableTurnVehicleRules
 
 ---
 title: SDK.AddableTurnVehicleRules type
 source: types/index.SDK.AddableTurnVehicleRules.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -23,7 +41,7 @@ AddableTurnVehicleRules: {
 ---
 title: SDK.AddableVehicleRules type
 source: types/index.SDK.AddableVehicleRules.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -43,7 +61,7 @@ AddableVehicleRules: {
 ---
 title: SDK.AddableVehicleType type
 source: types/index.SDK.AddableVehicleType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -56,12 +74,30 @@ AddableVehicleType: Values < typeof AddableVehicleType >
 
 ---
 
+# index.SDK.AnyFunction
+
+---
+title: SDK.AnyFunction type
+source: types/index.SDK.AnyFunction.html
+created: 2026-10-28
+tool: extract-to-md.py
+notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
+---
+
+# Type Alias AnyFunction
+
+```typescript
+AnyFunction: ( ... args: any [] ) = > any
+```
+
+---
+
 # index.SDK.BBox
 
 ---
 title: SDK.BBox type
 source: types/index.SDK.BBox.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -81,7 +117,7 @@ BBox:
 ---
 title: SDK.CameraType type
 source: types/index.SDK.CameraType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -110,7 +146,7 @@ CameraType:
 ---
 title: SDK.ChargersAccessType type
 source: types/index.SDK.ChargersAccessType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -132,7 +168,7 @@ ChargersAccessType:
 ---
 title: SDK.ChargingStationCostType type
 source: types/index.SDK.ChargingStationCostType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -150,7 +186,7 @@ ChargingStationCostType: "COST_TYPE_UNSPECIFIED" | "FEE" | "FREE"
 ---
 title: SDK.ClosureStatus type
 source: types/index.SDK.ClosureStatus.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -158,16 +194,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 # Type Alias ClosureStatus
 
 ```typescript
-ClosureStatus: 
-  | "ACTIVE"
-  | "FINISHED"
-  | "FINISHED_EARLY_DUE_TO_DELETION"
-  | "FINISHED_EARLY_DUE_TO_OVERLAPPING_CLOSURES"
-  | "NOT_STARTED"
-  | "SUSPENDED"
-  | "UNVERIFIED"
-  | "FAILED"
-  | "UNKNOWN"
+ClosureStatus: Values < typeof ClosureStatus >
 ```
 
 ---
@@ -177,7 +204,7 @@ ClosureStatus:
 ---
 title: SDK.DataModelName type
 source: types/index.SDK.DataModelName.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -195,7 +222,7 @@ DataModelName: Values < typeof DATA_MODEL_NAMES >
 ---
 title: SDK.DayAlternation type
 source: types/index.SDK.DayAlternation.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -213,7 +240,7 @@ DayAlternation: Values < typeof DayAlternation >
 ---
 title: SDK.DriveProfiles type
 source: types/index.SDK.DriveProfiles.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -231,7 +258,7 @@ DriveProfiles: { [ key in RESTRICTION_TYPE ] : DriveProfile [] }
 ---
 title: SDK.EditSuggestionSource type
 source: types/index.SDK.EditSuggestionSource.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -249,7 +276,7 @@ EditSuggestionSource: "CLIENT" | "GEO" | "OTHER" | "WME" | "SYSTEM"
 ---
 title: SDK.EditSuggestionStatus type
 source: types/index.SDK.EditSuggestionStatus.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -267,7 +294,7 @@ EditSuggestionStatus: Values < typeof EditSuggestionStatus >
 ---
 title: SDK.Exclude type
 source: types/index.SDK.Exclude.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -285,7 +312,7 @@ Exclude: T extends U ? never: T
 ---
 title: SDK.ExcludeRawFields type
 source: types/index.SDK.ExcludeRawFields.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -303,7 +330,7 @@ ExcludeRawFields: { [ K in keyof AddressRawComponents ] ?: never }
 ---
 title: SDK.Extract type
 source: types/index.SDK.Extract.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -321,7 +348,7 @@ Extract: T extends U ? T: never
 ---
 title: SDK.GENERAL_SERVICE_TYPE type
 source: types/index.SDK.GENERAL_SERVICE_TYPE.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -339,7 +366,7 @@ GENERAL_SERVICE_TYPE: Values < typeof GENERAL_SERVICE_TYPE >
 ---
 title: SDK.InstructionOpCode type
 source: types/index.SDK.InstructionOpCode.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -367,7 +394,7 @@ InstructionOpCode:
 ---
 title: SDK.IssueSeverity type
 source: types/index.SDK.IssueSeverity.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -385,7 +412,7 @@ IssueSeverity: "low" | "medium" | "high"
 ---
 title: SDK.IssueTrackerType type
 source: types/index.SDK.IssueTrackerType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -403,7 +430,7 @@ IssueTrackerType: Values < typeof IssueTrackerType >
 ---
 title: SDK.LaneGuidanceMode type
 source: types/index.SDK.LaneGuidanceMode.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -421,7 +448,7 @@ LaneGuidanceMode: "default" | "display" | "display-and-voice"
 ---
 title: SDK.LaneInstructionStrategy type
 source: types/index.SDK.LaneInstructionStrategy.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -439,7 +466,7 @@ LaneInstructionStrategy: "default" | "pull" | "push"
 ---
 title: SDK.LicensePlateRule type
 source: types/index.SDK.LicensePlateRule.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -457,7 +484,7 @@ LicensePlateRule: Values < typeof LicensePlateRule >
 ---
 title: SDK.LotType type
 source: types/index.SDK.LotType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -475,7 +502,7 @@ LotType: "MULTI_LEVEL" | "STREET_LEVEL" | "STREET_LEVEL_COVERED" | "UNDERGROUND"
 ---
 title: SDK.MajorTrafficEventCategory type
 source: types/index.SDK.MajorTrafficEventCategory.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -505,7 +532,7 @@ MajorTrafficEventCategory:
 ---
 title: SDK.MapProblemType type
 source: types/index.SDK.MapProblemType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -523,7 +550,7 @@ MapProblemType: "DATA" | "DISCONNECTION" | "ROAD_CLOSURE" | "TURN"
 ---
 title: SDK.OLMouseEventName type
 source: types/index.SDK.OLMouseEventName.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -541,7 +568,7 @@ OLMouseEventName: "click" | "mousedown" | "mouseup" | "mousemove" | "mouseout"
 ---
 title: SDK.ObjectType type
 source: types/index.SDK.ObjectType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -559,7 +586,7 @@ ObjectType: Values < typeof ObjectType >
 ---
 title: SDK.Omit type
 source: types/index.SDK.Omit.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -577,7 +604,7 @@ Omit: Pick < T , Exclude < keyof T , K > >
 ---
 title: SDK.PARKING_LOT_SERVICE_TYPE type
 source: types/index.SDK.PARKING_LOT_SERVICE_TYPE.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -595,7 +622,7 @@ PARKING_LOT_SERVICE_TYPE: Values < typeof PARKING_LOT_SERVICE_TYPE >
 ---
 title: SDK.PLACE_UPDATE_ACTION type
 source: types/index.SDK.PLACE_UPDATE_ACTION.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -613,7 +640,7 @@ PLACE_UPDATE_ACTION: Values < typeof PLACE_UPDATE_ACTION >
 ---
 title: SDK.PLACE_UPDATE_SUBJECT type
 source: types/index.SDK.PLACE_UPDATE_SUBJECT.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -631,7 +658,7 @@ PLACE_UPDATE_SUBJECT: Values < typeof PLACE_UPDATE_SUBJECT >
 ---
 title: SDK.ParkingLotCostType type
 source: types/index.SDK.ParkingLotCostType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -649,7 +676,7 @@ ParkingLotCostType: "FREE" | "LOW" | "MODERATE" | "EXPENSIVE" | "UNKNOWN"
 ---
 title: SDK.ParkingType type
 source: types/index.SDK.ParkingType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -667,7 +694,7 @@ ParkingType: "PRIVATE" | "PUBLIC" | "RESTRICTED" | null
 ---
 title: SDK.Partial type
 source: types/index.SDK.Partial.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -685,7 +712,7 @@ Partial: { [ P in keyof T ] ?: T [ P ] }
 ---
 title: SDK.PaymentMethod type
 source: types/index.SDK.PaymentMethod.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -711,7 +738,7 @@ PaymentMethod:
 ---
 title: SDK.PaymentType type
 source: types/index.SDK.PaymentType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -740,7 +767,7 @@ PaymentType:
 ---
 title: SDK.PermanentHazard type
 source: types/index.SDK.PermanentHazard.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -758,7 +785,7 @@ PermanentHazard: Camera | SchoolZone | StandardPermanentHazard
 ---
 title: SDK.PermanentHazardSubType type
 source: types/index.SDK.PermanentHazardSubType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -776,7 +803,7 @@ PermanentHazardSubType: CameraType | TrafficSignSubType
 ---
 title: SDK.Pick type
 source: types/index.SDK.Pick.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -794,7 +821,7 @@ Pick: { [ P in K ] : T [ P ] }
 ---
 title: SDK.PlaceUpdateType type
 source: types/index.SDK.PlaceUpdateType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -812,7 +839,7 @@ PlaceUpdateType: ` ${ PLACE_UPDATE_ACTION } _ ${ PLACE_UPDATE_SUBJECT } ` | "fla
 ---
 title: SDK.Position type
 source: types/index.SDK.Position.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -825,12 +852,56 @@ Position: number []
 
 ---
 
+# index.SDK.PromisifiedFunction
+
+---
+title: SDK.PromisifiedFunction type
+source: types/index.SDK.PromisifiedFunction.html
+created: 2026-10-28
+tool: extract-to-md.py
+notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
+---
+
+# Type Alias PromisifiedFunction<T>
+
+```typescript
+PromisifiedFunction: ReturnType < T > extends Promise < unknown >
+  ? T
+  : ( ... args: Parameters < T > ) = > Promise < Awaited < ReturnType < T > > >
+```
+
+---
+
+# index.SDK.PromisifiedModule
+
+---
+title: SDK.PromisifiedModule type
+source: types/index.SDK.PromisifiedModule.html
+created: 2026-10-28
+tool: extract-to-md.py
+notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
+---
+
+# Type Alias PromisifiedModule<T>
+
+```typescript
+PromisifiedModule: {
+  [ K in keyof T ] : T [ K ] extends SdkEventBus
+  ? T [ K ]
+  : T [ K ] extends AnyFunction
+  ? PromisifiedFunction < T [ K ] >
+  : T [ K ] extends SdkModule ? PromisifiedModule < T [ K ] > : T [ K ]
+  }
+```
+
+---
+
 # index.SDK.RESTRICTION_TYPE
 
 ---
 title: SDK.RESTRICTION_TYPE type
 source: types/index.SDK.RESTRICTION_TYPE.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -848,7 +919,7 @@ RESTRICTION_TYPE: Values < typeof RESTRICTION_TYPE >
 ---
 title: SDK.Record type
 source: types/index.SDK.Record.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -866,7 +937,7 @@ Record: { [ P in K ] : T }
 ---
 title: SDK.RegionCode type
 source: types/index.SDK.RegionCode.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -887,7 +958,7 @@ RegionCode:
 ---
 title: SDK.RestrictionSegmentDirection type
 source: types/index.SDK.RestrictionSegmentDirection.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -905,7 +976,7 @@ RestrictionSegmentDirection: Values < typeof RestrictionSegmentDirection >
 ---
 title: SDK.RestrictionSegmentLaneScope type
 source: types/index.SDK.RestrictionSegmentLaneScope.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -923,7 +994,7 @@ RestrictionSegmentLaneScope: Values < typeof RestrictionSegmentLaneScope >
 ---
 title: SDK.RestrictionSegmentLaneType type
 source: types/index.SDK.RestrictionSegmentLaneType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -936,12 +1007,48 @@ RestrictionSegmentLaneType: Values < typeof RestrictionSegmentLaneType >
 
 ---
 
+# index.SDK.RoadClosureAttributionChannel
+
+---
+title: SDK.RoadClosureAttributionChannel type
+source: types/index.SDK.RoadClosureAttributionChannel.html
+created: 2026-10-28
+tool: extract-to-md.py
+notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
+---
+
+# Type Alias RoadClosureAttributionChannel
+
+```typescript
+RoadClosureAttributionChannel: Values < typeof RoadClosureAttributionChannel >
+```
+
+---
+
+# index.SDK.RoadClosureContributorType
+
+---
+title: SDK.RoadClosureContributorType type
+source: types/index.SDK.RoadClosureContributorType.html
+created: 2026-10-28
+tool: extract-to-md.py
+notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
+---
+
+# Type Alias RoadClosureContributorType
+
+```typescript
+RoadClosureContributorType: Values < typeof RoadClosureContributorType >
+```
+
+---
+
 # index.SDK.RoadTypeId
 
 ---
 title: SDK.RoadTypeId type
 source: types/index.SDK.RoadTypeId.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -959,7 +1066,7 @@ RoadTypeId: Values < typeof ROAD_TYPE >
 ---
 title: SDK.SaveMode type
 source: types/index.SDK.SaveMode.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -977,7 +1084,7 @@ SaveMode: "DISALLOWED" | "EDITING" | "IDLE" | "SUGGESTING"
 ---
 title: SDK.SdkFeatureGeometry type
 source: types/index.SDK.SdkFeatureGeometry.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -995,7 +1102,7 @@ SdkFeatureGeometry: Point | LineString | Polygon
 ---
 title: SDK.SdkFeatureProperties type
 source: types/index.SDK.SdkFeatureProperties.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1020,7 +1127,7 @@ SdkFeatureProperties: Record <
 ---
 title: SDK.SdkFeatureStyleContext type
 source: types/index.SDK.SdkFeatureStyleContext.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1043,7 +1150,7 @@ SdkFeatureStyleContext: Record <
 ---
 title: SDK.SdkFeatureStylePredicate type
 source: types/index.SDK.SdkFeatureStylePredicate.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1064,7 +1171,7 @@ SdkFeatureStylePredicate: (
 ---
 title: SDK.SdkMouseEventName type
 source: types/index.SDK.SdkMouseEventName.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1087,7 +1194,7 @@ SdkMouseEventName:
 ---
 title: SDK.SegmentAddressData type
 source: types/index.SDK.SegmentAddressData.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1113,7 +1220,7 @@ SegmentAddressData:
 ---
 title: SDK.SegmentDirection type
 source: types/index.SDK.SegmentDirection.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1131,7 +1238,7 @@ SegmentDirection: Values < typeof SegmentDirection >
 ---
 title: SDK.SegmentLaneGuidanceDirection type
 source: types/index.SDK.SegmentLaneGuidanceDirection.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1149,7 +1256,7 @@ SegmentLaneGuidanceDirection: Extract < SegmentDirection , "A_TO_B" | "B_TO_A" >
 ---
 title: SDK.SegmentPermission type
 source: types/index.SDK.SegmentPermission.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1167,7 +1274,7 @@ SegmentPermission: Values < typeof SegmentPermission >
 ---
 title: SDK.SegmentRestrictionData type
 source: types/index.SDK.SegmentRestrictionData.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1202,7 +1309,7 @@ SegmentRestrictionData: Omit <
 ---
 title: SDK.SegmentSuggestionRejectionReason type
 source: types/index.SDK.SegmentSuggestionRejectionReason.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1222,7 +1329,7 @@ SegmentSuggestionRejectionReason: Values <
 ---
 title: SDK.SegmentSuggestionSource type
 source: types/index.SDK.SegmentSuggestionSource.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1240,7 +1347,7 @@ SegmentSuggestionSource: Values < typeof SegmentSuggestionSource >
 ---
 title: SDK.SegmentSuggestionStatus type
 source: types/index.SDK.SegmentSuggestionStatus.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1263,7 +1370,7 @@ SegmentSuggestionStatus:
 ---
 title: SDK.Selection type
 source: types/index.SDK.Selection.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1290,7 +1397,7 @@ Selection:
 ---
 title: SDK.SelectionWithLocalizedTypeName type
 source: types/index.SDK.SelectionWithLocalizedTypeName.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1308,7 +1415,7 @@ SelectionWithLocalizedTypeName: Selection & { localizedTypeName: string }
 ---
 title: SDK.ServiceType type
 source: types/index.SDK.ServiceType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1326,7 +1433,7 @@ ServiceType: GENERAL_SERVICE_TYPE | PARKING_LOT_SERVICE_TYPE
 ---
 title: SDK.SidebarTabName type
 source: types/index.SDK.SidebarTabName.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1344,7 +1451,7 @@ SidebarTabName: Values < typeof SidebarTabName >
 ---
 title: SDK.SignType type
 source: types/index.SDK.SignType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1362,7 +1469,7 @@ SignType: "ROAD_SHIELD" | "EXIT_SIGN" | "OTHER"
 ---
 title: SDK.SnapTo type
 source: types/index.SDK.SnapTo.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1380,7 +1487,7 @@ SnapTo: "segment" | "none"
 ---
 title: SDK.SpotsEstimate type
 source: types/index.SDK.SpotsEstimate.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1405,7 +1512,7 @@ SpotsEstimate:
 ---
 title: SDK.SuggestibleActionType type
 source: types/index.SDK.SuggestibleActionType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1423,7 +1530,7 @@ SuggestibleActionType: "ADD" | "DELETE" | "UPDATE" | "SPLIT"
 ---
 title: SDK.SuggestionResolutionRejectionReason type
 source: types/index.SDK.SuggestionResolutionRejectionReason.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1447,7 +1554,7 @@ SuggestionResolutionRejectionReason:
 ---
 title: SDK.SuggestionResolutionStatus type
 source: types/index.SDK.SuggestionResolutionStatus.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1469,7 +1576,7 @@ SuggestionResolutionStatus:
 ---
 title: SDK.TrafficSignSubType type
 source: types/index.SDK.TrafficSignSubType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1487,7 +1594,7 @@ TrafficSignSubType: "STOP_SIGN"
 ---
 title: SDK.TurnRestriction type
 source: types/index.SDK.TurnRestriction.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1505,7 +1612,7 @@ TurnRestriction: BaseRestriction
 ---
 title: SDK.TurnRestrictionData type
 source: types/index.SDK.TurnRestrictionData.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1535,7 +1642,7 @@ TurnRestrictionData: Omit <
 ---
 title: SDK.UnpavedRoadsSetting type
 source: types/index.SDK.UnpavedRoadsSetting.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1553,7 +1660,7 @@ UnpavedRoadsSetting: "ALLOW" | "DISALLOW" | "AVOID_LONG_ONES"
 ---
 title: SDK.UpdateRequestSource type
 source: types/index.SDK.UpdateRequestSource.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1571,7 +1678,7 @@ UpdateRequestSource: "MOBILE_CLIENT" | "MOBILE_WEB" | "WEB" | "REPORTING_AGENT"
 ---
 title: SDK.UpdateRequestType type
 source: types/index.SDK.UpdateRequestType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1601,7 +1708,7 @@ UpdateRequestType:
 ---
 title: SDK.UpdateableMapProblemState type
 source: types/index.SDK.UpdateableMapProblemState.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1619,7 +1726,7 @@ UpdateableMapProblemState: Values < typeof UpdateableMapProblemState >
 ---
 title: SDK.UpdateableRestrictionSegmentLaneScope type
 source: types/index.SDK.UpdateableRestrictionSegmentLaneScope.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1639,7 +1746,7 @@ UpdateableRestrictionSegmentLaneScope: Values <
 ---
 title: SDK.UpdateableRestrictionType type
 source: types/index.SDK.UpdateableRestrictionType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1657,7 +1764,7 @@ UpdateableRestrictionType: Values < typeof UpdateableRestrictionType >
 ---
 title: SDK.UpdateableTurnRestrictionType type
 source: types/index.SDK.UpdateableTurnRestrictionType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1675,7 +1782,7 @@ UpdateableTurnRestrictionType: Values < typeof UpdateableTurnRestrictionType >
 ---
 title: SDK.UserEditableAreaType type
 source: types/index.SDK.UserEditableAreaType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1693,7 +1800,7 @@ UserEditableAreaType: Values < typeof UserEditableAreaType >
 ---
 title: SDK.UserRank type
 source: types/index.SDK.UserRank.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1711,7 +1818,7 @@ UserRank: 0 | 1 | 2 | 3 | 4 | 5 | 6
 ---
 title: SDK.VehicleRules type
 source: types/index.SDK.VehicleRules.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1729,7 +1836,7 @@ VehicleRules: { [ key in RESTRICTION_TYPE ] ?: VehicleRule [] }
 ---
 title: SDK.VehicleType type
 source: types/index.SDK.VehicleType.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1747,7 +1854,7 @@ VehicleType: Values < typeof VehicleType >
 ---
 title: SDK.VenueAddressData type
 source: types/index.SDK.VenueAddressData.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1767,7 +1874,7 @@ VenueAddressData:
 ---
 title: SDK.VenueCategoryId type
 source: types/index.SDK.VenueCategoryId.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1785,7 +1892,7 @@ VenueCategoryId: VenueSubCategoryId | VenueResidentialId | VenueMainCategoryId
 ---
 title: SDK.VenueMainCategoryId type
 source: types/index.SDK.VenueMainCategoryId.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1803,7 +1910,7 @@ VenueMainCategoryId: Values < typeof VENUE_MAIN_CATEGORY >
 ---
 title: SDK.VenuePermission type
 source: types/index.SDK.VenuePermission.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1821,7 +1928,7 @@ VenuePermission: Values < typeof VenuePermission >
 ---
 title: SDK.VenueResidentialId type
 source: types/index.SDK.VenueResidentialId.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1839,7 +1946,7 @@ VenueResidentialId: typeof VENUE_RESIDENTIAL
 ---
 title: SDK.VenueSubCategoryId type
 source: types/index.SDK.VenueSubCategoryId.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1857,7 +1964,7 @@ VenueSubCategoryId: ArrayElement < Values < typeof VENUE_SUBCATEGORIES > >
 ---
 title: SDK.WME_LAYER_NAMES type
 source: types/index.SDK.WME_LAYER_NAMES.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1875,7 +1982,7 @@ WME_LAYER_NAMES: Values < typeof WME_LAYER_NAMES >
 ---
 title: SDK.WeekDay type
 source: types/index.SDK.WeekDay.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1893,7 +2000,7 @@ WeekDay: Values < typeof WeekDay >
 ---
 title: SDK.WmeLayerName type
 source: types/index.SDK.WmeLayerName.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -1911,7 +2018,7 @@ WmeLayerName: Values < typeof WmeLayerName >
 ---
 title: SDK.ZoomLevel type
 source: types/index.SDK.ZoomLevel.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

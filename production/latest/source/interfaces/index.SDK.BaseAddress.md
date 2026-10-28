@@ -1,7 +1,7 @@
 ---
 title: SDK.BaseAddress interface
 source: interfaces/index.SDK.BaseAddress.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,23 +10,23 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface BaseAddress {
-  city: null | City ;
-  country: null | Country ;
+  city: City | null ;
+  country: Country | null ;
   isEmpty: boolean ;
-  state: null | State ;
-  street: null | Street ;
+  state: State | null ;
+  street: Street | null ;
 }
 ```
 ## Properties
 ### `city`
 
 ```typescript
-city: null | City
+city: City | null
 ```
 ### `country`
 
 ```typescript
-country: null | Country
+country: Country | null
 ```
 ### `isEmpty`
 
@@ -36,10 +36,10 @@ isEmpty: boolean
 ### `state`
 
 ```typescript
-state: null | State
+state: State | null
 ```
 ### `street`
 
 ```typescript
-street: null | Street
+street: Street | null
 ```

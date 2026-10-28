@@ -1,10 +1,40 @@
 ---
-title: # v2.367
+title: # v2.371
 source: documents/CHANGELOG.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
+
+## v2.371
+
+### Introduce opt-in 'async' mode via Proxy Promisifier
+
+Prepare userscript developers for WME's migration to Zustand-based async stores by wrapping SDK module methods (except SdkEventBus and Errors) in Promises via a lazy Proxy.
+
+### Add lockRank and optional props to MapComments
+
+Rework addComment and updateComment:
+
+- add lockRank support with user rank validation
+
+- make body and endDate optional in addComment
+
+### Add deleteClosure method to RoadClosures module
+
+Implemented deleteClosure method to support deleting road closures
+
+### Support array of IDs in getUpdateRequestDetails
+
+Allow passing single ID or array of IDs to MapUpdateRequests.getUpdateRequestDetails.
+
+## v2.370
+
+### Expose road closure attributions
+
+Expose attributions on RoadClosure to allow filtering
+closures by origin. Add ClosureStatus, RoadClosureAttributionChannel,
+and RoadClosureContributorType constants.
 
 ## v2.367
 

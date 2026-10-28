@@ -1,7 +1,7 @@
 ---
 title: SDK.WmeState class
 source: classes/index.SDK.WmeState.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -22,7 +22,7 @@ the list of the countries in the WME data model that are managed by the current 
 ### `getUserInfo`
 
 ```typescript
-getUserInfo () : null | UserSession
+getUserInfo () : UserSession | null
 ```
 information about currently logged in user or null if user isn't logged in yet.
 ### `isInitialized`

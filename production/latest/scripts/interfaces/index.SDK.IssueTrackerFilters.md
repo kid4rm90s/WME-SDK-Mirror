@@ -1,7 +1,7 @@
 ---
 title: SDK.IssueTrackerFilters interface
 source: interfaces/index.SDK.IssueTrackerFilters.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,30 +10,30 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface IssueTrackerFilters {
-  mapProblems: null | MapProblemsFilterState ;
-  mapSuggestions: null | MapSuggestionsFilterState ;
-  placeUpdateRequests: null | PlaceUpdateRequestsFilterState ;
-  updateRequests: null | UpdateRequestsFilterState ;
+  mapProblems: MapProblemsFilterState | null ;
+  mapSuggestions: MapSuggestionsFilterState | null ;
+  placeUpdateRequests: PlaceUpdateRequestsFilterState | null ;
+  updateRequests: UpdateRequestsFilterState | null ;
 }
 ```
 ## Properties
 ### `mapProblems`
 
 ```typescript
-mapProblems: null | MapProblemsFilterState
+mapProblems: MapProblemsFilterState | null
 ```
 ### `mapSuggestions`
 
 ```typescript
-mapSuggestions: null | MapSuggestionsFilterState
+mapSuggestions: MapSuggestionsFilterState | null
 ```
 ### `placeUpdateRequests`
 
 ```typescript
-placeUpdateRequests: null | PlaceUpdateRequestsFilterState
+placeUpdateRequests: PlaceUpdateRequestsFilterState | null
 ```
 ### `updateRequests`
 
 ```typescript
-updateRequests: null | UpdateRequestsFilterState
+updateRequests: UpdateRequestsFilterState | null
 ```

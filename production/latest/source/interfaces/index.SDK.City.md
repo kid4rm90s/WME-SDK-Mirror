@@ -1,7 +1,7 @@
 ---
 title: SDK.City interface
 source: interfaces/index.SDK.City.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,20 +10,20 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface City {
-  countryId: null | number ;
+  countryId: number | null ;
   geometry: Point ;
   id: number ;
   isEmpty: boolean ;
   modificationData: ModificationMetadata ;
-  name: null | string ;
-  stateId: null | number ;
+  name: string | null ;
+  stateId: number | null ;
 }
 ```
 ## Properties
 ### `countryId`
 
 ```typescript
-countryId: null | number
+countryId: number | null
 ```
 ### `geometry`
 
@@ -48,10 +48,10 @@ modificationData: ModificationMetadata
 ### `name`
 
 ```typescript
-name: null | string
+name: string | null
 ```
 ### `stateId`
 
 ```typescript
-stateId: null | number
+stateId: number | null
 ```

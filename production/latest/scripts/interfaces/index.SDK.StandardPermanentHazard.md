@@ -1,7 +1,7 @@
 ---
 title: SDK.StandardPermanentHazard interface
 source: interfaces/index.SDK.StandardPermanentHazard.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -10,53 +10,53 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 
 ```typescript
 interface StandardPermanentHazard {
-  direction: null | RestrictionSegmentDirection ;
+  direction: RestrictionSegmentDirection | null ;
   geometry: Point | Polygon ;
   id: number ;
-  lockRank: null | number ;
+  lockRank: number | null ;
   modificationData: ModificationMetadata ;
-  rank: null | number ;
-  segmentId: null | number ;
+  rank: number | null ;
+  segmentId: number | null ;
   subTypes: PermanentHazardSubType [] ;
   type: 
+  | "SPEED_BUMP"
+  | "TOPES"
+  | "TOLL_BOOTH"
   | "DANGEROUS_CURVE"
   | "DANGEROUS_INTERSECTION"
   | "DANGEROUS_MERGE"
   | "RAILROAD_CROSSING"
-  | "SPEED_BUMP"
-  | "TOLL_BOOTH"
-  | "TOPES"
   | "TRAFFIC_LIGHT"
   | "SIGN"
+  | "LANE_ENDING"
   | "RAISED_CROSSWALK"
   | "HIGHWAY_CROSSWALK"
-  | "NARROW_BRIDGE"
-  | "LANE_ENDING"
-  | "SHOULDER_ENDING" ;
+  | "SHOULDER_ENDING"
+  | "NARROW_BRIDGE" ;
 }
 ```
 ## Properties
 ### `rank`
 
 ```typescript
-rank: null | number
+rank: number | null
 ```
 ### `type`
 
 ```typescript
 type: 
+  | "SPEED_BUMP"
+  | "TOPES"
+  | "TOLL_BOOTH"
   | "DANGEROUS_CURVE"
   | "DANGEROUS_INTERSECTION"
   | "DANGEROUS_MERGE"
   | "RAILROAD_CROSSING"
-  | "SPEED_BUMP"
-  | "TOLL_BOOTH"
-  | "TOPES"
   | "TRAFFIC_LIGHT"
   | "SIGN"
+  | "LANE_ENDING"
   | "RAISED_CROSSWALK"
   | "HIGHWAY_CROSSWALK"
-  | "NARROW_BRIDGE"
-  | "LANE_ENDING"
   | "SHOULDER_ENDING"
+  | "NARROW_BRIDGE"
 ```

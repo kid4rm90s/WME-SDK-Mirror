@@ -1,7 +1,7 @@
 ---
 title: SDK.RoadClosures class
 source: classes/index.SDK.RoadClosures.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -18,11 +18,11 @@ addClosure (
   isPermanent: boolean ;
   segmentId: number ;
   startDate: number ;
-  trafficEventId: null | string ;
+  trafficEventId: string | null ;
 } ,
   ) : RoadClosure
 ```
-Methods for dealing with RoadClosures.
+Methods for dealing with RoadClosures. Add/Delete methods don't automatically save changes like the UI closures.
 ## Methods
 ### `addClosure`
 
@@ -36,11 +36,17 @@ addClosure (
   isPermanent: boolean ;
   segmentId: number ;
   startDate: number ;
-  trafficEventId: null | string ;
+  trafficEventId: string | null ;
 } ,
   ) : RoadClosure
 ```
 the created road closure.
+### `deleteClosure`
+
+```typescript
+deleteClosure ( args: { roadClosureId: string } ) : void
+```
+
 ### `getAll`
 
 ```typescript
@@ -50,6 +56,6 @@ an array of all the road closures in the WME data model
 ### `getById`
 
 ```typescript
-getById ( args: { roadClosureId: string } ) : null | RoadClosure
+getById ( args: { roadClosureId: string } ) : RoadClosure | null
 ```
 road closure with id, or null if not found in the WME data model

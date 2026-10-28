@@ -1,7 +1,7 @@
 ---
 title: SDK.Country interface
 source: interfaces/index.SDK.Country.html
-created: 2026-09-07
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -12,48 +12,6 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 interface Country {
   abbr: string ;
   defaultLaneWidthPerRoadType: 
-  | null
-  | Partial <
-  {
-  "1": number ;
-  "10": number ;
-  "15": number ;
-  "16": number ;
-  "17": number ;
-  "18": number ;
-  "19": number ;
-  "2": number ;
-  "20": number ;
-  "22": number ;
-  "3": number ;
-  "4": number ;
-  "5": number ;
-  "6": number ;
-  "7": number ;
-  "8": number ;
-  "9": number ;
-} ,
-  > ;
-  id: number ;
-  isLeftHandTraffic: boolean ;
-  modificationData: ModificationMetadata ;
-  name: string ;
-  regionCode: null
-  | RegionCode ;
-  restrictionSubscriptions: Subscription [] ;
-}
-```
-## Properties
-### `abbr`
-
-```typescript
-abbr: string
-```
-### `defaultLaneWidthPerRoadType`
-
-```typescript
-defaultLaneWidthPerRoadType: 
-  | null
   | Partial <
   {
   "1": number ;
@@ -75,6 +33,48 @@ defaultLaneWidthPerRoadType:
   "9": number ;
 } ,
   >
+  | null ;
+  id: number ;
+  isLeftHandTraffic: boolean ;
+  modificationData: ModificationMetadata ;
+  name: string ;
+  regionCode: RegionCode
+  | null ;
+  restrictionSubscriptions: Subscription [] ;
+}
+```
+## Properties
+### `abbr`
+
+```typescript
+abbr: string
+```
+### `defaultLaneWidthPerRoadType`
+
+```typescript
+defaultLaneWidthPerRoadType: 
+  | Partial <
+  {
+  "1": number ;
+  "10": number ;
+  "15": number ;
+  "16": number ;
+  "17": number ;
+  "18": number ;
+  "19": number ;
+  "2": number ;
+  "20": number ;
+  "22": number ;
+  "3": number ;
+  "4": number ;
+  "5": number ;
+  "6": number ;
+  "7": number ;
+  "8": number ;
+  "9": number ;
+} ,
+  >
+  | null
 ```
 ### `id`
 
@@ -99,7 +99,7 @@ name: string
 ### `regionCode`
 
 ```typescript
-regionCode: null | RegionCode
+regionCode: RegionCode | null
 ```
 ### `restrictionSubscriptions`
 
