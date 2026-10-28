@@ -1,7 +1,7 @@
 ---
 title: SDK.ManagedArea interface
 source: interfaces/index.SDK.ManagedArea.html
-created: 2026-09-30
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -12,6 +12,7 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 interface ManagedArea {
   geometry: Polygon ;
   id: string ;
+  modificationData: ModificationMetadata ;
   userName: string ;
 }
 ```
@@ -25,6 +26,11 @@ geometry: Polygon
 
 ```typescript
 id: string
+```
+### `modificationData`
+
+```typescript
+modificationData: ModificationMetadata
 ```
 ### `userName`
 

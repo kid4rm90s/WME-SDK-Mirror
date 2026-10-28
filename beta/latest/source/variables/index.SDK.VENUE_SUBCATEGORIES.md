@@ -1,7 +1,7 @@
 ---
 title: SDK.VENUE_SUBCATEGORIES variable
 source: variables/index.SDK.VENUE_SUBCATEGORIES.html
-created: 2026-09-30
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -16,7 +16,11 @@ VENUE_SUBCATEGORIES: {
   | "GARAGE_AUTOMOTIVE_SHOP"
   | "GAS_STATION"
   ) [] ;
-  CRISIS_LOCATIONS: ( "DONATION_CENTERS" | "SHELTER_LOCATIONS" ) [] ;
+  CRISIS_LOCATIONS: (
+  "DONATION_CENTERS"
+  | "RAIN_SHELTER"
+  | "SHELTER_LOCATIONS"
+  ) [] ;
   CULTURE_AND_ENTERTAINEMENT: readonly [
   "ART_GALLERY" ,
   "CASINO" ,

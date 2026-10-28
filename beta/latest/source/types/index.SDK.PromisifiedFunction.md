@@ -1,7 +1,7 @@
 ---
 title: SDK.PromisifiedFunction type
 source: types/index.SDK.PromisifiedFunction.html
-created: 2026-09-30
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---

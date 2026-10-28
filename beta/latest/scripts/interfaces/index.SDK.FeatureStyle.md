@@ -1,7 +1,7 @@
 ---
 title: SDK.FeatureStyle interface
 source: interfaces/index.SDK.FeatureStyle.html
-created: 2026-09-30
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -56,16 +56,8 @@ interface FeatureStyle {
   rotation ?: string | number ;
   stroke ?: boolean ;
   strokeColor ?: string ;
-  strokeDashstyle ?:
-  | "dot"
-  | "dash"
-  | "dashdot"
-  | "longdash"
-  | "longdashdot"
-  | "solid" ;
-  strokeLinecap ?: "butt"
-  | "round"
-  | "square" ;
+  strokeDashstyle ?: string ;
+  strokeLinecap ?: "butt" | "round" | "square" ;
   strokeOpacity ?: string | number ;
   strokeWidth ?: string | number ;
   title ?: string ;

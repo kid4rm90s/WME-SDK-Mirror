@@ -9,7 +9,24 @@
 <div class="tsd-page-title">
 <ul class="tsd-breadcrumb" aria-label="Breadcrumb">
 <li><a href="" aria-current="page">CHANGELOG</a></li></ul></div>
-<div class="tsd-panel tsd-typography"><h1 id="v2371" class="tsd-anchor-link">v2.371<a href="#v2371" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h1>
+<div class="tsd-panel tsd-typography"><h1 id="v2378" class="tsd-anchor-link">v2.378<a href="#v2378" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h1>
+<h2 id="expose-modificationdata-on-managedarea" class="tsd-anchor-link">Expose modificationData on ManagedArea<a href="#expose-modificationdata-on-managedarea" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>Expose modificationData on ManagedArea interface.</p>
+<h1 id="v2377" class="tsd-anchor-link">v2.377<a href="#v2377" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h1>
+<h2 id="align-wme-layer-visibility-with-the-layer-switcher" class="tsd-anchor-link">Align WME layer visibility with the Layer Switcher<a href="#align-wme-layer-visibility-with-the-layer-switcher" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<ul>
+<li>setWMELayerVisibility promised to update the map display, but when the
+layer's group was off nothing appeared. Showing a layer now also turns
+on its parent group, same as in the Layer Switcher. The Roads, Paths,
+Junction boxes and Closures checkbox helpers delegate to it and turn on
+the Road group too. Hiding is unchanged.</li>
+<li>getWMELayerVisibility now returns whether the layer is actually visible
+on the map, not just whether its checkbox is checked.</li>
+</ul>
+<h2 id="stale-shortcut-keys-in-getallshortcuts" class="tsd-anchor-link">Stale shortcut keys in getAllShortcuts<a href="#stale-shortcut-keys-in-getallshortcuts" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>Fixed Shortcuts.getAllShortcuts returning previous shortcut keys
+after a shortcut is reassigned to another action.</p>
+<h1 id="v2371" class="tsd-anchor-link">v2.371<a href="#v2371" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h1>
 <h2 id="introduce-opt-in-async-mode-via-proxy-promisifier" class="tsd-anchor-link">Introduce opt-in 'async' mode via Proxy Promisifier<a href="#introduce-opt-in-async-mode-via-proxy-promisifier" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2>
 <p>Prepare userscript developers for WME's migration to Zustand-based async stores by wrapping SDK module methods (except SdkEventBus and Errors) in Promises via a lazy Proxy.</p>
 <h2 id="add-lockrank-and-optional-props-to-mapcomments" class="tsd-anchor-link">Add lockRank and optional props to MapComments<a href="#add-lockrank-and-optional-props-to-mapcomments" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2>
@@ -1315,7 +1332,12 @@ The save also doesn't support edit suggestions yet.</p>
 <div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
 <details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
 <h3>On This Page</h3></summary>
-<div class="tsd-accordion-details"><a href="#v2371"><span>v2.371</span></a>
+<div class="tsd-accordion-details"><a href="#v2378"><span>v2.378</span></a>
+<ul>
+<li><a href="#expose-modificationdata-on-managedarea"><span>Expose modification<wbr/>Data on <wbr/>Managed<wbr/>Area</span></a></li></ul><a href="#v2377"><span>v2.377</span></a>
+<ul>
+<li><a href="#align-wme-layer-visibility-with-the-layer-switcher"><span>Align <wbr/>WME layer visibility with the <wbr/>Layer <wbr/>Switcher</span></a></li>
+<li><a href="#stale-shortcut-keys-in-getallshortcuts"><span>Stale shortcut keys in get<wbr/>All<wbr/>Shortcuts</span></a></li></ul><a href="#v2371"><span>v2.371</span></a>
 <ul>
 <li><a href="#introduce-opt-in-async-mode-via-proxy-promisifier"><span>Introduce opt-<wbr/>in &#39;async&#39; mode via <wbr/>Proxy <wbr/>Promisifier</span></a></li>
 <li><a href="#add-lockrank-and-optional-props-to-mapcomments"><span>Add lock<wbr/>Rank and optional props to <wbr/>Map<wbr/>Comments</span></a></li>

@@ -684,18 +684,17 @@ function registerMyShortcut(shortcutId, description, callback) {
 Get current map center and bounding box for filtering or analytics:
 
 ```javascript
-// Get current map center (WGS84 coordinates)
+// Get current map center (WGS84 coordinates) — LonLat = { lon, lat }
 const center = wmeSDK.Map.getMapCenter();
-console.log(`Center: lat ${center.latitude}, lon ${center.longitude}`);
+console.log(`Center: lat ${center.lat}, lon ${center.lon}`);
 
-// Get current visible extent (bounding box)
-const extent = wmeSDK.Map.getMapExtent();
-// extent = { north, south, east, west } in WGS84
+// Get current visible extent — BBox ARRAY: [left, bottom, right, top]
+const [left, bottom, right, top] = wmeSDK.Map.getMapExtent();
 
 // Filter features to only those in current view
 const visibleLayers = allLayers.filter(layer => {
   const layerBounds = turf.bbox(layer.geometry); // [minLon, minLat, maxLon, maxLat]
-  const viewBounds = turf.bboxPolygon([extent.west, extent.south, extent.east, extent.north]);
+  const viewBounds = turf.bboxPolygon([left, bottom, right, top]);
   return turf.booleanIntersects(layer.geometry, viewBounds);
 });
 ```
@@ -781,25 +780,26 @@ Listen for map interactions and layer state changes:
 wmeSDK.Events.on({
   eventName: 'wme-map-move-end',
   eventHandler: () => {
-    const extent = wmeSDK.Map.getMapExtent();
-    console.log(`Map moved. New bounds: ${extent.north}, ${extent.south}, ...`);
-    updateVisibleLayers(extent);
+    const [left, bottom, right, top] = wmeSDK.Map.getMapExtent();  // BBox array
+    console.log(`Map moved. New bounds: ${left}, ${bottom}, ${right}, ${top}`);
+    updateVisibleLayers({ left, bottom, right, top });
   },
 });
 
 // React to user toggling layer visibility
 wmeSDK.Events.on({
   eventName: 'wme-layer-checkbox-toggled',
-  eventHandler: (layerInfo) => {
-    console.log(`Layer "${layerInfo.layerName}" is now ${layerInfo.visible ? 'visible' : 'hidden'}`);
+  eventHandler: ({ checked, name }) => {
+    console.log(`Layer "${name}" is now ${checked ? 'visible' : 'hidden'}`);
   },
 });
 
 // React to user selection changes (if needed)
 wmeSDK.Events.on({
   eventName: 'wme-selection-changed',
-  eventHandler: (selection) => {
-    console.log(`Selection updated: ${selection.segments.length} segments, ${selection.nodes.length} nodes`);
+  eventHandler: () => {
+    const sel = wmeSDK.Editing.getSelection();   // payload is undefined — read it yourself
+    if (sel) console.log(`Selection: ${sel.objectType} -> ${sel.ids.length} object(s)`);
   },
 });
 ```
@@ -808,11 +808,11 @@ wmeSDK.Events.on({
 
 **Common Events:**
 - `wme-map-move-end` — Map finished panning/zooming
-- `wme-layer-checkbox-toggled` — User toggled layer visibility
-- `wme-selection-changed` — User selection updated
-- `wme-map-zoom-changed` — Zoom level changed (if SDK version supports)
+- `wme-layer-checkbox-toggled` — User toggled layer visibility (`{ checked, name }`)
+- `wme-selection-changed` — User selection updated (payload `undefined`; read via `Editing.getSelection()`)
+- `wme-map-zoom-changed` — Zoom level changed
 
-**Reference:** `classes.md` → `Events.on()`; check SDK changelog for complete event list
+**Reference:** `interfaces.md` → `SdkEvents` (authoritative payload list); `classes.md` → `SdkEventBus`
 
 ---
 
@@ -827,8 +827,13 @@ correct way to match both www and beta WME.
 **`getWmeSdk()` is synchronous** — it does not return a Promise. The async part is waiting
 for `SDK_INITIALIZED` first.
 
-**`wmeSDK.State.isReady`** is a **boolean property**, not a function. Do not call it as
-`isReady()`.
+**`wmeSDK.State.isReady()`** is a **method** — call it with parentheses. `WmeState` also
+provides `isInitialized()`, `isLoggedIn()`, `isMapLoading()`, `isInitialDataLoaded()`,
+`getUserInfo()` and `getManagedCountries()`.
+
+> **Async mode (v2.371+):** passing `mode: 'async'` to `getWmeSdk()` returns an
+> `AsyncWmeSDK` whose methods all return Promises. See “Async Mode” below. Sync remains the
+default and is what these templates use.
 
 ### Simple pattern (no UI bootstrap polling needed)
 
@@ -862,8 +867,8 @@ for `SDK_INITIALIZED` first.
       eventHandler: () => initialize()
     });
 
-    // Also call immediately if SDK is already ready (e.g. script injected late)
-    if (wmeSDK.State.isReady) initialize();
+    // Also call immediately if WME is already ready (e.g. script injected late)
+    if (wmeSDK.State.isReady()) initialize();
   });
 
   function initialize() {
@@ -891,7 +896,7 @@ function bootstrap() {
     return;
   }
   // Now safe to initialize fully
-  if (wmeSDK.State.isReady) init();
+  if (wmeSDK.State.isReady()) init();
   else wmeSDK.Events.once({ eventName: 'wme-ready' }).then(init);
 }
 
@@ -918,24 +923,43 @@ function init() {
 ## Core SDK Classes Reference
 
 > All APIs live under the `wmeSDK` object returned by `getWmeSdk()`. The top-level
-> namespaces are `DataModel`, `Editing`, `Events`, `Map`, `Shortcuts`, `Sidebar`,
-> `State`, `LayerSwitcher`. There is no direct `wmeSDK.Segments.*` shortcut —
-> always use the full path `wmeSDK.DataModel.Segments.*`.
+> namespaces are `DataModel`, `Editing`, `Errors`, `Chat`, `IssueTracker`, `LayerSwitcher`,
+> `Map`, `Settings`, `Shortcuts`, `Sidebar`, `State`, `StreetView`, `Events`. There is no
+> direct `wmeSDK.Segments.*` shortcut — always use the full path
+> `wmeSDK.DataModel.Segments.*`. The root object also exposes `isBetaEnvironment()`,
+> `getScriptName()`/`getScriptId()`, `getSDKVersion()`, `getWMEVersion()` and
+> `getWMEBackEndVersion()`.
+>
+> This section covers the modules most scripts touch. For the full surface of all 43 SDK
+> classes, see `classes.md` (and `interfaces.md` for data shapes).
 
 ### `wmeSDK.DataModel.Segments` — Road Segments
 
 ```javascript
 wmeSDK.DataModel.Segments.getAll()                              // Segment[]
 wmeSDK.DataModel.Segments.getById({ segmentId })               // Segment | null
-wmeSDK.DataModel.Segments.getAddress({ segmentId })            // Address object
+wmeSDK.DataModel.Segments.getAddress({ segmentId })            // SegmentAddress
 wmeSDK.DataModel.Segments.getConnectedSegments({ segmentId, reverseDirection }) // Segment[]
+wmeSDK.DataModel.Segments.getReversedSegments({ segmentIds })
+wmeSDK.DataModel.Segments.getVirtualNodes({ segmentId })       // Node[]
 wmeSDK.DataModel.Segments.addSegment({ geometry, roadType })   // new segment ID
 wmeSDK.DataModel.Segments.deleteSegment({ segmentId })
 wmeSDK.DataModel.Segments.updateSegment({ segmentId, roadType?, lockRank?, fwdSpeedLimit?,
-  revSpeedLimit?, geometry?, flagAttributes?, elevationLevel?, direction? })
-wmeSDK.DataModel.Segments.updateAddress({ segmentId, primaryStreetId, alternateStreetIds? })
-wmeSDK.DataModel.Segments.splitSegment({ segmentId, geometry })
+  revSpeedLimit?, geometry?, flagAttributes?, elevationLevel?, direction?, routingRoadType?,
+  hasToll?, restrictions?, fromLanesInfo?, toLanesInfo? })
+wmeSDK.DataModel.Segments.updateAddress({ segmentId, addressData })   // takes addressData, not raw IDs
+wmeSDK.DataModel.Segments.splitSegment({ segmentId, splitPoint })     // splitPoint: Point (not geometry)
+wmeSDK.DataModel.Segments.mergeSegments({ segmentIds })
+wmeSDK.DataModel.Segments.addIntersection({ segmentIds: [a, b] })     // -> 4 new segment ids
+wmeSDK.DataModel.Segments.createRoundabout({ center, rx, ry })        // LonLat center -> segment ids
+wmeSDK.DataModel.Segments.addAlternateStreet({ segmentIds, streetId })
 wmeSDK.DataModel.Segments.hasPermissions({ segmentId, permission? })  // boolean
+wmeSDK.DataModel.Segments.getRoadTypes()                              // RoadType[] — localized names
+wmeSDK.DataModel.Segments.getWKTGeometry({ segmentId })               // WKT string
+wmeSDK.DataModel.Segments.isTollSegment({ segmentId })                // boolean
+wmeSDK.DataModel.Segments.isRoadTypeDrivable({ roadType })            // boolean
+wmeSDK.DataModel.Segments.findSegment({ segmentId })                  // Promise<Segment>
+wmeSDK.DataModel.Segments.verifyTurns({ segmentId, isForward })
 ```
 
 ### `wmeSDK.DataModel.Streets`
@@ -995,81 +1019,157 @@ wmeSDK.DataModel.HouseNumbers.addHouseNumber({ segmentId, number, lon, lat })
 ### `wmeSDK.DataModel.MapUpdateRequests`
 
 ```javascript
-wmeSDK.DataModel.MapUpdateRequests.getUpdateRequestDetails({ requestId })
+wmeSDK.DataModel.MapUpdateRequests.getUpdateRequestDetails({ requestId })  // id OR id[]
 wmeSDK.DataModel.MapUpdateRequests.addComment({ requestId, text })
+```
+
+### `wmeSDK.DataModel.RoadClosures` / `TurnClosures`
+
+```javascript
+wmeSDK.DataModel.RoadClosures.addClosure({ segmentId, ... })      // enforces segment perms + rank
+wmeSDK.DataModel.RoadClosures.deleteClosure({ closureId })
+wmeSDK.DataModel.TurnClosures.addClosure({ ... })
+```
+
+### `wmeSDK.DataModel.MapComments`
+
+```javascript
+wmeSDK.DataModel.MapComments.addComment({ ... })     // lockRank supported; body/endDate optional
+wmeSDK.DataModel.MapComments.updateComment({ ... })
+// Style the map comments layer via wmeSDK.Map.addStyleRuleToLayer({ layerName: 'mapComments', ... })
+```
+
+### `wmeSDK.DataModel.SegmentSuggestions` / `EditSuggestions`
+
+```javascript
+wmeSDK.DataModel.SegmentSuggestions.getAll()                 // SegmentSuggestion[]
+wmeSDK.DataModel.SegmentSuggestions.getById({ segmentSuggestionId })
+wmeSDK.DataModel.SegmentSuggestions.reject({ segmentSuggestionIds, reason })
+wmeSDK.DataModel.EditSuggestions.getAll()                    // EditSuggestion[]
+```
+
+### `wmeSDK.DataModel.Signs` / `ManagedAreas` / `BigJunctions`
+
+```javascript
+wmeSDK.DataModel.Signs.getAll({ type? })              // Sign[]
+wmeSDK.DataModel.Signs.getById({ signId })
+wmeSDK.DataModel.ManagedAreas.getAll()
+wmeSDK.DataModel.BigJunctions.getById({ bigJunctionId })
 ```
 
 ### `wmeSDK.Map` — Map Control
 
 ```javascript
-wmeSDK.Map.getZoomLevel()                                // number
-wmeSDK.Map.getMapExtent()                                // [west, south, east, north]
-wmeSDK.Map.getMapCenter()                                // { lon, lat }
-wmeSDK.Map.setMapCenter({ lon, lat })
+wmeSDK.Map.getZoomLevel()                                // ZoomLevel
+wmeSDK.Map.setZoomLevel({ zoomLevel }); wmeSDK.Map.zoomIn(); wmeSDK.Map.zoomOut()
+wmeSDK.Map.getMapExtent()                                // BBox = [left, bottom, right, top] (ARRAY)
+wmeSDK.Map.getMapCenter()                                // LonLat = { lon, lat }
+wmeSDK.Map.setMapCenter({ lonLat: { lon, lat }, zoomLevel? })
 wmeSDK.Map.getMapViewportElement()                       // HTMLElement — overlay container
-wmeSDK.Map.getMapPixelFromLonLat({ lonLat: { lon, lat } })  // { x, y } — geo → screen px
-wmeSDK.Map.getLonLatFromMapPixel({ x, y })               // { lon, lat }
-wmeSDK.Map.addLayer({ layerName })
+wmeSDK.Map.getMapPixelFromLonLat({ lonLat: { lon, lat } })  // Pixel { x, y } — geo -> screen px
+wmeSDK.Map.getLonLatFromMapPixel({ x, y })               // LonLat { lon, lat }
+wmeSDK.Map.getMapResolution()                            // number
+wmeSDK.Map.getPermalink({ includeLayers? })              // string
+wmeSDK.Map.getLiveMapLink()                              // string
+wmeSDK.Map.addLayer({ layerName, styleRules?, styleContext?, zIndexing? })
 wmeSDK.Map.removeLayer({ layerName })
-wmeSDK.Map.addFeaturesToLayer({ layerName, features })
-wmeSDK.Map.removeAllFeaturesFromLayer({ layerName })     // also: clearLayerFeatures
+wmeSDK.Map.addFeaturesToLayer({ layerName, features })   // batch; also addFeatureToLayer({ layerName, feature })
+wmeSDK.Map.removeAllFeaturesFromLayer({ layerName })
 wmeSDK.Map.redrawLayer({ layerName })
-wmeSDK.Map.setLayerVisibility({ layerName, visible })
+wmeSDK.Map.setLayerVisibility({ layerName, visibility })   // NOTE: `visibility`, not `visible`
 wmeSDK.Map.isLayerVisible({ layerName })                 // boolean
+wmeSDK.Map.setLayerOpacity({ layerName, opacity }); wmeSDK.Map.getLayerOpacity({ layerName })
+wmeSDK.Map.setLayerZIndex({ layerName, zIndex }); wmeSDK.Map.getLayerZIndex({ layerName })
+wmeSDK.Map.getFeatureDomElement({ layerName, featureId })
+wmeSDK.Map.addStyleRuleToLayer({ layerName, styleRules })  // style a WME layer (cities, roads, mapComments...)
+wmeSDK.Map.addTileLayer({ layerName, layerOptions })     // XYZ tile layer options
+wmeSDK.Map.centerMapOnGeometry({ geometry })
+wmeSDK.Map.drawPoint({ snapTo? })                        // Promise<Point> (drawPoint/drawLine/drawPolygon)
 ```
 
 ### `wmeSDK.Editing` — Selection & Editing State
 
 ```javascript
-wmeSDK.Editing.getSelection()                      // { objectType, ids } | null
+wmeSDK.Editing.getSelection()                      // SelectionWithLocalizedTypeName | null
 wmeSDK.Editing.setSelection({ selection: { objectType, ids } })
 wmeSDK.Editing.clearSelection()
-wmeSDK.Editing.save()                              // Save to server (no beginAction needed for simple saves)
+wmeSDK.Editing.save()                              // Promise<void>
+wmeSDK.Editing.isEditingAllowed()                  // boolean — check before mutations
+wmeSDK.Editing.isDrawingInProgress()               // boolean
+wmeSDK.Editing.isPracticeModeOn()                  // boolean
+wmeSDK.Editing.isSnapshotModeOn()                  // boolean
+wmeSDK.Editing.getUnsavedChangesCount(); wmeSDK.Editing.getRedoChangesCount()
+wmeSDK.Editing.getCurrentSaveMode()                // SaveMode
+wmeSDK.Editing.lockEditing()                       // -> lockId string
+wmeSDK.Editing.releaseEditingLock({ lockId })
+wmeSDK.Editing.redo()
 ```
 
 ### `wmeSDK.State`
 
 ```javascript
-wmeSDK.State.isReady            // boolean PROPERTY (not a function — do NOT call as isReady())
-wmeSDK.State.getUserInfo()      // { rank, ... } — current user's profile and rank (0-based: rank 2 = L3)
+wmeSDK.State.isReady()              // boolean METHOD — call it: isReady()
+wmeSDK.State.isInitialized()        // boolean
+wmeSDK.State.isLoggedIn()           // boolean
+wmeSDK.State.isMapLoading()         // boolean
+wmeSDK.State.isInitialMapDataLoaded()
+wmeSDK.State.getUserInfo()          // UserSession | null — rank is 0-based (rank 2 = L3)
+wmeSDK.State.getManagedCountries()  // Country[]
 ```
 
-### `wmeSDK.Events` — Event System
+### `wmeSDK.Events` — Event System (`SdkEventBus`)
 
 ```javascript
-wmeSDK.Events.on({ eventName, eventHandler })           // Subscribe; returns unsubscribe fn
-wmeSDK.Events.once({ eventName })                       // Returns a Promise that resolves once
-wmeSDK.Events.trackLayerEvents({ layerName })           // Activate layer-click events for a layer
+const off = wmeSDK.Events.on({ eventName, eventHandler })  // returns a cleanup fn — call it to unsubscribe
+wmeSDK.Events.off({ eventName, eventHandler })
+wmeSDK.Events.once({ eventName })                       // Promise that resolves once
+wmeSDK.Events.clear()
+wmeSDK.Events.trackLayerEvents({ layerName })           // Activate layer-click/hover events for a layer
 wmeSDK.Events.stopLayerEventsTracking({ layerName })
 wmeSDK.Events.trackDataModelEvents({ dataModelName })   // Activate datamodel change events
 wmeSDK.Events.stopDataModelEventsTracking({ dataModelName })
+```
 
-// Key event names:
-'wme-ready'                          // SDK fully initialized (use Events.once for one-shot)
-'wme-selection-changed'              // User changed selection
-'wme-map-move'                       // Map panning (continuous, fires frequently)
-'wme-map-move-end'                   // Map panning finished
-'wme-map-zoom-changed'               // Map zoom level changed
-'wme-map-layer-added'
-'wme-map-layer-removed'
-'wme-map-mouse-click'                // { lat, lon, x, y }
-'wme-map-data-loaded'                // New map tiles loaded
-'wme-layer-visibility-changed'       // { layerName, visible }
-'wme-layer-feature-clicked'          // Feature on a tracked layer was clicked
-'wme-data-model-objects-added'
-'wme-data-model-objects-removed'
-'wme-data-model-objects-saved'
-'wme-after-undo'
-'wme-after-redo-clear'
+Key event names and payloads (full list in `interfaces.md` -> `SdkEvents`):
+
+```javascript
+'wme-ready'                          // undefined — WME initialized + logged in + data loaded
+'wme-selection-changed'              // undefined
+'wme-map-move'                       // undefined — continuous, fires frequently
+'wme-map-move-end'                   // undefined
+'wme-map-zoom-changed'               // undefined
+'wme-map-mouse-click'                // SdkMouseEvent { lat, lon, x, y, viewportX, viewportY }
+'wme-map-layer-added'/'removed'/'changed'   // { layerName }
+'wme-layer-visibility-changed'       // { layerName }
+'wme-layer-checkbox-toggled'         // { checked, name }   <-- note: checked/name, NOT visible/layerName
+'wme-layer-feature-clicked'          // { featureId, layerName }
+'wme-layer-feature-mouse-enter'/'leave'  // { featureId, layerName }
+'wme-issue-tracker-panel-opened'/'closed' // IssueTrackerPanel*Event
+'wme-save-finished'                  // { success }
+'wme-save-mode-changed'              // { saveMode }
+'wme-user-settings-changed'          // undefined
+'wme-feature-editor-opened'          // { featureType }
+'wme-data-model-objects-added'/'removed'/'saved'  // { dataModelName, objectIds }
+'wme-after-undo' / 'wme-after-redo-clear'
+```
+
+### `wmeSDK.Errors` — Typed Exceptions
+
+```javascript
+wmeSDK.Errors.WMEError                 // base
+wmeSDK.Errors.InvalidStateError        // e.g. removeLayer on a non-existent layer
+wmeSDK.Errors.DataModelNotFoundError
+wmeSDK.Errors.ValidationError
 ```
 
 ### `wmeSDK.Sidebar` — UI Panel
 
 ```javascript
-// Register a sidebar tab (returns a Promise)
+// registerScriptTab() takes NO arguments — scriptId is implicit
 const { tabLabel, tabPane } = await wmeSDK.Sidebar.registerScriptTab();
 tabLabel.innerHTML = 'My Script';   // Tab button text
 tabPane.innerHTML = '<div>...</div>'; // Tab content area
+wmeSDK.Sidebar.removeScriptTab();   // remove the tab
 ```
 
 ### `wmeSDK.Shortcuts` — Keyboard Shortcuts
@@ -1088,12 +1188,46 @@ wmeSDK.Shortcuts.isShortcutRegistered({ shortcutId })   // boolean — check bef
 ### `wmeSDK.LayerSwitcher` — Layer Toggle UI
 
 ```javascript
-wmeSDK.LayerSwitcher.addLayerCheckbox({
-  layerName,
-  label: 'My Layer',
-  defaultChecked: true
-});
+wmeSDK.LayerSwitcher.addLayerCheckbox({ name: 'My Layer', isChecked: true })  // { name, isChecked? }
+wmeSDK.LayerSwitcher.removeLayerCheckbox({ name: 'My Layer' })
+wmeSDK.LayerSwitcher.getLayerCheckboxState({ name })
+wmeSDK.LayerSwitcher.getWMELayerVisibility({ layerName })   // use WmeLayerName constants
+wmeSDK.LayerSwitcher.setWMELayerVisibility({ layerName, visibility })
+// WmeLayerName: 'cities' | 'roads' | 'places' | 'paths' | 'junctionBoxes' | 'closures' | ...
 ```
+
+### `wmeSDK.Chat` / `wmeSDK.IssueTracker` / `wmeSDK.Settings` / `wmeSDK.StreetView`
+
+```javascript
+wmeSDK.Chat.startChat({ username })                          // open a private chat with an editor
+wmeSDK.IssueTracker.showPanel({ ... }); wmeSDK.IssueTracker.closePanel()
+wmeSDK.IssueTracker.getFilters()                             // IssueTrackerFilters
+wmeSDK.Settings.getLocale()                                  // { localeCode, localeName }
+wmeSDK.Settings.getRegionCode(); wmeSDK.Settings.setRegionCode({ regionCode })
+wmeSDK.Settings.getUserSettings(); wmeSDK.Settings.setUserSettings({ ... })
+wmeSDK.StreetView.isStreetViewActive()
+```
+
+## Async Mode (`mode: 'async'`, v2.371+)
+
+The SDK team is migrating WME to Zustand-based async stores. Passing `mode: 'async'` wraps
+every module method (except `SdkEventBus` and `Errors`) in a Promise via a lazy Proxy:
+
+```javascript
+// Sync (default) — what existing scripts use
+const wmeSDK = getWmeSdk({ scriptId: 'my-script', scriptName: 'My Script' });
+const seg = wmeSDK.DataModel.Segments.getById({ segmentId: 123 });   // Segment | null
+
+// Async — every data call must be awaited
+const wmeSDK = getWmeSdk({ mode: 'async', scriptId: 'my-script', scriptName: 'My Script' });
+const seg = await wmeSDK.DataModel.Segments.getById({ segmentId: 123 });  // Promise<Segment | null>
+```
+
+- Only the data/mutation methods become Promises; `Events.on/off/once` and `Errors` stay sync.
+- `getWmeSdk({ mode: 'async', ... })` returns an `AsyncWmeSDK` (`PromisifiedModule<WmeSDK>`).
+- Pick **one** mode per script — do not mix. Sync stays the default; treat async as the
+  forward path as WME moves to async stores.
+
 ## WazeToastr — Toast Notifications
 
 WazeToastr is a community library commonly used in WME scripts for user feedback.
@@ -1174,18 +1308,25 @@ wmeSDK.Events.on({
 ### Segment Address Update (city + street resolution)
 
 ```javascript
-// Always resolve or create the Street object before calling updateAddress.
-// Never pass raw strings — updateAddress takes IDs.
+// updateAddress takes a SegmentAddressData object. Two mutually exclusive forms:
+//   A) IDs:        { primaryStreetId, alternateStreetIds? }
+//   B) raw names:  { streetName, cityName?, stateId?, countryId?, alternateStreetIds? }
+// Do NOT mix forms A and B. Resolve/create the Street first if you have a name.
 function setSegmentAddress(segmentId, streetName) {
   const city = wmeSDK.DataModel.Cities.getTopCity();
   let street = wmeSDK.DataModel.Streets.getStreet({ cityId: city.id, streetName })
              || wmeSDK.DataModel.Streets.addStreet({ streetName, cityId: city.id });
   wmeSDK.DataModel.Segments.updateAddress({
     segmentId,
-    primaryStreetId: street.id,
-    alternateStreetIds: []
+    addressData: { primaryStreetId: street.id, alternateStreetIds: [] }   // form A
   });
 }
+
+// Or skip the lookup and pass raw names directly (form B)
+// wmeSDK.DataModel.Segments.updateAddress({
+//   segmentId,
+//   addressData: { streetName: 'Main St', cityName: 'Springfield' }
+// });
 
 // Clear street name (set to "None")
 function clearSegmentStreet(segmentId) {
@@ -1193,7 +1334,10 @@ function clearSegmentStreet(segmentId) {
              || wmeSDK.DataModel.Cities.addCity({ cityName: '' });
   let st = wmeSDK.DataModel.Streets.getStreet({ cityId: city.id, streetName: '' })
          || wmeSDK.DataModel.Streets.addStreet({ streetName: '', cityId: city.id });
-  wmeSDK.DataModel.Segments.updateAddress({ segmentId, primaryStreetId: st.id, alternateStreetIds: [] });
+  wmeSDK.DataModel.Segments.updateAddress({
+    segmentId,
+    addressData: { primaryStreetId: st.id, alternateStreetIds: [] }
+  });
 }
 ```
 
@@ -1303,7 +1447,7 @@ wmeSDK.Map.addFeaturesToLayer({
 
 wmeSDK.Events.on({
   eventName: 'wme-layer-feature-clicked',
-  eventHandler: ({ feature }) => console.log('Clicked:', feature.properties.id)
+  eventHandler: ({ featureId, layerName }) => console.log('Clicked:', featureId),
 });
 
 // Cleanup
@@ -1414,8 +1558,8 @@ if (userInfo.rank < 2) { // require L3+
    `W.accelerators` / `I18n` only when no SDK equivalent exists (e.g. group-based keyboard
    shortcut registration in WME's shortcuts UI).
 2. **Never `await getWmeSdk()`** — it is synchronous. Wait for `SDK_INITIALIZED` instead.
-3. **`wmeSDK.State.isReady` is a boolean property**, not a function. Do not call it as `isReady()`.
-4. **Always check `wmeSDK.State.isReady`** (or listen for `wme-ready`) before running init logic.
+3. **`wmeSDK.State.isReady()` is a method** — call it with parentheses. (Older docs and some SDK example scripts incorrectly describe it as a boolean property; the typedefs and how-to guide are authoritative.)
+4. **Always check `wmeSDK.State.isReady()`** (or listen for `wme-ready`) before running init logic.
 5. **Declare `/* global getWmeSdk, WazeToastr */`** so linters don't flag injected globals.
 6. **Prefer event-driven logic** over polling or `setInterval`. Use `once()` for one-shot events.
 7. **Unsubscribe from events and disconnect observers** when a feature is disabled or torn down.

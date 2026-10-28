@@ -1,10 +1,34 @@
 ---
-title: # v2.371
+title: # v2.378
 source: documents/CHANGELOG.html
-created: 2026-09-30
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
+
+## v2.378
+
+### Expose modificationData on ManagedArea
+
+Expose modificationData on ManagedArea interface.
+
+## v2.377
+
+### Align WME layer visibility with the Layer Switcher
+
+- setWMELayerVisibility promised to update the map display, but when the
+layer's group was off nothing appeared. Showing a layer now also turns
+on its parent group, same as in the Layer Switcher. The Roads, Paths,
+Junction boxes and Closures checkbox helpers delegate to it and turn on
+the Road group too. Hiding is unchanged.
+
+- getWMELayerVisibility now returns whether the layer is actually visible
+on the map, not just whether its checkbox is checked.
+
+### Stale shortcut keys in getAllShortcuts
+
+Fixed Shortcuts.getAllShortcuts returning previous shortcut keys
+after a shortcut is reassigned to another action.
 
 ## v2.371
 

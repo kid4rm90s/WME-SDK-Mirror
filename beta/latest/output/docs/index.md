@@ -1,7 +1,7 @@
 ---
 sdk: WME
-version: v2.373-2-g92852af686
-generated: 2026-09-30
+version: v2.378-2-g8a66e74b0a
+generated: 2026-10-28
 sections:
   classes: classes.md
   modules: modules.md
@@ -47,8 +47,8 @@ docs:
 > **Use this index to discover available documentation and their content.**
 > For searching SDK entities, refer to the Source Guide below, then navigate to the relevant section.
 
-> **SDK Version:** v2.373-2-g92852af686
-> **Docs generated:** 2026-09-30
+> **SDK Version:** v2.378-2-g8a66e74b0a
+> **Docs generated:** 2026-10-28
 
 > Each section below lists the source file and the entities it contains.
 
@@ -356,7 +356,7 @@ This section describes each documentation source included for NotebookLM compreh
 
 ## Variables
 
-- [variables.md](variables.md) — *40 entries*
+- [variables.md](variables.md) — *46 entries*
     - index.SDK.AddableVehicleType
     - index.SDK.ClosureStatus
     - index.SDK.DATA_MODEL_NAMES
@@ -397,6 +397,12 @@ This section describes each documentation source included for NotebookLM compreh
     - index.SDK.WME_LAYER_NAMES
     - index.SDK.WeekDay
     - index.SDK.WmeLayerName
+    - index.SDK._EditSuggestionStatus
+    - index.SDK._ObjectType
+    - index.SDK._PLACE_UPDATE_ACTION
+    - index.SDK._PLACE_UPDATE_SUBJECT
+    - index.SDK._SidebarTabName
+    - index.SDK._UserEditableAreaType
 
 > See Also: [Type Definition Files](#type-definition-files), [External Documentation Files](#external-documentation-files)
 

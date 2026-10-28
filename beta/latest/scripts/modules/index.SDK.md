@@ -1,7 +1,7 @@
 ---
 title: SDK module
 source: modules/index.SDK.html
-created: 2026-09-30
+created: 2026-10-28
 tool: extract-to-md.py
 notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 ---
@@ -246,18 +246,20 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [WmeLayerName](../types/index.SDK.WmeLayerName.md)
 - [ZoomLevel](../types/index.SDK.ZoomLevel.md)
 ## Variables
+- [_EditSuggestionStatus](../variables/index.SDK._EditSuggestionStatus.md)
+- [_ObjectType](../variables/index.SDK._ObjectType.md)
+- [_PLACE_UPDATE_ACTION](../variables/index.SDK._PLACE_UPDATE_ACTION.md)
+- [_PLACE_UPDATE_SUBJECT](../variables/index.SDK._PLACE_UPDATE_SUBJECT.md)
+- [_SidebarTabName](../variables/index.SDK._SidebarTabName.md)
+- [_UserEditableAreaType](../variables/index.SDK._UserEditableAreaType.md)
 - [AddableVehicleType](../variables/index.SDK.AddableVehicleType.md)
 - [ClosureStatus](../variables/index.SDK.ClosureStatus.md)
 - [DATA_MODEL_NAMES](../variables/index.SDK.DATA_MODEL_NAMES.md)
 - [DayAlternation](../variables/index.SDK.DayAlternation.md)
-- [EditSuggestionStatus](../variables/index.SDK.EditSuggestionStatus.md)
 - [GENERAL_SERVICE_TYPE](../variables/index.SDK.GENERAL_SERVICE_TYPE.md)
 - [IssueTrackerType](../variables/index.SDK.IssueTrackerType.md)
 - [LicensePlateRule](../variables/index.SDK.LicensePlateRule.md)
-- [ObjectType](../variables/index.SDK.ObjectType.md)
 - [PARKING_LOT_SERVICE_TYPE](../variables/index.SDK.PARKING_LOT_SERVICE_TYPE.md)
-- [PLACE_UPDATE_ACTION](../variables/index.SDK.PLACE_UPDATE_ACTION.md)
-- [PLACE_UPDATE_SUBJECT](../variables/index.SDK.PLACE_UPDATE_SUBJECT.md)
 - [RESTRICTION_TYPE](../variables/index.SDK.RESTRICTION_TYPE.md)
 - [RestrictionSegmentDirection](../variables/index.SDK.RestrictionSegmentDirection.md)
 - [RestrictionSegmentLaneScope](../variables/index.SDK.RestrictionSegmentLaneScope.md)
@@ -269,12 +271,10 @@ notes: Extracted from Waze SDK HTML docs. Cleaned for LLM context.
 - [SegmentPermission](../variables/index.SDK.SegmentPermission.md)
 - [SegmentSuggestionRejectionReason](../variables/index.SDK.SegmentSuggestionRejectionReason.md)
 - [SegmentSuggestionSource](../variables/index.SDK.SegmentSuggestionSource.md)
-- [SidebarTabName](../variables/index.SDK.SidebarTabName.md)
 - [UpdateableMapProblemState](../variables/index.SDK.UpdateableMapProblemState.md)
 - [UpdateableRestrictionSegmentLaneScope](../variables/index.SDK.UpdateableRestrictionSegmentLaneScope.md)
 - [UpdateableRestrictionType](../variables/index.SDK.UpdateableRestrictionType.md)
 - [UpdateableTurnRestrictionType](../variables/index.SDK.UpdateableTurnRestrictionType.md)
-- [UserEditableAreaType](../variables/index.SDK.UserEditableAreaType.md)
 - [VehicleType](../variables/index.SDK.VehicleType.md)
 - [VENUE_MAIN_CATEGORY](../variables/index.SDK.VENUE_MAIN_CATEGORY.md)
 - [VENUE_RESIDENTIAL](../variables/index.SDK.VENUE_RESIDENTIAL.md)
